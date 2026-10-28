@@ -1,0 +1,38 @@
+## 0.5.2 run 2026-10-28T11:58:03Z
+# windows-native-build (tsx)
+ok 1 - toolchain: Linux cross lane is unchanged
+ok 2 - toolchain: Windows MSYS2 UCRT64 via PATH (g++ / dlltool names)
+ok 3 - toolchain: NEXORA_MINGW_BIN selects absolute tools and leads PATH for child processes
+ok 4 - toolchain: rejects MSYS runtime compiler, 32-bit, clang and missing tools with actionable errors
+ok 5 - build script: fails clearly when no MinGW toolchain is available
+ok 6 - expectedSha256: parses SHASUMS256 lines, including binary-mode markers
+ok 7 - extractNodeHeaders: writes only include/node regular files
+ok 8 - extractNodeHeaders: rejects link entries inside include/node and empty archives
+ok 9 - extractNodeHeaders: reads a tarball produced by the system tar
+ok 10 - PE imports: an MSVCRT-lane-shaped addon passes
+ok 11 - PE imports: a UCRT64-lane-shaped addon passes
+ok 12 - PE imports: toolchain runtime DLLs (failed static link) are rejected
+ok 13 - PE imports: node.exe as a regular import, or missing, is rejected
+ok 14 - PE imports: lld-built PE32+ passes the repository's manifest validator unchanged
+ok 15 - PE imports: non-PE and truncated inputs are rejected
+# tests 15
+# pass 15
+# fail 0
+# skipped 0
+# core+analysis
+# tests 25
+# pass 25
+# fail 0
+# fork-identity
+# tests 10
+# pass 10
+# fail 0
+# v0.4
+# tests 3
+# pass 3
+# fail 0
+# python bridges
+Ran 42 tests in 0.732s
+OK
+# audit-lifecycle
+  "ok": true

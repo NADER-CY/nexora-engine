@@ -1,0 +1,136 @@
+{
+  "when": "2026-10-28T10:30:56.800Z",
+  "node": "v22.23.4",
+  "runs": [
+    {
+      "label": "phase1 rea-session-report | session-1m (200MB) | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 7774,
+      "peakRssMb": 138.1,
+      "heapLimitMb": null,
+      "stdoutBytes": 82
+    },
+    {
+      "label": "phase1 nexora-backend-map | session-1m (200MB) | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 2880,
+      "peakRssMb": 132.6,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 rea-session-report | hugeline (600MB single line) | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 3189,
+      "peakRssMb": 91.6,
+      "heapLimitMb": null,
+      "stdoutBytes": 79
+    },
+    {
+      "label": "phase1 nexora-backend-map | hugeline (600MB single line) | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 285,
+      "peakRssMb": 89.3,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 rea-session-report | session-1m (200MB) | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 3691,
+      "peakRssMb": 138.4,
+      "heapLimitMb": 256,
+      "stdoutBytes": 82
+    },
+    {
+      "label": "phase1 nexora-backend-map | session-1m (200MB) | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 2504,
+      "peakRssMb": 134.9,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 rea-session-report | hugeline (600MB single line) | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 318,
+      "peakRssMb": 92.1,
+      "heapLimitMb": 256,
+      "stdoutBytes": 79
+    },
+    {
+      "label": "phase1 nexora-backend-map | hugeline (600MB single line) | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 308,
+      "peakRssMb": 88.9,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 streaming scan-bundle | bundle-50mb.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 1311,
+      "peakRssMb": 93.1,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 streaming scan-bundle | bundle-300mb.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 6595,
+      "peakRssMb": 102.5,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 streaming scan-bundle | bundle-600mb.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 14464,
+      "peakRssMb": 107.2,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 streaming scan-bundle | bundle-300mb.js | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 3486,
+      "peakRssMb": 92.6,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "phase1 streaming scan-bundle | bundle-300mb-multiline.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 6446,
+      "peakRssMb": 108.9,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    }
+  ]
+}

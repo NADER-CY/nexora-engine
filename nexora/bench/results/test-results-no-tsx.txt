@@ -1,0 +1,66 @@
+## tsx-free run 2026-10-28T13:03:00Z: Node v22.23.4, no tsx on PATH or in node_modules
+ok 1 - scanBundle: finds literals across chunk boundaries exactly once
+ok 2 - scanBundle: strips secrets from URL literals and reports credential-like literals by type only
+ok 3 - scanBundle: inventories are capped and drops reported
+ok 4 - scanBundle: file-size limit, timeout and cancellation
+ok 5 - session summary and backend map: oversized line skipped, output unchanged otherwise
+ok 6 - CLI: summary to file (owner-only), usage errors, limits, help
+ok 7 - CLI: per-command timeout produces a structured error and exit 1
+ok 8 - CLI: SIGINT cancels cleanly with exit 130
+ok 9 - v0.4 command lines still work through compatibility wrappers
+ok 10 - limits: defaults, env overrides, explicit overrides, validation
+ok 11 - withTimeout: rejects with timeout and aborts the work signal
+ok 12 - withTimeout: parent cancellation propagates as cancelled
+ok 13 - withTimeout: returns the value on success
+ok 14 - ConcurrencyGate: bounds concurrency and rejects when the queue is full
+ok 15 - ConcurrencyGate: queued work can be cancelled
+ok 16 - heapGuard and BoundedCounter
+ok 17 - readJsonl: skips oversized, invalid, non-object and blank lines; handles CRLF and no trailing newline
+ok 18 - readJsonl: multibyte UTF-8 split across chunk boundaries
+ok 19 - readJsonl: maxRecords stops early and cancellation aborts
+ok 20 - BoundedJsonlWriter: byte cap, queue cap, oversized records are counted not thrown
+ok 21 - isMainModule: Windows paths match (v0.4 regression) and mismatches are rejected
+ok 22 - isMainModule: POSIX real paths
+ok 23 - redaction: URLs drop secrets, keep public market parameters, mask identifiers
+ok 24 - redaction: free text and headers
+ok 25 - errors: structured and bounded
+ok 26 - a raw Windows drive path is not a valid import() specifier (reproduces the Windows failure)
+ok 27 - Windows paths convert to file:// URLs (drive letters, spaces, non-ASCII, UNC) and round-trip
+ok 28 - importPath/importRepo load modules by filesystem path, including spaces and non-ASCII
+ok 29 - static guard self-test: flags the original Windows-unsafe pattern, accepts safe ones
+ok 30 - static guard: every dynamic import() in NEXORA code uses a URL-safe specifier
+ok 31 - NEXORA tests run on plain Node: no tsx in test:nexora or in NEXORA test imports
+ok 32 - importRepoSource loads TypeScript sources with plain Node (Windows-safe URL, .js -> .ts mapping)
+ok 33 - identity: NEXORA ENGINE branding with upstream attribution, no registry package
+ok 34 - rea update: refuses by default without touching the registry or installing
+ok 35 - rea update: the update machinery still works when a registry package is explicitly configured
+ok 36 - updateInstallCommand: never builds a command without a registry package
+ok 37 - MCP registration: package-runner and default commands resolve to the local launcher, never npx
+ok 38 - MCP registration: upstream and unpublished npx references are foreign, so setup never adopts them silently
+ok 39 - MCP registration: the local runtime+script form is owned
+ok 40 - plugin launcher: validates the nexora-engine package identity
+ok 41 - packaging: private, NEXORA bins, no upstream publish identity
+ok 42 - CI: no active workflow publishes, deploys or uses OIDC/registry credentials
+ok 43 - toolchain: Linux cross lane is unchanged
+ok 44 - toolchain: Windows MSYS2 UCRT64 via PATH (g++ / dlltool names)
+ok 45 - toolchain: NEXORA_MINGW_BIN selects absolute tools and leads PATH for child processes
+ok 46 - toolchain: rejects MSYS runtime compiler, 32-bit, clang and missing tools with actionable errors
+ok 47 - build script: fails clearly when no MinGW toolchain is available
+ok 48 - expectedSha256: parses SHASUMS256 lines, including binary-mode markers
+ok 49 - extractNodeHeaders: writes only include/node regular files
+ok 50 - extractNodeHeaders: rejects link entries inside include/node and empty archives
+ok 51 - extractNodeHeaders: reads a tarball produced by the system tar
+ok 52 - PE imports: an MSVCRT-lane-shaped addon passes
+ok 53 - PE imports: a UCRT64-lane-shaped addon passes
+ok 54 - PE imports: toolchain runtime DLLs (failed static link) are rejected
+ok 55 - PE imports: node.exe as a regular import, or missing, is rejected
+ok 56 - PE imports: lld-built PE32+ passes the repository's manifest validator unchanged
+ok 57 - PE imports: non-PE and truncated inputs are rejected
+# tests 57
+# pass 57
+# fail 0
+# cancelled 0
+# skipped 0
+# v0.4
+# pass 3
+# fail 0

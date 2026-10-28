@@ -1,0 +1,72 @@
+{
+  "when": "2026-10-28T10:31:55.953Z",
+  "node": "v22.23.4",
+  "results": [
+    {
+      "label": "v0.4 rea-session-report session-1m",
+      "runs": 3,
+      "outcomes": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "medianWallMs": 3219,
+      "medianPeakRssMb": 88.4
+    },
+    {
+      "label": "phase1 rea-session-report session-1m",
+      "runs": 3,
+      "outcomes": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "medianWallMs": 3023,
+      "medianPeakRssMb": 138.7
+    },
+    {
+      "label": "v0.4 nexora-backend-map session-1m",
+      "runs": 3,
+      "outcomes": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "medianWallMs": 1996,
+      "medianPeakRssMb": 85.8
+    },
+    {
+      "label": "phase1 nexora-backend-map session-1m",
+      "runs": 3,
+      "outcomes": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "medianWallMs": 2380,
+      "medianPeakRssMb": 132.8
+    },
+    {
+      "label": "naive whole-file scan bundle-300mb",
+      "runs": 3,
+      "outcomes": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "medianWallMs": 1343,
+      "medianPeakRssMb": 707.5
+    },
+    {
+      "label": "phase1 streaming scan bundle-300mb",
+      "runs": 3,
+      "outcomes": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "medianWallMs": 3363,
+      "medianPeakRssMb": 102.3
+    }
+  ]
+}

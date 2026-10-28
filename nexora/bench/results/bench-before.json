@@ -1,0 +1,142 @@
+{
+  "when": "2026-10-28T09:55:17.903Z",
+  "node": "v22.23.4",
+  "runs": [
+    {
+      "label": "v0.4 rea-session-report | session-1m (200MB) | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 2857,
+      "peakRssMb": 89,
+      "heapLimitMb": null,
+      "stdoutBytes": 85
+    },
+    {
+      "label": "v0.4 nexora-backend-map | session-1m (200MB) | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 2026,
+      "peakRssMb": 86,
+      "heapLimitMb": null,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "v0.4 rea-session-report | hugeline (600MB single line) | heap default",
+      "exitCode": 1,
+      "signal": null,
+      "outcome": "oom-or-string-limit",
+      "wallMs": 2172,
+      "peakRssMb": 629.4,
+      "heapLimitMb": null,
+      "stdoutBytes": 0,
+      "stderrTail": "    at FSReqCallback.wrapper [as oncomplete] (node:fs:669:5) |  | Node.js v22.23.4"
+    },
+    {
+      "label": "v0.4 nexora-backend-map | hugeline (600MB single line) | heap default",
+      "exitCode": 1,
+      "signal": null,
+      "outcome": "oom-or-string-limit",
+      "wallMs": 1982,
+      "peakRssMb": 630.8,
+      "heapLimitMb": null,
+      "stdoutBytes": 0,
+      "stderrTail": "    at FSReqCallback.wrapper [as oncomplete] (node:fs:669:5) |  | Node.js v22.23.4"
+    },
+    {
+      "label": "v0.4 rea-session-report | session-1m (200MB) | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 2945,
+      "peakRssMb": 90.4,
+      "heapLimitMb": 256,
+      "stdoutBytes": 85
+    },
+    {
+      "label": "v0.4 nexora-backend-map | session-1m (200MB) | heap 256",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 1934,
+      "peakRssMb": 86.3,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0
+    },
+    {
+      "label": "v0.4 rea-session-report | hugeline (600MB single line) | heap 256",
+      "exitCode": null,
+      "signal": "SIGABRT",
+      "outcome": "oom-or-string-limit",
+      "wallMs": 921,
+      "peakRssMb": 285.2,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0,
+      "stderrTail": "14: 0x113733f node::StringDecoder::DecodeData(v8::Isolate*, char const*, unsigned long*) [/opt/node22/bin/node] | 15: 0x113789d  [/opt/node22/bin/node] | 16: 0x1d64745  [/opt/node22/bin/node]"
+    },
+    {
+      "label": "v0.4 nexora-backend-map | hugeline (600MB single line) | heap 256",
+      "exitCode": null,
+      "signal": "SIGABRT",
+      "outcome": "oom-or-string-limit",
+      "wallMs": 1041,
+      "peakRssMb": 284.6,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0,
+      "stderrTail": "14: 0x113733f node::StringDecoder::DecodeData(v8::Isolate*, char const*, unsigned long*) [/opt/node22/bin/node] | 15: 0x113789d  [/opt/node22/bin/node] | 16: 0x1d64745  [/opt/node22/bin/node]"
+    },
+    {
+      "label": "naive whole-file scan | bundle-50mb.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 253,
+      "peakRssMb": 208,
+      "heapLimitMb": null,
+      "stdoutBytes": 13
+    },
+    {
+      "label": "naive whole-file scan | bundle-300mb.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 1441,
+      "peakRssMb": 708.1,
+      "heapLimitMb": null,
+      "stdoutBytes": 13
+    },
+    {
+      "label": "naive whole-file scan | bundle-600mb.js | heap default",
+      "exitCode": 1,
+      "signal": null,
+      "outcome": "oom-or-string-limit",
+      "wallMs": 1192,
+      "peakRssMb": 1132.1,
+      "heapLimitMb": null,
+      "stdoutBytes": 0,
+      "stderrTail": "} |  | Node.js v22.23.4"
+    },
+    {
+      "label": "naive whole-file scan | bundle-300mb.js | heap 256",
+      "exitCode": null,
+      "signal": "SIGABRT",
+      "outcome": "oom-or-string-limit",
+      "wallMs": 1128,
+      "peakRssMb": 708.3,
+      "heapLimitMb": 256,
+      "stdoutBytes": 0,
+      "stderrTail": " 8: 0x143f9ae v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/opt/node22/bin/node] |  9: 0x18a22bc v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/opt/node22/bin/node] | 10: 0x1e01af6  [/opt/node22/bin/node]"
+    },
+    {
+      "label": "naive whole-file scan | bundle-300mb-multiline.js | heap default",
+      "exitCode": 0,
+      "signal": null,
+      "outcome": "ok",
+      "wallMs": 1462,
+      "peakRssMb": 708.2,
+      "heapLimitMb": null,
+      "stdoutBytes": 13
+    }
+  ]
+}

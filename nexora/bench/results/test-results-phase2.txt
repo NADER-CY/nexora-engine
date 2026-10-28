@@ -1,0 +1,14 @@
+## Phase 2 regression run 2026-10-28T11:12:59Z
+# tests 25
+# pass 25
+# fail 0
+# tests 10
+# pass 10
+# fail 0
+# tests 3
+# pass 3
+# fail 0
+
+OK
+  "ok": true
+findings: {"critical":0,"high":0,"moderate":0,"low":0,"unknown":0}

@@ -1,0 +1,26 @@
+{
+  "name": "nexora-engine",
+  "version": "6.8.0",
+  "description": "NEXORA ENGINE: reverse-engineering and architecture analysis for agents. Fork of REA (github.com/morluto/rea, MIT).",
+  "author": {
+    "name": "NEXORA ENGINE contributors (fork of REA by morluto)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "reverse-engineering",
+    "binary-analysis",
+    "decompiler",
+    "mcp-server"
+  ],
+  "skills": "./skills",
+  "mcpServers": {
+    "nexora-engine": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/plugin-mcp-launcher.mjs",
+        "6.8.0"
+      ]
+    }
+  },
+  "icon": "./assets/rea-plugin.png"
+}

@@ -1,0 +1,56 @@
+## node --test nexora core+analysis
+ok 1 - scanBundle: finds literals across chunk boundaries exactly once
+ok 2 - scanBundle: strips secrets from URL literals and reports credential-like literals by type only
+ok 3 - scanBundle: inventories are capped and drops reported
+ok 4 - scanBundle: file-size limit, timeout and cancellation
+ok 5 - session summary and backend map: oversized line skipped, output unchanged otherwise
+ok 6 - CLI: summary to file (owner-only), usage errors, limits, help
+ok 7 - CLI: per-command timeout produces a structured error and exit 1
+ok 8 - CLI: SIGINT cancels cleanly with exit 130
+ok 9 - v0.4 command lines still work through compatibility wrappers
+ok 10 - limits: defaults, env overrides, explicit overrides, validation
+ok 11 - withTimeout: rejects with timeout and aborts the work signal
+ok 12 - withTimeout: parent cancellation propagates as cancelled
+ok 13 - withTimeout: returns the value on success
+ok 14 - ConcurrencyGate: bounds concurrency and rejects when the queue is full
+ok 15 - ConcurrencyGate: queued work can be cancelled
+ok 16 - heapGuard and BoundedCounter
+ok 17 - readJsonl: skips oversized, invalid, non-object and blank lines; handles CRLF and no trailing newline
+ok 18 - readJsonl: multibyte UTF-8 split across chunk boundaries
+ok 19 - readJsonl: maxRecords stops early and cancellation aborts
+ok 20 - BoundedJsonlWriter: byte cap, queue cap, oversized records are counted not thrown
+ok 21 - isMainModule: Windows paths match (v0.4 regression) and mismatches are rejected
+ok 22 - isMainModule: POSIX real paths
+ok 23 - redaction: URLs drop secrets, keep public market parameters, mask identifiers
+ok 24 - redaction: free text and headers
+ok 25 - errors: structured and bounded
+# tests 25
+# pass 25
+# fail 0
+# skipped 0
+## tsx --test fork-identity
+ok 1 - identity: NEXORA ENGINE branding with upstream attribution, no registry package
+ok 2 - rea update: refuses by default without touching the registry or installing
+ok 3 - rea update: the update machinery still works when a registry package is explicitly configured
+ok 4 - updateInstallCommand: never builds a command without a registry package
+ok 5 - MCP registration: package-runner and default commands resolve to the local launcher, never npx
+ok 6 - MCP registration: upstream and unpublished npx references are foreign, so setup never adopts them silently
+ok 7 - MCP registration: the local runtime+script form is owned
+ok 8 - plugin launcher: validates the nexora-engine package identity
+ok 9 - packaging: private, NEXORA bins, no upstream publish identity
+ok 10 - CI: no active workflow publishes, deploys or uses OIDC/registry credentials
+# tests 10
+# pass 10
+# fail 0
+# skipped 0
+## v0.4 original tests
+# tests 3
+# pass 3
+# fail 0
+## python bridge tests
+Ran 42 tests in 0.768s
+
+OK
+## python analysis-efficiency
+
+FAILED (failures=9, errors=3)
