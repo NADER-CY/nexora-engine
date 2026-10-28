@@ -34,6 +34,15 @@ Full engine: scripts/rea.mjs -> compiled dist/
 
 The offline CLI uses Node.js built-ins and requires no build. The full engine retains the upstream layered architecture described in [docs/architecture.mermaid](docs/architecture.mermaid). Offline additions are additive and are **not** newly registered MCP operations.
 
+## Quick Start and guides
+
+Run `node nexora/bin/nexora.mjs analyze-project examples/tutorial/cycle` from a source checkout to inspect a reproducible dependency cycle without installing dependencies.
+
+- Installation: [source](docs/installation/from-source.md), [Windows](docs/installation/windows.md), [Linux](docs/installation/linux.md), [macOS](docs/installation/macos.md).
+- MCP: [overview](docs/mcp/README.md), [Codex](docs/mcp/codex.md), [Claude](docs/mcp/claude.md), [generic clients](docs/mcp/generic-client.md).
+- [Source, binary, evidence and cycle tutorials](docs/tutorials/README.md); [Ghidra](docs/tutorials/ghidra.md).
+- [Architecture contracts](docs/architecture/README.md), [roadmap](docs/roadmap.md), [milestone verification](docs/milestones.md).
+
 ## Requirements and installation
 
 - Node.js matching `package.json`: `^22.23.4`, `^24.22.1` or `>=26.12.1`; `.nvmrc` pins `24.22.1`.
@@ -132,6 +141,12 @@ The full `npm run test:nexora` additionally needs installed runtime dependencies
 5. Review and pin optional third-party components before integration.
 
 These are planned improvements, not availability claims.
+
+## Troubleshooting and contributing
+
+Missing `dist/` means the full engine has not been built; the offline CLI remains independent. Check the Node requirement before installing dependencies. Missing optional native tools are provider-specific; do not enable every lifecycle script to work around them. For MCP failures, separate saved configuration, process startup, initialization and tool invocation; see the client guides. JSON Windows paths need escaped backslashes.
+
+Contributions should preserve compatibility and evidence, add focused tests, and state unverified checks. See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) and [SECURITY.md](SECURITY.md). NEXORA versioning remains separate from upstream history.
 
 ## Origin and license
 
