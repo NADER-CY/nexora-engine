@@ -12,7 +12,7 @@ Full-engine installation/build and live MCP client connections remain unverified
 
 ## Milestone 2 — Binary and Ghidra
 
-Next: bounded metadata improvements, reproducible compiler-produced fixtures and binary identity binding. Ghidra/Java were not found on PATH or the checked standard installation locations; no automatic installation occurs. Existing Ghidra API/runtime verification remains open.
+Implemented bounded PE base relocation entries (including HIGHADJ pairs), CodeView RSDS metadata, COFF long section-name decoding, ELF symbol/section annotations and Mach-O relocation-directory/debug-symbol descriptors. Relocations remain raw architecture-specific facts and are not applied. Added independent supplied-binary SHA-256 matching with `ghidra-report --binary FILE`, preserving partial-export status. Three new integration tests passed, including compilation of the checked-in C sample with local MinGW GCC and comparison against local objdump; the target was never executed. New real-tool coverage exposed and fixed missing COFF long section-name decoding. ELF/Mach-O relocations, instruction disassembly/CFGs and real Ghidra execution remain outside this increment. Ghidra/Java were not found on PATH or the checked standard installation locations; no automatic installation occurs. Existing Ghidra API/runtime verification remains open.
 
 ## Milestone 3 — Semantic source
 

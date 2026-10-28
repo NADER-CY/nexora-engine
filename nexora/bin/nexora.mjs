@@ -37,6 +37,7 @@ Usage:
   nexora limits
 
 Options:
+  --binary FILE       independently match Ghidra export identity (ghidra-report only)
   --out FILE          write JSON to FILE (owner-only, atomic) instead of stdout
   --max-file-mb N     largest input file (default 2048)
   --max-line-kb N     longest JSONL line; longer lines are skipped (default 1024)
@@ -65,6 +66,7 @@ export function parseArgs(argv) {
     const a = argv[i];
     if (a === "-h" || a === "--help") out.help = true;
     else if (a === "--out") out.outFile = need(argv, ++i, a);
+    else if (a === "--binary") out.binaryFile = need(argv, ++i, a);
     else if (a in NUMERIC) {
       const [key, mult] = NUMERIC[a];
       const n = Number(need(argv, ++i, a));
@@ -114,11 +116,12 @@ export async function main(argv, signal) {
     return;
   }
   const command = COMMANDS[args.command];
+  if (args.binaryFile && args.command !== 'ghidra-report') throw new NexoraError(ErrorCodes.INVALID_ARGUMENT, '--binary is only supported by ghidra-report');
   if (!command) throw new NexoraError(ErrorCodes.INVALID_ARGUMENT, `Unknown command "${args.command}"`, { hint: "Run nexora --help" });
   if (!args.input && !OPTIONAL_INPUT.has(args.command))
     throw new NexoraError(ErrorCodes.INVALID_ARGUMENT, `${args.command} needs an input file`);
   const roots = allowedRootsFromEnv();
-  const result = await runBounded(args.command, ({ signal: s, limits }) => command(args.input, { limits, signal: s, roots }), {
+  const result = await runBounded(args.command, ({ signal: s, limits }) => command(args.input, { limits, signal: s, roots, binaryFile: args.binaryFile }), {
     limits: args.limits,
     signal,
   });
