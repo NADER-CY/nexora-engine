@@ -36,7 +36,7 @@ export async function analyzeBinary(file, opts = {}) {
     cache.clear(); await io.eachChunk();
     for (const section of sections.items) if (/^(\.debug|\.zdebug|__debug)/.test(section.name)) debugRecords.add({ kind: 'debug-section', name: section.name, evidence: section.evidence, interpretation: 'section-name-only; debug payload not decoded' });
     return { schema: 'nexora-binary-analysis/v1', ...metadata, sections: sections.items, symbols: symbols.items, dependencies: dependencies.items, relocations: relocations.items, debugRecords: debugRecords.items, warnings,
-      coverage: { records, instructionAnalysis: 'not-performed', relocationDecoding: metadata.format === 'PE' ? 'PE-base-relocation-entries' : 'not-performed', dropped: { sections: sections.dropped, symbols: symbols.dropped, dependencies: dependencies.dropped, relocations: relocations.dropped, debugRecords: debugRecords.dropped } },
+      coverage: { records, instructionAnalysis: 'not-performed', relocationDecoding: metadata.format === 'PE' ? 'PE-base-relocation-entries' : metadata.format === 'ELF' ? 'ELF-section-REL-RELA-entries' : 'not-performed', dropped: { sections: sections.dropped, symbols: symbols.dropped, dependencies: dependencies.dropped, relocations: relocations.dropped, debugRecords: debugRecords.dropped } },
       limitations: ['Metadata only; no target execution or instruction disassembly.', 'Stripped, packed and encrypted files may omit symbols. Indirect calls and runtime dependencies remain unknown.', 'Mach-O universal containers, ELF extended section numbering and PE delay imports are not decoded.'] };
 
     async function elf() {
@@ -53,7 +53,7 @@ export async function analyzeBinary(file, opts = {}) {
       const table = [];
       for (let i = 0; i < count; i++) {
         tick(); const at = shoff + i * entsize, b = await read(at, wide ? 64 : 40);
-        const s = { index: i, nameOffset: u32(b, 0), type: u32(b, 4), flags: wide ? hex(le ? b.readBigUInt64LE(8) : b.readBigUInt64BE(8)) : hex(u32(b, 8)), address: addr(b, wide ? 16 : 12), offset: word(b, wide ? 24 : 16), size: word(b, wide ? 32 : 20), link: u32(b, wide ? 40 : 24), entrySize: word(b, wide ? 56 : 36), evidence: evidence(at, wide ? 64 : 40) };
+        const s = { index: i, nameOffset: u32(b, 0), type: u32(b, 4), flags: wide ? hex(le ? b.readBigUInt64LE(8) : b.readBigUInt64BE(8)) : hex(u32(b, 8)), address: addr(b, wide ? 16 : 12), offset: word(b, wide ? 24 : 16), size: word(b, wide ? 32 : 20), link: u32(b, wide ? 40 : 24), info: u32(b, wide ? 44 : 28), entrySize: word(b, wide ? 56 : 36), evidence: evidence(at, wide ? 64 : 40) };
         if (s.type !== 8) range(s.offset, s.size); table.push(s);
       }
       const names = table[namesIndex];
@@ -72,10 +72,30 @@ export async function analyzeBinary(file, opts = {}) {
             } else {
               const nameAt = u32(b, 0); if (!nameAt) continue;
               const info = b[wide ? 4 : 12], section = u16(b, wide ? 6 : 14);
-              symbols.add({ ...await string(strings.offset + nameAt, strings.offset + strings.size), address: addr(b, wide ? 8 : 4), binding: info >> 4, type: info & 15, symbolRole: (info & 15) === 2 ? 'function-symbol' : 'other-symbol', size: addr(b, wide ? 16 : 8), section, undefined: section === 0, table: s.name, entryEvidence: evidence(at, min) });
+              symbols.add({ ...await string(strings.offset + nameAt, strings.offset + strings.size), index: (at-s.offset)/s.entrySize, tableIndex: s.index, address: addr(b, wide ? 8 : 4), binding: info >> 4, type: info & 15, symbolRole: (info & 15) === 2 ? 'function-symbol' : 'other-symbol', size: addr(b, wide ? 16 : 8), section, undefined: section === 0, table: s.name, entryEvidence: evidence(at, min) });
             }
           }
         } catch (e) { if (e.code !== 'invalid_argument') throw e; warnings.push({ table: s.index, message: e.message, evidence: s.evidence }); }
+      }
+      // Generic ABI REL/RELA structure only; processor-specific types are never applied.
+      const symbolIndex=new Map(symbols.items.map(s=>[`${s.tableIndex}:${s.index}`,s]));
+      for(const s of table){
+        if(![4,9].includes(s.type))continue;
+        try{
+          const linked=table[s.link],rela=s.type===4,min=wide?(rela?24:16):(rela?12:8);
+          if(!linked||![2,11].includes(linked.type)||linked.entrySize<(wide?24:16)||linked.size%linked.entrySize)throw invalid('ELF relocation has invalid symbol-table link');
+          if(s.entrySize<min||s.size%s.entrySize||s.info>=table.length)throw invalid('Invalid ELF relocation entry size or target section');
+          for(let at=s.offset;at<s.offset+s.size;at+=s.entrySize){
+            tick();const row=await read(at,min),raw=wide?(le?row.readBigUInt64LE(8):row.readBigUInt64BE(8)):BigInt(u32(row,4));
+            const symbol=Number(raw>>BigInt(wide?32:8)),type=Number(raw&BigInt(wide?0xffffffff:255));
+            if(symbol>=linked.size/linked.entrySize)throw invalid('ELF relocation symbol index outside table');
+            const referenced=symbolIndex.get(`${s.link}:${symbol}`);
+            const addend=rela?(wide?(le?row.readBigInt64LE(16):row.readBigInt64BE(16)).toString():String(le?row.readInt32LE(8):row.readInt32BE(8))):null;
+            relocations.add({kind:rela?'ELF-RELA':'ELF-REL',offset:addr(row,0),type,addend,targetSection:s.info||null,
+              symbolReference:{tableIndex:s.link,index:symbol,name:referenced?.name??null,status:referenced?'retained-symbol':'unnamed-or-not-retained'},
+              method:'ELF-section-relocation-table',interpretation:'processor-specific raw type; not applied; REL addend is implicit',evidence:evidence(at,min)});
+          }
+        }catch(e){if(e.code!=='invalid_argument')throw e;warnings.push({table:s.index,message:e.message,evidence:s.evidence});}
       }
       return { format: 'ELF', bits: wide ? 64 : 32, endian: le ? 'little' : 'big', machine: u16(header, 18), entryPoint: addr(header, 24), headerEvidence: evidence(0, header.length) };
     }
