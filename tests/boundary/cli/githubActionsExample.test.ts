@@ -67,9 +67,15 @@ it("keeps the example manually triggered, least-privileged, pinned and failure-p
     expect(step["continue-on-error"]).toBeUndefined();
     if (step.uses !== undefined) expect(step.uses).toMatch(/@[a-f0-9]{40}$/u);
   }
-  expect(
-    job.steps.find((step) => step.name === "Install pinned NEXORA ENGINE")?.run,
-  ).toContain("--save-exact rea-agents@6.7.0");
+  expect(job.steps.find(step => step.name === "Checkout pinned NEXORA ENGINE")?.with).toMatchObject({
+    repository: "NADER-CY/nexora-engine",
+    ref: "6d6f7412d9cb3b2b0b0fa1897dac7aa9429fa883",
+    path: ".nexora-engine",
+    "persist-credentials": false,
+  });
+  expect(job.steps.find(step => step.name === "Build local NEXORA ENGINE")?.run).toContain("npm ci --ignore-scripts");
+  expect(job.steps.find(step => step.id === "analyze")?.run).toContain("scripts/nexora-engine.mjs");
+  expect(JSON.stringify(job)).not.toContain("rea-agents");
   const upload = job.steps.find((step) =>
     step.uses?.startsWith("actions/upload-artifact@"),
   );
@@ -93,7 +99,7 @@ it("links to the workflow asset outside the documentation site's base", async ()
     "utf8",
   );
   expect(guide).toContain(
-    "[minimal workflow](https://github.com/morluto/rea/blob/main/examples/github-actions/rea-analysis.yml)",
+    "[minimal workflow](https://github.com/NADER-CY/nexora-engine/blob/main/examples/github-actions/rea-analysis.yml)",
   );
 });
 
@@ -126,7 +132,7 @@ describe.skipIf(process.platform === "win32")(
             await mkdir(directory);
           await writeFile(outputs, "");
           // Use the real executable, not a stub that invents a successful report.
-          await symlink(resolve("scripts/rea.mjs"), join(bin, "rea"));
+          await symlink(resolve("."), join(workspace, ".nexora-engine"), "dir");
           const env = {
             PATH: [bin, dirname(process.execPath), "/usr/bin", "/bin"].join(
               delimiter,

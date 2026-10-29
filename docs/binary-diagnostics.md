@@ -30,7 +30,7 @@ REA_PWNTOOLS_PYTHON=/absolute/isolated-env/bin/python \
 NEXORA ENGINE never installs Python, packages or GDB, changes a user init file, launches
 the selected object as a host process, or requests runtime library resolution. The Python process
 uses isolated mode and an owned cache. Exact upstream profiles are recorded in
-[upstream provenance](https://github.com/morluto/rea/blob/main/third_party/pwntools/README.md).
+[upstream provenance](https://github.com/NADER-CY/nexora-engine/blob/main/third_party/pwntools/README.md).
 
 The adapter skips pwntools kernel configuration and version discovery: those
 memory-content scans supply none of this report's fields. Ordinary `IKCFG_ST`

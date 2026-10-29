@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "REA",
+  title: "NEXORA ENGINE",
   description:
     "Reverse engineer binaries, applications, and runtime behavior with one CLI and MCP server.",
   lang: "en-US",
@@ -11,7 +11,7 @@ export default defineConfig({
     nav: [
       { text: "Get started", link: "/installation" },
       { text: "Reference", link: "/mcp-contracts" },
-      { text: "Roadmap", link: "/roadmap" },
+      { text: "Roadmap", link: "/nexora-roadmap" },
     ],
     sidebar: [
       {
@@ -21,7 +21,7 @@ export default defineConfig({
           { text: "Client configuration", link: "/client-configuration" },
           { text: "CLI and Evidence", link: "/cli" },
           { text: "Agent prompts", link: "/mcp-prompts" },
-          { text: "Roadmap", link: "/roadmap" },
+          { text: "Roadmap", link: "/nexora-roadmap" },
         ],
       },
       {

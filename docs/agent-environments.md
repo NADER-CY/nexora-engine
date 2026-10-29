@@ -1,5 +1,7 @@
 # Agent environments from recorded captures
 
+> Source-distribution note: registry-backed packaging below describes an inherited contract, not a published NEXORA ENGINE package. Use a caller-supplied locally built tarball where supported. Container/export execution is optional and not verified by the branding checks.
+
 For a first environment, start with the
 [quickstart](agent-environments-quickstart.md): record an app or use a saved
 session, build and run the environment, and add tasks and reward checks.
@@ -154,12 +156,13 @@ at info level; the report is the only output on stdout:
     }
   },
   "tool_count": 37,
-  "package_source": { "kind": "registry", "specifier": "rea-agents@…" },
   "files": [{ "path": "README.md", "bytes": 4210 }],
   "warnings": [{ "code": "name-from-file", "message": "…" }],
   "next": ["agent-env run /work/grafana"]
 }
 ```
+
+This illustrative excerpt omits `package_source`; it is not a complete runnable manifest or evidence of a published package.
 
 `coverage` is the state's read views and write plans summarized, and `null`
 when the state is unavailable and the bundle serves replay. The
@@ -974,7 +977,7 @@ agent-env run ./grafana-example
 ```text
 grafana-example/
   README.md                                 provenance, what it serves, run command, rights note
-  envs/grafana-example/Dockerfile           pinned image: node:24.22.1-bookworm-slim + rea-agents@<this version>
+  envs/grafana-example/Dockerfile           pinned image: node:24.22.1-bookworm-slim + a caller-supplied engine build
   envs/grafana-example/env.toml             environment_name = "grafana-example"
   envs/grafana-example/manifest.json        byte-exact copy of manifest.json
   envs/grafana-example/evidence.json        byte-exact copy of capture.json
@@ -999,7 +1002,7 @@ and replay share immutable response trees rather than copying the capture repeat
 `--name` replaces the manifest's portable kebab-case name as the env folder and env id
 (at most 63 characters for its DNS service label; Windows device names and
 labels interpreted as IP addresses are refused);
-`--package-tarball <path>` copies a packed `rea-agents` tarball into the env
+`--package-tarball <path>` copies a packed locally built NEXORA ENGINE tarball into the env
 folder and makes the Dockerfile install it instead of the registry package and
 remove it in the same layer, which is how a checkout rather than a release is
 run. The command prints the

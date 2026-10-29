@@ -35,13 +35,13 @@ errors is [#5910](https://github.com/morluto/rea/issues/5910).
 
 | Owner                                                                                                                                                                                                                   | Responsibility                                                                                                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Domain definitions](https://github.com/morluto/rea/blob/main/src/domain/analysisSettingDefinitions.ts) and [types](https://github.com/morluto/rea/blob/main/src/domain/analysisSettings.ts)                            | Exact setting IDs, value types, shared bounds/defaults, units, provider/operation associations, application points, and structured limit metadata. Numeric constants stay with their domain owner. |
-| [Launch parser](https://github.com/morluto/rea/blob/main/src/config/analysisSettings.ts)                                                                                                                                | Parse selected launch values once, preserving an invalid value as a typed configuration failure rather than substituting a default.                                                                |
-| [AnalysisSettings](https://github.com/morluto/rea/blob/main/src/application/AnalysisSettings.ts)                                                                                                                        | Own one runtime's launch baseline, immutable override revisions, atomic updates, inspection, and accepted-operation snapshots. It does not own provider lifecycle or cleanup.                      |
-| [Composition](https://github.com/morluto/rea/blob/main/src/main/eagerRuntime.ts) and [typed configuration views](https://github.com/morluto/rea/blob/main/src/config/runtimeAnalysisSettings.ts)                        | Inject the same settings reader into providers and workflows; translate overrides into the configuration each consumer understands.                                                                |
+| [Domain definitions](https://github.com/NADER-CY/nexora-engine/blob/main/src/domain/analysisSettingDefinitions.ts) and [types](https://github.com/NADER-CY/nexora-engine/blob/main/src/domain/analysisSettings.ts)                            | Exact setting IDs, value types, shared bounds/defaults, units, provider/operation associations, application points, and structured limit metadata. Numeric constants stay with their domain owner. |
+| [Launch parser](https://github.com/NADER-CY/nexora-engine/blob/main/src/config/analysisSettings.ts)                                                                                                                                | Parse selected launch values once, preserving an invalid value as a typed configuration failure rather than substituting a default.                                                                |
+| [AnalysisSettings](https://github.com/NADER-CY/nexora-engine/blob/main/src/application/AnalysisSettings.ts)                                                                                                                        | Own one runtime's launch baseline, immutable override revisions, atomic updates, inspection, and accepted-operation snapshots. It does not own provider lifecycle or cleanup.                      |
+| [Composition](https://github.com/NADER-CY/nexora-engine/blob/main/src/main/eagerRuntime.ts) and [typed configuration views](https://github.com/NADER-CY/nexora-engine/blob/main/src/config/runtimeAnalysisSettings.ts)                        | Inject the same settings reader into providers and workflows; translate overrides into the configuration each consumer understands.                                                                |
 | Provider or resource owner                                                                                                                                                                                              | Resolve the effective budget, enforce it at the applicable boundary, and attach the actual value and known source to failures.                                                                     |
-| [MCP registration boundary](https://github.com/morluto/rea/blob/main/src/server/EvidenceMcpServerCore.ts)                                                                                                               | Enter the operation's settings scope before invoking its handler.                                                                                                                                  |
-| [Settings contracts](https://github.com/morluto/rea/blob/main/src/contracts/analysisSettingsContracts.ts) and [tool registration](https://github.com/morluto/rea/blob/main/src/server/registerAnalysisSettingsTools.ts) | Validate named requests and deliver inspection/update results without requiring an open target or healthy analysis provider.                                                                       |
+| [MCP registration boundary](https://github.com/NADER-CY/nexora-engine/blob/main/src/server/EvidenceMcpServerCore.ts)                                                                                                               | Enter the operation's settings scope before invoking its handler.                                                                                                                                  |
+| [Settings contracts](https://github.com/NADER-CY/nexora-engine/blob/main/src/contracts/analysisSettingsContracts.ts) and [tool registration](https://github.com/NADER-CY/nexora-engine/blob/main/src/server/registerAnalysisSettingsTools.ts) | Validate named requests and deliver inspection/update results without requiring an open target or healthy analysis provider.                                                                       |
 
 The normal path is: composition creates the store, an MCP handler captures its
 current revision, and providers read that snapshot when resolving budgets.
@@ -117,7 +117,7 @@ For example, `regex.matching_deadline_ms` and its launch seed
 Changing the runtime setting affects the next accepted search; changing the
 launch environment affects the next NEXORA ENGINE process.
 
-[`REA_MCP_MAX_RESPONSE_BYTES`](https://github.com/morluto/rea/blob/main/src/config/mcpResponseBudget.ts)
+[`REA_MCP_MAX_RESPONSE_BYTES`](https://github.com/NADER-CY/nexora-engine/blob/main/src/config/mcpResponseBudget.ts)
 is the byte-budget shape: a decimal safe integer with a 10 MiB floor
 (`MINIMUM_RESPONSE_BYTES`), the same shared schema, and no silent fallback. A
 change needs a NEXORA ENGINE restart and a matching client receive buffer. It does not
@@ -250,7 +250,7 @@ same effective setting so readiness changes along with repair and reset.
 ## Keep a fixed ceiling honest
 
 Inspection's separate
-[constraints](https://github.com/morluto/rea/blob/main/src/server/analysisSettingsConstraints.ts)
+[constraints](https://github.com/NADER-CY/nexora-engine/blob/main/src/server/analysisSettingsConstraints.ts)
 describe operator-owned, external, and fixed controls. NEXORA ENGINE can report its
 configured response budget and parent heap limit; client deadlines and receive
 buffers remain explicitly unknown. These are not entries accepted by the
@@ -262,7 +262,7 @@ effective value, say this release has no runtime override, and name what does
 not raise it. Do not invent a setting.
 
 JSON values stop at `MAX_JSON_DEPTH` (1000) in
-[`jsonValue.ts`](https://github.com/morluto/rea/blob/main/src/domain/jsonValue.ts):
+[`jsonValue.ts`](https://github.com/NADER-CY/nexora-engine/blob/main/src/domain/jsonValue.ts):
 "JSON value exceeds maximum nesting depth of 1000. This release has no runtime
 override."
 
@@ -355,7 +355,7 @@ MCP drop, a capacity wait, or retained cleanup.
 
 Cover the unset default, accepted overrides, rejected floor/maximum values,
 and invalid syntax through the owning parser and configuration boundary.
-[`regexMatchingDeadline.test.ts`](https://github.com/morluto/rea/blob/main/src/config/regexMatchingDeadline.test.ts)
+[`regexMatchingDeadline.test.ts`](https://github.com/NADER-CY/nexora-engine/blob/main/src/config/regexMatchingDeadline.test.ts)
 is one example. Assert error codes, setting IDs, values, units, provenance,
 application points, and resulting behavior. Check that adapters deliver the
 canonical recovery guidance, with independent assertions for its underlying

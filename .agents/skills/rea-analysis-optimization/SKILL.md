@@ -1,9 +1,9 @@
 ---
 name: rea-analysis-optimization
-description: Optimize REA providers and shared analysis workflows for agent context, latency, CPU, and memory while preserving correctness and Evidence. Use for analysis bottlenecks and cache or query design; CI/test-suite optimization belongs to rea-ci-tests-audit.
+description: Optimize NEXORA ENGINE providers and shared analysis workflows for agent context, latency, CPU, and memory while preserving correctness and Evidence. Use for analysis bottlenecks and cache or query design; CI/test-suite optimization belongs to rea-ci-tests-audit.
 ---
 
-# REA analysis optimization
+# NEXORA ENGINE analysis optimization
 
 Find a concrete source of unnecessary work, change it at its owner, and verify
 equivalent completed investigations. A useful outcome can also be a measured

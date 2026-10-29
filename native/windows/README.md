@@ -109,34 +109,11 @@ its manifest. Release CI builds both, and `prepublishOnly` rejects a missing,
 stale, mismatched, or wrong-architecture artifact. A development tarball built
 without this lane reports Windows native controls as unavailable.
 
-## Restore the artifact in a source checkout
+## Build the artifact in a source checkout
 
-> **NEXORA ENGINE:** prefer building the artifact with one of the lanes above.
-> The upstream recovery below copies a prebuilt binary from the upstream
-> `rea-agents` npm tarball. Its manifest only proves the file is internally
-> consistent, not that it was built from this source tree, so NEXORA ENGINE
-> does not use or recommend it.
+Build the native component from this checkout using one of the supported compiler lanes above, then run `npm run verify:windows-native:artifact` before the full engine build. See the [Windows source guide](../../docs/installation/windows.md).
 
-The source tree omits `native/windows/build/` from Git. To run Windows
-provider-backed workflows from a checkout without the MinGW build lane, extract
-the two files from the published `rea-agents` tarball whose version exactly
-matches the checkout's `package.json` version. Do not use `latest` or copy files
-from another REA version; the loader verifies the manifest version, ABI,
-architecture, and addon digest before it grants authority.
-
-From the checkout root, replace `<matching-version>` with the `version` in
-`package.json`:
-
-```sh
-npm pack rea-agents@<matching-version>
-tar -xzf rea-agents-<matching-version>.tgz
-mkdir -p native/windows/build
-cp package/native/windows/build/manifest.json native/windows/build/
-cp package/native/windows/build/rea-windows-x64.node native/windows/build/
-```
-
-This is a manual recovery step. REA does not fetch or install the artifact
-automatically. Alternatively, build it using the Linux/MinGW lane above.
+Do not recover a binary from another project's npm tarball. A matching version, ABI and digest prove internal artifact consistency, not that an external binary was built from this checkout. If the required toolchain is unavailable, use the dependency-free offline CLI until the local artifact can be built and verified.
 
 ## Boundaries
 
@@ -177,7 +154,7 @@ automatically. Alternatively, build it using the Linux/MinGW lane above.
   after a JavaScript out-of-memory exception or 3 after a panic), so callers
   classify by the notification. `inspect` reports `jobMemoryLimit` only after
   creating such a job and port. An artifact without that capability refuses a
-  requested limit rather than launching an unlimited process. REA requests
+  requested limit rather than launching an unlimited process. NEXORA ENGINE requests
   limits only for its JavaScript helpers when running on Bun, which ignores
   their V8 heap flags; Node.js launches are unchanged.
 - Only the suspended child's default file owner is normalized. Caller token

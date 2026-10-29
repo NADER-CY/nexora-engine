@@ -51,7 +51,7 @@ git submodule update --init third_party/binwalk third_party/unblob
 ```
 
 Normal NEXORA ENGINE builds and npm packages do not include or build these sources or
-engine binaries. See [upstream provenance](https://github.com/morluto/rea/blob/main/third_party/README.md).
+engine binaries. See [upstream provenance](https://github.com/NADER-CY/nexora-engine/blob/main/third_party/README.md).
 
 ### Windows submodule checkout
 

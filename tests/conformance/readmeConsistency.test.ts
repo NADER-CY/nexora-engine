@@ -11,11 +11,6 @@ const jsonExamples = (content: string): unknown[] =>
     JSON.parse(match[1] ?? ""),
   );
 
-const shellExamples = (content: string): string[] =>
-  [...content.matchAll(/```bash\s*([\s\S]*?)```/gu)].map((match) =>
-    (match[1] ?? "").trim(),
-  );
-
 describe("onboarding documentation product facts", () => {
   it.each([
     ["docs/native-investigation.md", "raw-binary.md#nmos-6502"],
@@ -45,43 +40,29 @@ describe("onboarding documentation product facts", () => {
     expect(content).not.toContain("npx rea-agents");
   });
 
-  it("keeps translated onboarding commands aligned with the English examples", async () => {
-    const inventory = JSON.parse(
-      await readFile(resolve("website/locales/languages.json"), "utf8"),
-    ) as { code: string; readme: string }[];
-    const translatedReadmes = inventory
-      .filter((language) => language.code !== "en")
-      .map((language) => language.readme);
-    expect(translatedReadmes).toContain("docs/readme/README_it.md");
-    expect(translatedReadmes).toContain("docs/readme/README_el.md");
-    const editions = (await readdir(resolve("docs/readme")))
-      .filter((name) => /^README_[A-Za-z0-9-]+\.md$/u.test(name))
-      .map((name) => `docs/readme/${name}`);
-    expect([...translatedReadmes].sort()).toEqual(editions.sort());
-    const english = shellExamples(await readFile(resolve("UPSTREAM_README.md"), "utf8"));
-    for (const path of translatedReadmes)
-      expect(
-        shellExamples(await readFile(resolve(path), "utf8")),
-        path,
-      ).toEqual(english);
-  });
-
-  it("preserves Persian joiners in links to GitHub-rendered headings", async () => {
-    const persian = await readFile(resolve("docs/readme/README_fa.md"), "utf8");
-    // Confirmed against GitHub's rendered README, which retains U+200C.
-    for (const heading of [
-      "REA چگونه کار می‌کند",
-      "چه چیزهایی را می‌توان تحلیل کرد",
-      "نمونه‌های عملی",
-      "پرسش‌های متداول",
-      "به‌روزرسانی REA",
-    ]) {
-      expect(persian).toContain(`## ${heading}`);
-      expect(persian).toContain(
-        `](#${heading.toLowerCase().replaceAll(" ", "-")})`,
-      );
+  it("keeps language landing pages current, honest and free of upstream acquisition", async () => {
+    const inventory = JSON.parse(await readFile(resolve("website/locales/languages.json"), "utf8")) as { code: string; readme: string }[];
+    const paths = inventory.filter(language => language.code !== "en").map(language => language.readme);
+    const editions = (await readdir(resolve("docs/readme"))).filter(name => /^README_[A-Za-z0-9-]+\.md$/u.test(name)).map(name => `docs/readme/${name}`);
+    expect([...paths].sort()).toEqual(editions.sort());
+    expect(paths).toContain("docs/readme/README_it.md");
+    expect(paths).toContain("docs/readme/README_el.md");
+    for (const path of paths) {
+      const content = await readFile(resolve(path), "utf8");
+      expect(content, path).toContain("# NEXORA ENGINE");
+      expect(content, path).toContain("../../README.md");
+      expect(content, path).toContain("has not been verified");
+      expect(content, path).not.toMatch(/\bREA\b|rea-agents|rea\.tools|npm install|npx /u);
     }
   });
+
+  it("keeps the Persian guide linked to maintained workflows without stale release claims", async () => {
+    const persian = await readFile(resolve("NEXORA_README_FA.md"), "utf8");
+    for (const path of ["README.md", "docs/installation/windows.md", "docs/installation/linux.md", "docs/installation/macos.md", "docs/mcp/README.md", "NOTICE.md"]) expect(persian).toContain(`](${path})`);
+    expect(persian).toContain("node nexora/bin/nexora.mjs analyze-project examples/tutorial/cycle");
+    expect(persian).not.toMatch(/\bREA\b|rea-agents|rea\.tools|NEXORA 0\.5/u);
+  });
+
 });
 
 describe("published performance evidence", () => {

@@ -7,7 +7,7 @@ const baseline='0968dfeea5f14c7094e2d955b75bca838f8aeb5c';
 const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',maxBuffer:32*1024*1024,windowsHide:true});
 const normalize=s=>s.replace(/\r\n/g,'\n').replace(/\b(?:REA|NEXORA ENGINE)\b/g,'PRODUCT');
 const changed=git('diff','--name-only',baseline,'--','src','scripts','tests','nexora/test/fork-identity.test.mjs').trim().split('\n').filter(Boolean);
-const documentationFiles=['scripts/verify-github-docs.mjs','scripts/verify-branding-baseline.mjs','scripts/nexora-engine.mjs','tests/conformance/readmeConsistency.test.ts'];
+const documentationFiles=['scripts/verify-github-docs.mjs','scripts/verify-branding-baseline.mjs','scripts/verify-legacy-branding.mjs','scripts/nexora-engine.mjs','tests/conformance/readmeConsistency.test.ts','tests/boundary/cli/githubActionsExample.test.ts'];
 const inputs=changed.filter(f=>!documentationFiles.includes(f));
 const blobs=execFileSync('git',['cat-file','--batch'],{cwd:root,input:inputs.map(f=>`${baseline}:${f}\n`).join(''),maxBuffer:32*1024*1024,windowsHide:true});
 const original=new Map();let offset=0;

@@ -30,7 +30,7 @@ Give your agent the app URL, the operations you need, your browser's executable
 path, and an output directory. For an app with folders, adapt this prompt:
 
 ```text
-Use REA to build an AgentEnv environment from my test web app at
+Use NEXORA ENGINE to build an AgentEnv environment from my test web app at
 http://127.0.0.1:3000. Cover listing, creating, renaming, and deleting folders.
 You may create and remove test folders. Leave the existing data unchanged.
 
@@ -152,7 +152,7 @@ and after it. When recording against your test app:
 
 Also record filters, searches, sorting, and paging if your tasks need them.
 The agent should check that every recording step completed before using it.
-The [recording workflow](https://github.com/morluto/rea/blob/main/.agents/skills/reverse-engineer-anything/references/environments.md)
+The [recording workflow](https://github.com/NADER-CY/nexora-engine/blob/main/.agents/skills/reverse-engineer-anything/references/environments.md)
 has the detailed browser instructions, including timeouts and handling IDs
 assigned by the app.
 

@@ -7,7 +7,7 @@ installed-client and agent runs.
 
 Historical verification records may refer to `experiments/analysis-efficiency`.
 Those experiment scripts are available in the [archived source tree](https://github.com/morluto/rea/tree/a2e2c29b59e8775b0e6aedb09a9eb16adf32646b/experiments/analysis-efficiency);
-they are not included in current checkouts. The retained [test support](https://github.com/morluto/rea/blob/main/tests/support/analysis-efficiency/README.md)
+they are not included in current checkouts. The retained [test support](https://github.com/NADER-CY/nexora-engine/blob/main/tests/support/analysis-efficiency/README.md)
 contains deterministic checkers and fixtures. The [allocation report](verification/analysis-efficiency/mcp-integer-allocation.md)
 and its original receipt JSON remain documentation, checked by the report producer.
 
@@ -140,7 +140,7 @@ without the artifacts lock, so it can record hashes while `check:pr` or
 `check:ci:fast` and `check:ci:deep` commands.
 Use `npm run lint:details` or `npm run jscpd:details` for all console diagnostics.
 Both duplicate commands scan production and test code using the limit in
-[`.jscpd.json`](https://github.com/morluto/rea/blob/main/.jscpd.json).
+[`.jscpd.json`](https://github.com/NADER-CY/nexora-engine/blob/main/.jscpd.json).
 The summary commands preserve checker failures and restore reports from cached
 static tasks. Both lint caches include the website, documentation configuration,
 and experiment code scanned by the checker; a regression compares the actual
@@ -707,7 +707,7 @@ exceptions.
 
 The shared temporary-directory and workspace helpers preserve caller labels
 under an owned `rea-` prefix when needed. Their
-[cleanup ownership differs](https://github.com/morluto/rea/blob/main/CONTRIBUTING.md#temporary-files-and-diagnostics):
+[cleanup ownership differs](https://github.com/NADER-CY/nexora-engine/blob/main/CONTRIBUTING.md#temporary-files-and-diagnostics):
 `createTestTempDirectory` registers `onTestFinished` deletion, while
 `createTestWorkspace` requires caller cleanup. Close resources before removing
 their directory. `npm run verify:test-temp-hygiene`
@@ -1131,7 +1131,7 @@ It also invokes the actual bridge methods on detached Ghidra model objects to
 check ambiguous dispatches, signed literals, precision bounds, shared targets,
 and conflicting labels. This reflection fixture depends on the pinned Ghidra
 model and does not claim a compiler produced those synthetic graph shapes.
-Pass `--entrypoint /path/to/installed/rea-agents/scripts/rea.mjs` directly to
+Pass `--entrypoint /absolute/path/to/nexora-engine/scripts/nexora-engine.mjs` directly to
 `scripts/verify-real-ghidra-switch.mjs` to verify an installed package through
 the same compiler oracles and CLI/MCP checks.
 

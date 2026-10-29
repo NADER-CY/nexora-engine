@@ -126,7 +126,7 @@ already-applied patch fails closed.
 
 ## Contributor-aware release notes
 
-Use [the rea-changelog-update skill](https://github.com/morluto/rea/blob/main/.agents/skills/rea-changelog-update/SKILL.md)
+Use [the rea-changelog-update skill](https://github.com/NADER-CY/nexora-engine/blob/main/.agents/skills/rea-changelog-update/SKILL.md)
 to turn the bot draft into grouped Highlights, Changes, and Fixes with inline
 `Thanks @...` credit. `npm run release:notes -- inventory` collects the full
 selected Git range and paginated GitHub PR/author/closing-issue metadata;

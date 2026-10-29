@@ -1,5 +1,5 @@
 # Copy to .github/workflows/rea-analysis.yml on your default branch.
-name: REA static analysis example
+name: NEXORA ENGINE static analysis example
 
 on:
   workflow_dispatch:
@@ -26,10 +26,18 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "24.22.1"
-      - name: Install pinned REA
+      - name: Checkout pinned NEXORA ENGINE
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          repository: NADER-CY/nexora-engine
+          ref: 6d6f7412d9cb3b2b0b0fa1897dac7aa9429fa883
+          path: .nexora-engine
+          persist-credentials: false
+      - name: Build local NEXORA ENGINE
+        working-directory: .nexora-engine
         run: |
-          npm install --prefix "${RUNNER_TEMP}/rea-tool" --no-audit --no-fund --ignore-scripts --save-exact rea-agents@6.7.0
-          echo "${RUNNER_TEMP}/rea-tool/node_modules/.bin" >> "${GITHUB_PATH}"
+          npm ci --ignore-scripts
+          npm run build
       - name: Build a known artifact
         id: build
         run: |
@@ -44,7 +52,7 @@ jobs:
           REPORT_DIR: ${{ steps.reports.outputs.directory }}
         run: |
           set +e
-          rea analyze-javascript-application "${GITHUB_WORKSPACE}/${ARTIFACT_PATH}" --json --full-output \
+          node "${GITHUB_WORKSPACE}/.nexora-engine/scripts/nexora-engine.mjs" analyze-javascript-application "${GITHUB_WORKSPACE}/${ARTIFACT_PATH}" --json --full-output \
             > "${REPORT_DIR}/analysis.json" 2> "${REPORT_DIR}/analysis.stderr"
           status=$?
           set -e

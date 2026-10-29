@@ -30,7 +30,7 @@ and carry their typed JSON diagnostic in a text content block; they omit
 ```javascript
 if (reply.isError === true) {
   const text = reply.content.find((part) => part.type === "text");
-  if (text === undefined) throw new Error("REA error has no text diagnostic");
+  if (text === undefined) throw new Error("NEXORA ENGINE error has no text diagnostic");
   const { error: diagnostic } = JSON.parse(text.text);
   // Handle diagnostic.code, diagnostic.message and diagnostic.details.
 }

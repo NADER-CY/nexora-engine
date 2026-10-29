@@ -889,12 +889,12 @@ rea environment-export manifest.json --evidence capture.json ./grafana-example -
 ```
 
 The folder holds a `README.md` with the bundle's provenance, an env folder
-`envs/<name>/` with a `Dockerfile` that installs this exact `rea-agents`
+`envs/<name>/` with a `Dockerfile` that installs the selected engine build
 version and serves the copied `manifest.json` and `evidence.json` (written
 with mode `0600` on POSIX; Windows retains inherited ACLs) with
 `environment-serve` (from the state by default), a Python verifier under
 `artifacts/check_<name>/` that checks the served tool count and one served
-answer, and the smoke task `tasks/smoke.json`. `--package-tarball` copies a packed `rea-agents`
+answer, and the smoke task `tasks/smoke.json`. `--package-tarball` copies a locally built NEXORA ENGINE
 tarball into the env folder and installs it instead of the registry package,
 which is how the hosted lane proves a checkout rather than a release. `--name`
 replaces the manifest's kebab-case name as the env folder and env id; a device
@@ -935,7 +935,7 @@ rea --version --json
 
 ```json
 {
-  "name": "rea-agents",
+  "name": "nexora-engine",
   "version": "6.7.0",
   "runtime": { "id": "node", "version": "24.22.1" },
   "platform": "linux",
