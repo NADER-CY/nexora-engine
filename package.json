@@ -330,6 +330,8 @@
     "knip:production": "node scripts/ci/production-reachability-report.mjs",
     "test:nexora:phase3a": "node --test nexora/test/phase3.test.mjs nexora/test/phase3-boundaries.test.mjs nexora/test/phase3-bundle.test.mjs nexora/test/phase3-source-literals.test.mjs nexora/test/phase3-retention.test.mjs nexora/test/phase3-coverage.test.mjs nexora/test/architecture.test.mjs",
     "test:nexora:binary-integration": "node --test nexora/test/binary-integration.test.mjs",
+    "test:nexora:architecture": "node --test nexora/test/unified-architecture.test.mjs",
+    "test:nexora:relocations": "node --test nexora/test/elf-relocations.test.mjs",
     "test:nexora:semantic": "node --test nexora/test/semantic.test.mjs",
     "test:nexora:docs": "node --test nexora/test/tutorials.test.mjs",
     "bench:nexora:phase3a": "node nexora/bench/phase3.mjs",

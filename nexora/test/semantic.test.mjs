@@ -53,3 +53,9 @@ test('AST: wildcard re-exports and literal dynamic imports retain dependency evi
  const report=await analyzeSemanticSource(file);assert.deepEqual(report.dependencies.map(d=>d.name),['./a.js','./b.js']);
  assert.equal(report.module.exports[0].symbol,null);assert.ok(report.dependencies.every(d=>d.evidence.byteLength));
 }));
+
+test('AST: runtime TS declarations and named class expressions shadow outer function candidates',async()=>withTempDir(async dir=>{
+ const file=join(dir,'x.ts');await writeFile(file,'function f(){} {enum f {value}; f();} const value=class f {run(){f();}}; f();');
+ const report=await analyzeSemanticSource(file),calls=report.calls.filter(c=>c.name==='f');
+ assert.equal(calls[0].callee,null);assert.equal(calls[1].callee,null);assert.ok(calls[2].callee);
+}));

@@ -33,12 +33,15 @@ Usage:
   nexora analyze-source <file>       lexical functions, calls and imports
   nexora analyze-source-ast <file>   bounded JS/TS AST scope candidates (needs Babel)
   nexora analyze-project-ast <dir>   direct JS/TS ESM export/call candidates
+  nexora architecture-report <dir>  unified lexical evidence graph and Mermaid
+  nexora architecture-report-ast <dir> JS/TS AST graph with supported registrations
   nexora analyze-project <directory> bounded source/dependency map
   nexora analyze-binary <file>       ELF, PE and thin Mach-O metadata
   nexora ghidra-report <export.jsonl> structured Ghidra export report
   nexora limits
 
 Options:
+  --format FORMAT     json or mermaid (architecture-report commands only)
   --binary FILE       independently match Ghidra export identity (ghidra-report only)
   --out FILE          write JSON to FILE (owner-only, atomic) instead of stdout
   --max-file-mb N     largest input file (default 2048)
@@ -69,6 +72,7 @@ export function parseArgs(argv) {
     if (a === "-h" || a === "--help") out.help = true;
     else if (a === "--out") out.outFile = need(argv, ++i, a);
     else if (a === "--binary") out.binaryFile = need(argv, ++i, a);
+    else if (a === "--format") out.format = need(argv, ++i, a);
     else if (a in NUMERIC) {
       const [key, mult] = NUMERIC[a];
       const n = Number(need(argv, ++i, a));
@@ -88,6 +92,8 @@ function need(argv, i, flag) {
 }
 
 const COMMANDS = {
+  "architecture-report": async (input, ctx) => (await import("../lib/unified-architecture.mjs")).analyzeArchitecture(input, ctx),
+  "architecture-report-ast": async (input, ctx) => (await import("../lib/unified-architecture.mjs")).analyzeArchitecture(input, {...ctx, semantic:true}),
   "analyze-source-ast": async (input, ctx) => (await import("../lib/semantic-source.mjs")).analyzeSemanticSource(input, ctx),
   "analyze-project-ast": async (input, ctx) => (await import("../lib/semantic-project.mjs")).analyzeSemanticProject(input, ctx),
   "analyze-source": async (input, ctx) => (await import("../lib/source-analysis.mjs")).analyzeSource(input, ctx),
@@ -120,6 +126,7 @@ export async function main(argv, signal) {
     return;
   }
   const command = COMMANDS[args.command];
+  if (args.format && (!['architecture-report','architecture-report-ast'].includes(args.command)||!['json','mermaid'].includes(args.format))) throw new NexoraError(ErrorCodes.INVALID_ARGUMENT, '--format accepts json or mermaid for architecture-report commands only');
   if (args.binaryFile && args.command !== 'ghidra-report') throw new NexoraError(ErrorCodes.INVALID_ARGUMENT, '--binary is only supported by ghidra-report');
   if (!command) throw new NexoraError(ErrorCodes.INVALID_ARGUMENT, `Unknown command "${args.command}"`, { hint: "Run nexora --help" });
   if (!args.input && !OPTIONAL_INPUT.has(args.command))
@@ -129,7 +136,7 @@ export async function main(argv, signal) {
     limits: args.limits,
     signal,
   });
-  const json = JSON.stringify(result, null, 2) + "\n";
+  const json = args.format==='mermaid' ? result.mermaid + "\n" : JSON.stringify(result, null, 2) + "\n";
   if (Buffer.byteLength(json) > resolveLimits(args.limits).maxOutputBytes) throw new NexoraError(ErrorCodes.LIMIT_EXCEEDED, "Output exceeds configured byte budget");
   if (args.outFile) {
     const limits = resolveLimits(args.limits);
