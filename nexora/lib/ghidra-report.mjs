@@ -1,7 +1,8 @@
-import { withInput, inventory, evidence, invalid } from './analysis-io.mjs';
+import { withInput, inventory, evidence, invalid, budget } from './analysis-io.mjs';
 // Consumes the JSONL producer below, not arbitrary decompiler stdout.
 export async function ghidraReport(file, opts = {}) {
-  return withInput(file, opts, async ({ eachChunk, limits, check }) => {
+  const overall = budget(opts);
+  const report = await withInput(file, opts, async ({ eachChunk, limits, check }) => {
     const retained = { remaining: limits.maxOutputBytes };
     const functions = inventory(limits.maxInventoryItems, retained), references = inventory(limits.maxInventoryItems, retained), failures = inventory(limits.maxInventoryItems, retained);
     let functionRecords = 0;
@@ -46,4 +47,13 @@ export async function ghidraReport(file, opts = {}) {
       coverage: { records, oversizedRecords: oversized, producerComplete: footer?.complete ?? false, reportComplete: !!footer?.complete && footer.functions === functionRecords && !oversized && !functions.dropped && !references.dropped && !failures.dropped, footerPresent: !!footer, declaredFunctions: footer?.functions ?? null, dropped: { functions: functions.dropped, references: references.dropped, failures: failures.dropped } },
       limitations: ['Offline provider export; binary digest is producer-reported, not independently verified against binary bytes by this command.', 'Decompiler output is derived pseudocode, not original source. Missing footer or oversized/dropped records means incomplete coverage.'] };
   });
+  report.binaryIdentity = { status: 'provider-claimed', sha256: report.binarySha256.toLowerCase() };
+  if (opts.binaryFile) {
+    const observed = await withInput(opts.binaryFile, { ...opts, limits: { ...overall.limits, timeoutMs: overall.remaining() } }, async io => { await io.eachChunk(); return {}; });
+    overall.check();
+    if (observed.input.sha256 !== report.binarySha256.toLowerCase()) throw invalid('Ghidra binary SHA-256 does not match the supplied binary');
+    report.binaryIdentity = { status: 'matched-supplied-binary', ...observed.input };
+    report.limitations[0] = 'Export header digest matches independently hashed supplied bytes; this does not authenticate the producer or pseudocode.';
+  }
+  return report;
 }

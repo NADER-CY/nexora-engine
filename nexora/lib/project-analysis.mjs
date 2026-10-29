@@ -17,12 +17,12 @@ export async function analyzeProject(root, opts = {}) {
     for await (const entry of entries) {
       b.check(); if (++visited > b.limits.maxRecords) { truncated = true; break; }
       if (entry.isDirectory() && !SKIP.has(entry.name)) await walk(join(dir, entry.name), depth + 1);
-      else if (entry.isFile() && EXT.has(extname(entry.name).toLowerCase())) {
+      else if (entry.isFile() && (opts.extensions ?? EXT).has(extname(entry.name).toLowerCase())) {
         if (files.items.length >= b.limits.maxInventoryItems) { truncated = true; break; }
         const path = join(dir, entry.name), name = relative(base, path).replaceAll('\\', '/');
         try {
-          const report = await analyzeSource(path, { ...opts, limits: { ...b.limits, timeoutMs: b.remaining() } });
-          if (!files.add({ path: name, input: report.input, coverage: report.coverage })) { truncated = true; return; }
+          const report = await (opts.sourceAnalyzer ?? analyzeSource)(path, { ...opts, limits: { ...b.limits, timeoutMs: b.remaining() } });
+          if (!files.add({ path: name, input: report.input, coverage: report.coverage, ...(report.module ? { module: report.module } : {}) })) { truncated = true; return; }
           for (const s of report.symbols) symbols.add({ ...s, file: name, id: `${name}#${s.id}`, parent: s.parent ? `${name}#${s.parent}` : null, incomingCalls: s.incomingCalls.map(id => `${name}#${id}`), outgoingCalls: s.outgoingCalls.map(id => `${name}#${id}`) });
           for (const c of report.calls) calls.add({ ...c, id: `${name}#${c.id}`, file: name, caller: c.caller ? `${name}#${c.caller}` : null, callee: c.callee ? `${name}#${c.callee}` : null });
           for (const d of report.dependencies) dependencies.add({ ...d, file: name });
