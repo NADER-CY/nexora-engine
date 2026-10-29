@@ -13,7 +13,7 @@ export const registerGuidedWorkflowCommands = (
   logger: Logger,
 ): void => {
   cli.command(CLI_COMMANDS.guidedWorkflows, {
-    description: "List or render REA's existing guided workflows",
+    description: "List or render NEXORA ENGINE's existing guided workflows",
     args: z.object({}),
     options: z.object({
       action: z

@@ -108,7 +108,7 @@ export const inspectCdpElectronPage = async (
     limitations: [
       ...(context.discovery.limitations ?? []),
       "Local file paths exposed by the selected CDP target are retained in the observation.",
-      "REA does not evaluate renderer JavaScript, invoke Electron APIs, navigate, click, or close the page.",
+      "NEXORA ENGINE does not evaluate renderer JavaScript, invoke Electron APIs, navigate, click, or close the page.",
       "Select include_script_sources to retain script contents.",
       "Script file_path is the admitted local-file URL or sourceURL label, not a verification that disk bytes supplied the runtime code. has_source_url retains CDP's sourceURL declaration flag; null or an omitted historical field is unknown.",
       "Known script frame identity is retained independently from frame_scope authorization. Unknown frame scope is attach-limited; scripts from known excluded document generations are omitted before source reads.",

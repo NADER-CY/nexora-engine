@@ -1,6 +1,6 @@
 # Ghidra provider semantics
 
-REA imports one target into an ephemeral Ghidra database. Linux/macOS support
+NEXORA ENGINE imports one target into an ephemeral Ghidra database. Linux/macOS support
 read-only analysis and atomic function-name/entry-comment edits; Windows P0 is
 read-only. GUI controls and persistent database mutation are unavailable.
 Executable bytes remain unchanged.
@@ -8,7 +8,7 @@ Executable bytes remain unchanged.
 Use [installation](installation.md#ghidra) for supported hosts, prerequisites,
 configuration, startup deadlines, resource controls, and cleanup recovery.
 [Linux Ghidra launches](installation.md#linux-owned-process-prerequisite) also
-require a procps-compatible `ps` on REA's `PATH` for process ownership checks.
+require a procps-compatible `ps` on NEXORA ENGINE's `PATH` for process ownership checks.
 [Windows P0](windows-ghidra-p0.md) has its own admission and lifecycle boundary;
 [NativeAOT observations](ghidra-nativeaot.md) include a built-in read-only PE
 snapshot parser and a separate optional annotation extension. Check the
@@ -17,7 +17,7 @@ snapshot parser and a separate optional annotation extension. Check the
 See [import language and analysis seeds](installation.md#ghidra-import-language-and-analysis-seeds)
 to override the header-detected language or seed analysis. An override that conflicts with a fixed raw, DOS, PSP, MIPS, RISC-V or GameCube DOL import
 is a configuration error naming the conflicting settings. It does not make an
-otherwise admitted target unsupported; REA preserves the requested settings.
+otherwise admitted target unsupported; NEXORA ENGINE preserves the requested settings.
 An inaccessible language
 catalog remains a read failure; it does not prove that a configured language is
 undefined. Installation `application.properties` has a fixed 1 MiB read allowance
@@ -25,7 +25,7 @@ with no runtime override. The failure retains that allowance and directs recover
 at the selected installation metadata.
 
 Retained process diagnostics can report termination by `SIGKILL`; the signal alone
-cannot establish an OOM kill. REA gives neutral recovery guidance and preserves the
+cannot establish an OOM kill. NEXORA ENGINE gives neutral recovery guidance and preserves the
 signal. Confirm resource causes from process output or host/container records;
 operation-scoped JVM `OutOfMemoryError` observations retain their separate resource
 classification. Automatic kernel or cgroup OOM attribution is not implemented.
@@ -50,13 +50,13 @@ not equivalence with another engine's pseudocode or analysis database.
 ## Request payload ceiling
 
 Ghidra requests use `REA_BRIDGE_MAX_REQUEST_BYTES`: default 16 MiB, with a
-configurable range of 7,464–536,870,887 bytes. REA measures UTF-8 JSON, including
+configurable range of 7,464–536,870,887 bytes. NEXORA ENGINE measures UTF-8 JSON, including
 escaping, before allocating the serialized request or sending it. The framing
 newline is excluded. An oversized request returns `resource_constraint` with
 the effective setting, its source, and the exact payload byte count.
 
-Set the value in the environment that starts REA, then restart REA to apply it.
-This setting is enforced by the REA client; the Java bridge has no corresponding
+Set the value in the environment that starts NEXORA ENGINE, then restart NEXORA ENGINE to apply it.
+This setting is enforced by the NEXORA ENGINE client; the Java bridge has no corresponding
 request ceiling.
 
 ## Admitted inventory semantics
@@ -95,7 +95,7 @@ are omitted with an explicit resource limitation, rather than truncated.
 Original names and types may be missing even when auto-analysis completes.
 An empty name search does not establish that a function is absent; use
 `list_procedures` and address-based analysis to inspect recovered functions.
-REA imports a private executable copy and does not admit a caller-selected
+NEXORA ENGINE imports a private executable copy and does not admit a caller-selected
 PDB companion. This reporting does not search symbol servers, copy a sibling
 PDB, or change analyzer settings.
 
@@ -113,7 +113,7 @@ by session metadata edits.
 the observed loaded `image_base` in `normalized_result`. They retain each
 segment's reported `image_base` and `address_space`. A provider that does not
 report a base, or whose segments disagree, omits the overview field, following
-the existing contract on main. REA does not substitute zero or the first
+the existing contract on main. NEXORA ENGINE does not substitute zero or the first
 segment's address. All reported bases and address spaces remain visible in the
 complete segment inventory, including conflicting observations.
 
@@ -302,7 +302,7 @@ for real-provider coverage and exclusions.
 These lanes check all 26 read-only operations, target/snapshot/import SHA-256 linkage,
 and project, endpoint, process, and runtime cleanup. The independent native
 lane checks DACLs, handle admission, cancellation, and Job Object lifecycle.
-`npm run verify:ghidra:windows:package` packs and installs REA into an isolated
+`npm run verify:ghidra:windows:package` packs and installs NEXORA ENGINE into an isolated
 prefix, then checks ordinary-user CLI/MCP operations against canonical contracts.
 It accepts the same architecture and DLL flags and verifies the selected PE role
 in the analysis profile.
@@ -340,6 +340,6 @@ Hopper byte search remains unavailable until its implementation is verified.
 
 MIPS16 shared-image admission requires examined dynamic REL declarations.
 RELR dynamic tags or nonempty `SHT_RELR` sections leave relocation coverage
-unavailable and the profile unsupported; REA does not infer an empty relocation
+unavailable and the profile unsupported; NEXORA ENGINE does not infer an empty relocation
 set from the absence of REL declarations. RELR loader semantics have not been
 verified for this lane.

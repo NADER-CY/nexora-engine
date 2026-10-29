@@ -96,7 +96,7 @@ export const OFFICIAL_TOOL_CONTRACTS = [
   ),
   official(
     "current_document",
-    "Return the document currently selected by REA's Hopper bridge.",
+    "Return the document currently selected by NEXORA ENGINE's Hopper bridge.",
     z.object({}),
   ),
   official(

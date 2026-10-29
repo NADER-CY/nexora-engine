@@ -543,9 +543,9 @@ export class HopperApplicationLauncher implements BridgeLauncher {
           new HopperStartError({
             ownerRunId: acquisition.owner.runId,
             userMessage: applicationLease
-              ? `Linux Hopper is already active in REA session ${acquisition.owner.runId}; it cannot open ${this.options.targetPath} in another session. This build forwards new launches to the existing application. Use the owning REA session to switch targets, or close it before retrying.`
-              : `This Hopper target is already open in REA session ${acquisition.owner.runId}. ` +
-                "Use that REA session or close it before opening this target again.",
+              ? `Linux Hopper is already active in NEXORA ENGINE session ${acquisition.owner.runId}; it cannot open ${this.options.targetPath} in another session. This build forwards new launches to the existing application. Use the owning NEXORA ENGINE session to switch targets, or close it before retrying.`
+              : `This Hopper target is already open in NEXORA ENGINE session ${acquisition.owner.runId}. ` +
+                "Use that NEXORA ENGINE session or close it before opening this target again.",
           }),
         );
       return ok(acquisition.lease);

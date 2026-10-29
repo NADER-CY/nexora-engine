@@ -2,34 +2,38 @@
 
 ## Branch boundaries
 
-This documentation branch starts from main at `95514eff805b014920a3058054e193e5de38dd8c`. It reuses installation/MCP guides, tutorials and non-sensitive samples from the earlier documentation commit `4ad2f9069a586ee5e2ff4ef44956aba32d32daea`, without taking its package/test-script changes or any analysis code.
+PR #1 was integrated into main before finalizing PR #2. The documentation branch then merged that baseline, preserving all analysis algorithms and regression tests. The original premium artwork and recorded examples remain. A newer main README edit was retained during the PR #1 merge; its installation and usage subjects are reconciled into the final premium homepage.
 
-[Draft PR #1](https://github.com/NADER-CY/nexora-engine/pull/1) remains separate. Its AST scopes, direct ESM calls, enhanced relocations, Ghidra identity matching and unified architecture/Mermaid commands are proposed development work, not main-branch availability. This README's Mermaid diagrams are authored explanations of the unchanged engine and sample results.
+The final integration uses the existing two PRs with merge commits, no force-push or rewritten history. The original development worktree's uncommitted README/milestone edits remain preserved locally.
 
-There is no engine dependency on PR #1 for the first-run examples. Some reused documentation overlaps with PR #1; maintainers should reconcile those documentation changes when reviewing merge order rather than automatically merging or rewriting that branch.
+## Installation verification
 
-## Demonstrations
+An isolated source checkout used Node 24.22.1 and npm 11.16.0. `npm ci --ignore-scripts` passed. The initial Windows full build failed because the native addon was absent. With an existing MSYS2 UCRT64 compiler, `npm run build:windows-native`, `npm run verify:windows-native:artifact` and the full build passed. The corrected guides preserve this required order; no verification check was bypassed.
 
-Five offline commands were executed on Windows using Node v24.22.1, the repository pin. Four captured full outputs analyze the included source/project/cycle and explicitly synthetic Ghidra sample. A fifth inspects a real locally compiled MinGW PE; the target was not executed. See [recorded outputs and provenance](demos/README.md).
+Linux/macOS installation, live Codex/Claude client connections and real Ghidra compilation/execution were not run. Their commands are conditional/source-derived. No provider installation, registry publication or website deployment occurs.
 
-Output snippets are selected actual report fields. No screenshots of an invented interface, benchmark figures, passing CI badges or provider successes are used. Static badges mean development source, MIT license and source installation.
+## Final executed checks
 
-## Documentation checks
+- Offline analysis/compatibility suite: **117 passed, seven platform-specific skips, zero failures**. The initial branding assertion failure was corrected to require the new primary CLI name; the legacy package alias remains independently checked.
+- Provider/filesystem message regressions: **103 passed, 17 platform/provider skips**, using the repository's focused test lane. These fixture/mock tests do not establish real provider success.
+- Reference-source projection: **two passed**. Onboarding contracts: **five passed**.
+- The full documentation conformance invocation also ran four historical performance-receipt checks. All four failed with missing `docs/verification/analysis-efficiency/mcp-integer-allocation.json` / `.md` inputs, which were excluded from the public source. The tests remain intact; no receipts or speed claims were fabricated. A targeted onboarding rerun passed all five onboarding cases and filtered those four historical checks. These unavailable benchmark receipts are not an engine/installation/security regression.
+- Final Windows full build, branded CLI help and compatibility-launcher help passed. MCP initialized with protocol `2025-11-25`, listed 231 tools and shut down with exit zero. No provider invocation or live Codex/Claude connection was tested.
+- Nine documented command checks ran: eight succeeded; Ghidra doctor returned exit one with `missing_analysis_engine` because `GHIDRA_INSTALL_DIR` was unset, as expected. Source/AST and JSON/Mermaid report examples succeeded. Decompilation help was checked; real decompilation was not executed.
+- Branding-baseline verification confirms no changes to engine algorithms or dependencies. Original legal notices and lockfile are unchanged. Test string/regex expectations follow product labels; the documentation conformance contract now checks local source registration and preserved historical translations.
+- Secret scan: three reviewed synthetic test-fixture matches, zero credential leaks. Locked dependency audit: zero known vulnerabilities. No active publishing/deployment workflows; npm remains private.
+- The inherited acquisition installer is disabled before any package acquisition. Bash syntax passed and execution returned the intentional exit one with source-installation guidance.
 
-Run `node scripts/verify-github-docs.mjs` from the repository root. It checks authored/reused Markdown links and anchors, local asset references, JSON configuration blocks, SVG safety/geometry, social PNG dimensions, main-only CLI examples and their recorded invariants. It also rejects changes to engine/source/package/license files in this documentation branch.
+## Demonstrations and visual checks
 
-Visual review uses local GitHub-style rendering in desktop light/dark and mobile layouts. This is a preview, not a claim that the PR has merged or a screenshot of GitHub's live README. Both desktop hero variants and compact mobile variants use local SVG with no external fonts/scripts. Social artwork is 1280×640 PNG with SVG source.
+The recorded source, project, cycle and explicitly synthetic Ghidra outputs were produced by actual offline commands. A real MinGW PE was compiled and inspected, compared with objdump and never executed. [Outputs and provenance](demos/README.md).
 
-Actual results on the documentation branch: 23 Markdown files, 122 local references/anchors, three JSON examples and ten SVGs checked; four repeated CLI example checks passed. Five issue-form YAML files parsed successfully using the existing locked YAML version in temporary verification tooling. The social PNG is 108,345 bytes. The unchanged engine's 39 focused tests passed with no failures/skips. Four browser layouts loaded every image, rendered both Mermaid diagrams and showed no page-width overflow. Mermaid's npm browser bundle was integrity-verified and used only for local preview, not added as a project dependency.
+`node scripts/verify-github-docs.mjs` checks active Markdown references, JSON examples, local SVG/PNG assets, branding, plugin/launcher metadata, offline demonstrations and preservation of the engine algorithm baseline. Local browser previews cover desktop/mobile light/dark themes with no overflow and real asset loading. They are labelled previews, not live GitHub screenshots.
 
-## Unverified and conditional commands
+## Compatibility, attribution and publication
 
-Full-engine installation/build, live MCP client initialization, Linux/macOS compilation and real Ghidra exporter execution are not reported as passed. Their guides describe conditional setup using separately supplied tools. No unreviewed lifecycle scripts, registries or sites are enabled. The offline layer does not need these integrations.
+The original MIT license and legal notice files remain unchanged. Technical aliases and origin/history references are [classified here](legacy-identifiers.md). npm stays private and publication/deployment workflows remain disabled. Original artwork is reused, not regenerated.
 
-Official client configuration references were checked on 2026-10-29: [Codex MCP](https://learn.chatgpt.com/docs/extend/mcp), [Claude Code MCP](https://code.claude.com/docs/en/mcp). Client capability or a syntactically valid example does not establish an actual NEXORA ENGINE connection.
+Official client/configuration sources: [Codex MCP](https://learn.chatgpt.com/docs/extend/mcp), [Claude MCP](https://code.claude.com/docs/en/mcp), [Codex local plugin catalog](https://developers.openai.com/plugins/build/plugins), [Claude marketplace paths](https://code.claude.com/docs/en/plugin-marketplaces). Configuration examples are not proof of a live client connection.
 
-## Repository settings
-
-Description/topics are public metadata and can be updated independently of the PR. The social PNG must be uploaded manually in GitHub's social-preview settings; committing the asset alone does not apply it. See [manual settings](github-settings.md). The [launch announcement](launch-announcement.md) is a draft for human adaptation; nothing is posted automatically.
-
-The configured description and 17 topics were applied and read back during preparation. Package, lockfile, analysis source and license files remain unchanged; all publishing/deployment workflows remain disabled.
+Description and the existing 17 topics are retained. The social PNG is ready but requires GitHub's manual social-preview upload; [exact setting](github-settings.md). No launch announcement is posted automatically.

@@ -111,7 +111,7 @@ cliTest(
     expect(
       evidence.normalized_result.entries[0]?.pkcs7?.certificates[0]?.issuer
         .text,
-    ).toBe("commonName=Âe, organizationName=REA Tests");
+    ).toBe("commonName=Âe, organizationName=NEXORA ENGINE Tests");
     expect(evidence.normalized_result.limitations).toContain(
       "TeletexString values use OpenSSL's ISO-8859-1 compatibility mapping; this is not a full T.61 decoder.",
     );

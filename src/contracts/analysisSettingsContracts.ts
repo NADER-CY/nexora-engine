@@ -91,7 +91,7 @@ export const ANALYSIS_SETTINGS_TOOL_CONTRACTS = [
     ...toolContractMetadata("inspect_analysis_settings"),
     kind: "application",
     description:
-      "Inspect REA's editable runtime admission sizes, deadlines and worker heaps, their bounds, launch values and application points. No active target is required. Filters intersect. If an error already names a setting and its bounds, update_analysis_settings can be called directly. Explicit per-call arguments override runtime defaults. Active worker values are not observed by this configuration view.",
+      "Inspect NEXORA ENGINE's editable runtime admission sizes, deadlines and worker heaps, their bounds, launch values and application points. No active target is required. Filters intersect. If an error already names a setting and its bounds, update_analysis_settings can be called directly. Explicit per-call arguments override runtime defaults. Active worker values are not observed by this configuration view.",
     inputSchema: inspectAnalysisSettingsInputSchema,
     outputSchema: analysisSettingsResultSchema,
     examples: [
@@ -106,7 +106,7 @@ export const ANALYSIS_SETTINGS_TOOL_CONTRACTS = [
     ...toolContractMetadata("update_analysis_settings"),
     kind: "application",
     description:
-      "When REA names an adjustable limit, atomically set or reset its runtime default, then retry once work and cleanup have settled. No inspection call is required when the error supplies the bounds. Changes apply only to new work, survive target close/open, and disappear on REA restart. Reset restores launch configuration. Does not edit files, restart providers, raise host limits, or override explicit per-call arguments.",
+      "When NEXORA ENGINE names an adjustable limit, atomically set or reset its runtime default, then retry once work and cleanup have settled. No inspection call is required when the error supplies the bounds. Changes apply only to new work, survive target close/open, and disappear on NEXORA ENGINE restart. Reset restores launch configuration. Does not edit files, restart providers, raise host limits, or override explicit per-call arguments.",
     inputSchema: updateAnalysisSettingsInputSchema,
     outputSchema: updateAnalysisSettingsResultSchema,
     examples: [

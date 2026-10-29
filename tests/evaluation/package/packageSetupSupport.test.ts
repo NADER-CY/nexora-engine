@@ -29,7 +29,7 @@ const checks = ({ node = true, host = true } = {}) => [
 ];
 
 describe("packaged setup support derivation", () => {
-  it("keeps an installer-untested REA-supported distribution out of the automated Hopper path", () => {
+  it("keeps an installer-untested NEXORA ENGINE-supported distribution out of the automated Hopper path", () => {
     // The doctor host check passes on Kali, so reading installer applicability
     // from it promised an automated install the packaged setup never offers,
     // and Hopper readiness that setup never provides there.

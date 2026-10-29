@@ -88,7 +88,7 @@ it.each(["darwin", "linux"] as const)(
     ];
     for (const directory of directories) {
       await mkdir(directory, { recursive: true });
-      await writeFile(join(directory, "cached"), "REA cache");
+      await writeFile(join(directory, "cached"), "NEXORA ENGINE cache");
     }
     const sibling = join(cache, "rea", "caller-evidence");
     await mkdir(sibling);
@@ -178,7 +178,7 @@ it.each([
     const root = join(home, "Library/Caches");
     const cache = join(root, "rea", "kuna");
     await mkdir(cache, { recursive: true });
-    await writeFile(join(cache, "cached"), "REA cache");
+    await writeFile(join(cache, "cached"), "NEXORA ENGINE cache");
     const host = systemUninstallHost(
       home,
       undefined,

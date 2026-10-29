@@ -266,7 +266,7 @@ const describeEvidenceBundleFailure = (
       cause,
       message:
         cause instanceof z.ZodError
-          ? `Evidence bundle does not match the bundle schema ${describeValidationFailure(cause)}. Supply an unmodified bundle produced by this REA identity format. Recreate observations from earlier formats; re-exporting an old bundle does not update its identities.`
+          ? `Evidence bundle does not match the bundle schema ${describeValidationFailure(cause)}. Supply an unmodified bundle produced by this NEXORA ENGINE identity format. Recreate observations from earlier formats; re-exporting an old bundle does not update its identities.`
           : `Evidence bundle validation failed: ${describeValidationFailure(cause)}. Recreate or re-export the bundle, then try again.`,
     };
   }

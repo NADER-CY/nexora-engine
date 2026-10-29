@@ -18,7 +18,7 @@ export const MCP_STARTUP_POLICY = {
 
 /** Doctor startup recovery. The Codex figure is client guidance REA does not enforce. */
 export const mcpDoctorDeadlineRecovery = (budget: McpPhaseBudget): string =>
-  `${mcpPhaseBudgetRecovery(budget)} Codex startup_timeout_sec of ${String(MCP_STARTUP_POLICY.codexStartupTimeoutSeconds)} seconds is client guidance; REA does not enforce that figure as this deadline.`;
+  `${mcpPhaseBudgetRecovery(budget)} Codex startup_timeout_sec of ${String(MCP_STARTUP_POLICY.codexStartupTimeoutSeconds)} seconds is client guidance; NEXORA ENGINE does not enforce that figure as this deadline.`;
 
 /** Parsed startup and upstream request budgets affecting a client's tool deadline. */
 export interface McpToolTimeoutInputs {

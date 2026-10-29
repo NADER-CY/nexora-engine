@@ -220,7 +220,7 @@ await withVerifierCleanup(async () => {
         const analysis = tools.find((t) =>
           t.name.endsWith("analyze_javascript_application"),
         );
-        assert(analysis, "Gemini must expose the REA analysis tool");
+        assert(analysis, "Gemini must expose the NEXORA ENGINE analysis tool");
         const prefix = analysis.name.slice(
           0,
           -"analyze_javascript_application".length,
@@ -231,7 +231,7 @@ await withVerifierCleanup(async () => {
         assert.deepEqual(
           reaTools.map((t) => t.name).sort(),
           expected,
-          "Gemini must forward the complete REA tool catalog",
+          "Gemini must forward the complete NEXORA ENGINE tool catalog",
         );
         if (schemasChecked === 0) {
           for (const tool of reaTools) {
@@ -312,7 +312,7 @@ await withVerifierCleanup(async () => {
         }
         assert(
           skillLoaded,
-          "Gemini must load the installed personal REA skill",
+          "Gemini must load the installed personal NEXORA ENGINE skill",
         );
         return [
           {
@@ -339,7 +339,7 @@ await withVerifierCleanup(async () => {
             "-p",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use REA to analyze the JavaScript directory ${target}. Report the result.`,
+              : `Use NEXORA ENGINE to analyze the JavaScript directory ${target}. Report the result.`,
           ]),
           {
             env: {

@@ -79,7 +79,7 @@ it("reports local Ghidra admission through SDK MCP without dispatching or losing
       },
     });
     expect(projected.error.remediation?.action).toContain(
-      "only the REA client applies",
+      "only the NEXORA ENGINE client applies",
     );
     expect(
       projected.error.remediation?.action.includes("Restart Hopper or Cutter"),

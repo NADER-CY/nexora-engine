@@ -1101,7 +1101,7 @@ describe("Ghidra configuration paths", () => {
       "GHIDRA_INSTALL_DIR and JAVA_HOME must be absolute",
     ],
   ])(
-    "rejects relative paths that REA's configuration parser rejects (%o)",
+    "rejects relative paths that NEXORA ENGINE's configuration parser rejects (%o)",
     async (paths, detail) => {
       const result = await inspectGhidraInstallation(
         {

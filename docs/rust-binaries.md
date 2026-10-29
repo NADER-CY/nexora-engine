@@ -112,7 +112,7 @@ not establish whether features were empty or the producer did not record them;
 an explicit empty array establishes an empty list. An omitted `root` flag is
 false.
 Historical [cargo-auditable 0.4 package records](https://github.com/rust-secure-code/cargo-auditable/blob/v0.4.0/auditable-serde/src/lib.rs)
-may include the package `features` list; REA preserves those strings. That
+may include the package `features` list; NEXORA ENGINE preserves those strings. That
 version omitted empty feature lists during serialization, while version 0.5
 removed the field entirely, as recorded in its
 [changelog](https://github.com/rust-secure-code/cargo-auditable/blob/v0.5.0/CHANGELOG.md).
@@ -126,7 +126,7 @@ does not erase a section's validated read-only range: ELF defines the
 [section-name index](https://gabi.xinuos.com/elf/03-sheader.html#section-header-table-entry)
 separately from its type and flags, and
 [string-table index zero](https://gabi.xinuos.com/elf/04-strtab.html) means no name.
-REA preserves known empty names separately from unavailable names; an unavailable
+NEXORA ENGINE preserves known empty names separately from unavailable names; an unavailable
 name table still leaves `.dep-v0` presence unknown.
 The hash is not a claim that that compiler produced the binary. Several
 distinct hashes leave a single commit unknown.
@@ -143,7 +143,7 @@ indices outside the package list, more than one root package, and compressed
 dependency sections are typed failures. A cycle is reported and is not walked.
 
 For PE images with `VirtualSize` zero, the raw-size fallback can include file
-alignment bytes. REA excludes a zero suffix only when the raw section size is
+alignment bytes. NEXORA ENGINE excludes a zero suffix only when the raw section size is
 the zlib stream length rounded up to the declared `FileAlignment`; nonzero or
 oversized suffixes and truncated streams remain failures.
 
@@ -160,7 +160,7 @@ packages or the compiler.
 ELF, PE, thin Mach-O and one selected slice of a universal Mach-O are the
 supported containers.
 A universal (FAT) Mach-O needs `architecture` (`x86`, `x86_64`, `arm`
-or `arm64`; CLI `--architecture`). REA reads its own FAT table, without `lipo`,
+or `arm64`; CLI `--architecture`). NEXORA ENGINE reads its own FAT table, without `lipo`,
 and validates the selected slice's range, alignment and Mach-O header CPU
 against the table. The result keeps the universal file as `artifact` (its
 SHA-256 and size), adds `selected_slice` with the slice offset, length, raw CPU

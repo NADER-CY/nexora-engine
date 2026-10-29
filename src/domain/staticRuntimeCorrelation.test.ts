@@ -100,7 +100,7 @@ const processComparison = (
     undefined,
     {
       id: "rea-process",
-      name: "REA deterministic process harness",
+      name: "NEXORA ENGINE deterministic process harness",
       version: "3",
     },
     {

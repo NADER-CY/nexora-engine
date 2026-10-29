@@ -314,7 +314,7 @@ describe("FreeBuff JSON registration", () => {
 });
 
 describe("uninstall applicability for shared FreeBuff storage", () => {
-  it("retains malformed shared settings without blocking unrelated REA removal", async () => {
+  it("retains malformed shared settings without blocking unrelated NEXORA ENGINE removal", async () => {
     const home = await createTestTempDirectory("rea-freebuff-absent-");
     const client = freebuffPath(home, process.platform)!;
     await mkdir(dirname(client.configPath), { recursive: true });
@@ -460,7 +460,7 @@ describe("uninstall applicability for shared FreeBuff storage", () => {
         name: "uninstall",
         status: "skipped",
         detail: expect.stringContaining(
-          "No REA registration, skill, or data was removed",
+          "No NEXORA ENGINE registration, skill, or data was removed",
         ),
       }),
     );

@@ -3,7 +3,7 @@ import { expect } from "vitest";
 import { cliTest, runFileCli } from "../../support/cli/cliFixture.js";
 
 const invalidLogLevelMessage =
-  'REA configuration is invalid: REA_LOG_LEVEL: Invalid option: expected one of "trace"|"debug"|"info"|"warn"|"error"|"fatal"|"silent".\n';
+  'NEXORA ENGINE configuration is invalid: REA_LOG_LEVEL: Invalid option: expected one of "trace"|"debug"|"info"|"warn"|"error"|"fatal"|"silent".\n';
 
 for (const level of ["loud", "INFO"])
   cliTest(

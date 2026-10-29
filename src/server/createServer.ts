@@ -639,7 +639,7 @@ export const createServer = (
           result.status === "rejected" ? [result.reason] : [],
         );
         if (failures.length > 0)
-          throw new AggregateError(failures, "REA provider cleanup failed");
+          throw new AggregateError(failures, "NEXORA ENGINE provider cleanup failed");
       })
       .catch((cause: unknown) => {
         providerClose = undefined;
@@ -797,7 +797,7 @@ export const createServer = (
     );
     if (failures.length === 1) throw failures[0];
     if (failures.length > 1)
-      throw new AggregateError(failures, "REA server cleanup failed");
+      throw new AggregateError(failures, "NEXORA ENGINE server cleanup failed");
   };
   registerCaptureTools(
     server,

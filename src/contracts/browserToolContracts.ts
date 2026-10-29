@@ -161,7 +161,7 @@ const exampleScenarioCapture = () => ({
   limitations: [
     "CDP attachment cannot recover pre-attach events or guarantee launch-time context options.",
     "Attached locale en-US applies to Intl formatting only; navigator.language(s) and Accept-Language remain caller-controlled. Use launch mode for matching page and request languages.",
-    "Detaching a CDP page session may clear caller-owned navigator.platform emulation. REA cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
+    "Detaching a CDP page session may clear caller-owned navigator.platform emulation. NEXORA ENGINE cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
   ],
 });
 
@@ -248,7 +248,7 @@ export const BROWSER_TOOL_CONTRACTS = [
     name: "discover_webmcp_tools",
     ...toolContractMetadata("discover_webmcp_tools"),
     description:
-      "Passively inventory every page-registered WebMCP tool and its complete structural input-schema summary using the experimental CDP WebMCP domain. Metadata is page-declared-untrusted; REA never registers or invokes discovered tools.",
+      "Passively inventory every page-registered WebMCP tool and its complete structural input-schema summary using the experimental CDP WebMCP domain. Metadata is page-declared-untrusted; NEXORA ENGINE never registers or invokes discovered tools.",
     kind: "browser-provider",
     inputSchema: discoverWebMcpToolsInputSchema,
     outputSchema: webMcpOutputSchema,

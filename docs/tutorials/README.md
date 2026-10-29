@@ -1,6 +1,6 @@
 # Offline tutorials
 
-Run commands from the repository root. Node is required; dependencies/build are not needed for these offline commands. Output paths below use your local temporary directory to avoid committing generated reports.
+Run commands from the repository root. Node is required; dependencies/build are not needed for these offline commands. Generated reports belong outside commits; `.nexora-reports/` is ignored.
 
 ## First source file
 
@@ -52,3 +52,25 @@ Expected schema: `nexora-ghidra-report/v1`, one function named `example`, produc
 ## Saving JSON and diagram export
 
 Existing commands accept `--out FILE` for atomic JSON output, for example `node nexora/bin/nexora.mjs analyze-project examples/tutorial/cycle --out project.json`. Keep generated files out of commits. Architecture JSON can be consumed directly; diagram export support and its exact command are described in [architecture contracts](../architecture/README.md). Do not invent a Mermaid CLI flag on commands that do not expose one.
+
+## TypeScript and AST analysis
+
+```sh
+node nexora/bin/nexora.mjs analyze-source examples/tutorial/typescript/main.ts
+```
+
+For lexical scope and binding candidates, install locked dependencies first, then run:
+
+```sh
+node nexora/bin/nexora.mjs analyze-source-ast examples/tutorial/typescript/main.ts
+node nexora/bin/nexora.mjs analyze-project-ast examples/tutorial/project
+```
+
+## Save JSON and Mermaid
+
+```sh
+node nexora/bin/nexora.mjs architecture-report examples/tutorial/cycle --out .nexora-reports/architecture.json
+node nexora/bin/nexora.mjs architecture-report examples/tutorial/cycle --format mermaid --out .nexora-reports/architecture.mmd
+```
+
+Read hashes, method, confidence, omissions and coverage before drawing conclusions. Mermaid is a visual projection; JSON retains richer evidence. See [architecture contracts](../architecture/README.md).

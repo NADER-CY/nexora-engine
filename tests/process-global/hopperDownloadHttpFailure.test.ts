@@ -24,7 +24,7 @@ afterEach(() => {
 const url =
   "https://www.hopperapp.com/downloader/public/Hopper-fixture-Linux-demo.deb";
 const generic =
-  "REA could not download or unpack the official Hopper package. Check network and filesystem access, then retry setup.";
+  "NEXORA ENGINE could not download or unpack the official Hopper package. Check network and filesystem access, then retry setup.";
 
 const installHost = (): LinuxHopperInstallHost => {
   const unexpected = vi.fn((): never => {

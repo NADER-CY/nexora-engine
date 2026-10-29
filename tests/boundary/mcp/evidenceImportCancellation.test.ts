@@ -267,7 +267,7 @@ it("retains a failed import close in the server scope through SDK error projecti
   expect(retainedOwner?.handle.fd).toBeGreaterThanOrEqual(0);
 
   await client.close();
-  await expect(server.close()).rejects.toThrow("REA session cleanup failed");
+  await expect(server.close()).rejects.toThrow("NEXORA ENGINE session cleanup failed");
   expect(retainedOwner?.handle.fd).toBeGreaterThanOrEqual(0);
   allowClose = true;
   close.mockRestore();

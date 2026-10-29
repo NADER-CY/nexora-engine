@@ -104,7 +104,7 @@ the per-application differences are what each agent recorded:
 - **Linkding:** main's agent recorded no writes. The branch's second bookmark create sent only `url` and `title`, so
   the served create requires only those.
 - **Miniflux:** main's agent stopped and asked for an API key. The branch's agent created a token in the UI and sent it
-  as a literal header value, which REA recorded as written; the instance and its token were destroyed afterwards.
+  as a literal header value, which NEXORA ENGINE recorded as written; the instance and its token were destroyed afterwards.
 - **EspoCRM:** following the sixth step, the branch's second contact sent only a last name, with `null` for strings the
   first stored and for flags it sent `false`. That merge was refused until the empty-spelling fix in this PR; with it,
   the create requires only `lastName` and `name` and its task passes, as on main.

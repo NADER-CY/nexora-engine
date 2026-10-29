@@ -1508,7 +1508,7 @@ describe("Ghidra failures during cancellation cleanup", () => {
       expect(explanation).toContain(
         cleanupFailed
           ? "retry retained cleanup"
-          : "REA closed the Ghidra session",
+          : "NEXORA ENGINE closed the Ghidra session",
       );
       if (cleanupFailed) {
         expect(explanation).not.toContain(
@@ -2799,7 +2799,7 @@ describe("Ghidra NativeAOT snapshot budget", () => {
 });
 
 const sessionInfo = () => ({
-  name: "REA Ghidra bridge" as const,
+  name: "NEXORA ENGINE Ghidra bridge" as const,
   run_id: "11111111-1111-4111-8111-111111111111",
   profile_digest: "a".repeat(64),
   provider: { id: "ghidra" as const, version: "12.1.4" },
@@ -3211,7 +3211,7 @@ describe("Ghidra deadline guidance", () => {
     expect(projected.remediation.action).toContain(
       "REA_GHIDRA_DISABLED_ANALYZERS",
     );
-    expect(projected.remediation.action).toContain("without restarting REA");
+    expect(projected.remediation.action).toContain("without restarting NEXORA ENGINE");
     expect(projected.remediation.action).toContain("Export useful Evidence");
     expect(projected.details).toMatchObject({
       limit: {
@@ -4159,7 +4159,7 @@ describe("Ghidra SIGKILL projection", () => {
       expect(projected.code).toBe("execution_failure");
       expect(projected.message).toContain("SIGKILL");
       expect(projected.message).toContain("does not establish its cause");
-      expect(projected.message).not.toContain("before REA stopped it");
+      expect(projected.message).not.toContain("before NEXORA ENGINE stopped it");
       expect(projected.message).not.toContain("oom_kill");
       expect(projected.details?.diagnostics).toMatchObject(diagnostics);
     },

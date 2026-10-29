@@ -50,7 +50,7 @@ const expectThrownBudget = async (
 };
 
 describe("MCP startup policy", () => {
-  it("names phase budget settings without turning Codex's 30s into a REA knob", () => {
+  it("names phase budget settings without turning Codex's 30s into a NEXORA ENGINE knob", () => {
     const budgets = resolveMcpStartupBudgets({});
     expect(MCP_STARTUP_POLICY.codexStartupTimeoutSeconds).toBe(30);
     expect(budgets.initialize.milliseconds).toBe(15_000);

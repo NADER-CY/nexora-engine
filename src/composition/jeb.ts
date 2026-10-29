@@ -35,7 +35,7 @@ export const createJebAnalysisProvider = (
     const constraint =
       typeof cause.cause === "string" ? cause.cause : cause.message;
     return unconfiguredJebProvider(
-      new ConfigurationError("Invalid REA environment configuration", {
+      new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
         cause,
         settings: [{ setting: "REA_JEB_MCP_URL", constraint }],
       }),

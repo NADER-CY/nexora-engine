@@ -9,7 +9,7 @@ each write back:
 
 - EspoCRM keeps a deleted record. A read of it answers `200` with the record and `deleted: true`, which replay took
   as the record still being there, so contact and task deletes were contradicted or left unconfirmed.
-- EspoCRM pages its lists with `maxSize`, which REA did not know as a page size, so a list read after a delete was not
+- EspoCRM pages its lists with `maxSize`, which NEXORA ENGINE did not know as a page size, so a list read after a delete was not
   taken as listing the whole collection and confirmed nothing.
 - Vikunja shows `subscription` only on tasks created after the recording started. The tasks' item view did not show
   it, so reads of created tasks disagreed with the state and contradicted the task update before them; and an update

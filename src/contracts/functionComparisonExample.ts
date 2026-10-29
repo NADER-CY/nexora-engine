@@ -56,7 +56,7 @@ const observe = (digit: string, text: string) =>
     },
     {
       id: "rea-workflow",
-      name: "REA composed investigation workflow",
+      name: "NEXORA ENGINE composed investigation workflow",
       version: "1",
     },
     {

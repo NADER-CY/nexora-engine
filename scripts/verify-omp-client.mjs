@@ -129,7 +129,7 @@ await withVerifierCleanup(async () => {
         );
         if (requestIndex === 1)
           return call(requestIndex, "read", {
-            i: "Load REA skill",
+            i: "Load NEXORA ENGINE skill",
             path: "skill://reverse-engineer-anything:raw",
           });
         assert(
@@ -140,7 +140,7 @@ await withVerifierCleanup(async () => {
         skillLoaded = true;
         if (requestIndex === 2)
           return call(requestIndex, "read", {
-            i: "Inspect REA native tool contract",
+            i: "Inspect NEXORA ENGINE native tool contract",
             path: analysisDevice,
           });
         assert(
@@ -207,7 +207,7 @@ await withVerifierCleanup(async () => {
             models: [
               {
                 id: "rea-client-fixture",
-                name: "REA local fixture",
+                name: "NEXORA ENGINE local fixture",
                 reasoning: false,
                 input: ["text"],
                 cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
@@ -355,7 +355,7 @@ await withVerifierCleanup(async () => {
             "rea-fixture/rea-client-fixture",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use the REA skill to analyze ${target}.`,
+              : `Use the NEXORA ENGINE skill to analyze ${target}.`,
           ],
           {
             env: environment,
@@ -389,7 +389,7 @@ await withVerifierCleanup(async () => {
     assert.deepEqual(
       mounted.sort(),
       expectedDevices,
-      "Native OMP must mount the complete REA catalog",
+      "Native OMP must mount the complete NEXORA ENGINE catalog",
     );
     catalogMounted = true;
     assert(

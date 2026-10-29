@@ -242,7 +242,7 @@ it("keeps shared-ownership proof when the ownership read completes but its close
         name: "uninstall",
         status: "skipped",
         detail: expect.stringContaining(
-          "No REA registration, skill, or data was removed",
+          "No NEXORA ENGINE registration, skill, or data was removed",
         ),
       }),
     );
@@ -291,7 +291,7 @@ it("keeps shared-ownership proof when removal refuses a shadowed duplicate", asy
         name: "uninstall",
         status: "skipped",
         detail: expect.stringContaining(
-          "No REA registration, skill, or data was removed",
+          "No NEXORA ENGINE registration, skill, or data was removed",
         ),
       }),
     );

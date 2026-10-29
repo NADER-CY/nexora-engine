@@ -106,7 +106,7 @@ describe("canonical product catalog", () => {
       catalog.providers.find(({ id }) => id === BYTE_ENTROPY_PROVIDER.id),
     ).toEqual({
       id: "byte-entropy",
-      name: "REA byte entropy",
+      name: "NEXORA ENGINE byte entropy",
       version: "1",
       capabilities: ["inspect_byte_entropy"],
     });

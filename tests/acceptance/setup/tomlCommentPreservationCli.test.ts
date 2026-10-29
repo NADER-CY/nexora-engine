@@ -24,7 +24,7 @@ const unrelatedValues = (text: string) => {
 
 const scenarios = [
   {
-    name: "a stale REA table between other tables",
+    name: "a stale NEXORA ENGINE table between other tables",
     original: [
       "# root explanation",
       'model = "x" # inline model note',
@@ -60,7 +60,7 @@ const scenarios = [
     ],
   },
   {
-    name: "a leading REA table and a final note without a line break",
+    name: "a leading NEXORA ENGINE table and a final note without a line break",
     original: [
       "# about rea",
       "[mcp_servers.rea]",

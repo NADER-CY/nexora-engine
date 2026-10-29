@@ -1,20 +1,16 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "rea",
-  "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+  "name": "nexora-engine",
+  "description": "NEXORA ENGINE reverse engineering and architecture analysis.",
   "owner": {
-    "name": "morluto",
-    "url": "https://github.com/morluto"
+    "name": "NEXORA ENGINE contributors",
+    "url": "https://github.com/NADER-CY/nexora-engine"
   },
   "plugins": [
     {
-      "name": "rea",
-      "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
-      "source": {
-        "source": "npm",
-        "package": "rea-agents",
-        "version": "6.8.0"
-      },
+      "name": "nexora-engine",
+      "description": "NEXORA ENGINE reverse engineering and architecture analysis.",
+      "source": "./",
       "category": "development"
     }
   ]

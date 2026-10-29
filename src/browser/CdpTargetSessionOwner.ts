@@ -269,7 +269,7 @@ const aggregateCleanupFailures = (
       operation: "close_cdp_transports",
       cause: new AggregateError(
         failures,
-        "One or more REA-owned CDP transports remain open.",
+        "One or more NEXORA ENGINE-owned CDP transports remain open.",
       ),
       diagnostics: {
         failures: failures.map(({ message, diagnostics }) => ({

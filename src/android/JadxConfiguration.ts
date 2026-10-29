@@ -513,7 +513,7 @@ const requireSupportedHost = (): void => {
       if (loaded.authority.inspection.protocolStdin === true) return;
       throw configurationFailure(
         "runtime_missing",
-        "The bundled Windows native artifact lacks owned protocol stdin; use a matching current Windows x64 REA package.",
+        "The bundled Windows native artifact lacks owned protocol stdin; use a matching current Windows x64 NEXORA ENGINE package.",
         {
           platform: process.platform,
           architecture: process.arch,
@@ -656,7 +656,7 @@ const resolveJava = async (
     }
     throw configurationFailure(
       "runtime_missing",
-      `Cannot find an executable ${executable} on the selected ${windows ? "Windows " : ""}PATH. Select a full JDK with JAVA_HOME or PATH, then verify it with java --list-modules. REA does not install Java.`,
+      `Cannot find an executable ${executable} on the selected ${windows ? "Windows " : ""}PATH. Select a full JDK with JAVA_HOME or PATH, then verify it with java --list-modules. NEXORA ENGINE does not install Java.`,
       { java_executable: executable, phase: "path-lookup" },
       "java_runtime",
     );

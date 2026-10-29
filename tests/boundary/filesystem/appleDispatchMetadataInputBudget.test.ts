@@ -80,7 +80,7 @@ it("names the observed size, effective budget, its source and the budget to sele
     retryable: false,
     message: `Apple static metadata input (${String(bytes.length)} bytes) exceeds the selected max_input_bytes of ${String(bytes.length - 1)} bytes.`,
     remediation: {
-      action: `Retry with max_input_bytes (CLI --max-input-bytes) of at least ${String(bytes.length)}, at most 1073741824 bytes (1 GiB); REA holds that many bytes in memory for the read.`,
+      action: `Retry with max_input_bytes (CLI --max-input-bytes) of at least ${String(bytes.length)}, at most 1073741824 bytes (1 GiB); NEXORA ENGINE holds that many bytes in memory for the read.`,
     },
     details: {
       reported_limits: {

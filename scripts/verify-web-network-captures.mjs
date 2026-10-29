@@ -1023,8 +1023,8 @@ function assertSensitiveLimitations(evidence, literals) {
   assert.equal(
     result.decoder.name,
     result.format === "har"
-      ? "REA HAR capture adapter"
-      : "REA offline native mitmproxy adapter",
+      ? "NEXORA ENGINE HAR capture adapter"
+      : "NEXORA ENGINE offline native mitmproxy adapter",
   );
   const texts = [
     evidence.limitations,

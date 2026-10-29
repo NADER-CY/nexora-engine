@@ -512,7 +512,7 @@ export class ArtifactAnalysisResources {
       return new AnalysisTimeoutError(operation, limits.command_timeout_ms, {
         ...detail,
         userMessage: `The owned producer command reached its fixed ${String(limits.command_timeout_ms)} ms deadline. This is not a client-side timeout; extending only the MCP client's deadline does not change this budget.`,
-        remediationAction: `REA's fixed producer command deadline is ${String(limits.command_timeout_ms)} ms and this release has no runtime override. Inspect any partial output and cleanup before retrying. Repeating the unchanged request reaches the same deadline.`,
+        remediationAction: `NEXORA ENGINE's fixed producer command deadline is ${String(limits.command_timeout_ms)} ms and this release has no runtime override. Inspect any partial output and cleanup before retrying. Repeating the unchanged request reaches the same deadline.`,
       });
     if (cause.reason === "output-limit")
       return new AnalysisResourceConstraintError(
@@ -548,7 +548,7 @@ export class ArtifactAnalysisResources {
         {
           ...detail,
           retryable: true,
-          remediationAction: `${reported} REA retains the tighter inherited limit. This release has no runtime override for that ceiling. A smaller artifact may finish inside the retained limit. The signal does not prove that ceiling was exhausted, so an unchanged retry may succeed or may fail the same way.`,
+          remediationAction: `${reported} NEXORA ENGINE retains the tighter inherited limit. This release has no runtime override for that ceiling. A smaller artifact may finish inside the retained limit. The signal does not prove that ceiling was exhausted, so an unchanged retry may succeed or may fail the same way.`,
         },
       );
     }

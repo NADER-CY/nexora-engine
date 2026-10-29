@@ -116,7 +116,7 @@ describe("setup workflow", () => {
     );
     expect(result.status).toBe("needs_human");
     expect(result.code).toBe("skill_install_failed");
-    expect(result.remediation).toContain("REA skill write failed at");
+    expect(result.remediation).toContain("NEXORA ENGINE skill write failed at");
     expect(result.remediation).toContain("injected skill write failure");
     expect(result.remediation).toContain("Check permissions and rerun setup.");
     expect(progress.at(-1)).toMatchObject({
@@ -590,7 +590,7 @@ describe("setup Hopper install eligibility", () => {
       label: "Windows",
       platform: "win32",
       refusal:
-        "REA supports Hopper on macOS and selected x86_64 Linux distributions.",
+        "NEXORA ENGINE supports Hopper on macOS and selected x86_64 Linux distributions.",
     },
     {
       label: "macOS 11",

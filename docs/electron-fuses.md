@@ -72,7 +72,7 @@ byte is preserved and the enforcement outcome is `unknown`.
 No sentinel means the fuse state is unknown. It does not mean the fuses are
 disabled. A wire that continues past the slice is reported as truncated, with
 only the fuse bytes that were present. Two or more sentinels in one slice are
-all reported. REA does not pick one.
+all reported. NEXORA ENGINE does not pick one.
 
 Fuse bytes do not prove that the application enables Inspector some other way,
 for example through `app.commandLine` or a remote-debugging switch in

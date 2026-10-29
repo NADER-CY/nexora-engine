@@ -146,7 +146,7 @@ export class HopperProvider implements AnalysisProviderCandidate {
         status: "unsupported",
         code: "target_kind_unsupported",
         reason:
-          "This Hopper macOS launcher cannot start REA's analysis bridge when opening a saved Hopper database. Open an executable target instead; saved-database analysis is unavailable until Hopper exposes a database launch route that runs the bridge script.",
+          "This Hopper macOS launcher cannot start NEXORA ENGINE's analysis bridge when opening a saved Hopper database. Open an executable target instead; saved-database analysis is unavailable until Hopper exposes a database launch route that runs the bridge script.",
         diagnostics,
       };
     if (target.kind === "database")
@@ -373,8 +373,8 @@ export class HopperProvider implements AnalysisProviderCandidate {
             ? []
             : [
                 preparedImage === undefined
-                  ? "REA loaded a digest-verified private executable copy. Evidence identifies the selected original source; Hopper document names describe the private image. The owned image and its Hopper document close together."
-                  : "REA loaded a verified thin Mach-O image prepared from the original source. Identity and file offsets refer to the original file. The owned temporary image and its Hopper document close together, including on MCP shutdown.",
+                  ? "NEXORA ENGINE loaded a digest-verified private executable copy. Evidence identifies the selected original source; Hopper document names describe the private image. The owned image and its Hopper document close together."
+                  : "NEXORA ENGINE loaded a verified thin Mach-O image prepared from the original source. Identity and file offsets refer to the original file. The owned temporary image and its Hopper document close together, including on MCP shutdown.",
               ]),
           ...(this.capabilities().find(
             (descriptor) => descriptor.operation === operation,

@@ -68,7 +68,7 @@ it("keeps the example manually triggered, least-privileged, pinned and failure-p
     if (step.uses !== undefined) expect(step.uses).toMatch(/@[a-f0-9]{40}$/u);
   }
   expect(
-    job.steps.find((step) => step.name === "Install pinned REA")?.run,
+    job.steps.find((step) => step.name === "Install pinned NEXORA ENGINE")?.run,
   ).toContain("--save-exact rea-agents@6.7.0");
   const upload = job.steps.find((step) =>
     step.uses?.startsWith("actions/upload-artifact@"),

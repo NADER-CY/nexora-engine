@@ -428,7 +428,7 @@ const openCodeClient = async (prefix: string) => {
 const legacyEntry = JSON.stringify({ type: "local", command, enabled: true });
 
 describe("OpenCode V2 native server table", () => {
-  it("registers in mcp.servers, replaces REA's V1 entry, and uninstalls", async () => {
+  it("registers in mcp.servers, replaces NEXORA ENGINE's V1 entry, and uninstalls", async () => {
     const { home, client } = await openCodeClient("rea-opencode-v2-");
     await writeFile(
       client.configPath,
@@ -482,7 +482,7 @@ describe("OpenCode V2 native server table", () => {
     });
   });
 
-  it("updates and removes REA's entry after OpenCode migrates it to mcp.servers", async () => {
+  it("updates and removes NEXORA ENGINE's entry after OpenCode migrates it to mcp.servers", async () => {
     const { home, client } = await openCodeClient("rea-opencode-migrated-");
     const stale = ["npx", "-y", `${PRODUCT_IDENTITY.packageName}@3.2.0`, "mcp"];
     await writeFile(
@@ -831,7 +831,7 @@ describe("client launcher traversal semantics", () => {
     },
   );
 
-  it("recognizes prior exact REA releases while rejecting foreign package commands", () => {
+  it("recognizes prior exact NEXORA ENGINE releases while rejecting foreign package commands", () => {
     expect(classifyClientRegistrationCommand(["rea", "mcp"], undefined)).toBe(
       "owned",
     );

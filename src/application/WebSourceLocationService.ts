@@ -66,8 +66,8 @@ const codecBudgetLimitation = (
   if (runtime.id === "node-v8")
     return `${budget}, ${String(WEB_SOURCE_MAP_LIMITS.codecHeapMiB)} MiB old-generation heap and one V8 worker; cleanup may extend the deadline. V8 heap limits do not establish aggregate RSS limits.`;
   return runtime.process_memory_limit_bytes === null
-    ? `${budget}; cleanup may extend the deadline. The codec ran on Bun, which does not enforce REA's V8 heap flags, so no codec heap limit is established.`
-    : `${budget}; cleanup may extend the deadline. The codec ran on Bun, which does not enforce REA's V8 heap flags; a Windows Job Object limited its committed memory to ${String(runtime.process_memory_limit_bytes)} bytes, which is not a heap or RSS limit.`;
+    ? `${budget}; cleanup may extend the deadline. The codec ran on Bun, which does not enforce NEXORA ENGINE's V8 heap flags, so no codec heap limit is established.`
+    : `${budget}; cleanup may extend the deadline. The codec ran on Bun, which does not enforce NEXORA ENGINE's V8 heap flags; a Windows Job Object limited its committed memory to ${String(runtime.process_memory_limit_bytes)} bytes, which is not a heap or RSS limit.`;
 };
 
 /** Join verified captured bytes with an explicitly selected source-map point. */
@@ -211,7 +211,7 @@ export class WebSourceLocationService {
         },
         {
           id: "rea-web-source-location",
-          name: "REA captured source-map point trace",
+          name: "NEXORA ENGINE captured source-map point trace",
           version: "1",
         },
         {

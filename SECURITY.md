@@ -1,9 +1,9 @@
 # Security Policy
 
-NEXORA ENGINE is a fork of REA (https://github.com/morluto/rea). Report issues in
-NEXORA ENGINE to the NEXORA ENGINE maintainers, **not** to the upstream REA
-maintainer. Report issues that also affect unmodified upstream REA upstream,
-following upstream's own policy. The current public-source review is in
+NEXORA ENGINE is independently maintained from the upstream REA codebase by morluto.
+Report issues in this fork to the NEXORA ENGINE maintainers. If a finding also
+affects unmodified upstream code, follow that project's own security policy.
+The original attribution is retained in NOTICE.md. The current public-source review is in
 [PUBLICATION_REVIEW.md](PUBLICATION_REVIEW.md).
 
 ## Supported versions
@@ -17,7 +17,7 @@ Do not disclose vulnerabilities, proof-of-concept exploits, credentials,
 private binaries, Hopper documents, or private Ghidra projects in a public
 issue.
 
-Use **Report a vulnerability** in the NEXORA ENGINE repository's **Security** tab to submit the report privately (enable private vulnerability reporting when the repository is created). Do not open a public issue to request a private contact channel.
+Use **Report a vulnerability** in the NEXORA ENGINE repository's **Security** tab to submit the report privately. Do not open a public issue to request a private contact channel.
 
 Include the affected NEXORA ENGINE version, operating system/distribution, selected
 provider and version, impact, reproduction conditions, and any suggested
@@ -31,7 +31,7 @@ provider-dependent behavior to be reproduced safely.
 
 ## Security boundary
 
-REA authenticates its Hopper and Ghidra bridges with per-session random
+NEXORA ENGINE authenticates its Hopper and Ghidra bridges with per-session random
 capability tokens. POSIX uses current-user Unix sockets; Windows Ghidra uses
 authenticated loopback TCP with a private NTFS runtime whose DACL admits only
 the current user and SYSTEM. See [Windows Ghidra P0](docs/windows-ghidra-p0.md#private-runtime-transport-and-lifecycle).
@@ -43,15 +43,15 @@ delegates parsing and analysis to the selected local provider with that user's
 permissions.
 
 Ghidra sessions use a packaged Java `HeadlessScript`, an isolated temporary
-project, and private home, cache, and runtime directories. REA imports only the
+project, and private home, cache, and runtime directories. NEXORA ENGINE imports only the
 requested target, bounds startup and protocol messages, requests bounded CPU
 and heap settings, and deletes the temporary project when the session closes.
 These controls limit accidental persistence and resource use; they do not make
-Ghidra a sandbox. REA does not open or modify user-owned Ghidra projects.
+Ghidra a sandbox. NEXORA ENGINE does not open or modify user-owned Ghidra projects.
 
 `GHIDRA_INSTALL_DIR` and optional `JAVA_HOME` identify user-managed
 installations. Setup can add those values to detected client configuration only
-after showing its plan and receiving approval. REA does not download, install,
+after showing its plan and receiving approval. NEXORA ENGINE does not download, install,
 upgrade, or modify Ghidra or Java.
 
-On Linux, REA accepts release metadata only from Hopper's HTTPS endpoint, restricts package URLs to Hopper's public download origin, bounds the package size, and compares the downloaded bytes with Hopper's published checksum before requesting installation. The published SHA-1 value is a corruption check, not a modern package signature; HTTPS origin validation remains part of the trust boundary. Dependency installation is delegated without shell evaluation to `apt-get`, `dnf`, or `pacman`, directly as root or through `pkexec`. REA never invokes `sudo`.
+On Linux, NEXORA ENGINE accepts release metadata only from Hopper's HTTPS endpoint, restricts package URLs to Hopper's public download origin, bounds the package size, and compares the downloaded bytes with Hopper's published checksum before requesting installation. The published SHA-1 value is a corruption check, not a modern package signature; HTTPS origin validation remains part of the trust boundary. Dependency installation is delegated without shell evaluation to `apt-get`, `dnf`, or `pacman`, directly as root or through `pkexec`. NEXORA ENGINE never invokes `sudo`.

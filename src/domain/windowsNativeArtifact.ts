@@ -73,7 +73,7 @@ export const parseWindowsNativeManifest = (
   if (manifest.packageVersion !== packageVersion)
     return err(
       new WindowsNativeArtifactError(
-        "Windows native artifact belongs to another REA version",
+        "Windows native artifact belongs to another NEXORA ENGINE version",
       ),
     );
   return ok({

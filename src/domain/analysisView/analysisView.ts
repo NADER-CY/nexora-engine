@@ -491,7 +491,7 @@ export const analysisViewSourceSchema = z.discriminatedUnion("kind", [
   z.strictObject({
     kind: z.literal("evidence-file"),
     path: absoluteLocalPathStringSchema.describe(
-      "Absolute local path of one completed Evidence JSON file, or of an Evidence bundle written by --evidence_output or export_evidence_bundle. REA reads and authenticates it, then projects it like retained Evidence, so large captures are not charged as inline input.",
+      "Absolute local path of one completed Evidence JSON file, or of an Evidence bundle written by --evidence_output or export_evidence_bundle. NEXORA ENGINE reads and authenticates it, then projects it like retained Evidence, so large captures are not charged as inline input.",
     ),
     evidence_id: prefixedDigestSchema("ev")
       .exactOptional()

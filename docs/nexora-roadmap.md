@@ -4,9 +4,9 @@
 
 Dependency-free lexical source analysis, ELF/PE/thin Mach-O metadata, evidence-bearing file dependency/cycle reports and supplied Ghidra JSONL ingestion. These capabilities have explicit coverage and resource limits.
 
-## Proposed in draft PR #1
+## Integrated analysis upgrades
 
-See [the development PR](https://github.com/NADER-CY/nexora-engine/pull/1) for opt-in JS/TS AST scopes, direct relative ESM call candidates, richer relocation metadata, Ghidra binary-identity matching and unified JSON/Mermaid architecture reports. These are not merged or released on main.
+See [the development PR](https://github.com/NADER-CY/nexora-engine/pull/1) for opt-in JS/TS AST scopes, direct relative ESM call candidates, richer relocation metadata, Ghidra binary-identity matching and unified JSON/Mermaid architecture reports. PR #1 is merged into main; this does not constitute a production certification or a binary release.
 
 ## Further verification and development
 

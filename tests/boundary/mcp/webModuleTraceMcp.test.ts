@@ -330,12 +330,12 @@ it.each([
 const moduleTraceShutdownFailure = (shutdown: unknown): AnalysisError => {
   if (!(shutdown instanceof AggregateError))
     throw new Error("expected session shutdown failure");
-  expect(shutdown.message).toBe("REA session cleanup failed");
+  expect(shutdown.message).toBe("NEXORA ENGINE session cleanup failed");
   expect(shutdown.errors).toHaveLength(1);
   const providers: unknown = shutdown.errors[0];
   if (!(providers instanceof AggregateError))
     throw new Error("expected provider shutdown failure");
-  expect(providers.message).toBe("REA provider cleanup failed");
+  expect(providers.message).toBe("NEXORA ENGINE provider cleanup failed");
   expect(providers.errors).toHaveLength(1);
   const failure: unknown = providers.errors[0];
   if (!(failure instanceof AnalysisError))

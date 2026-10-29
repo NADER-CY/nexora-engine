@@ -873,7 +873,7 @@ describe("replay of exact immutable calls", () => {
     expect(cached.ok).toBe(true);
     if (cached.ok)
       expect(cached.value.limitations).toContainEqual(
-        expect.stringContaining("local REA analysis snapshot"),
+        expect.stringContaining("local NEXORA ENGINE analysis snapshot"),
       );
     expect(
       (

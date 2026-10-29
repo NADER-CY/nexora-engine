@@ -1,3 +1,14 @@
+# NEXORA ENGINE changelog
+
+## Unreleased — NEXORA ENGINE
+
+- Bounded binary evidence, opt-in JS/TS scope/call analysis and unified evidence graphs.
+- Original responsive GitHub identity, offline tutorials and platform/MCP installation guides.
+- Branded local entrypoint and plugin metadata; compatibility aliases retained.
+- Windows x64 source installation verified with the native addon built before the runtime.
+
+The release history below is preserved upstream history. It is not a claim that this fork published those packages or releases.
+
 # NEXORA ENGINE changes
 
 ## Unreleased — NEXORA ENGINE development milestones

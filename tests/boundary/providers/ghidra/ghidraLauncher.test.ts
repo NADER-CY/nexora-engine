@@ -815,7 +815,7 @@ describe("Ghidra existing project launcher", () => {
       expect(launched.ok).toBe(false);
       if (launched.ok) throw new Error("launch unexpectedly succeeded");
       expect(String(launched.error.cause)).toMatch(
-        /overlaps the REA runtime directory/u,
+        /overlaps the NEXORA ENGINE runtime directory/u,
       );
       expect(spawned).toHaveLength(0);
       expect(await readdir(join(runtime.path, "project"))).toEqual([]);
@@ -840,7 +840,7 @@ describe("Ghidra existing project launcher", () => {
       expect(launched.ok).toBe(false);
       if (launched.ok) throw new Error("launch unexpectedly succeeded");
       expect(String(launched.error.cause)).toMatch(
-        /overlaps the REA runtime directory/u,
+        /overlaps the NEXORA ENGINE runtime directory/u,
       );
       expect(spawned).toHaveLength(0);
       expect(await readdir(join(runtime.path, "project"))).toEqual([]);
@@ -876,7 +876,7 @@ describe("Ghidra existing project symlink overlap", () => {
       expect(launched.ok).toBe(false);
       if (launched.ok) throw new Error("launch unexpectedly succeeded");
       expect(String(launched.error.cause)).toMatch(
-        /overlaps the REA runtime directory/u,
+        /overlaps the NEXORA ENGINE runtime directory/u,
       );
       expect(spawned).toHaveLength(0);
       expect(await readdir(join(runtime.path, "project"))).toEqual([]);
@@ -940,10 +940,10 @@ describe("Ghidra Windows batch command construction", () => {
       analyzeHeadlessPath:
         "C:\\Program Files\\Ghidra 12.1.4\\support\\analyzeHeadless.bat",
       arguments: [
-        "C:\\REA Runtime\\project",
+        "C:\\NEXORA ENGINE Runtime\\project",
         "rea-project",
         "-import",
-        "C:\\REA Runtime\\target.exe",
+        "C:\\NEXORA ENGINE Runtime\\target.exe",
       ],
       comSpec: "C:\\Windows\\System32\\cmd.exe",
     });
@@ -956,7 +956,7 @@ describe("Ghidra Windows batch command construction", () => {
         "/v:off",
         "/s",
         "/c",
-        '""C:\\Program Files\\Ghidra 12.1.4\\support\\analyzeHeadless.bat" "C:\\REA Runtime\\project" "rea-project" "-import" "C:\\REA Runtime\\target.exe""',
+        '""C:\\Program Files\\Ghidra 12.1.4\\support\\analyzeHeadless.bat" "C:\\NEXORA ENGINE Runtime\\project" "rea-project" "-import" "C:\\NEXORA ENGINE Runtime\\target.exe""',
       ],
     });
   });

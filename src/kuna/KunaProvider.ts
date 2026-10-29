@@ -182,15 +182,15 @@ export class KunaProvider implements AnalysisProviderCandidate {
         code: "target_format_unsupported",
         reason:
           target.format === "mach-o-universal"
-            ? "REA's Kuna provider has no verified universal Mach-O slice selection yet; open a thin slice or use another provider."
-            : `REA verified the Kuna provider on ELF and thin Mach-O images; ${target.format} is not admitted yet.`,
+            ? "NEXORA ENGINE's Kuna provider has no verified universal Mach-O slice selection yet; open a thin slice or use another provider."
+            : `NEXORA ENGINE verified the Kuna provider on ELF and thin Mach-O images; ${target.format} is not admitted yet.`,
         diagnostics,
       };
     if (!VERIFIED_ARCHITECTURES.has(target.architecture))
       return {
         status: "unsupported",
         code: "architecture_unsupported",
-        reason: `REA verified the Kuna provider on x86-64, AArch64 and ARM; ${target.architecture} is not admitted yet.`,
+        reason: `NEXORA ENGINE verified the Kuna provider on x86-64, AArch64 and ARM; ${target.architecture} is not admitted yet.`,
         diagnostics: { ...diagnostics, architecture: target.architecture },
       };
     return { status: "supported", code: null, reason: null, diagnostics };

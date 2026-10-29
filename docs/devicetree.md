@@ -84,7 +84,7 @@ node scripts/verify/firmware/devicetree.mjs
 ```
 
 It compiles a DTS with reserved-memory, chosen, aliases and phandles, compares
-REA's node paths against `dtc -I dtb -O dts`, and checks the derived report.
+NEXORA ENGINE's node paths against `dtc -I dtb -O dts`, and checks the derived report.
 `REA_DTC_PATH` selects the verification executable; it is not runtime setup.
 
 The dtc 1.8.1 lane ran on macOS arm64 with Node 26.5.0. Its seven node paths
@@ -100,6 +100,6 @@ elapsed, 1.52 s user CPU and 0.27 s system CPU under `/usr/bin/time -l`. This is
 small fixture with warm filesystem caches, not a cold-start or large-board
 benchmark. Peak process-family memory and whole-workflow token usage were not
 measured; the sandbox denied the memory-reporting system query. No pre-feature
-equivalent REA workflow exists for comparison. The pinned Node 24.22.1/npm
+equivalent NEXORA ENGINE workflow exists for comparison. The pinned Node 24.22.1/npm
 11.16.0 toolchain was unavailable; dependency installation used the local cache
 with Node 26.5.0/npm 12.2.0 instead.

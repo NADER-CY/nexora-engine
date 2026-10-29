@@ -510,7 +510,7 @@ export const regexWorkerHeapError = (
             ),
           }
         : {}),
-      remediationAction: `${heapBound(heap, request)} Use update_analysis_settings with setting regex.worker_heap_request_mib to change the request for the next worker; launch heap flags can override it. Restart REA after changing --max-old-space-size or ${REGEX_WORKER_HEAP_REQUEST_SETTING} in the launch environment. A launch --max-old-space-size-percentage takes precedence over that flag in either order. Simplify the pattern or use literal mode.`,
+      remediationAction: `${heapBound(heap, request)} Use update_analysis_settings with setting regex.worker_heap_request_mib to change the request for the next worker; launch heap flags can override it. Restart NEXORA ENGINE after changing --max-old-space-size or ${REGEX_WORKER_HEAP_REQUEST_SETTING} in the launch environment. A launch --max-old-space-size-percentage takes precedence over that flag in either order. Simplify the pattern or use literal mode.`,
     },
   );
 const replySchema = z.discriminatedUnion("status", [

@@ -133,7 +133,7 @@ export const parseJebMcpTimeoutMs = (
   const parsed = providerStartupTimeoutSchema.safeParse(value);
   if (parsed.success) return ok(parsed.data);
   return err(
-    new ConfigurationError("Invalid REA environment configuration", {
+    new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
       cause: parsed.error,
       settings: [
         {
@@ -177,7 +177,7 @@ export const parseEnvironmentValues = (
     }));
   if (invalidEntries.length > 0)
     return err(
-      new ConfigurationError("Invalid REA environment configuration", {
+      new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
         settings: invalidEntries,
       }),
     );
@@ -189,7 +189,7 @@ export const parseEnvironmentValues = (
       constraint: issue.message,
     }));
     return err(
-      new ConfigurationError("Invalid REA environment configuration", {
+      new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
         cause: parsed.error,
         settings,
       }),
@@ -256,7 +256,7 @@ export const parseEnvironment = (
     !unresolvedSettings.has("REA_GHIDRA_LANGUAGE_ID")
   )
     return err(
-      new ConfigurationError("Invalid REA environment configuration", {
+      new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
         settings: [
           {
             setting: "REA_GHIDRA_COMPILER_SPEC_ID",

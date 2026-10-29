@@ -20,16 +20,16 @@ and section are derived locations; unknown mappings are `null`.
 
 `load_config` reports fields only when its declared `Size` covers the entire
 field. MSVC x86 images often declare a 64-byte load-config data directory while
-the structure's own `Size` is larger; like the Windows loader, REA reads `Size`
+the structure's own `Size` is larger; like the Windows loader, NEXORA ENGINE reads `Size`
 bytes when they are file-backed in one run, and reports both
 `directory.size` and `size`. `structure_location` is the file range of the
-`Size` bytes REA checked; Evidence locations include it beside the declared
+`Size` bytes NEXORA ENGINE checked; Evidence locations include it beside the declared
 directory range when the two differ. Unavailable fields are `null`; a covered zero pointer remains `"0x0"`.
 The report includes the security cookie, PE32 SafeSEH table/count, CFG pointers
 and table/count, address-taken IAT and long-jump tables/counts, EH continuation
 table/count, and XFG check pointer. CHPE and dynamic relocation pointers are raw
 values. The dynamic relocation table offset (DWORD) and section (WORD) are
-reported separately when `Size` covers them, including zero values; REA does
+reported separately when `Size` covers them, including zero values; NEXORA ENGINE does
 not infer a VA from that pair or decode the target and mitigation-table entries.
 
 Guard flags retain the raw DWORD, recognized names, unknown bits, and the CFG

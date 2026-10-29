@@ -94,7 +94,7 @@ let kunaVersion;
 const FIXTURE_SOURCE = String.raw`
 #include <stdio.h>
 #include <stdlib.h>
-static const char rea_kuna_utf8[] __attribute__((used)) = "＿φ( °-°)/ REA unicode marker";
+static const char rea_kuna_utf8[] __attribute__((used)) = "＿φ( °-°)/ NEXORA ENGINE unicode marker";
 /* The leading NUL unit ends any UTF-16 run that bytes before this array would
    start: the UTF-8 marker's last byte and NUL decode as the unit 'r', so on
    layouts where it precedes this array Kuna reports "rREA wide marker". */
@@ -550,8 +550,8 @@ try {
     results.push({
       binary: binary.slice(workspace.length + 1),
       kuna: await verifyKuna(binary, [...fixtureFunctions], fixtureMain, [
-        "＿φ( °-°)/ REA unicode marker",
-        "REA wide marker",
+        "＿φ( °-°)/ NEXORA ENGINE unicode marker",
+        "NEXORA ENGINE wide marker",
       ]),
     });
 

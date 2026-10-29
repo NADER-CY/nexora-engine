@@ -1,9 +1,9 @@
 # Electron file-page observation
 
-REA can attach to an Electron/Chromium CDP endpoint and inspect existing `file://` renderer pages without evaluating JavaScript or invoking Electron APIs. The request supplies the endpoint directly; REA accepts only literal-port loopback HTTP endpoints. Selecting an endpoint exposes every Electron target it serves, including local file paths and page metadata.
+NEXORA ENGINE can attach to an Electron/Chromium CDP endpoint and inspect existing `file://` renderer pages without evaluating JavaScript or invoking Electron APIs. The request supplies the endpoint directly; NEXORA ENGINE accepts only literal-port loopback HTTP endpoints. Selecting an endpoint exposes every Electron target it serves, including local file paths and page metadata.
 
 Disconnecting the inspection's page session can clear caller-owned
-`navigator.platform` emulation inside Chromium. REA cannot restore another
+`navigator.platform` emulation inside Chromium. NEXORA ENGINE cannot restore another
 client's complete user-agent/client-hint configuration. Use a disposable target
 or let the owning client reapply its configuration; see the shared
 [CDP state limitation](browser-observation.md#provider-authorities).
@@ -24,7 +24,7 @@ when both Evidence sets already exist.
 ## Target boundary
 
 The request supplies a literal-port loopback endpoint and, for inspection, a
-target ID. REA accepts local hostless `file://` URLs that resolve to regular
+target ID. NEXORA ENGINE accepts local hostless `file://` URLs that resolve to regular
 files, including pages a packaged application serves from inside `app.asar`.
 For those, the first `.asar` path component that is a regular file is the
 archive, the remainder must name a regular file in its header, and the reported
@@ -48,7 +48,7 @@ and exact-owner retries.
 
 `list_electron_targets` returns every eligible target served by the supplied endpoint in one inline array.
 
-For the MCP follow-up call, pass the same literal-loopback endpoint and the selected target ID to `inspect_electron_page`. REA rediscovers targets and validates the ID against the live endpoint before inspection.
+For the MCP follow-up call, pass the same literal-loopback endpoint and the selected target ID to `inspect_electron_page`. NEXORA ENGINE rediscovers targets and validates the ID against the live endpoint before inspection.
 
 ```bash
 rea list-electron-targets http://127.0.0.1:9223 --json
@@ -101,7 +101,7 @@ before canonical path admission. Labels remain distinct from filesystem provenan
 The capture also
 inventories worker, service-worker, and shared-worker targets with
 validated opener-target and parent-frame IDs. Worker discovery uses passive
-target metadata; REA does not attach to or execute code in those targets.
+target metadata; NEXORA ENGINE does not attach to or execute code in those targets.
 Script metadata uses the shared 8 MiB JSON-byte allowance for each retained
 representation: incoming drafts and normalized capture metadata. Admission
 counts escaped strings, frame claims, and provenance fields before retaining
@@ -133,14 +133,14 @@ invoke Electron IPC, close a target, or terminate the application.
 The scenario request supplies the Electron executable and application entry
 point, plus any arguments and actions. The application root defaults to the
 entry point's parent directory and can be supplied when the app uses a different
-root. REA launches that executable through
+root. NEXORA ENGINE launches that executable through
 the official Playwright Electron API and owns its lifetime. It accepts click/wait actions,
 window-targeted renderer reload/crash actions, and synthetic `open-url` or
 `second-instance` deep-link delivery. It records capture-scoped window and
 WebContents identities, process metrics, and IPC channel and value-shape metadata.
 Payload values are not retained.
 
-`window_index` selects from Playwright's current Page list at the start of each action. REA resolves that Page to its corresponding BrowserWindow once; the action's `target` uses the BrowserWindow's capture-scoped `window_id`, matching the window inventory. Reordering either enumeration after selection does not retarget the action. Handle cleanup failures retain the completed action records and remain owned for provider cleanup retry.
+`window_index` selects from Playwright's current Page list at the start of each action. NEXORA ENGINE resolves that Page to its corresponding BrowserWindow once; the action's `target` uses the BrowserWindow's capture-scoped `window_id`, matching the window inventory. Reordering either enumeration after selection does not retarget the action. Handle cleanup failures retain the completed action records and remain owned for provider cleanup retry.
 
 Run the real fixture verifier with an operator-provided Electron runtime:
 
@@ -175,7 +175,7 @@ startup, including the initial state snapshot, has a 60-second deadline.
 Actions wait until completion or request cancellation; a click whose target
 never appears, or a `wait` without `window_index` in an app that opens no
 window, remains pending until cancelled. After cancellation, the final state
-read has 5 seconds before REA keeps the initial snapshot instead; the
+read has 5 seconds before NEXORA ENGINE keeps the initial snapshot instead; the
 cancellation keeps the caller's reason and records that expiry in its
 diagnostics.
 The shell policy is owned by `blockedShellResults` in
@@ -202,7 +202,7 @@ Cleanup uncertainty does not authorize signaling unrelated processes.
 On Linux, Chromium-based processes can overwrite the initial environment memory
 exposed through `/proc/<pid>/environ`. The environment may be readable while
 `REA_PROCESS_RUN_ID` is absent, even if the application still sees it through
-`process.env`. REA reports the missing marker and leaves lineage ownership and
+`process.env`. NEXORA ENGINE reports the missing marker and leaves lineage ownership and
 cleanup unverified; the PID, executable, or parent relationship cannot replace
 that ownership proof. This limitation can affect owned Electron captures on
 native Linux as well as WSL. It does not establish that all Electron versions or
@@ -308,7 +308,7 @@ declared lengths against the archive size. Header/index admission is the same
 budget used by static ASAR reads: 16 MiB / 16777216 bytes by default, seeded by
 `REA_ASAR_MAX_HEADER_BYTES` (at most 256 MiB). In MCP,
 `update_analysis_settings` can override `asar.max_header_bytes` for new
-operations without restarting REA. Cached headers are checked against each
+operations without restarting NEXORA ENGINE. Cached headers are checked against each
 operation's admission, including after a decrease. See the
 [settings design](design/limits-and-recovery.md#failure-and-retry).
 An oversized header is

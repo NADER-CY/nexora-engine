@@ -46,7 +46,7 @@ export const asarHeaderAdmissionRecovery = (
 ): string =>
   [
     `ASAR header/index admission is limited to ${byteAllowance(admission.maximumBytes)}${admission.source === "setting" ? ` by ${ASAR_HEADER_ADMISSION_SETTING}` : ""}.`,
-    `On MCP, call update_analysis_settings with setting asar.max_header_bytes, action set, and a value in bytes up to ${byteAllowance(MAXIMUM_ASAR_MAX_HEADER_BYTES)} (default ${byteAllowance(DEFAULT_ASAR_MAX_HEADER_BYTES)}), then retry the original request. It applies to the next operation without restarting REA. For CLI or future REA processes, set ${ASAR_HEADER_ADMISSION_SETTING} in the launch environment.`,
+    `On MCP, call update_analysis_settings with setting asar.max_header_bytes, action set, and a value in bytes up to ${byteAllowance(MAXIMUM_ASAR_MAX_HEADER_BYTES)} (default ${byteAllowance(DEFAULT_ASAR_MAX_HEADER_BYTES)}), then retry the original request. It applies to the next operation without restarting NEXORA ENGINE. For CLI or future NEXORA ENGINE processes, set ${ASAR_HEADER_ADMISSION_SETTING} in the launch environment.`,
     "Selecting fewer sources or narrowing an internal path does not bypass header admission, because the archive index is read before any member can be selected.",
     "Raising max_heap_mb or available host memory does not raise it.",
     "Alternatively, analyze an extracted application directory, which does not admit an ASAR header.",

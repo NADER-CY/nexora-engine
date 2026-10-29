@@ -4,7 +4,7 @@ import { DEFAULT_BRIDGE_MAX_REQUEST_BYTES } from "../config/bridgeMaxRequestByte
 import { parseHopperServerInfo } from "./HopperSessionValues.js";
 
 const health = {
-  name: "REA Hopper bridge",
+  name: "NEXORA ENGINE Hopper bridge",
   version: "1.0.0",
   process_id: 42,
   run_id: "run-1",
@@ -15,7 +15,7 @@ it("treats an omitted request ceiling as the 16 MiB default", () => {
   expect(parsed).toEqual({
     ok: true,
     value: {
-      name: "REA Hopper bridge",
+      name: "NEXORA ENGINE Hopper bridge",
       version: "1.0.0",
       processId: 42,
       maxRequestBytes: DEFAULT_BRIDGE_MAX_REQUEST_BYTES,

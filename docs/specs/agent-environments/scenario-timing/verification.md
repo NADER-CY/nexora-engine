@@ -68,6 +68,6 @@ An independent review rebuilt the branch and tried to refute it. It confirmed by
 that comparisons with and without times compare alike, that each record's duration comes only from its own
 transaction, and that both fields are charged to the event budgets. Its findings are addressed: records now start at the
 browser's own start time rather than the provider's observation, which trailed it by up to 36 ms while other responses
-were read; the docs give the fallback's lag, that earlier REA versions refuse captures carrying the fields, and that the
+were read; the docs give the fallback's lag, that earlier NEXORA ENGINE versions refuse captures carrying the fields, and that the
 comparison's normalization digest changes; and tests cover the fallbacks, partly untimed captures and comparisons with
 untimed captures.

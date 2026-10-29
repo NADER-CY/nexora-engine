@@ -64,7 +64,7 @@ or absence:
 Process captures are opt-in behavioral evidence, not a security sandbox. V3
 captures cannot be upgraded to V4; rerun the original scenario. Distinguish root
 exit from descendant settlement and require freshness when the task needs it.
-A timed-out target that must write a final report needs `finalization_ms`: REA
+A timed-out target that must write a final report needs `finalization_ms`: NEXORA ENGINE
 sends SIGTERM to the captured root, keeps observing, and sends SIGKILL once
 only if the target has not exited by the end of the interval.
 `exit.finalization.signals` lists each attempt with its delivery result; the

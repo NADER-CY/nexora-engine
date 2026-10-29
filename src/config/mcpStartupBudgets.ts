@@ -177,5 +177,5 @@ export const resolveMcpStartupBudgets = (
 export const mcpPhaseBudgetRecovery = (budget: McpPhaseBudget): string =>
   [
     `The effective ${budget.setting} value for the ${budget.phase} is ${String(budget.milliseconds)} ms (source ${budget.source}; default ${String(budget.defaultMilliseconds)} ms, floor ${String(budget.floorMilliseconds)} ms, maximum ${String(budget.maximumMilliseconds)} ms).`,
-    `Set ${budget.setting} in the environment that starts REA to a positive decimal integer from ${String(budget.floorMilliseconds)} to ${String(budget.maximumMilliseconds)}, then restart REA.`,
+    `Set ${budget.setting} in the environment that starts NEXORA ENGINE to a positive decimal integer from ${String(budget.floorMilliseconds)} to ${String(budget.maximumMilliseconds)}, then restart NEXORA ENGINE.`,
   ].join(" ");

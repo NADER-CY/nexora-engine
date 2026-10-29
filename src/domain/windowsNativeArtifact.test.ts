@@ -20,7 +20,7 @@ it("produces and admits the exact manifest/byte identity", () => {
   });
   expect(parseWindowsNativeManifest(manifest, "2.0.0")).toMatchObject({
     ok: false,
-    error: { message: expect.stringContaining("another REA version") },
+    error: { message: expect.stringContaining("another NEXORA ENGINE version") },
   });
   expect(
     validateWindowsNativeArtifact(parsed.value, Buffer.alloc(128)),

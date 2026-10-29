@@ -115,7 +115,7 @@ const sampleWebBundleAnalysis = (): WebBundleAnalysis => ({
 const makeParent = () =>
   createEvidence(
     undefined,
-    { id: "rea-browser", name: "REA Browser", version: "6.8.0" },
+    { id: "rea-browser", name: "NEXORA ENGINE Browser", version: "6.8.0" },
     {
       operation: "analyze_web_bundle",
       parameters: { target_url: "https://example.test/app" },

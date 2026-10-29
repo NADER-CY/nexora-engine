@@ -142,7 +142,7 @@ export const adbInputSchemas = {
       "Installed package name whose APK set is pulled",
     ),
     output_directory: localPathStringSchema.describe(
-      "Local directory for the pulled APK set; REA creates a package-named subdirectory inside it",
+      "Local directory for the pulled APK set; NEXORA ENGINE creates a package-named subdirectory inside it",
     ),
   }),
   read_adb_logcat: z.strictObject({
@@ -262,7 +262,7 @@ export const adbInputSchemas = {
       "Device serial exactly as `adb devices` reports it",
     ),
     output_directory: localPathStringSchema.describe(
-      "Local directory for the bugreport archive; REA writes exactly one new zip into it",
+      "Local directory for the bugreport archive; NEXORA ENGINE writes exactly one new zip into it",
     ),
   }),
   resolve_adb_packages: z.strictObject({

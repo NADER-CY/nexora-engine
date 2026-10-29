@@ -77,7 +77,7 @@ describe("TOML configuration source capacity", () => {
     );
   });
 
-  it("removes only REA from a large multiline Grok disabled-server list", () => {
+  it("removes only NEXORA ENGINE from a large multiline Grok disabled-server list", () => {
     const otherNames = '"other",\n'.repeat(500_000);
     const original =
       `disabled_mcp_servers = [\n"rea",\n${otherNames}]\n` +

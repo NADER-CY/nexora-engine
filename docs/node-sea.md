@@ -1,6 +1,6 @@
 # Node.js single executable applications
 
-REA inventories injected Node.js SEA blobs through `inspect-artifact` /
+NEXORA ENGINE inventories injected Node.js SEA blobs through `inspect-artifact` /
 `inspect_artifact` and materializes their contents through `extract-artifact` /
 `extract_artifact`. It never runs the application or deserializes V8 snapshots
 or code cache.
@@ -22,7 +22,7 @@ analyzer selects extracted files by suffix.
 
 ## Recognition and evidence
 
-The container format is `node-sea`. REA locates Mach-O sections named
+The container format is `node-sea`. NEXORA ENGINE locates Mach-O sections named
 `__NODE_SEA_BLOB` in `NODE_SEA` or `__NODE_SEA`, ELF notes owned by
 `NODE_SEA_BLOB`, and PE RCDATA resources named `NODE_SEA_BLOB`. PE resource
 locations come from the shared PE resource parser. ELF program-header

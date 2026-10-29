@@ -102,7 +102,7 @@ signature.
 gzip (`1f 8b`), xz (`fd 37 7a 58 5a 00`), and zstd (`28 b5 2f fd`) whole-file
 containers are `unsupported`. The result names `external_decompression` as the
 next probe and does not claim the payload is a kernel module. This is an external
-step, not a REA operation: neither this tool nor `extract_artifact` decodes these
+step, not a NEXORA ENGINE operation: neither this tool nor `extract_artifact` decodes these
 containers. Use an external gzip, xz, or zstd utility to decompress into a separate
 file, then call `inspect_kernel_module` on that file to inspect the `ET_REL` image.
 
@@ -125,7 +125,7 @@ These references establish the decoded layout, not runtime verification.
 
 Run from a built checkout with Docker available. This downloads a Debian kernel
 package into a disposable container, extracts a filesystem module, decompresses
-it when necessary, and inspects it with REA. It never installs or loads that
+it when necessary, and inspects it with NEXORA ENGINE. It never installs or loads that
 kernel module. The temporary output is outside the repository; record the
 printed package version and module digest with results.
 
@@ -167,7 +167,7 @@ print('Artifact:', report['artifact'])
 PY
 ```
 
-`parm` and `parmtype` are retained separately by REA. Synthetic tests cover
+`parm` and `parmtype` are retained separately by NEXORA ENGINE. Synthetic tests cover
 their generic key/value representation and all four ELF class/byte-order
 combinations. A successful real lane verifies only the selected module and
 printed fields; it does not validate certificates. This lane has not run in the

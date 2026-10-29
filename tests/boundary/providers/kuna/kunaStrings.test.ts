@@ -24,7 +24,7 @@ it("shares a typed string scan across concurrent searches and exact address read
     expect(literal.result).toEqual([
       {
         address: "0x3000",
-        value: "REA fixture prompt",
+        value: "NEXORA ENGINE fixture prompt",
         string: {
           encoding: "ascii",
           encoding_status: "observed",
@@ -436,7 +436,7 @@ it.each([
               "kuna strings did not finish within REA_KUNA_PROJECT_TIMEOUT_MS (500 ms).",
             remediation: {
               action:
-                "Raise REA_KUNA_PROJECT_TIMEOUT_MS in the environment that starts REA, then restart REA; it reads Kuna settings when it starts.",
+                "Raise REA_KUNA_PROJECT_TIMEOUT_MS in the environment that starts NEXORA ENGINE, then restart NEXORA ENGINE; it reads Kuna settings when it starts.",
             },
           });
         }

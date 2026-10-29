@@ -123,7 +123,7 @@ describe("environment manifests from capture_browser_scenario parents", () => {
       planned.value.files.find((entry) => entry.path === "README.md")
         ?.content ?? "";
     expect(readme).toContain(
-      "exported by REA from one retained browser scenario capture",
+      "exported by NEXORA ENGINE from one retained browser scenario capture",
     );
     expect(readme).toContain(
       `Scenario definition SHA-256: \`${source.value.captureSha256 ?? ""}\``,

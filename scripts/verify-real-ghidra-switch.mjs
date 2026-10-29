@@ -141,7 +141,7 @@ try {
       assert.equal(
         digest(await readFile(path)),
         sha256,
-        "REA analysis changed original compiled fixture",
+        "NEXORA ENGINE analysis changed original compiled fixture",
       );
       results.push({
         compiler,

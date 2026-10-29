@@ -110,7 +110,7 @@ const plural = {
 };
 const provider = {
   id: "rea-function-comparison",
-  name: "REA function comparison",
+  name: "NEXORA ENGINE function comparison",
   version: "1",
 };
 const baselineResult = compareFunctions(

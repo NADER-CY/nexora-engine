@@ -1,6 +1,6 @@
 # Flutter build identification
 
-REA identifies a Flutter app's build facts by **pure parsing** of its APK:
+NEXORA ENGINE identifies a Flutter app's build facts by **pure parsing** of its APK:
 the Dart VM snapshot hash, per-ABI library digests, the engine's GNU
 build-id, and any labeled version strings. No engine, no tool installation,
 no execution, and no external lookups — this family answers "which Dart SDK
@@ -64,7 +64,7 @@ server; older servers keep the complete request after schema discovery.
   partial coverage, without guessing their interpretation.
   Unified `_kDartSnapshotData` / `_kDartSnapshotText` exports are a different
   unsupported profile. The [upstream VM-isolate removal](https://github.com/dart-lang/sdk/commit/d36adbacafee01d9852cf8e960cf2d8654d91e7e)
-  changes both the source layout and the FullAOT kind value. REA reports the
+  changes both the source layout and the FullAOT kind value. NEXORA ENGINE reports the
   observed export names and library identity with a typed unsupported-profile
   refusal when only unified exports are available; it does not alias one header
   into two independent sources.
@@ -176,7 +176,7 @@ server; older servers keep the complete request after schema discovery.
   including [`DT_BIND_NOW`](https://gabi.xinuos.com/elf/08-dynamic.html#dynamic-section),
   do not change discovery; their stored bytes still contribute to the selected
   artifact's digest.
-- REA performs **no hash-to-SDK lookup**: mapping the snapshot hash to a
+- NEXORA ENGINE performs **no hash-to-SDK lookup**: mapping the snapshot hash to a
   Dart SDK release requires an external dataset and is deliberately out of
   scope for this family.
 - The AOT string pool is a **byte-pattern projection, not deserialized

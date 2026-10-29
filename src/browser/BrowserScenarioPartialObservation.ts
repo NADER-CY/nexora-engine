@@ -45,7 +45,7 @@ const browserScenarioLimitations = (
     "Storage values are hashed only after declared-secret redaction.",
     ...(scenario.actions.some(({ action }) => action === "request")
       ? [
-          "Request steps sent their declared requests through the page's own fetch with its cookies and session, following no redirects; they are REA-initiated, not user-interface activity, and header values of at least 8 characters they read from page cookies or local storage are redacted like declared secrets from records made after they were read.",
+          "Request steps sent their declared requests through the page's own fetch with its cookies and session, following no redirects; they are NEXORA ENGINE-initiated, not user-interface activity, and header values of at least 8 characters they read from page cookies or local storage are redacted like declared secrets from records made after they were read.",
         ]
       : []),
     ...(scenario.storage.local_storage.length === 0 &&
@@ -60,7 +60,7 @@ const browserScenarioLimitations = (
       ? [
           "CDP attachment cannot recover pre-attach events or guarantee launch-time context options.",
           `Attached locale ${scenario.environment.locale} applies to Intl formatting only; navigator.language(s) and Accept-Language remain caller-controlled. Use launch mode for matching page and request languages.`,
-          "Detaching a CDP page session may clear caller-owned navigator.platform emulation. REA cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
+          "Detaching a CDP page session may clear caller-owned navigator.platform emulation. NEXORA ENGINE cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
         ]
       : []),
   ];

@@ -114,12 +114,12 @@ describe("MCP response budget recovery", () => {
       `The effective REA_MCP_MAX_RESPONSE_BYTES value is ${String(MINIMUM_RESPONSE_BYTES)} bytes`,
     );
     expect(projected.reason).toContain("floor 10485760 bytes, 10 MiB");
-    expect(projected.reason).toContain("restarting the REA process");
+    expect(projected.reason).toContain("restarting the NEXORA ENGINE process");
     expect(projected.reason).toContain("does not raise");
     expect(projected.reason).toContain("no runtime override");
     expect(NODE_MAX_STRING_LENGTH - MCP_RESULT_STRING_LIMIT).toBe(1024);
     expect(projected.reason).toContain(
-      `REA's reserved single-string limit of ${String(MCP_RESULT_STRING_LIMIT)} UTF-16 code units`,
+      `NEXORA ENGINE's reserved single-string limit of ${String(MCP_RESULT_STRING_LIMIT)} UTF-16 code units`,
     );
     expect(projected.reason).toContain(
       `Node's single-string ceiling of ${String(NODE_MAX_STRING_LENGTH)} UTF-16 code units`,
@@ -143,9 +143,9 @@ describe("MCP response budget recovery", () => {
       effectiveResponseBytes: MINIMUM_RESPONSE_BYTES * 2,
       nextStep: "Use complete CLI JSON output when the analysis completed.",
     });
-    expect(projected.reason).toContain("REA's reserved single-string limit");
+    expect(projected.reason).toContain("NEXORA ENGINE's reserved single-string limit");
     expect(projected.reason).toContain(
-      `REA's reserved single-string limit is ${String(MCP_RESULT_STRING_LIMIT)} UTF-16 code units`,
+      `NEXORA ENGINE's reserved single-string limit is ${String(MCP_RESULT_STRING_LIMIT)} UTF-16 code units`,
     );
     expect(projected.reason).toContain(
       `below Node's single-string ceiling of ${String(NODE_MAX_STRING_LENGTH)} UTF-16 code units`,
@@ -345,7 +345,7 @@ describe("large complete Evidence MCP delivery", () => {
       .parse(detached.structuredContent).error;
     expect(limits.message).toContain("REA_MCP_MAX_RESPONSE_BYTES");
     expect(limits.message).toContain("10485760");
-    expect(limits.message).toContain("restarting the REA process");
+    expect(limits.message).toContain("restarting the NEXORA ENGINE process");
     expect(limits.message).toContain("does not raise");
     expect(limits.message).not.toContain("Export retained evidence");
     expect(limits.remediation.action).toContain("REA_MCP_MAX_RESPONSE_BYTES");

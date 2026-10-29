@@ -326,7 +326,7 @@ const setupPlan = (input: {
               : "system package manager",
           detail:
             input.platform === "linux"
-              ? `Download the current official Hopper demo, verify its PGP publisher and launcher bytes, and retain archive, public-key.asc and release.json under ${input.hopperCacheDirectory ?? `${input.homeDirectory}/.cache/rea/hopper-releases`}/<launcher-sha256> for offline verification. Preserve replaced damaged evidence beside it as <launcher-sha256>.backup-<id>. Install Hopper plus its Xvfb demo-session dependencies${input.linuxPackageFamily === "deb" ? ", including the shared library matching the distribution Python interpreter" : ""}. REA uses a private display and selects Hopper's offered demo mode for each analysis session.`
+              ? `Download the current official Hopper demo, verify its PGP publisher and launcher bytes, and retain archive, public-key.asc and release.json under ${input.hopperCacheDirectory ?? `${input.homeDirectory}/.cache/rea/hopper-releases`}/<launcher-sha256> for offline verification. Preserve replaced damaged evidence beside it as <launcher-sha256>.backup-<id>. Install Hopper plus its Xvfb demo-session dependencies${input.linuxPackageFamily === "deb" ? ", including the shared library matching the distribution Python interpreter" : ""}. NEXORA ENGINE uses a private display and selects Hopper's offered demo mode for each analysis session.`
               : "Download the official Hopper package, verify it, and install it. Hopper may show its demo or license prompt when first opened.",
           external: true,
           operation: "install" as const,
@@ -364,13 +364,13 @@ const setupPlan = (input: {
         kind: "install_skill",
         label:
           client === "claude_code"
-            ? "REA skill for Claude Code"
-            : "REA reverse-engineering skill",
+            ? "NEXORA ENGINE skill for Claude Code"
+            : "NEXORA ENGINE reverse-engineering skill",
         target: path,
         detail:
           client === "claude_code"
-            ? "Install or update the REA skill in Claude Code's personal skill directory."
-            : "Install or update the bundled REA reverse-engineering skill and on-demand references.",
+            ? "Install or update the NEXORA ENGINE skill in Claude Code's personal skill directory."
+            : "Install or update the bundled NEXORA ENGINE reverse-engineering skill and on-demand references.",
         external: false,
         operation: "install",
       }))
@@ -424,7 +424,7 @@ const hopperInstallEligibility = (
   return {
     supported: false,
     remediation:
-      "REA supports Hopper on macOS and selected x86_64 Linux distributions.",
+      "NEXORA ENGINE supports Hopper on macOS and selected x86_64 Linux distributions.",
   };
 };
 
@@ -443,9 +443,9 @@ const clientConfigurationDetail = (
       : ` Detected provider environment: ${entries.join(", ")}. Existing server environment overrides are retained; detected values replace matching keys.`;
   const hopperDetail = installHopper
     ? environment.HOPPER_LAUNCHER_PATH === undefined
-      ? " If this plan installs Hopper, REA will add HOPPER_LAUNCHER_PATH using the launcher path reported by that installation."
-      : " The HOPPER_LAUNCHER_PATH value shown above is the current fallback; if this plan installs Hopper, REA will replace it with the launcher path reported by that installation."
+      ? " If this plan installs Hopper, NEXORA ENGINE will add HOPPER_LAUNCHER_PATH using the launcher path reported by that installation."
+      : " The HOPPER_LAUNCHER_PATH value shown above is the current fallback; if this plan installs Hopper, NEXORA ENGINE will replace it with the launcher path reported by that installation."
     : "";
   const persistence = registrationPersistenceDetail(client);
-  return `Add the REA MCP registration for ${client.displayName ?? client.name}; preserve unrelated configuration. The backup path reflects the configuration inspected for this plan; if that file changes before execution, setup will select a recovery path for its current contents. Command: ${command.map((part) => JSON.stringify(part)).join(" ")}.${environmentDetail}${hopperDetail}${persistence === undefined ? "" : ` ${persistence}`}`;
+  return `Add the NEXORA ENGINE MCP registration for ${client.displayName ?? client.name}; preserve unrelated configuration. The backup path reflects the configuration inspected for this plan; if that file changes before execution, setup will select a recovery path for its current contents. Command: ${command.map((part) => JSON.stringify(part)).join(" ")}.${environmentDetail}${hopperDetail}${persistence === undefined ? "" : ` ${persistence}`}`;
 };

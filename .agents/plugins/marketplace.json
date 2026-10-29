@@ -1,15 +1,14 @@
 {
-  "name": "rea",
+  "name": "nexora-engine",
   "interface": {
-    "displayName": "REA"
+    "displayName": "NEXORA ENGINE"
   },
   "plugins": [
     {
-      "name": "rea",
+      "name": "nexora-engine",
       "source": {
-        "source": "npm",
-        "package": "rea-agents",
-        "version": "6.8.0"
+        "source": "local",
+        "path": "./"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -187,7 +187,7 @@ export const planIntegrationMaintenance = async (
       return {
         status: "unavailable",
         remediation:
-          "The updated setup plan included an integration outside the existing REA maintenance scope.",
+          "The updated setup plan included an integration outside the existing NEXORA ENGINE maintenance scope.",
       };
     return {
       status: "planned",

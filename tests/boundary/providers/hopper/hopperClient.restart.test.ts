@@ -31,7 +31,7 @@ describe("HopperClient restart", () => {
     await expect(client.start()).resolves.toEqual({
       ok: true,
       value: {
-        name: "REA Hopper bridge",
+        name: "NEXORA ENGINE Hopper bridge",
         version: "1.0.0",
         processId: expect.any(Number),
         maxRequestBytes: 16 * 1024 * 1024,
@@ -48,7 +48,7 @@ describe("HopperClient restart", () => {
     await expect(restarting).resolves.toEqual({
       ok: true,
       value: {
-        name: "REA Hopper bridge",
+        name: "NEXORA ENGINE Hopper bridge",
         version: "1.0.0",
         processId: expect.any(Number),
         maxRequestBytes: 16 * 1024 * 1024,

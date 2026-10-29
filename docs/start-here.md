@@ -1,6 +1,6 @@
 # Start here
 
-Choose the path that matches your task. Guides and samples are reused from the earlier documentation work; analysis features proposed in [PR #1](https://github.com/NADER-CY/nexora-engine/pull/1) remain separate from main.
+Choose the path that matches your task. Start with the offline CLI, then add optional AST dependencies or the full provider-backed engine as needed. [PR #1](https://github.com/NADER-CY/nexora-engine/pull/1) supplies the integrated analysis upgrades.
 
 | Goal | Start with |
 |---|---|

@@ -60,7 +60,7 @@ const bridge = join(root, "bridge/ghidra");
 const install = process.env.GHIDRA_INSTALL_DIR;
 if (!install)
   fail(
-    `Set GHIDRA_INSTALL_DIR to an existing Ghidra ${ghidraReleaseLine()} installation (verified with ${SUPPORTED_GHIDRA_VERSION}). REA does not install Ghidra.`,
+    `Set GHIDRA_INSTALL_DIR to an existing Ghidra ${ghidraReleaseLine()} installation (verified with ${SUPPORTED_GHIDRA_VERSION}). NEXORA ENGINE does not install Ghidra.`,
   );
 const properties = await readFile(
   join(install, "Ghidra/application.properties"),
@@ -106,7 +106,7 @@ if (banner.error || banner.status !== 0)
 const major = Number(/^javac (\d+)/mu.exec(output(banner))?.[1]);
 if (!Number.isInteger(major) || major < SUPPORTED_GHIDRA_JAVA_MAJOR)
   fail(
-    `Ghidra ${ghidraReleaseLine()} compiles bridge scripts with Java ${SUPPORTED_GHIDRA_JAVA_MAJOR} or newer. Observed: ${output(banner) || "no version"}. REA does not install or upgrade Java.`,
+    `Ghidra ${ghidraReleaseLine()} compiles bridge scripts with Java ${SUPPORTED_GHIDRA_JAVA_MAJOR} or newer. Observed: ${output(banner) || "no version"}. NEXORA ENGINE does not install or upgrade Java.`,
   );
 
 const jars = (

@@ -31,7 +31,7 @@ const configuration = (
 
 for (const version of ["1.1", "1.2"] as const) {
   cliTest(
-    `Hermes YAML ${version} uninstall preserves an aliased table without REA`,
+    `Hermes YAML ${version} uninstall preserves an aliased table without NEXORA ENGINE`,
     async ({ cli }) => {
       const home = await createTestTempDirectory(
         "rea-hermes-absent-uninstall-",
@@ -63,7 +63,7 @@ for (const version of ["1.1", "1.2"] as const) {
 
   for (const existing of [false, true]) {
     cliTest(
-      `Hermes YAML ${version} ${existing ? "refreshes" : "adds"} REA in an aliased table without changing its source`,
+      `Hermes YAML ${version} ${existing ? "refreshes" : "adds"} NEXORA ENGINE in an aliased table without changing its source`,
       async ({ cli }) => {
         const home = await createTestTempDirectory("rea-hermes-table-alias-");
         const profile = join(home, "profile");
@@ -217,7 +217,7 @@ for (const version of ["1.1", "1.2"] as const) {
 }
 
 cliTest(
-  "Hermes uninstall detaches an aliased table before deleting REA",
+  "Hermes uninstall detaches an aliased table before deleting NEXORA ENGINE",
   async ({ cli }) => {
     const home = await createTestTempDirectory("rea-hermes-aliased-uninstall-");
     const profile = join(home, "profile");

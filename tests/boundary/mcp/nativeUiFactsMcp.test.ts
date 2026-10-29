@@ -204,7 +204,7 @@ it("keeps native UI availability after initial selection errors and preserves la
   replies.push({
     ok: false,
     code: "accessibility-denied",
-    message: "Grant Accessibility to the REA host in System Settings",
+    message: "Grant Accessibility to the NEXORA ENGINE host in System Settings",
   });
   const denied = await client.callTool({
     name: "observe_native_ui",
@@ -213,7 +213,7 @@ it("keeps native UI availability after initial selection errors and preserves la
   expect(parseMcpToolError(denied)).toMatchObject({
     error: {
       code: "capability_unavailable",
-      message: "Grant Accessibility to the REA host in System Settings",
+      message: "Grant Accessibility to the NEXORA ENGINE host in System Settings",
     },
   });
   await client.ping();

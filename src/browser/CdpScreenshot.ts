@@ -181,7 +181,7 @@ export const captureCdpScreenshot = async (
     completeness: navigation.completeness.snapshot(),
     limitations: [
       "The screenshot contains the visible viewport, including on-screen content.",
-      "REA does not scroll, evaluate JavaScript, or capture beyond the current viewport.",
+      "NEXORA ENGINE does not scroll, evaluate JavaScript, or capture beyond the current viewport.",
     ],
   };
 };

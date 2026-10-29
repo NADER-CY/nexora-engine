@@ -6,11 +6,11 @@ Prepared for a human to adapt to a relevant developer community. Not posted auto
 
 **NEXORA ENGINE: local reverse-engineering reports with traceable evidence**
 
-I'm developing NEXORA ENGINE, an MIT-licensed fork of REA by morluto, for developers who want to inspect source code, executable metadata and software dependencies locally.
+I'm developing NEXORA ENGINE, an independently maintained MIT-licensed platform expanded from the REA codebase by morluto, for developers who want to inspect source code, executable metadata and software dependencies locally.
 
 The dependency-free CLI produces lexical function/call candidates for six languages, ELF/PE/thin Mach-O metadata, and file dependency maps with cycle detection. Reports include input hashes, byte ranges and coverage limits so findings can be checked against the artifact. A small included sample lets you try it without installing dependencies.
 
-It's development source—not a finished disassembler or compiler-semantic analyzer. The optional full MCP engine needs its own build and providers; real Ghidra exporter validation remains open. More advanced AST/graph work is proposed in draft PR #1 and is not on main.
+It's development source—not a finished disassembler or compiler-semantic analyzer. The optional full MCP engine needs its own build and providers; real Ghidra exporter validation remains open. Optional JS/TS scope analysis and unified JSON/Mermaid evidence graphs are integrated on main; they remain static candidates rather than runtime proof.
 
 Repository: https://github.com/NADER-CY/nexora-engine
 

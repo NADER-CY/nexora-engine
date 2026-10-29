@@ -78,7 +78,7 @@ export const startMcpTransport = async (
       result.status === "rejected" ? [result.reason] : [],
     );
     if (failures.length > 0)
-      throw new AggregateError(failures, "REA server cleanup failed");
+      throw new AggregateError(failures, "NEXORA ENGINE server cleanup failed");
   };
   const closeAndroid = async (): Promise<void> => {
     const results = await Promise.allSettled(
@@ -231,7 +231,7 @@ export const startMcpTransport = async (
         );
         if (failures.length === 1) throw failures[0];
         if (failures.length > 1)
-          throw new AggregateError(failures, "REA transport cleanup failed");
+          throw new AggregateError(failures, "NEXORA ENGINE transport cleanup failed");
       },
     },
     closeAndroid,

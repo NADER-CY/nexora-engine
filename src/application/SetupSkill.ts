@@ -118,7 +118,7 @@ export class SetupSkillInstallError extends Error {
     readonly cause: unknown;
   }) {
     const message = [
-      `REA skill ${input.stage} failed at ${input.path}: ${input.reason}.`,
+      `NEXORA ENGINE skill ${input.stage} failed at ${input.path}: ${input.reason}.`,
       ...(input.rollbackFailures.length === 0
         ? []
         : [

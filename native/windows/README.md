@@ -1,7 +1,7 @@
 # Windows native controls
 
-REA ships one Windows x64 Node-API 8 addon. Users do not compile it or install
-another runtime. Ghidra and a full JDK remain bring-your-own prerequisites.
+NEXORA ENGINE uses one Windows x64 Node-API 8 addon. Source installations
+must build and verify it before the full engine; no extra runtime is installed. Ghidra and a full JDK remain bring-your-own prerequisites.
 The addon uses Windows 10+ APIs and admits fixed local NTFS volumes only.
 
 The package owns the artifact path. The loader checks the package version,

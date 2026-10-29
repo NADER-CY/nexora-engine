@@ -118,7 +118,7 @@ if (args[0] === "--version") {
   else {
     if (behavior.stringStderrBytes) process.stderr.write(Buffer.alloc(behavior.stringStderrBytes, 0x78));
     if (!args.includes("--no-xrefs") || args[args.indexOf("--encoding") + 1] !== "all") throw new Error("strings must skip reference analysis and include all supported encodings");
-    const rows = (behavior.stringRows ?? [{ address: 12288, text: "REA fixture prompt" }, { address: 12320, text: "Δelta", encoding: "utf8", terminated: false }]).map((item) => ({ address: item.address, address_hex: "0x" + item.address.toString(16), text: item.text, length: [...item.text].length, byte_length: Buffer.byteLength(item.text, item.encoding === "utf16" ? "utf16le" : "utf8") + (item.terminated === false ? 0 : item.encoding === "utf16" ? 2 : 1), nul_terminated: item.terminated !== false, encoding: item.encoding ?? "ascii", section: ".rodata", xrefs_count: 0, functions: [] }));
+    const rows = (behavior.stringRows ?? [{ address: 12288, text: "NEXORA ENGINE fixture prompt" }, { address: 12320, text: "Δelta", encoding: "utf8", terminated: false }]).map((item) => ({ address: item.address, address_hex: "0x" + item.address.toString(16), text: item.text, length: [...item.text].length, byte_length: Buffer.byteLength(item.text, item.encoding === "utf16" ? "utf16le" : "utf8") + (item.terminated === false ? 0 : item.encoding === "utf16" ? 2 : 1), nul_terminated: item.terminated !== false, encoding: item.encoding ?? "ascii", section: ".rodata", xrefs_count: 0, functions: [] }));
     const document = { binary: args[1], encoding: "all", min_length: 5, filter: null, section: null, termination: "any", scanned: "sections", xrefs: false, count: rows.length + (behavior.strings === "miscounted" ? 1 : 0), strings: rows, padding: "x".repeat(behavior.stringPadding ?? 0) };
     setTimeout(() => process.stdout.write(JSON.stringify(document)), behavior.stringDelayMs ?? 0);
   }
@@ -169,7 +169,7 @@ if (args[0] === "--version") {
     asm += "; --- data ---\n\ndat_3000:  ; 0x3000 = dat_3000\n  00003000: 00\n\ng_table:  ; 0x3010\n  00003010: 01\n" + "x".repeat(behavior.asmPadding ?? 0);
     fs.writeFileSync(path.join(output, stem + ".asm"), asm);
     fs.writeFileSync(path.join(output, "README.md"), "# " + stem + "\n");
-    // Occupy the manifest path so REA's publication write fails.
+    // Occupy the manifest path so NEXORA ENGINE's publication write fails.
     if (mode === "block-manifest") fs.mkdirSync(path.join(output, "..", "manifest.json"));
     const failed = functions.filter((fn) => fn.error !== undefined).length;
     const reported = mode === "miscounted" ? functions.length + 1 : functions.length - failed;

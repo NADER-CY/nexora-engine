@@ -156,7 +156,7 @@ it.skipIf(process.versions.bun !== undefined && jobLimit === null)(
     expect(controlText).toContain("floor 8 MiB");
     expect(controlText).toContain("maximum 16384 MiB");
     expect(controlText).toContain(
-      "Set REA_CAPTURE_DECODER_OLD_GENERATION_MIB in the environment that starts REA",
+      "Set REA_CAPTURE_DECODER_OLD_GENERATION_MIB in the environment that starts NEXORA ENGINE",
     );
     await truncate(path, WEB_NETWORK_CAPTURE_LIMITS.inputBytes + 1);
     const oversized = await call("inspect_web_network_capture", {

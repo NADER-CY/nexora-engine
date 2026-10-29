@@ -13,4 +13,28 @@ On Windows use `analyzeHeadless.bat` and PowerShell's `&` invocation operator wi
 
 The original binary SHA-256 in the header is provider-reported. Do not assume the importer independently authenticates it unless binary-identity verification is explicitly requested and reported. Pseudocode is decompiler-derived. API compatibility, real headless execution and tool availability are reported in [milestones](../milestones.md); fixture ingestion alone does not establish real Ghidra success.
 
-On main, the binary digest remains provider-reported. The independent `--binary` identity check is proposed only in [draft PR #1](https://github.com/NADER-CY/nexora-engine/pull/1); do not use that option on main.
+## Requirements and provider setup
+
+The full provider checks its supported Ghidra 12.x contract (12.1 or newer) and the selected release's `application.properties` Java requirements. Ghidra 12.1 requires JDK 21+; 12.2 requires JDK 25+. Use a full compatible JDK, not merely a JRE. No Ghidra or Java installation occurred in this verification. See [provider contract](../ghidra-provider.md) for supported host lanes and limitations; Windows x64 is experimental read-only P0.
+
+Set absolute paths in the launching terminal, replacing examples with your installation:
+
+```powershell
+$env:GHIDRA_INSTALL_DIR = 'C:\tools\ghidra'
+$env:JAVA_HOME = 'C:\tools\jdk'
+node scripts/nexora-engine.mjs doctor --provider ghidra --json
+```
+
+On POSIX shells use `export GHIDRA_INSTALL_DIR=/absolute/ghidra` and `export JAVA_HOME=/absolute/jdk`. The native decompiler must match the host OS/architecture.
+
+## Verify export identity
+
+```sh
+node nexora/bin/nexora.mjs ghidra-report /absolute/tmp/export.jsonl --binary /absolute/tmp/nexora-example
+```
+
+The importer independently hashes the supplied binary and rejects a mismatched export header. Without `--binary`, header identity is provider-reported. A missing footer or interrupted export remains partial. The bundled synthetic JSONL validates ingestion only, not real Ghidra API compilation or decompiler output.
+
+## Conditional full-engine analysis
+
+After building the full engine and passing provider diagnostics, invoke `analyze <binary> --provider ghidra --json`. Select a function address from the analysis, then invoke `decompile <binary> <address> --provider ghidra --json` through `node scripts/nexora-engine.mjs`. These are source-derived workflows; real provider execution is unverified here.

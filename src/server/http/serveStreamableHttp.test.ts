@@ -314,7 +314,7 @@ it("refuses a non-loopback bind without an operator host allowlist as a typed li
 });
 
 it.each([
-  ["REA.LAN", "rea.lan"],
+  ["NEXORA ENGINE.LAN", "rea.lan"],
   ["rea.lan.", "rea.lan."],
   ["bücher.example", "xn--bcher-kva.example"],
   ["127.0.0.1", "127.0.0.1"],

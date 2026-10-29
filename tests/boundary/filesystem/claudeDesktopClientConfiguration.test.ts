@@ -140,7 +140,7 @@ describe("Windows Claude Desktop configuration location", () => {
     const inspection = await inspectClientConfiguration(client, {}, command);
     expect(inspection.status).toBe("invalid");
     expect(inspection.status === "invalid" && inspection.remediation).toContain(
-      `Add REA's entry to ${appDataConfig} by hand while Claude Desktop is fully quit`,
+      `Add NEXORA ENGINE's entry to ${appDataConfig} by hand while Claude Desktop is fully quit`,
     );
   });
 
@@ -511,7 +511,7 @@ describe("MSIX Claude Desktop uninstall", () => {
         name: "claude_desktop",
         status: "failed",
         detail: expect.stringContaining(
-          `Remove REA's entry by hand from each of ${privateConfig} and ${appDataConfig} that has one`,
+          `Remove NEXORA ENGINE's entry by hand from each of ${privateConfig} and ${appDataConfig} that has one`,
         ),
       }),
     );
@@ -533,7 +533,7 @@ describe("MSIX Claude Desktop uninstall", () => {
     expect(await readJson(appDataConfig)).toEqual(unrelated);
   });
 
-  it("removes REA from both the private copy and AppData on uninstall", async () => {
+  it("removes NEXORA ENGINE from both the private copy and AppData on uninstall", async () => {
     const { home, env, appDataConfig, privateConfig } = await windowsProfile();
     await writeJson(privateConfig, {
       preferences: {},

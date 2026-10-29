@@ -122,7 +122,7 @@ export class DshCordisDocument {
               (op) => op.unknownApplicability && op.ownedRows.length > 0,
             )
           ? new ConfigurationError(
-              "Cordis REA insertion targets a group with unknown activity; use a direct insertion before setup",
+              "Cordis NEXORA ENGINE insertion targets a group with unknown activity; use a direct insertion before setup",
             )
           : this.#unknownSelector
             ? new ConfigurationError(
@@ -217,7 +217,7 @@ export class DshCordisDocument {
       );
     if (config !== undefined && !isRecord(config))
       return err(
-        new ConfigurationError("Cordis REA config must be a mapping", {
+        new ConfigurationError("Cordis NEXORA ENGINE config must be a mapping", {
           settings: [
             {
               setting: "config",

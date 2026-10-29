@@ -83,7 +83,7 @@ try {
     ).stdout.trim();
   } catch (cause) {
     throw new Error(
-      "verify:go:binary requires Go on PATH or absolute REA_VERIFY_GO_COMMAND; Go is only a fixture producer, not a REA runtime dependency.",
+      "verify:go:binary requires Go on PATH or absolute REA_VERIFY_GO_COMMAND; Go is only a fixture producer, not a NEXORA ENGINE runtime dependency.",
       { cause },
     );
   }
@@ -280,7 +280,7 @@ async function prepareFixture() {
   );
   await writeFile(
     join(sourceRoot, "dependency", "dependency.go"),
-    'package dependency\nfunc Value() string { return "REA fixture" }\n',
+    'package dependency\nfunc Value() string { return "NEXORA ENGINE fixture" }\n',
   );
   await writeFile(
     join(sourceRoot, "main.go"),

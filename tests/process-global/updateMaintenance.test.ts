@@ -77,7 +77,7 @@ const action = {
   kind: "configure_client",
   label: "Codex",
   target: "/test/.codex/config.toml",
-  detail: "Refresh the pinned REA version",
+  detail: "Refresh the pinned NEXORA ENGINE version",
   external: false,
   operation: "update",
   backupPath: "/test/.codex/config.toml.rea.backup",
@@ -303,7 +303,7 @@ describe("registration ownership in maintenance", () => {
   });
 });
 
-describe("existing REA integration maintenance", () => {
+describe("existing NEXORA ENGINE integration maintenance", () => {
   it("does not install a missing skill or overwrite an unrelated skill", async () => {
     await expect(
       existingMaintenanceScope(home, entryPoint, process.env),
@@ -322,9 +322,9 @@ describe("existing REA integration maintenance", () => {
     });
   });
 
-  it("includes an existing REA skill and leaves files untouched", async () => {
+  it("includes an existing NEXORA ENGINE skill and leaves files untouched", async () => {
     const path = await writeSkill(
-      `---\nname: ${PRODUCT_IDENTITY.skillName}\nmetadata:\n  version: "1"\n---\n# REA\n`,
+      `---\nname: ${PRODUCT_IDENTITY.skillName}\nmetadata:\n  version: "1"\n---\n# NEXORA ENGINE\n`,
     );
     const original = await readFile(path, "utf8");
     await expect(
@@ -521,7 +521,7 @@ describe("updated executable maintenance planning", () => {
   it("runs real setup as a noninteractive dry run and creates no new integrations or backups", async () => {
     const configPath = await writeClient("codex", staleCodex);
     const untouched = await writeClient("claude_code", '{"mcpServers":{}}');
-    const skillContent = `---\nname: ${PRODUCT_IDENTITY.skillName}\nmetadata:\n  version: "1"\n---\n# REA\n`;
+    const skillContent = `---\nname: ${PRODUCT_IDENTITY.skillName}\nmetadata:\n  version: "1"\n---\n# NEXORA ENGINE\n`;
     const skillPath = await writeSkill(skillContent);
     vi.stubEnv("npm_command", "exec");
     const result = await planIntegrationMaintenance(
@@ -760,7 +760,7 @@ describe("Bun global installation update", () => {
           currentVersion: "3.2.1",
           latestVersion: null,
           reason: "version-check",
-          remediation: `REA updates for Bun global installations require Bun 1.2.17 or later; bun --version returned ${JSON.stringify(bunVersion)}. Upgrade Bun manually, then rerun rea update.`,
+          remediation: `NEXORA ENGINE updates for Bun global installations require Bun 1.2.17 or later; bun --version returned ${JSON.stringify(bunVersion)}. Upgrade Bun manually, then rerun rea update.`,
         });
         expect(invocations).toEqual([versionInvocation]);
         expect(await readFile(versionPath, "utf8")).toBe("3.2.1");

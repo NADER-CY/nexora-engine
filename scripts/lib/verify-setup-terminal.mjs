@@ -38,7 +38,7 @@ export async function verifyInteractiveSetup({
       environment: { ...environment, NO_COLOR: "1", TERM: "xterm-256color" },
       timeoutMs: 20_000,
       onData(output, write) {
-        if (!cancelled && output.includes("Which agents should use REA?")) {
+        if (!cancelled && output.includes("Which agents should use NEXORA ENGINE?")) {
           cancelled = true;
           write("\u0003");
         }
@@ -127,8 +127,8 @@ export async function verifyRedirectedStdoutSetup({
     childResult?.stdinTTY !== true ||
     childResult?.stderrTTY !== true ||
     childResult?.stdoutRedirected !== true ||
-    childResult?.stdout?.includes("Which agents should use REA?") ||
-    allOutput.includes("Which agents should use REA?") ||
+    childResult?.stdout?.includes("Which agents should use NEXORA ENGINE?") ||
+    allOutput.includes("Which agents should use NEXORA ENGINE?") ||
     /\u001b\[[0-9;?]*[ -/]*[@-~]/u.test(allOutput)
   )
     throw new Error(

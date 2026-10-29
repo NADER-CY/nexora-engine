@@ -114,7 +114,7 @@ it.skipIf(process.platform === "win32")(
     const valid = join(root, "valid");
     const runtime = javaScriptRuntime(process.versions).id;
     const script = join(root, "rea.mjs");
-    await writeFile(script, "// selected REA script\n");
+    await writeFile(script, "// selected NEXORA ENGINE script\n");
     for (const directory of [foreign, missing, valid]) await mkdir(directory);
     await writeFile(join(foreign, runtime), '#!/bin/sh\nexec node "$@"\n', {
       mode: 0o700,
@@ -180,14 +180,14 @@ it.skipIf(process.platform === "win32")(
 );
 
 it.skipIf(process.platform === "win32")(
-  "retains unknown runtime identity after its executable disappears despite a known REA script",
+  "retains unknown runtime identity after its executable disappears despite a known NEXORA ENGINE script",
   async () => {
     const home = await createTestTempDirectory("rea-removed-runtime-");
     const executable = join(home, "node");
     const script = join(home, "rea.mjs");
     const config = join(home, ".cursor", "mcp.json");
     await symlink(process.execPath, executable);
-    await writeFile(script, "// selected REA script\n");
+    await writeFile(script, "// selected NEXORA ENGINE script\n");
     await mkdir(join(home, ".cursor"));
     const command = [executable, script, "mcp"];
     const original = JSON.stringify({

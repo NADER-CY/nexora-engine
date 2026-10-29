@@ -446,7 +446,7 @@ export class BrowserScenarioSecrets {
           new AnalysisInputError(
             "capture_browser_scenario",
             {
-              userMessage: `Set environment variable ${declaration.environment_variable} for browser scenario secret ${declaration.secret_id} in the environment that starts REA, then retry.`,
+              userMessage: `Set environment variable ${declaration.environment_variable} for browser scenario secret ${declaration.secret_id} in the environment that starts NEXORA ENGINE, then retry.`,
             },
             [
               {

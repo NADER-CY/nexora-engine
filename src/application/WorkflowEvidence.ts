@@ -190,7 +190,7 @@ export const createWorkflowEvidence = (input: {
       ? {}
       : { evidenceLinks: input.upstreamEvidenceLinks }),
     limitations: [
-      "Derived by an REA composed workflow.",
+      "Derived by an NEXORA ENGINE composed workflow.",
       ...input.upstreamLimitations,
     ],
     ...(input.operation === "batch_decompile"

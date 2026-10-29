@@ -50,7 +50,7 @@ coverage, read-range identity and unknowns; directory snapshot identity is not
 a digest of every file's contents. Component path markers do not establish
 runtime presence. For compact CLI output, use
 `inspect-desktop-application PATH --detail summary --evidence_output BUNDLE`.
-See [desktop installations](https://github.com/morluto/rea/blob/main/docs/desktop-applications.md).
+See [desktop installations](https://github.com/NADER-CY/nexora-engine/blob/main/docs/desktop-applications.md).
 
 ## Go build metadata
 
@@ -72,7 +72,7 @@ read weights or establish full-file identity. `hash: "full"` explicitly streams
 all bytes. Retained `model-artifact` views page `metadata`, `tensors` and derived
 `types`, with exact batch filters and selected fields. Arrays retain typed counts
 and eight-element previews; omitted values, unknown types and runtime behavior
-stay explicit. See [model files](https://github.com/morluto/rea/blob/main/docs/model-artifacts.md).
+stay explicit. See [model files](https://github.com/NADER-CY/nexora-engine/blob/main/docs/model-artifacts.md).
 
 ## IL2CPP metadata
 
@@ -90,7 +90,7 @@ without member collections retain unknown counts rather than empty inventories. 
 artifact SHA-256 and index widths. Unrecognized magic may mean encryption and
 is unsupported, not decrypted. Linking names to `GameAssembly` or
 `UnityFramework` code addresses remains a separate native-analysis question.
-See [IL2CPP metadata](https://github.com/morluto/rea/blob/main/docs/il2cpp-metadata.md).
+See [IL2CPP metadata](https://github.com/NADER-CY/nexora-engine/blob/main/docs/il2cpp-metadata.md).
 
 ## Rust dependency metadata
 
@@ -103,7 +103,7 @@ Preserve artifact SHA-256, package order, dependency indices, and the section
 file range. A missing section is null metadata, not proof the binary has no
 dependencies. An omitted package kind stays null. A rustc commit hash is
 inferred from a read-only `/rustc/<40-hex>/` path and does not by itself
-identify the compiler. See [Rust binaries](https://github.com/morluto/rea/blob/main/docs/rust-binaries.md).
+identify the compiler. See [Rust binaries](https://github.com/NADER-CY/nexora-engine/blob/main/docs/rust-binaries.md).
 
 ## PE Authenticode certificate tables
 
@@ -117,7 +117,7 @@ payload hashes, original validity-time spellings, and
 `IMAGE_DIRECTORY_ENTRY_SECURITY` directory is observed absence of that table,
 not proof the image is unsigned in every catalog or overlay sense. Signatures,
 chains, timestamps, and Authenticode digest coverage remain unobserved. See
-[PE Authenticode certificate tables](https://github.com/morluto/rea/blob/main/docs/pe-certificates.md).
+[PE Authenticode certificate tables](https://github.com/NADER-CY/nexora-engine/blob/main/docs/pe-certificates.md).
 
 ## PE import and delay-load tables
 
@@ -130,7 +130,7 @@ ILT/IAT RVAs. A missing `IMAGE_DIRECTORY_ENTRY_IMPORT` directory is observed
 absence of that table, not proof the image never imported APIs through another
 table or overlay. Bound snapshots, loaded IAT contents, and export-forward
 resolution remain unobserved. See
-[PE import and delay-load tables](https://github.com/morluto/rea/blob/main/docs/pe-imports.md).
+[PE import and delay-load tables](https://github.com/NADER-CY/nexora-engine/blob/main/docs/pe-imports.md).
 
 ## PE TLS callbacks and load configuration
 
@@ -143,7 +143,7 @@ SHA-256, directory and callback-array file ranges, and callback VAs as
 hexadecimal strings. Fields outside the declared `Size` are `null`. Guard-flag
 mitigations carry `evidence_kind: "inferred"`; enforcement remains unobserved.
 See
-[PE TLS callbacks and load configuration](https://github.com/morluto/rea/blob/main/docs/pe-load-config.md).
+[PE TLS callbacks and load configuration](https://github.com/NADER-CY/nexora-engine/blob/main/docs/pe-load-config.md).
 
 ## ELF note tables
 
@@ -154,7 +154,7 @@ is `inspect-elf-notes PATH`. Preserve artifact SHA-256, table file ranges,
 descriptor hashes, and original owner spellings. A missing table is observed
 absence of those declarations, not proof the image never carried notes in
 another container. See
-[ELF note tables](https://github.com/morluto/rea/blob/main/docs/elf-notes.md).
+[ELF note tables](https://github.com/NADER-CY/nexora-engine/blob/main/docs/elf-notes.md).
 
 ## Apple IPS crash reports
 
@@ -166,7 +166,7 @@ Xcode, atos, or target execution is required. The CLI equivalent is
 uppercase image UUIDs, and integer literals that exceed IEEE-754 range. Only
 `bug_type` `"309"` yields a crash body; other DiagnosticReports types return
 no crash result. Opened Mach-O and dSYM UUID joins remain unobserved. See
-[Apple IPS crash reports](https://github.com/morluto/rea/blob/main/docs/apple-ips.md).
+[Apple IPS crash reports](https://github.com/NADER-CY/nexora-engine/blob/main/docs/apple-ips.md).
 
 ## Linux kernel modules
 
@@ -185,7 +185,7 @@ unvalidated. An absent trailer is not proof the module is unsigned in another
 container. gzip, xz, and zstd whole-file containers are unsupported and name
 `external_decompression` as the next probe: use an external codec utility to
 decompress into a separate file, then call `inspect_kernel_module` on that file. See
-[Linux kernel modules](https://github.com/morluto/rea/blob/main/docs/kernel-modules.md).
+[Linux kernel modules](https://github.com/NADER-CY/nexora-engine/blob/main/docs/kernel-modules.md).
 
 ## CPython pyc files
 
@@ -195,7 +195,7 @@ code-object names, or bytecode identity. No `open_binary`, Python installation,
 or target execution is required. The CLI equivalent is `inspect-python-pyc PATH`.
 Preserve artifact SHA-256, the 16-byte header fields, nested code names, and
 bytecode SHA-256. Bytecode is not decompiled. A decoded header does not prove
-the matching `.py` is present. See [CPython pyc inspection](https://github.com/morluto/rea/blob/main/docs/python-pyc.md).
+the matching `.py` is present. See [CPython pyc inspection](https://github.com/NADER-CY/nexora-engine/blob/main/docs/python-pyc.md).
 
 ## Erlang BEAM files
 
@@ -209,7 +209,7 @@ a `beam` view selecting a collection, exact names/indices and fields; read later
 pages from `parent_evidence_id` or the complete Evidence bundle. Same-name
 exports retain every arity and original atom index. CLI summary delivery requires
 `--evidence_output`. Null table counts remain distinct from decoded empty tables. See
-[Erlang BEAM files](https://github.com/morluto/rea/blob/main/docs/erlang-beam.md).
+[Erlang BEAM files](https://github.com/NADER-CY/nexora-engine/blob/main/docs/erlang-beam.md).
 
 ## SQLite snapshots
 
@@ -222,9 +222,9 @@ schema and samples 20 rows. Select `columns` to avoid irrelevant or large cells,
 and request `schema_scope: "database"` only for complete schema details.
 Choose `row_limit` when a finite sample is useful and keep truncation and
 unspecified row order explicit. Virtual tables, shadow tables and views are
-schema facts, not row-read targets. REA inspects private copies and leaves
+schema facts, not row-read targets. NEXORA ENGINE inspects private copies and leaves
 the source files untouched; obtain a coherent quiescent database/WAL snapshot
-before inspection. See [SQLite snapshots](https://github.com/morluto/rea/blob/main/docs/sqlite-databases.md).
+before inspection. See [SQLite snapshots](https://github.com/NADER-CY/nexora-engine/blob/main/docs/sqlite-databases.md).
 
 ## Recorded Linux crashes
 
@@ -239,7 +239,7 @@ The optional `include_debugger_context` facet adds mapping candidates through
 caller-supplied GDB/pwndbg in an owned core-only session. Display names do not
 establish current file identity; zero reported flags leave permissions unknown.
 Requested unavailable context fails with setup guidance. See
-[recorded crashes](https://github.com/morluto/rea/blob/main/docs/recorded-crashes.md)
+[recorded crashes](https://github.com/NADER-CY/nexora-engine/blob/main/docs/recorded-crashes.md)
 for exact upstream profiles, bounds and verification coverage.
 
 ## Offline ELF layout
@@ -324,7 +324,7 @@ run, use `observe_native_calls` with explicit breakpoints and a bounded
 runs and may change files or use the network. Hardened-runtime targets need the
 `get-task-allow` entitlement.
 Function breakpoints use exact LLDB runtime names: pass an `inspect_macho` export
-or import `runtime_name` (`main`), not its symbol-table `name` (`_main`). REA does
+or import `runtime_name` (`main`), not its symbol-table `name` (`_main`). NEXORA ENGINE does
 not translate breakpoint names. Set `module` to the image
 file name when selecting that image only; otherwise loaded system images also
 match. Inspect retained locations and module paths before attributing a call.
@@ -352,13 +352,13 @@ detail, describe possible providers. Top-level session capabilities describe the
 When the caller supplies an expanded project, configure `REA_GHIDRA_PROJECT_PATH`
 (the `.gpr` marker) and optionally `REA_GHIDRA_PROGRAM_NAME` (one root program),
 then restart/reconnect before `open_binary`. CLI uses the same configuration.
-REA opens only a fingerprint-bound owned copy with `-process -noanalysis -readOnly`;
+NEXORA ENGINE opens only a fingerprint-bound owned copy with `-process -noanalysis -readOnly`;
 original project files are not opened by the engine or saved. Database edits,
 import overrides and repair scripts are unavailable in this mode. Treat original
 analysis completeness/settings as unknown and prior edits as caller-project state.
 The program's recorded import digest must match the target; changed project content
 requires reopening for a fresh profile. See the
-[setup and preparation guide](https://github.com/morluto/rea/blob/main/docs/installation.md#reuse-an-existing-ghidra-project).
+[setup and preparation guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/installation.md#reuse-an-existing-ghidra-project).
 
 ## Ghidra startup deadline recovery
 
@@ -369,15 +369,15 @@ bridge startup, and readiness. The default 330,000 ms is configurable through
 When the error names `ghidra.startup_timeout_ms`, call
 `update_analysis_settings` with `action: "set"` and a larger value within the
 reported bounds. Resolve retained cleanup before the next startup attempt.
-No REA restart is needed; an already accepted startup keeps its original
+No NEXORA ENGINE restart is needed; an already accepted startup keeps its original
 budget. A new attempt repeats import. Preserve useful Evidence before closing
 and reopening the target when remediation requires that lifecycle step.
 
 For a per-function timeout, update `ghidra.decompile_timeout_seconds` and retry
 the same function on the existing Program. Explicit `null` removes that
 per-function deadline. Inspection is optional when the error supplies the
-setting and bounds. Runtime updates disappear when REA exits; environment
-changes only seed future REA processes.
+setting and bounds. Runtime updates disappear when NEXORA ENGINE exits; environment
+changes only seed future NEXORA ENGINE processes.
 
 The client's tool-call deadline must allow startup plus the requested query;
 server settings and progress notifications cannot override it. CLI analysis
@@ -392,7 +392,7 @@ and memory controls in place. Disable specific expensive analyzers only when
 their missing coverage is acceptable and retain the resulting limitations.
 Exported C and embedded resources remain useful independent evidence, but a
 timeout does not establish complete analysis or absence of code. See the
-[deadline and client guide](https://github.com/morluto/rea/blob/main/docs/mcp-contracts.md#ghidra-first-query-deadlines-and-recovery).
+[deadline and client guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/mcp-contracts.md#ghidra-first-query-deadlines-and-recovery).
 
 ## Bridge request ceiling
 
@@ -407,7 +407,7 @@ the framing LF still fits. Cutter measures, signs, and writes a fitting
 response in bounded chunks. The bridge searches only the newly read bytes
 for the framing LF. The client unescapes each socket chunk into one response
 string before parsing it, so this ceiling does not keep the paged wire frame
-and another concatenated copy. Invalid values are configuration errors and do not fall back to 16777216. Set the variable in the environment that starts REA, restart REA,
+and another concatenated copy. Invalid values are configuration errors and do not fall back to 16777216. Set the variable in the environment that starts NEXORA ENGINE, restart NEXORA ENGINE,
 and start Hopper or Cutter from that same environment. An out-of-band bridge
 without the setting stays at 16777216 bytes. The client reports that mismatch
 during discovery only after the hello proves a live authenticated bridge, and
@@ -491,7 +491,7 @@ that a class is a root class or has no ivars.
 
 ## Managed PE/CLI
 
-Start with `inspect_managed_artifact`. REA's canonical managed inspection is
+Start with `inspect_managed_artifact`. NEXORA ENGINE's canonical managed inspection is
 execution-free: do not claim it loaded, reflected, executed, or resolved the
 assembly. Keep managed/native boundaries and unavailable reconstruction facts
 explicit. A bring-your-own reconstruction oracle is separate from the canonical
@@ -528,17 +528,17 @@ inference.
 
 NativeAOT images can be PE/COFF, ELF, or Mach-O executables and shared
 libraries. Use file bytes and loader metadata rather than suffixes to identify
-them. For packaged apps, inventory/extract with REA's artifact tools and retain
+them. For packaged apps, inventory/extract with NEXORA ENGINE's artifact tools and retain
 the exact contained image identity. PDB, ELF debug, or dSYM sidecars are
 additional evidence only when the provider accepts and matches them.
 
-REA has a built-in read-only snapshot parser for x64 PE targets with .NET 8 RTR
+NEXORA ENGINE has a built-in read-only snapshot parser for x64 PE targets with .NET 8 RTR
 9.1 metadata. An optional headless Ghidra adapter adds database annotations and
 broader metadata recovery on Linux; it requires an explicitly configured
 NativeAOT JAR. These are separate routes. The built-in parser also runs on
 Windows Ghidra P0; read frozen literals from its report, because
 `search_strings` does not include them. See the
-[NativeAOT guide](https://github.com/morluto/rea/blob/main/docs/ghidra-nativeaot.md)
+[NativeAOT guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/ghidra-nativeaot.md)
 for setup, supported layouts, and host restrictions. Preserve binary identity
 and distinguish derived metadata from Ghidra database observations. Recovered
 types and native pseudocode are not original C# source. Windows Ghidra P0 has
@@ -567,9 +567,9 @@ every executable in the bundle. It also lists missing or weak loads and earlier
 provides them.
 
 Use `extract_artifact` when materialized files from a supported format are needed.
-It extracts the active target and accepts optional `integrity_policy`; see the [MCP contracts](https://github.com/morluto/rea/blob/main/docs/mcp-contracts.md).
+It extracts the active target and accepts optional `integrity_policy`; see the [MCP contracts](https://github.com/NADER-CY/nexora-engine/blob/main/docs/mcp-contracts.md).
 It materializes all regular files into a fresh temporary directory chosen by
-REA. Symlinks and encrypted entries are inventory facts, not extractable files.
+NEXORA ENGINE. Symlinks and encrypted entries are inventory facts, not extractable files.
 The result reports the materialized directory; callers do not choose the
 destination. No separate permission grant is needed.
 
@@ -579,13 +579,13 @@ flag. Unsupported hosts or mount failures remain explicit limitations; do not
 claim child inventory when only root identity is available. DMG extraction is
 unavailable through `extract_artifact`. To access DMG files on macOS, create a
 read-only mount with your own tools, select files from that mount for analysis,
-and detach the mount you created when finished. REA's inspection mount is
+and detach the mount you created when finished. NEXORA ENGINE's inspection mount is
 temporary, not a retained export of the image's contents.
 
 For headerless DOS COM, explicitly open with `format: "dos-com"` (CLI
 `--target-format dos-com`). Inspect the load image before trusting function
 analysis: the entry is `0x10100`, file offset zero, with imposed real-mode segment
-context. PSP/stack/device state remains unmodeled. See [DOS guide](https://github.com/morluto/rea/blob/main/docs/ghidra-dos.md).
+context. PSP/stack/device state remains unmodeled. See [DOS guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/ghidra-dos.md).
 
 Use `inspect_byte_entropy` to triage high- and low-entropy ranges before extraction.
 
@@ -599,7 +599,7 @@ otherwise. Big-endian ARM, Thumb-only, and Cortex-M variants are unsupported.
 `0x0000..0xffff`. 65C02, 65816, cartridge containers, bank switching, and mapper
 semantics are unsupported. `m68k` requires an even entry and decodes the 68040
 superset of the 68000 family; Amiga/Atari containers and vector-table entry
-discovery are unsupported. Windows Ghidra P0 admits raw images only for `6502`. See [raw binary guide](https://github.com/morluto/rea/blob/main/docs/raw-binary.md).
+discovery are unsupported. Windows Ghidra P0 admits raw images only for `6502`. See [raw binary guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/raw-binary.md).
 
 ### Function annotations in Ghidra
 
@@ -616,7 +616,7 @@ code pages, payload hashes and static icon-group references. Same-language icon
 resolution is explicit; missing references and size mismatch remain visible.
 Other payloads are opaque, and this operation does not decode images or simulate
 Windows resource loading. Consult the budgets and supported tree profile in
-[offline binary diagnostics](https://github.com/morluto/rea/blob/main/docs/binary-diagnostics.md).
+[offline binary diagnostics](https://github.com/NADER-CY/nexora-engine/blob/main/docs/binary-diagnostics.md).
 
 ## Offline PE and ELF export tables
 
@@ -626,7 +626,7 @@ directory or ELF dynamic symbol table on any host without opening a native
 target. Ordinal-only, forwarded and hidden-version exports stay distinct;
 partial or unsupported coverage means the inventory is incomplete, not that
 exports are absent. Use `inspect_macho` for Mach-O. See
-[offline binary diagnostics](https://github.com/morluto/rea/blob/main/docs/binary-diagnostics.md).
+[offline binary diagnostics](https://github.com/NADER-CY/nexora-engine/blob/main/docs/binary-diagnostics.md).
 
 For exact core-module import/export differences, use `compare_wasm_interfaces`
 with two complete inspection Evidence records (or current-session retained
@@ -651,7 +651,7 @@ coverage; encrypted members have unknown content identity. An empty filtered
 page cannot prove absence in unknown coverage. Retained views are historical,
 not fresh filesystem checks. No decryption, Godot resource decoding, GDScript
 decompilation or target execution is provided. See
-[Godot PCK](https://github.com/morluto/rea/blob/main/docs/godot-pck.md).
+[Godot PCK](https://github.com/NADER-CY/nexora-engine/blob/main/docs/godot-pck.md).
 
 UnityFS AssetBundle containers (`.bundle`, `.ab`, YooAsset packages and other
 byte-identified files) list `CAB-*` SerializedFiles and `.resS` members with
@@ -661,4 +661,4 @@ coverage; LZMA member bytes retain named occurrences with unavailable hashes.
 Virtual member offsets are not physical carrier locations. Format 6–8 readers
 cache one decoded block and support retained filtered/paged views. No
 decryption or SerializedFile object decoding is provided. See
-[UnityFS](https://github.com/morluto/rea/blob/main/docs/unityfs.md).
+[UnityFS](https://github.com/NADER-CY/nexora-engine/blob/main/docs/unityfs.md).

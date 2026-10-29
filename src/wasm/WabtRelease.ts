@@ -2,7 +2,7 @@
 export const WABT_VERSION = "1.0.42";
 export const WABT_PROVIDER_IDENTITY = {
   id: "wabt-artifact",
-  name: "REA WABT artifact adapter",
+  name: "NEXORA ENGINE WABT artifact adapter",
   version: `wabt@${WABT_VERSION}`,
 } as const;
 export const WABT_LIMITS = {

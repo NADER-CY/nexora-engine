@@ -384,7 +384,7 @@ cliTest("uninstall names each retained skill directory", async ({ cli }) => {
     ["claude_code", claude],
   ] as const) {
     expect(skill?.detail).toContain(
-      `${client} (${directory}): retained (Skill manifest is not REA-owned.)`,
+      `${client} (${directory}): retained (Skill manifest is not NEXORA ENGINE-owned.)`,
     );
     expect(await readFile(join(directory, "SKILL.md"), "utf8")).toBe(
       "---\nname: unrelated\n---\n",

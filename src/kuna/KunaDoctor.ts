@@ -157,7 +157,7 @@ export const inspectKunaProvider = async (
         detail: `${value.executable} reports Kuna ${value.version} (sha256 ${value.sha256})${
           value.verified
             ? "."
-            : `; REA verified ${KUNA_VERIFIED_VERSION}, so this release's project layout is unverified.`
+            : `; NEXORA ENGINE verified ${KUNA_VERIFIED_VERSION}, so this release's project layout is unverified.`
         }`,
         remediation: null,
         classification: "config_drift",
@@ -224,7 +224,7 @@ const cacheCheck = async (
         code: "open_options_invalid",
         detail: `The Kuna cache root ${cacheRoot} exists but is not a directory.`,
         remediation:
-          "Set REA_KUNA_CACHE_DIR to a directory REA may own, or remove the conflicting file.",
+          "Set REA_KUNA_CACHE_DIR to a directory NEXORA ENGINE may own, or remove the conflicting file.",
         classification: "config_drift",
         details,
       };
@@ -237,7 +237,7 @@ const cacheCheck = async (
             name: "cache",
             ok: true,
             code: null,
-            detail: `REA creates the Kuna project cache at ${cacheRoot} on first use.`,
+            detail: `NEXORA ENGINE creates the Kuna project cache at ${cacheRoot} on first use.`,
             remediation: null,
             classification: "config_drift",
             details,
@@ -246,9 +246,9 @@ const cacheCheck = async (
             name: "cache",
             ok: false,
             code: "open_options_invalid",
-            detail: `REA cannot create the Kuna cache root ${cacheRoot}: ${creatable.reason}`,
+            detail: `NEXORA ENGINE cannot create the Kuna cache root ${cacheRoot}: ${creatable.reason}`,
             remediation:
-              "Set REA_KUNA_CACHE_DIR to a directory the REA process user can create or write.",
+              "Set REA_KUNA_CACHE_DIR to a directory the NEXORA ENGINE process user can create or write.",
             classification: "config_drift",
             details,
           };
@@ -257,9 +257,9 @@ const cacheCheck = async (
       name: "cache",
       ok: false,
       code: "open_options_invalid",
-      detail: `REA cannot write the Kuna cache root ${cacheRoot}: ${cause instanceof Error ? cause.message : String(cause)}`,
+      detail: `NEXORA ENGINE cannot write the Kuna cache root ${cacheRoot}: ${cause instanceof Error ? cause.message : String(cause)}`,
       remediation:
-        "Set REA_KUNA_CACHE_DIR to a directory the REA process user can write.",
+        "Set REA_KUNA_CACHE_DIR to a directory the NEXORA ENGINE process user can write.",
       classification: "config_drift",
       details,
     };

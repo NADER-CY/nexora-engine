@@ -226,7 +226,7 @@ export const FRIDA_TOOL_CONTRACTS = [
     ...toolContractMetadata("close_frida_session"),
     kind: "native-provider",
     description:
-      "Unload session scripts and attempt to detach REA's Frida session. Then resume a still-paused spawned process if script cleanup or session detach confirms instrumentation was released. Cleanup failures are reported. REA never kills the target; its final state is reported as unknown.",
+      "Unload session scripts and attempt to detach NEXORA ENGINE's Frida session. Then resume a still-paused spawned process if script cleanup or session detach confirms instrumentation was released. Cleanup failures are reported. NEXORA ENGINE never kills the target; its final state is reported as unknown.",
     inputSchema: z.strictObject({ session_id: sessionId }),
     outputSchema: z.strictObject({ target_state: z.literal("unknown") }),
     examples: [

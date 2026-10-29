@@ -1130,7 +1130,7 @@ it("preserves termination signal and effective file ceiling as a resource failur
     capturedOutput: { signal: "SIGXFSZ", stderr: "before file limit\n" },
   });
   expect(analysisErrorRemediationAction(result.error)).toContain(
-    "REA retains the tighter inherited limit",
+    "NEXORA ENGINE retains the tighter inherited limit",
   );
 });
 

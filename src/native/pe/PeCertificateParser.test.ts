@@ -57,7 +57,7 @@ it("reads PE32 and PE32+ PKCS#7 certificate tables", () => {
     });
     const certificate = report.entries[0]?.pkcs7?.certificates[0];
     expect(certificate?.serial_hex).toBe("11223344");
-    expect(certificate?.subject.text).toContain("commonName=REA Fixture");
+    expect(certificate?.subject.text).toContain("commonName=NEXORA ENGINE Fixture");
     expect(certificate?.not_before).toBe("250101000000Z");
     expect(report.entries[0]?.pkcs7?.signers[0]).toMatchObject({
       serial_hex: "11223344",
@@ -205,8 +205,8 @@ it.each([
   "rejects a high-bit four-octet BER length on a %s SignerInfo signature",
   (_kind, tag) => {
     const payload = pkcs7SignedDataFixture(
-      "REA Fixture",
-      "REA Tests",
+      "NEXORA ENGINE Fixture",
+      "NEXORA ENGINE Tests",
       Buffer.from([tag, 0x84, 0x80, 0, 0, 0]),
     );
     expect(() => parse(peCertificateFixture(false, payload))).toThrow(
@@ -706,7 +706,7 @@ it("decodes UniversalString names as UTF-32BE", () => {
   const certificate = readAsn1(
     derSeq(tbs, SHA256_ALG, der(0x03, Buffer.from([0]))),
   );
-  expect(parseCertificate(certificate).subject.text).toBe("commonName=REA");
+  expect(parseCertificate(certificate).subject.text).toBe("commonName=NEXORA ENGINE");
   const emoji = readAsn1(
     namedCertificate(
       directoryName(der(0x1c, Buffer.from([0x00, 0x01, 0xf6, 0x00]))),

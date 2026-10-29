@@ -1,6 +1,6 @@
 # Intel HEX and S-record images
 
-REA inventories Intel HEX (I8HEX, I16HEX, I32HEX) and Motorola S-record (S19,
+NEXORA ENGINE inventories Intel HEX (I8HEX, I16HEX, I32HEX) and Motorola S-record (S19,
 S28, S37) programming files through `inspect-artifact` / `inspect_artifact`, and
 materializes their decoded bytes through `extract-artifact` /
 `extract_artifact`. Decoding is static and needs no external tool.

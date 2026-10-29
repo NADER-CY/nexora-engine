@@ -5,18 +5,18 @@ Issue: https://github.com/morluto/rea/issues/4933
 ## Outcome
 
 Eval agents' trajectories on rebuilt environments, and the write plans of the recordings they ran on, showed three
-gaps REA could close:
+gaps NEXORA ENGINE could close:
 
 - **Query values.** Served tools typed each query parameter as a string or an array of strings, while agents send page
   sizes and flags as JSON numbers and booleans (`maxSize: 50`, `withItems: true`). The MCP server refused those calls
-  before REA saw them: 63 of 418 stored eval runs hit it, in EspoCRM, Homebox and PhotoPrism, and 18 never got the tool
+  before NEXORA ENGINE saw them: 63 of 418 stored eval runs hit it, in EspoCRM, Homebox and PhotoPrism, and 18 never got the tool
   to answer.
 - **Counted and made values.** Vikunja numbers a project's tasks past those deleted earlier, so a created task's
   `index` is not one past what the state holds; its `identifier` spells that index; and each created task gets a
   `subscription` object the application makes with it. A second create disagreed with the first on all three, so
   task creates were withheld.
 - **Bulk creates.** Vikunja's UI creates a task through `POST /projects/{id}/tasks/bulk`, sending and answering the
-  task wrapped in `tasks: [ … ]`. The answer's id sat inside the array, so REA linked the call to no type.
+  task wrapped in `tasks: [ … ]`. The answer's id sat inside the array, so NEXORA ENGINE linked the call to no type.
 
 The diagnosis also found that a recorded update stores only what it sent (EspoCRM's updates never changed an email
 address), and that an object known only from a list that leaves out fields its own read shows can be neither read by

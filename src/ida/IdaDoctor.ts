@@ -87,7 +87,7 @@ const inspectPrivateWorkspace = async (
       ? privacy.remediation
       : unusable === undefined
         ? null
-        : "Set workspaceRoot to an existing directory REA can create entries in, or omit it to use the system temporary directory; see docs/ida-provider.md.",
+        : "Set workspaceRoot to an existing directory NEXORA ENGINE can create entries in, or omit it to use the system temporary directory; see docs/ida-provider.md.",
     classification:
       !privacy.available && privacy.code === "runtime_missing"
         ? "missing_dependency"

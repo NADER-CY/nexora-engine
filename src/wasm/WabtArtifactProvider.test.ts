@@ -649,7 +649,7 @@ it.each([false, true])(
       undefined,
       () => {
         throw new PrivateRuntimeRootUnavailableError(
-          "REA Windows native controls are unavailable: probe failure",
+          "NEXORA ENGINE Windows native controls are unavailable: probe failure",
           { retryable },
         );
       },
@@ -666,7 +666,7 @@ it.each([false, true])(
         retryable,
         userMessage: undefined,
         message: expect.stringContaining(
-          "REA Windows native controls are unavailable",
+          "NEXORA ENGINE Windows native controls are unavailable",
         ),
       },
     });

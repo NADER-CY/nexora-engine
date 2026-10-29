@@ -41,5 +41,5 @@
    behaviour; document default serving, `--replay-only`, the fallback, the
    answers, the data plane, the card and the export.
 
-No dependency, provider or REA tool contract changes. The only new network
+No dependency, provider or NEXORA ENGINE tool contract changes. The only new network
 activity is an `https://` download that a `data/add` call names.

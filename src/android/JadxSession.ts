@@ -395,7 +395,7 @@ export class JadxSession {
                 retryable: false,
                 remediationAction:
                   failure.memory_area === "heap"
-                    ? "Increase REA_JADX_HEAP_MIB (MiB) in the environment that starts REA, within the host or container memory budget. Review JAVA_TOOL_OPTIONS and other JVM heap overrides. The observed heap is this run's limit, not the heap the APK requires."
+                    ? "Increase REA_JADX_HEAP_MIB (MiB) in the environment that starts NEXORA ENGINE, within the host or container memory budget. Review JAVA_TOOL_OPTIONS and other JVM heap overrides. The observed heap is this run's limit, not the heap the APK requires."
                     : "Review the JVM allocation failure and the host or container memory limits. The observed maximum heap does not establish which memory region was exhausted; increasing heap alone may not help.",
                 diagnostics: {
                   upstream_operation: name,

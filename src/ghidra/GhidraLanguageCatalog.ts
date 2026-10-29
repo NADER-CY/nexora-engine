@@ -148,7 +148,7 @@ export const admitGhidraLanguageOverride = (
 ): ConfigurationError | null => {
   const language = catalog.find((value) => value.id === override.languageId);
   if (language === undefined)
-    return new ConfigurationError("Invalid REA environment configuration", {
+    return new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
       settings: [
         {
           setting: "REA_GHIDRA_LANGUAGE_ID",
@@ -160,7 +160,7 @@ export const admitGhidraLanguageOverride = (
     override.compilerSpecId !== undefined &&
     !language.compilerSpecIds.includes(override.compilerSpecId)
   )
-    return new ConfigurationError("Invalid REA environment configuration", {
+    return new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
       settings: [
         {
           setting: "REA_GHIDRA_COMPILER_SPEC_ID",

@@ -210,7 +210,7 @@ const managedEvidence = (output, operation) => {
     },
     {
       id: "rea-dotnet-static",
-      name: "REA managed static analysis provider",
+      name: "NEXORA ENGINE managed static analysis provider",
       version: "1",
     },
     {

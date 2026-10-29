@@ -303,7 +303,7 @@ try {
       );
     } else {
       console.log(
-        `skipped: ${GEKKO_LANGUAGE} (not in the Ghidra installation catalog that REA admits); stock lane still verified`,
+        `skipped: ${GEKKO_LANGUAGE} (not in the Ghidra installation catalog that NEXORA ENGINE admits); stock lane still verified`,
       );
     }
   }, [

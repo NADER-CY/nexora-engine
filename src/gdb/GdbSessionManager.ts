@@ -646,7 +646,7 @@ export class GdbSessionManager {
           "start_gdb_session",
           this.#platform === "win32"
             ? "Persistent Windows GDB sessions are unavailable because owned Job Object cleanup can terminate debugger inferiors."
-            : "Persistent GDB sessions are available only on Linux because REA verifies live inferior output descriptors through /proc.",
+            : "Persistent GDB sessions are available only on Linux because NEXORA ENGINE verifies live inferior output descriptors through /proc.",
         ),
       );
     const controller = new AbortController();

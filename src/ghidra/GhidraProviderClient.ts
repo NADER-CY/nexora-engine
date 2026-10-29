@@ -393,7 +393,7 @@ export const createGhidraProviderClient = (input: {
       ? windowsP0Limitations
       : installation.platform === "darwin"
         ? [
-            "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state.",
+            "macOS sessions require a matching executable Ghidra native decompiler; NEXORA ENGINE checks for it but does not build native components or change Gatekeeper quarantine state.",
           ]
         : [];
   if (input.signal.aborted)
@@ -1097,7 +1097,7 @@ const projectPrimarySessionError = (
           "Only this procedure's decompilation was stopped; the Ghidra session remains usable.",
         )}`,
         remediationAction:
-          "Use analyze_function (CLI: `rea function`) for listing facts. Call update_analysis_settings with setting ghidra.decompile_timeout_seconds and action set to raise the per-function deadline for the next operation on this Program. For CLI or future REA processes, set REA_GHIDRA_DECOMPILE_TIMEOUT_SECONDS. Set the MCP tool-call deadline to cover startup and the full call; earlier cancellation closes the session. `rea setup` estimates deadlines for new Codex/Kimi registrations and preserves existing positive values; edit existing deadlines yourself.",
+          "Use analyze_function (CLI: `rea function`) for listing facts. Call update_analysis_settings with setting ghidra.decompile_timeout_seconds and action set to raise the per-function deadline for the next operation on this Program. For CLI or future NEXORA ENGINE processes, set REA_GHIDRA_DECOMPILE_TIMEOUT_SECONDS. Set the MCP tool-call deadline to cover startup and the full call; earlier cancellation closes the session. `rea setup` estimates deadlines for new Codex/Kimi registrations and preserves existing positive values; edit existing deadlines yourself.",
       },
     );
   if (failure.kind === "analysis_timeout")
@@ -1295,7 +1295,7 @@ const ghidraSessionContinuationMessage = (
 ): string => {
   if (failure.concurrentCancellation === undefined) return healthyMessage;
   return failure.cleanupFailure === undefined
-    ? "The request was also cancelled before the failure settled, so REA closed the Ghidra session; the next request starts a new session and repeats import and analysis."
+    ? "The request was also cancelled before the failure settled, so NEXORA ENGINE closed the Ghidra session; the next request starts a new session and repeats import and analysis."
     : "The request was also cancelled, and Ghidra session shutdown left cleanup unconfirmed. Close the target to retry retained cleanup before starting another Ghidra session.";
 };
 
@@ -1351,7 +1351,7 @@ const projectSigkill = (
     return new AnalysisResourceConstraintError(
       operation,
       "memory",
-      `Ghidra was killed by SIGKILL while the oom_kill count of REA's cgroup ${cgroup.data.path} rose from ${String(cgroup.data.oom_kill_before)} to ${String(cgroup.data.oom_kill_after)}, so the kernel OOM killer ended a process in that cgroup or one of its child groups. The Java heap need not have been full.`,
+      `Ghidra was killed by SIGKILL while the oom_kill count of NEXORA ENGINE's cgroup ${cgroup.data.path} rose from ${String(cgroup.data.oom_kill_before)} to ${String(cgroup.data.oom_kill_after)}, so the kernel OOM killer ended a process in that cgroup or one of its child groups. The Java heap need not have been full.`,
       {
         cgroup_memory_max: cgroup.data.memory_max,
         configured_jvm_max_heap:
@@ -1379,7 +1379,7 @@ const ghidraStartupTimeoutGuidance = (timeoutMs: number) => ({
     undefined,
   ),
   userMessage: `Ghidra did not finish importing and analyzing the target within its configured ${String(timeoutMs)} ms startup deadline (REA_GHIDRA_STARTUP_TIMEOUT_MS).`,
-  remediationAction: `Large binaries can need longer: use update_analysis_settings with setting ghidra.startup_timeout_ms and action set above ${String(timeoutMs)}, or set REA_GHIDRA_STARTUP_TIMEOUT_MS in the launch environment for future REA processes; REA_GHIDRA_DISABLED_ANALYZERS can skip selected expensive analyzers with reduced coverage. Export useful Evidence and resolve any retained cleanup before starting a new provider attempt. Runtime updates apply to the next startup attempt without restarting REA. Reopening repeats import from scratch. The MCP client's tool-call deadline must also allow startup and the query.`,
+  remediationAction: `Large binaries can need longer: use update_analysis_settings with setting ghidra.startup_timeout_ms and action set above ${String(timeoutMs)}, or set REA_GHIDRA_STARTUP_TIMEOUT_MS in the launch environment for future NEXORA ENGINE processes; REA_GHIDRA_DISABLED_ANALYZERS can skip selected expensive analyzers with reduced coverage. Export useful Evidence and resolve any retained cleanup before starting a new provider attempt. Runtime updates apply to the next startup attempt without restarting NEXORA ENGINE. Reopening repeats import from scratch. The MCP client's tool-call deadline must also allow startup and the query.`,
 });
 
 /** A provider already observed as running can be restarted by reopening. */

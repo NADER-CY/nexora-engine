@@ -1,4 +1,4 @@
-# Releasing REA
+# Releasing NEXORA ENGINE
 
 Pushes to main automatically open or refresh a Release Please PR with the next
 version and changelog. Review its migration notes and wait for its current CI
@@ -195,7 +195,7 @@ migration notes for the release being prepared. The
 [6.1 to 6.2 migration guide](migration-6.2.md) records that release's changes;
 it is a historical reference, not the compatibility checklist for later releases.
 
-REA uses Release Please's `always-bump-minor` strategy: every release increments
+NEXORA ENGINE uses Release Please's `always-bump-minor` strategy: every release increments
 minor and resets patch, including releases with breaking changes. For example,
 the next release after 6.0.0 is 6.1.0. Version numbers use the SemVer format,
 but a minor increment does not promise backward compatibility. Review the

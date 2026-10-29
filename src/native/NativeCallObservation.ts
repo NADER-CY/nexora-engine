@@ -243,7 +243,7 @@ const nativeCallFacts = (
       ...(run.terminated && trace.terminated
         ? []
         : [
-            `REA could not confirm that process ${run.pid} exited; check for it before relying on host state.`,
+            `NEXORA ENGINE could not confirm that process ${run.pid} exited; check for it before relying on host state.`,
           ]),
     ],
   };

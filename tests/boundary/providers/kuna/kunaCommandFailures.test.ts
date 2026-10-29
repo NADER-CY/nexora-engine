@@ -8,7 +8,7 @@ import { session } from "./kunaSessionFixture.js";
 
 const it = test.skipIf(process.platform === "win32");
 
-it("reports output beyond REA's fixed buffer as a deterministic memory bound", async () => {
+it("reports output beyond NEXORA ENGINE's fixed buffer as a deterministic memory bound", async () => {
   const { kuna, target, cacheRoot } = await session("rea-kuna-output-limit-");
   const installed = await inspectKunaInstallation({
     REA_KUNA_COMMAND: kuna,
@@ -44,7 +44,7 @@ it("reports output beyond REA's fixed buffer as a deterministic memory bound", a
       retryable: false,
       remediation: {
         action:
-          "REA buffers at most 100 bytes of kuna functions output, so repeating this request for this target fails the same way. Use another provider for it.",
+          "NEXORA ENGINE buffers at most 100 bytes of kuna functions output, so repeating this request for this target fails the same way. Use another provider for it.",
       },
     });
   } finally {
@@ -82,7 +82,7 @@ it("parses a graph larger than any fixed output buffer as it streams", async () 
   }
 });
 
-it("reports graph diagnostics beyond REA's buffer once per session instead of rebuilding it", async () => {
+it("reports graph diagnostics beyond NEXORA ENGINE's buffer once per session instead of rebuilding it", async () => {
   const { kuna, open } = await session("rea-kuna-graph-overflow-", {
     graph: "noisy",
   });

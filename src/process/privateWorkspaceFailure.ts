@@ -64,7 +64,7 @@ export const privateWorkspaceFailure = (
     userMessage: `Cannot prepare the private analysis workspace${code === null ? "" : ` (${code})`}: ${reason}`,
     remediationAction:
       code !== null && DESCRIPTOR_EXHAUSTION_CODES.has(code)
-        ? "Close unused files or raise the open-file limit of the REA process, then retry."
+        ? "Close unused files or raise the open-file limit of the NEXORA ENGINE process, then retry."
         : "Review details.diagnostics.system_code and details.diagnostics.path. Make the host temporary directory (TMPDIR) an existing directory this user can create files in on a writable filesystem, then retry.",
     diagnostics: {
       stage: "workspace",

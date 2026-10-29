@@ -250,7 +250,7 @@ export const copyExistingGhidraProject = async (
       )
     )
       throw selectionFailure(
-        `Existing Ghidra project directory overlaps the REA runtime directory; select a project outside the runtime: ${sourcePath}`,
+        `Existing Ghidra project directory overlaps the NEXORA ENGINE runtime directory; select a project outside the runtime: ${sourcePath}`,
       );
     if (source === undefined)
       throw selectionFailure(

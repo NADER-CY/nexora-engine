@@ -60,7 +60,7 @@ export const wabtConfigurationRecoveryAction = (cause?: unknown): string => {
     cause instanceof Error && "code" in cause ? cause.code : undefined;
   const action =
     code === "EACCES" || code === "EPERM"
-      ? "Check this REA process has read and execute access to the reported caller-supplied tools, or select an accessible trusted copy. "
+      ? "Check this NEXORA ENGINE process has read and execute access to the reported caller-supplied tools, or select an accessible trusted copy. "
       : code === "ENOTDIR"
         ? "Select the tools' containing directory, not an individual executable. "
         : code === "ENOENT"

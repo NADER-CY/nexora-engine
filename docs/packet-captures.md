@@ -139,7 +139,7 @@ The verifier generates its own Ethernet/IPv4/UDP/DNS and Bluetooth HCI PCAPs.
 It exercises real compiled CLI/MCP parity, advertised schemas, repeated/missing
 fields, filtering, decode-as, both pass modes, a packet limit before matching
 frames, Evidence persistence, failure diagnostics, source identity and cleanup.
-An optional positional REA entrypoint verifies an installed package.
+An optional positional NEXORA ENGINE entrypoint verifies an installed package.
 
 The real-tool lane requires Linux and TShark 4.x. A separate kernel-limit
 regression checks the inherited soft/hard limits and verifies an oversized

@@ -44,7 +44,7 @@ Lookup follows the greatest generated position less than or equal to the
 selected point, across lines, and returns **every** segment at that position.
 It includes generated-only mappings. This follows
 [ECMA-426 GetOriginalPositions](https://tc39.es/ecma426/#sec-getoriginalpositions),
-with one-based lines in REA's public contract. A point result does not establish
+with one-based lines in NEXORA ENGINE's public contract. A point result does not establish
 coverage of a source range, execution or UI causality.
 
 Mapped entries preserve the raw source name/root, section path, section-local
@@ -83,7 +83,7 @@ removed before success is returned. Only this child's inherited `NODE_OPTIONS`
 is removed; explicit V8 flags set a 192 MiB old-generation and 8 MiB semi-space
 budget, one V8 worker and `decode_timeout_ms` (default 20000). The codec heap, map budget, and reply budget have no runtime override. Reported actual V8 heap limits
 are checked. These are heap limits, not an aggregate process RSS limit. When
-REA runs on Bun, the subprocess is Bun, which ignores these V8 flags: `runtime`
+NEXORA ENGINE runs on Bun, the subprocess is Bun, which ignores these V8 flags: `runtime`
 records `id: "bun"`, the Bun version, its Node.js compatibility version and a
 null `v8_heap_limit_bytes`. On Windows, the codec's owned Job Object then
 limits its committed memory to 704 MiB, the 192 MiB budget plus a 512 MiB

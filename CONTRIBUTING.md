@@ -4,9 +4,9 @@ Start with [installation](docs/installation/from-source.md), [offline tutorials]
 
 The original upstream contribution guidance below is retained for architectural/testing context; references to upstream processes do not authorize changes to upstream repositories.
 
-# Contributing to REA
+# Contributing to NEXORA ENGINE
 
-REA welcomes focused bug fixes, documentation improvements, tests, and reverse-engineering workflows. For large contract or architecture changes, explain the intended scope and link the relevant issue or design discussion.
+NEXORA ENGINE welcomes focused bug fixes, documentation improvements, tests, and reverse-engineering workflows. For large contract or architecture changes, explain the intended scope and link the relevant issue or design discussion.
 
 ## Choosing a contribution
 
@@ -89,7 +89,7 @@ These requirements also apply to maintainer-authored PRs.
 Before requesting maintainer review, the human owner must:
 
 - Review the final diff and relevant existing code. Be able to explain the
-  problem, the chosen approach, how it fits REA, and meaningful edge cases.
+  problem, the chosen approach, how it fits NEXORA ENGINE, and meaningful edge cases.
 - Provide evidence that the change works. Summarize what was checked, the
   observed results, and meaningful gaps in the PR body. Use focused tests,
   representative CLI/MCP output, CI artifacts, screenshots, or other checks
@@ -139,11 +139,11 @@ Contributors are responsible for completing this work before requesting review.
 
 ## Contribution scope
 
-REA focuses on software structure, runtime behavior, and evidence through
+NEXORA ENGINE focuses on software structure, runtime behavior, and evidence through
 general-purpose reverse-engineering workflows. Evaluate a proposal by its actual
 capabilities, side effects, defaults, and complete workflow. A tool name or a
 reference to vulnerability research, malware analysis, or CTFs does not determine
-whether it belongs in REA.
+whether it belongs in NEXORA ENGINE.
 
 Supported contributions include format inspection, ordinary archive and standard
 compression extraction, disassembly, decompilation, cross-references, general
@@ -160,7 +160,7 @@ every workflow built on it. General-purpose interfaces are not classified as
 dedicated bypass workflows solely because caller-provided code could be misused;
 their execution and mutation authority must still be reviewed.
 
-REA does not integrate or officially distribute:
+NEXORA ENGINE does not integrate or officially distribute:
 
 - Purpose-built workflows to defeat commercial packing or code-virtualization
   protections and automatically recover protected code.
@@ -215,7 +215,7 @@ Maintainers and implementers work together to resolve the following before
 integration:
 
 - The concrete analyst question, requested inputs and outputs, and why existing
-  REA operations are insufficient.
+  NEXORA ENGINE operations are insufficient.
 - Why the workflow fits this scope, its non-goals, and any protection recovery,
   bypass, or attack automation it would expose.
 - The selected targets and every execution, injection, mutation, network, or
@@ -297,16 +297,11 @@ relative so they work on GitHub and the website; link to repository files
 outside `docs/` using their full GitHub URLs. Generated reference documents
 use `npm run docs:generate`; `docs:build` generates them before building the website.
 
-Pull requests run `npm run docs:check`. `.github/workflows/pages.yml` is a
-manual VitePress build and does not publish. The public site at
-<https://rea.tools/> serves `website/public/` through Cloudflare Workers. See
-the [website README](website/README.md#cloudflare-workers) for previews and
-manual deployments.
-
-The separate GitHub Pages host uses only the manual
-`.github/workflows/website-pages.yml` workflow on `main`. The repository's
-**Settings → Pages → Build and deployment → Source** must be set to
-**GitHub Actions** before deploying there.
+The inherited website tree and its deployment references are historical
+upstream material. NEXORA ENGINE uses the root README as its public homepage;
+publication/deployment workflows remain disabled. See
+[website history](website/README.nexora.md). Do not enable deployment as part
+of a documentation contribution.
 
 ### Translation corrections
 
@@ -401,7 +396,7 @@ directory deletion, using the case's `finally` or `afterEach`; Vitest runs
 `afterEach` before `onTestFinished` and awaits finish hooks in reverse
 registration order.
 `npm run verify:test-temp-hygiene` runs the suite under a fresh `TMPDIR` and
-rejects remaining REA-owned paths. It cannot detect duplicate deletion owners or
+rejects remaining NEXORA ENGINE-owned paths. It cannot detect duplicate deletion owners or
 prove resource-close ordering. Never glob-clean shared `/tmp/rea-*` content.
 
 `REA_LOG_LEVEL` selects `trace`, `debug`, `info`, `warn`, `error`, `fatal`, or

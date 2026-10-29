@@ -451,7 +451,7 @@ cliTest(
     // An exclusion is a membership test over the same names the intersection
     // compares, so a differently spelled and padded entry blocks setup rather
     // than slipping past the raw comparison.
-    await writeFile(system, JSON.stringify({ mcp: { excluded: [" REA "] } }));
+    await writeFile(system, JSON.stringify({ mcp: { excluded: [" NEXORA ENGINE "] } }));
     const blocked = await run();
     expect(blocked.exitCode).toBe(1);
     expect(blocked.json).toMatchObject({
@@ -462,7 +462,7 @@ cliTest(
     });
     // Padding is presentation, not identity: a padded allowlist entry permits
     // the same server its exact spelling permits.
-    await writeFile(system, JSON.stringify({ mcp: { allowed: [" REA "] } }));
+    await writeFile(system, JSON.stringify({ mcp: { allowed: [" NEXORA ENGINE "] } }));
     const allowed = await run();
     expect(allowed.exitCode).toBe(0);
     expect(allowed.json).toMatchObject({ status: "ready" });

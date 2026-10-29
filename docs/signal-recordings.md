@@ -30,14 +30,14 @@ The corresponding MCP request is:
 ```
 
 `decoders` uses sigrok's decoder stack and option/channel syntax. Channel names
-must match the recording; REA does not guess wiring, baud rate or protocol.
+must match the recording; NEXORA ENGINE does not guess wiring, baud rate or protocol.
 Each selected decoder channel needs a target, for example `uart:rx=RX`; a bare
 channel key such as `uart:rx` is missing that target. When sigrok reports a
-missing or unknown selected channel target, REA returns `invalid_request` for
+missing or unknown selected channel target, NEXORA ENGINE returns `invalid_request` for
 `decoders` even if sigrok continues with fallback annotations and exits
 successfully. The diagnostic and any partial stdout remain in `captured_output`;
 unrelated producer warnings do not change request status.
-Omitting `input_format` requests sigrok's autodetection. REA uses an immutable
+Omitting `input_format` requests sigrok's autodetection. NEXORA ENGINE uses an immutable
 private copy whose filename retains the selected recording's final suffix,
 including a dotfile basename such as `.csv`. Filename-based format detection
 receives that hint without exposing the caller's directory to sigrok. The
@@ -46,12 +46,12 @@ so a recording named `-` is opened as a file rather than
 [sigrok's stdin operand](https://github.com/sigrokproject/sigrok-cli/blob/sigrok-cli-0.7.2/input.c#L49-L75).
 Omitting `annotations` retains every annotation class. Both omitted selections
 are recorded as null.
-If sigrok reports an explicitly selected input format as unknown, REA returns
+If sigrok reports an explicitly selected input format as unknown, NEXORA ENGINE returns
 `invalid_request` for `input_format`, retains the producer diagnostic, and
 advises correcting the format or omitting it for autodetection. The
 [tagged option parser](https://github.com/sigrokproject/sigrok-cli/blob/sigrok-cli-0.7.2/parsers.c#L387-L404)
 warns when an option key is unknown. When that diagnostic's key exactly matches
-a selected `input_format` option, REA returns `invalid_request`, even on exit zero.
+a selected `input_format` option, NEXORA ENGINE returns `invalid_request`, even on exit zero.
 Fallback output and the diagnostic remain in `captured_output`; unrelated
 option warnings stay visible without rejecting the request. Matching keeps
 the complete diagnostic caption, including an LF inside a selected key;
@@ -66,7 +66,7 @@ Output defaults to 50 literal LF-separated lines. Use `line_offset` and
 for all remaining output. `output_window` reports `total_lines`, `returned_lines`
 and `has_more`; these count display lines, **not annotations or samples**.
 Line endings, blank lines and text within the selected window stay unchanged.
-REA does not parse display text into protocol facts, as explained by
+NEXORA ENGINE does not parse display text into protocol facts, as explained by
 [upstream's annotation output guidance](https://sigrok.org/wiki/Protocol_decoder_output).
 Paging does not shorten decoding and producer output must still fit its limit.
 Use annotation-class selection to reduce producer output. Calls independently
@@ -83,7 +83,7 @@ with sample-number ranges, and stderr. For example, `1104-1938 uart-1: 52`
 is producer display text over a sample range, not a timestamp or an independently
 verified protocol fact. Valid UTF-8 text is retained verbatim; it is not parsed as
 a lossless binary payload. If any sigrok stdout or stderr stream is invalid UTF-8,
-REA returns `unreadable_output` with the replacement-decoded text in
+NEXORA ENGINE returns `unreadable_output` with the replacement-decoded text in
 `captured_output` and the affected streams in
 `details.diagnostics.invalid_utf8_streams`.
 It does not report that text as successful Evidence. A valid literal replacement
@@ -94,7 +94,7 @@ failures name the tool, limiter or private copy involved, rather than blaming th
 admitted source. Resource-signal failures retain the signal and effective limits
 without inferring its exact cause.
 
-REA decodes a private, read-only copy of the recording, verifies that copy and
+NEXORA ENGINE decodes a private, read-only copy of the recording, verifies that copy and
 the selected executable and resource limiter after decoding, and removes the workspace after owned
 process cleanup. Failed descriptor, process or workspace cleanup retains ownership for retry, and the one-shot
 CLI awaits a retry without replacing the original failure or completed Evidence.
@@ -125,7 +125,7 @@ The verifier synthesizes a 9600-baud 8N1 UART VCD carrying `REA`, then checks
 actual CLI/MCP parity, advertised schemas, stored Evidence, source hashes,
 annotation filtering/autodetection, invalid decoder/input failures, missing
 channel rejection with retained partial output, and cleanup.
-An optional positional REA entrypoint verifies an installed package.
+An optional positional NEXORA ENGINE entrypoint verifies an installed package.
 The real-tool lane requires Linux, sigrok-cli 0.7.2 and libsigrokdecode. A separate
 kernel-limit regression checks the inherited soft/hard limits and verifies an
 oversized allocation is refused before it can consume memory. Other formats,

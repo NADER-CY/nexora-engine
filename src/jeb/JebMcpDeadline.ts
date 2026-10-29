@@ -18,8 +18,8 @@ export const jebMcpTimeoutGuidance = (
   phase: JebMcpDeadlinePhase,
   timeoutMs: number,
 ): { readonly userMessage: string; readonly remediationAction: string } => ({
-  userMessage: `This request reached REA's configured JEB ${phase === "discovery" ? "catalog discovery" : phase} deadline of ${String(timeoutMs)} ms (deadlineExpired).`,
-  remediationAction: `Increase REA_JEB_MCP_TIMEOUT_MS in REA's launch environment to an integer from 1 to ${String(MAX_PROVIDER_STARTUP_TIMEOUT_MS)} milliseconds (omitted means ${String(DEFAULT_REQUEST_TIMEOUT_MSEC)} ms) and restart and reconnect REA to apply it. The same setting raises catalog discovery and each tools/call. Allow execution, cleanup and delivery headroom in the outer MCP client deadline. Confirm outstanding work and cleanup before retrying.`,
+  userMessage: `This request reached NEXORA ENGINE's configured JEB ${phase === "discovery" ? "catalog discovery" : phase} deadline of ${String(timeoutMs)} ms (deadlineExpired).`,
+  remediationAction: `Increase REA_JEB_MCP_TIMEOUT_MS in NEXORA ENGINE's launch environment to an integer from 1 to ${String(MAX_PROVIDER_STARTUP_TIMEOUT_MS)} milliseconds (omitted means ${String(DEFAULT_REQUEST_TIMEOUT_MSEC)} ms) and restart and reconnect NEXORA ENGINE to apply it. The same setting raises catalog discovery and each tools/call. Allow execution, cleanup and delivery headroom in the outer MCP client deadline. Confirm outstanding work and cleanup before retrying.`,
 });
 
 /** SDK 2.3.1 preserves an SdkError abort reason by identity. */

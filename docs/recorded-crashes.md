@@ -13,7 +13,7 @@ rea inspect-recorded-crash ./crash.core --json
 ```
 
 The selected Python needs unchanged pwntools 4.15.0, pyelftools 0.33 and Unicorn 2.1.2.
-REA does not install these dependencies. ELFFile/its original ELF structures and
+NEXORA ENGINE does not install these dependencies. ELFFile/its original ELF structures and
 pwntools' original Linux amd64 and aarch64 ctypes provide parsing and ABI layout.
 The adapter adds bounds, representation preservation and lifecycle ownership.
 The initial Linux note profile accepts System V/unspecified and GNU/Linux OSABI

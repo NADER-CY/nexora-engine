@@ -31,7 +31,7 @@ parsing, graph construction, validation, and Evidence hashing begin. Stdout
 remains the selected result document. Completion is reported after Evidence
 creation; a failed analysis retains its typed diagnostic result.
 
-Configure an MCP client with the ordinary REA setup command:
+Configure an MCP client with the ordinary NEXORA ENGINE setup command:
 
 ```bash
 rea setup
@@ -102,7 +102,7 @@ rea analyze /absolute/path/to/app.asar \
 }
 ```
 
-REA inventories and verifies the complete artifact, including unselected bytes,
+NEXORA ENGINE inventories and verifies the complete artifact, including unselected bytes,
 but allocates source text and performs static analysis only for selected files.
 Include supporting manifests, HTML or source maps explicitly when needed;
 imports do not expand the selection. Paths must match relevant inventoried
@@ -144,7 +144,7 @@ remains an error. Explicit readers that require selected child bytes keep their
 access errors rather than treating denied paths as absent.
 Unavailable source files also retain their applicable per-file processing gap
 in the application graph. Their container inventory identity anchors that gap;
-REA does not invent a content digest for bytes it could not read.
+NEXORA ENGINE does not invent a content digest for bytes it could not read.
 Incomplete traversal also qualifies negative path and package-metadata lookups:
 an unobserved earlier loader candidate cannot be skipped in favor of a later
 observed candidate. An explicit source selection whose discovery is unknown
@@ -155,10 +155,10 @@ identity; unknown traversal cannot establish a unique application root.
 ASAR header/index admission defaults to 16 MiB / 16777216 bytes. In MCP, use
 `update_analysis_settings` to set `asar.max_header_bytes` to an integer byte
 count from 1 to 268435456 (256 MiB), then retry the same full-archive request.
-The update applies to new operations without restarting REA; cached headers
+The update applies to new operations without restarting NEXORA ENGINE; cached headers
 must also satisfy the new admission. For CLI or future MCP processes, set
 `REA_ASAR_MAX_HEADER_BYTES` in the launch environment. Changing that environment
-requires a new REA process. Invalid launch values are configuration errors,
+requires a new NEXORA ENGINE process. Invalid launch values are configuration errors,
 never a silent fallback. See the
 [settings design](design/limits-and-recovery.md#failure-and-retry) for recovery
 metadata, precedence, and reset behavior.
@@ -248,7 +248,7 @@ graph coverage partial and include every contradicted path in the limitations.
 Mismatched nested ASARs stay opaque rather than being expanded.
 
 An unpacked entry whose companion bytes were not supplied remains
-`unavailable`. REA continues analyzing embedded JavaScript and records the
+`unavailable`. NEXORA ENGINE continues analyzing embedded JavaScript and records the
 missing native/resource bytes as unknown. The occurrence keeps
 `hash_status: unavailable`; no content-addressed child artifact is created for
 those missing bytes. New ASAR file occurrences record `unpacked: true` for
@@ -518,7 +518,7 @@ are absent.
 
 Source-map contents are parsed as local input. The graph stores original source names and optional content digests, not raw `sourcesContent` text.
 
-Only explicitly present BrowserWindow values are observations. REA does not
+Only explicitly present BrowserWindow values are observations. NEXORA ENGINE does not
 substitute version-dependent Electron defaults for omitted `webPreferences`.
 Unresolved option objects, bridge keys, API objects, and IPC channel expressions
 remain unknown and make coverage partial.
@@ -660,7 +660,7 @@ parses as a URL. When a recognized request target cannot be resolved exactly,
 the endpoint's partial resolution retains the original source expression with
 its call-site provenance. This does not establish that the request executed.
 Artifact paths, digests, parse locations, and analysis metadata remain
-actionable because REA is local-only.
+actionable because NEXORA ENGINE is local-only.
 
 ## Safety boundary
 
@@ -771,7 +771,7 @@ For defaults across new MCP operations, use `update_analysis_settings` with
 `javascript.max_heap_mb` or `javascript.analysis_timeout_ms`. Explicit per-call
 arguments take precedence, and accepted work keeps its original settings. See
 the [settings design](design/limits-and-recovery.md#precedence-and-lifetime).
-V8 old-space limits do not impose a process RSS limit. When REA runs on Bun,
+V8 old-space limits do not impose a process RSS limit. When NEXORA ENGINE runs on Bun,
 the analyzer ignores the V8 heap flags; resource failures then report
 `worker_heap_limit_bytes` as null instead of a requested or V8-reported limit.
 On Windows, the analyzer's owned Job Object instead limits its committed
@@ -836,7 +836,7 @@ process. On Node, the failure names `max_heap_mb` (CLI `--max-heap-mb`), the
 effective mebibytes, the inclusive range 128 to 16384, and the 1024 MiB
 default. A changed value applies on the next analysis, which starts a new
 worker. It does not change a worker that is already running and does not
-require restarting the REA server. On Bun, the same heap-exhaustion diagnostic
+require restarting the NEXORA ENGINE server. On Bun, the same heap-exhaustion diagnostic
 is not attributed to that V8 old-space limit, because Bun ignores the flag.
 Raising `max_heap_mb` does not raise the parent result budget,
 the transfer record ceiling, the 2 GiB transfer file maximum, the CLI/MCP
@@ -939,7 +939,7 @@ relative `require()` edges use the selected filename's directory and retain the
 source-relative `resolution_base_path` on the graph edge. This follows Node's
 `createRequire(filename)` contract; the path is a loader-resolution fact and
 does not change the source file or call-site Evidence identity. If the filename
-cannot be proven, REA keeps the require target unresolved rather than silently
+cannot be proven, NEXORA ENGINE keeps the require target unresolved rather than silently
 resolving it from the caller's directory.
 
 Module-reference graph edges, including native-addon `loads` edges, retain

@@ -101,7 +101,7 @@ are not evidence of absence.
 
 Encrypted directories retain their header and declared file count with unknown
 entry coverage. Individually encrypted members retain directory metadata with
-unknown content identity; REA does not decrypt them. Sparse bundles likewise
+unknown content identity; NEXORA ENGINE does not decrypt them. Sparse bundles likewise
 retain header facts with unknown member coverage. Extraction refuses an
 unreadable directory or encrypted member. This capability does not recover
 keys, decode Godot resources, decompile GDScript bytecode, analyze signals,

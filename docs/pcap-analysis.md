@@ -1,6 +1,6 @@
 # Packet capture summaries
 
-REA summarizes already saved pcap/pcapng files through caller-selected Wireshark
+NEXORA ENGINE summarizes already saved pcap/pcapng files through caller-selected Wireshark
 4.x `tshark` and `capinfos`. Use `inspect_packet_capture` for selected fields,
 filters and decode-as rules; use this family for address, DNS, SNI, protocol-stack
 and URI inventories. It does not acquire traffic or fetch recorded targets.

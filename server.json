@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.NADER-CY/nexora-engine",
   "title": "NEXORA ENGINE",
-  "description": "NEXORA ENGINE: reverse-engineering and architecture analysis CLI and MCP server (fork of REA, MIT). Not published.",
+  "description": "NEXORA ENGINE: evidence-driven reverse-engineering and architecture-analysis CLI and MCP server. Source distribution; not registry-published.",
   "repository": {
     "url": "https://github.com/NADER-CY/nexora-engine",
     "source": "github"

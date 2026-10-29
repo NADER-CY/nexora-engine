@@ -241,7 +241,7 @@ const ghidraPspInspectionError = (cause: unknown): AnalysisError => {
   const cleanup =
     cause instanceof ArtifactReaderFailure ? cause.cleanup : undefined;
   const { cause: primary } = artifactFilePrimaryFacts(cause);
-  const reason = `PSP_EXTENSION_UNAVAILABLE: ${primary instanceof Error ? primary.message : String(primary)} Use a compatible caller-installed ghidra-allegrex under GHIDRA_INSTALL_DIR/Ghidra/Extensions; REA does not install it.`;
+  const reason = `PSP_EXTENSION_UNAVAILABLE: ${primary instanceof Error ? primary.message : String(primary)} Use a compatible caller-installed ghidra-allegrex under GHIDRA_INSTALL_DIR/Ghidra/Extensions; NEXORA ENGINE does not install it.`;
   const error =
     cause instanceof ArtifactReaderFailure && cause.reason === "cancelled"
       ? new AnalysisCancelledError("resolve_analysis_profile", {

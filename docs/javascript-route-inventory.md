@@ -147,7 +147,7 @@ ordinary percent sequences are not decoded: `%61` and `a` remain separate
 candidates and a literal `%` is retained. Its [App pathname normalizer](https://github.com/vercel/next.js/blob/v16.4.2/packages/next/src/server/normalizers/built/app/app-pathname-normalizer.ts#L5-L18)
 specifically applies the [underscore normalizer](https://github.com/vercel/next.js/blob/v16.4.2/packages/next/src/server/normalizers/underscore-normalizer.ts#L2-L9),
 which maps `%5F` to `_`; private-folder checks apply to the source spelling
-before that escape is mapped. When classifying a chunk URL, REA reads its
+before that escape is mapped. When classifying a chunk URL, NEXORA ENGINE reads its
 pathname, then applies these same Next-specific rules. This is static source-path
 interpretation, not browser request-path decoding or reachability.
 

@@ -169,7 +169,7 @@ it("retains a selected snapshot descriptor through MCP cleanup discovery and sam
       evidence_id: expect.any(String),
       limitations: [
         ...originalEvidence.limitations,
-        "Loaded from a local REA analysis snapshot; this call did not re-run the provider.",
+        "Loaded from a local NEXORA ENGINE analysis snapshot; this call did not re-run the provider.",
       ],
     });
     expect(replayEvidence.evidence_id).not.toBe(originalEvidence.evidence_id);

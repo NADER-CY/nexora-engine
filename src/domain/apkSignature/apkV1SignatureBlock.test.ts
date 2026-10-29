@@ -275,7 +275,7 @@ it("matches supported issuer strings across encodings and RDN attribute order, p
   const name = (...attributes: Uint8Array[]) =>
     tlv(0x30, tlv(0x31, ...attributes));
   const issuer = name(
-    attribute("2.5.4.3", 0x13, "REA Root"),
+    attribute("2.5.4.3", 0x13, "NEXORA ENGINE Root"),
     attribute("2.5.4.10", 0x0c, "REA"),
   );
   const equivalent = name(
@@ -302,7 +302,7 @@ it("matches supported issuer strings across encodings and RDN attribute order, p
     identify(
       withIssuer(
         LEAF_CERTIFICATE,
-        name(attribute("2.5.4.3", 0x14, "REA Root")),
+        name(attribute("2.5.4.3", 0x14, "NEXORA ENGINE Root")),
       ),
     ),
   ).toBeNull();

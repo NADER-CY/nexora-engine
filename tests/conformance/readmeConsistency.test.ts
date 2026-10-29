@@ -31,18 +31,18 @@ describe("onboarding documentation product facts", () => {
     },
   );
 
-  it("keeps the installation MCP example aligned with the package registration command", async () => {
-    const content = await readFile(resolve("docs/installation.md"), "utf8");
-    expect(jsonExamples(content)).toContainEqual(
-      expect.objectContaining({
-        mcpServers: expect.objectContaining({
-          rea: expect.objectContaining({
-            command: "npx",
-            args: ["-y", PRODUCT_IDENTITY.registrationPackageSpecifier, "mcp"],
-          }),
-        }),
-      }),
-    );
+  it("keeps the source-distribution MCP example local and registry-free", async () => {
+    const content = await readFile(resolve("docs/mcp/generic-client.md"), "utf8");
+    expect(PRODUCT_IDENTITY.registryPackage).toBeNull();
+    expect(jsonExamples(content)).toContainEqual({
+      mcpServers: {
+        "nexora-engine": {
+          command: "node",
+          args: ["/absolute/path/to/nexora-engine/scripts/nexora-engine.mjs", "mcp"],
+        },
+      },
+    });
+    expect(content).not.toContain("npx rea-agents");
   });
 
   it("keeps translated onboarding commands aligned with the English examples", async () => {
@@ -58,7 +58,7 @@ describe("onboarding documentation product facts", () => {
       .filter((name) => /^README_[A-Za-z0-9-]+\.md$/u.test(name))
       .map((name) => `docs/readme/${name}`);
     expect([...translatedReadmes].sort()).toEqual(editions.sort());
-    const english = shellExamples(await readFile(resolve("README.md"), "utf8"));
+    const english = shellExamples(await readFile(resolve("UPSTREAM_README.md"), "utf8"));
     for (const path of translatedReadmes)
       expect(
         shellExamples(await readFile(resolve(path), "utf8")),

@@ -261,7 +261,7 @@ it("rehydrates the original atomic identity from an authenticated snapshot witho
       );
       if (!execution.ok) return execution;
       expect(execution.value.limitations).toContain(
-        "Loaded from a local REA analysis snapshot; this call did not re-run the provider.",
+        "Loaded from a local NEXORA ENGINE analysis snapshot; this call did not re-run the provider.",
       );
       return ok(execution.value.result);
     },
@@ -369,7 +369,7 @@ it("reruns an ambiguous snapshot binding before selecting composed Evidence link
     ),
   ).toHaveLength(1);
   expect(after.value.limitations).not.toContain(
-    "Loaded from a local REA analysis snapshot; this call did not re-run the provider.",
+    "Loaded from a local NEXORA ENGINE analysis snapshot; this call did not re-run the provider.",
   );
   if (after.value.evidenceId === undefined)
     throw new Error("Fresh provider observation was not committed");

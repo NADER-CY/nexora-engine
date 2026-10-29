@@ -105,7 +105,7 @@ none of them has a served write tool.
 
 Five published environments serve a create, an update and a delete (Linkding,
 Listmonk, Mattermost, NetBox, Umami); `random.SystemRandom().choice` picked
-NetBox (NetBoxEnv-REA, NetBox 4.7.3).
+NetBox (NetBoxEnv-NEXORA ENGINE, NetBox 4.7.3).
 
 - `rea environment-export` (packed from this branch) wrote the bundle; its
   smoke task passed in AgentEnv framework 0.9.1334 with 42 served tools (39

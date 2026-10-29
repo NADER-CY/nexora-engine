@@ -28,7 +28,7 @@ const observeZip = async (entries: readonly (readonly [string, string])[]) => {
     inventory,
     evidence: createEvidence(
       { path, sha256: inventory.manifest.root_sha256, format: "zip" },
-      { id: "rea-artifact-graph", name: "REA artifact graph", version: "1" },
+      { id: "rea-artifact-graph", name: "NEXORA ENGINE artifact graph", version: "1" },
       {
         operation: "inventory_artifact",
         parameters: {},

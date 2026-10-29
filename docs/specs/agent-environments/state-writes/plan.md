@@ -41,5 +41,5 @@ The branch builds on the state-serving and coverage branches (merged into it).
    serving sections, and record the real-capture results, the AgentEnv run
    and the live comparison in `verification.md`.
 
-There are no dependency, provider or REA tool contract changes beyond the
+There are no dependency, provider or NEXORA ENGINE tool contract changes beyond the
 `environment-state` result members, and no new network activity.

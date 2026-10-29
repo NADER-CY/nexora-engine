@@ -24,7 +24,7 @@ Mealie 3.28.0, n8n 1.123.85, Shlink 5.1.7 and self-hosted Sentry 26.9.0, the sam
 same scripts as for their captures, on loopback. Each was snapshotted after seeding and restored from that snapshot
 before every sequence (7 to 80 s), so every sequence met the same application.
 
-A driver outside REA ran three kinds of sequence per application, each starting with the capture's read-only prefix:
+A driver outside NEXORA ENGINE ran three kinds of sequence per application, each starting with the capture's read-only prefix:
 the capture re-run in order; per served write type, a list, create, read, update, read, delete, read and list, then a
 second create with changed free text; and a read of every seeded entity through its item tool. It translated the
 environment's ids to the application's as it learned them, signed in with the application's own credentials, and wrote

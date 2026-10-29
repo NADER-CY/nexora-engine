@@ -11,7 +11,7 @@ inspection or existing capture comparison when it already answers the question.
 | Question                                                                               | Existing workflow                                                                                                                            | Host and effects                                                                                                                                                                                                                                                                                                                                      |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Which selected native entry is reached, with which integer argument registers?         | `observe_native_calls` on the active Mach-O, with exact function/Objective-C breakpoints and a duration/event bound                          | macOS with LLDB and required debugger access. Launches a new owned process, stops at entries, records and continues; target execution may write files, show UI or use the network. It never attaches to an existing process. Inspect termination and partial coverage after the run.                                                                  |
-| What does caller-authored instrumentation observe?                                     | `list_frida_devices` / `list_frida_processes` when discovery is needed; `start_frida_session`, `load_frida_script`, then status/unload/close | Requires compatible installed Frida bindings and selected device access; the real REA verifier covers Linux. Attach selects an existing PID; spawn selects a program and starts it paused until `resume_frida_session`. Scripts execute in the target and can change memory, files, network activity and behavior. This is not passive inspection.    |
+| What does caller-authored instrumentation observe?                                     | `list_frida_devices` / `list_frida_processes` when discovery is needed; `start_frida_session`, `load_frida_script`, then status/unload/close | Requires compatible installed Frida bindings and selected device access; the real NEXORA ENGINE verifier covers Linux. Attach selects an existing PID; spawn selects a program and starts it paused until `resume_frida_session`. Scripts execute in the target and can change memory, files, network activity and behavior. This is not passive inspection.    |
 | Which debugger state or controlled execution explains the behavior?                    | `start_gdb_session` and `gdb_console`, or `start_rizin_debug_session` and `rizin_debug_command`                                              | Persistent debugger workflows are Linux-only. GDB starts a debugger; console commands choose/load/attach/run targets. Rizin debug start launches the selected target and requires a durable `inferior_tty`. Both consoles are unrestricted and can change target memory/registers, run shell commands, write files and use the network.               |
 | How do terminal output, process lifetime and selected files differ between runs?       | `capture_process_scenario`, then `compare_process_captures` with compatible recorded inputs                                                  | New captures require Linux or macOS and a working native PTY backend; macOS also needs `xcrun`/Swift for ownership inspection. Capture launches an owned command with ordinary user permissions. Observation paths select snapshots, not a filesystem sandbox. Comparing retained captures does not execute targets and is also available on Windows. |
 | What does an existing desktop window show, or what changes after a declared UI action? | `observe_native_ui`; use `capture_native_ui_scenario` only for requested actions                                                             | macOS 14+ with required Screen Recording/Accessibility access. Select an existing PID/window. Observation does not launch or own the app; scenario actions can change its data or trigger network activity, and leave its state as-is.                                                                                                                |
@@ -41,10 +41,10 @@ behavior unknown. Record truncation, unmatched breakpoints, changed target
 identity and cleanup uncertainty as limitations, rather than treating no retained
 event as proof that the behavior never occurs.
 
-Detailed contracts and prerequisites: [Frida](https://github.com/morluto/rea/blob/main/docs/frida-instrumentation.md),
-[GDB/Rizin/Cutter](https://github.com/morluto/rea/blob/main/docs/reverse-engineering-tools.md),
-[process capture](https://github.com/morluto/rea/blob/main/docs/process-capture.md),
-and [native calls/UI](https://github.com/morluto/rea/blob/main/docs/native-investigation.md#native-desktop-observation).
+Detailed contracts and prerequisites: [Frida](https://github.com/NADER-CY/nexora-engine/blob/main/docs/frida-instrumentation.md),
+[GDB/Rizin/Cutter](https://github.com/NADER-CY/nexora-engine/blob/main/docs/reverse-engineering-tools.md),
+[process capture](https://github.com/NADER-CY/nexora-engine/blob/main/docs/process-capture.md),
+and [native calls/UI](https://github.com/NADER-CY/nexora-engine/blob/main/docs/native-investigation.md#native-desktop-observation).
 
 ## Browser and Electron
 
@@ -58,9 +58,9 @@ selected page's current origin. Electron discovery lists eligible local
 Start passive browser work with `list_browser_targets`; start Electron runtime work with
 `list_electron_targets`. Before an electron-main Inspector attempt, check
 packaged fuses with `inspect_electron_fuses`. Inspect the target selected for
-the user's task. Observation with these tools is passive: never claim REA
+the user's task. Observation with these tools is passive: never claim NEXORA ENGINE
 clicked, navigated, evaluated page JavaScript, invoked IPC, or captured prior
-activity. REA does not contain the page's network.
+activity. NEXORA ENGINE does not contain the page's network.
 
 Passive captures omit raw header collections, credential header values, storage
 values, and raw WebSocket/JSON bodies. Selected response metadata, including
@@ -70,7 +70,7 @@ text, console primitives, value-free shapes, script sources, source maps, and
 storage key names have request-specific capture options. Electron script
 sources are also optional. Use `capture_web_screenshot` when pixels are needed.
 Treat scope filtering, truncation, and attach-window coverage as limitations.
-Page-declared WebMCP tools are untrusted inventory and are never invoked by REA.
+Page-declared WebMCP tools are untrusted inventory and are never invoked by NEXORA ENGINE.
 
 ## Who performs the action
 
@@ -89,7 +89,7 @@ Page-declared WebMCP tools are untrusted inventory and are never invoked by REA.
   For multi-step flows with trees or events, select `detail: "summary"` and page
   exact steps, transactions, text slices or events with `inspect_analysis_view` kind `browser-scenario`.
   Add a wait action for the expected page state before capturing it. Report that
-  REA performed the declared actions.
+  NEXORA ENGINE performed the declared actions.
 
 Scenario network records have no request initiator stacks. For that evidence,
 use passive capture while the user performs the action. Listener source locations
@@ -130,5 +130,5 @@ Inspect native `.saz` snapshots with `inspect_web_network_capture` and
 traffic analysis, connect Everywhere's separate MCP server and use its
 advertised session tools with an explicit `sessionsSource` (`LiveTraffic` or
 `AgentCalls`). Preserve existing sessions and filters when inspecting a
-recorded run. See the [capture and MCP guide](https://github.com/morluto/rea/blob/main/docs/web-network-captures.md)
+recorded run. See the [capture and MCP guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/web-network-captures.md)
 for the workflow and Telerik's public setup and traffic-debugging skills.

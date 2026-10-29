@@ -157,7 +157,7 @@ describe("MCP_ALLOWED_HOSTS", () => {
     expect(
       parseMcpHttpEndpoint({
         MCP_ALLOWED_HOSTS:
-          "REA.LAN,rea.lan,[0:0:0:0:0:0:0:1],::1,bücher.example",
+          "NEXORA ENGINE.LAN,rea.lan,[0:0:0:0:0:0:0:1],::1,bücher.example",
       }),
     ).toEqual({
       ok: true,

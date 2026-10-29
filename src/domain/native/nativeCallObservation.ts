@@ -19,7 +19,7 @@ const functionBreakpoint = {
   name: nativeString
     .min(1)
     .describe(
-      "Exact LLDB runtime symbol name, such as `open`, a C++ or mangled Swift symbol, or `-[NSString length]`. On Darwin, pass an inspect_macho export or import `runtime_name` (`main`), not its symbol-table `name` (`_main`); REA preserves the selected name without translating it.",
+      "Exact LLDB runtime symbol name, such as `open`, a C++ or mangled Swift symbol, or `-[NSString length]`. On Darwin, pass an inspect_macho export or import `runtime_name` (`main`), not its symbol-table `name` (`_main`); NEXORA ENGINE preserves the selected name without translating it.",
     ),
 };
 
@@ -80,7 +80,7 @@ export const nativeCallObservationInputSchema = z.strictObject({
   arguments: z.array(nativeString).default([]),
   environment: nativeCallEnvironmentSchema
     .default({})
-    .describe("Overrides on top of the environment REA runs with."),
+    .describe("Overrides on top of the environment NEXORA ENGINE runs with."),
   working_directory: localPathStringSchema.optional(),
   duration_ms: z
     .int()

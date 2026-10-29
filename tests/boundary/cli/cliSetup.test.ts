@@ -35,14 +35,14 @@ const actions = [
     kind: "configure_client",
     label: "Codex",
     target: "/isolated/.codex/config.toml",
-    detail: "Add the REA MCP registration for Codex.",
+    detail: "Add the NEXORA ENGINE MCP registration for Codex.",
     external: false,
     operation: "create",
   },
   {
     id: "install_skill",
     kind: "install_skill",
-    label: "REA reverse-engineering skill",
+    label: "NEXORA ENGINE reverse-engineering skill",
     target: "/isolated/.agents/skills/reverse-engineering/SKILL.md",
     detail: "Install the bundled reverse-engineering skill.",
     external: false,
@@ -168,8 +168,8 @@ describe("TTY setup dry run", () => {
     expect(output).toContain("Skill directory is a symbolic link.");
     expect(output).toContain(linked);
     expect(output).toContain("--skill=false");
-    expect(output).not.toContain("REA setup plan");
-    expect(output).not.toContain("Install or update the REA skill");
+    expect(output).not.toContain("NEXORA ENGINE setup plan");
+    expect(output).not.toContain("Install or update the NEXORA ENGINE skill");
     expect((await lstat(linked)).isSymbolicLink()).toBe(true);
     expect(await readFile(join(managed, "SKILL.md"), "utf8")).toBe(original);
     expect(await readdir(managed)).toEqual(["SKILL.md"]);
@@ -284,7 +284,7 @@ describe("interactive setup journey", () => {
   it("shows detected and absent clients without preselecting detected clients", async () => {
     const result = await runJourney(
       [
-        step("Which agents should use REA?", "\u001b[B"),
+        step("Which agents should use NEXORA ENGINE?", "\u001b[B"),
         step("Not detected · configuration is still available", "\r"),
       ],
       false,
@@ -294,15 +294,15 @@ describe("interactive setup journey", () => {
     expect(result.output).toContain(
       "Not detected · configuration is still available",
     );
-    expect(result.output).toContain("Which agents should use REA?");
-    expect(result.output).not.toContain("What should REA set up?");
+    expect(result.output).toContain("Which agents should use NEXORA ENGINE?");
+    expect(result.output).not.toContain("What should NEXORA ENGINE set up?");
     expect(result.decision.selectedActionIds).toEqual([]);
   });
 
   it("selects an absent OpenCode client and bundles its skill", async () => {
     const result = await runJourney(
       [
-        step("Which agents should use REA?", "\u001b[B \r"),
+        step("Which agents should use NEXORA ENGINE?", "\u001b[B \r"),
         step("Apply these 2 changes?", "\r"),
       ],
       false,
@@ -327,7 +327,7 @@ describe("interactive setup journey", () => {
   it("shows the launcher, backup, and path before final approval", async () => {
     const result = await runJourney(
       [
-        step("Which agents should use REA?", " \r"),
+        step("Which agents should use NEXORA ENGINE?", " \r"),
         step("Apply these 2 changes?", "\r"),
       ],
       false,
@@ -350,7 +350,7 @@ describe("interactive setup journey", () => {
 
   it("treats final No as cancellation", async () => {
     const result = await runJourney([
-      step("Which agents should use REA?", " \r"),
+      step("Which agents should use NEXORA ENGINE?", " \r"),
       step("Apply these 2 changes?", "\u001b[D\r"),
     ]);
     expect(result.output).toContain("Setup cancelled. No changes were made.");
@@ -360,7 +360,7 @@ describe("interactive setup journey", () => {
 
   it("restores the terminal after Ctrl-C during selection", async () => {
     const result = await runJourney([
-      step("Which agents should use REA?", "\u0003"),
+      step("Which agents should use NEXORA ENGINE?", "\u0003"),
     ]);
     expect(result.output).toContain("\u001b[?25h");
     expect(result.decision.cancelled).toBe(true);
@@ -368,8 +368,8 @@ describe("interactive setup journey", () => {
 
   it("can install the skill for CLI use without an agent registration", async () => {
     const result = await runJourney([
-      step("Which agents should use REA?", "\r"),
-      step("Install the guided REA skill for CLI use?", "\u001b[D\r"),
+      step("Which agents should use NEXORA ENGINE?", "\r"),
+      step("Install the guided NEXORA ENGINE skill for CLI use?", "\u001b[D\r"),
       step("Apply this change?", "\r"),
     ]);
     expect(result.decision.selectedActionIds).toEqual(["install_skill"]);
@@ -379,7 +379,7 @@ describe("interactive setup journey", () => {
   it("offers Hopper separately and defaults against installing it", async () => {
     const result = await runJourney(
       [
-        step("Which agents should use REA?", " \r"),
+        step("Which agents should use NEXORA ENGINE?", " \r"),
         step("Install Hopper for deep binary analysis?", "\r"),
         step("Apply these 2 changes?", "\r"),
       ],
@@ -407,10 +407,10 @@ describe("interactive setup journey", () => {
     ]);
   });
 
-  it("preselects only a prior REA registration", async () => {
+  it("preselects only a prior NEXORA ENGINE registration", async () => {
     const result = await runJourney(
       [
-        step("Which agents should use REA?", "\r"),
+        step("Which agents should use NEXORA ENGINE?", "\r"),
         step("Apply these 2 changes?", "\r"),
       ],
       false,

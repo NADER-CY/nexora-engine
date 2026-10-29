@@ -6,7 +6,7 @@ Issue: https://github.com/morluto/rea/issues/4933
 
 `rea mcp --http [--host H] [--port N]` serves the existing MCP tool catalog over
 the pinned SDK's streamable HTTP transport instead of stdio, so an agent
-environment runtime or any HTTP MCP client can reach REA on a local URL. The
+environment runtime or any HTTP MCP client can reach NEXORA ENGINE on a local URL. The
 listener is opt-in: bare `rea mcp`, `rea mcp doctor`, `rea mcp add` and every
 client registration keep stdio.
 

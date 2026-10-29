@@ -1,9 +1,9 @@
 # Apktool resource decoding
 
-REA decodes Android resource tables and the binary manifest through the
+NEXORA ENGINE decodes Android resource tables and the binary manifest through the
 caller's Apktool launcher. This completes the static triad for Android
 targets: Java/Kotlin sources through the JADX family, engine-grade
-decompilation through JEB, and resources through this family. REA never
+decompilation through JEB, and resources through this family. NEXORA ENGINE never
 installs Apktool or a Java runtime.
 
 ## Supply tools
@@ -46,13 +46,13 @@ downstream backports, or overall safety. Windows applicability uses the selected
 local host; an opaque wrapper may run another engine. A missing warning means
 only that none of these version/host windows matched. Verify the selected
 decoder's patches before decoding untrusted APKs; the compatibility floor above
-is not a security recommendation. REA does not fetch advisories at runtime.
+is not a security recommendation. NEXORA ENGINE does not fetch advisories at runtime.
 
 On Windows, a `.bat` or `.cmd` launcher (such as Chocolatey's `apktool.bat`)
 runs through an explicit `cmd.exe /d /s /c` call. That call has no AutoRun,
 no delayed expansion, and quotes every argument. A launcher path that
 contains `"`, `%`, `^`, `!`, `&`, `|`, `<` or `>` is reported as
-`not_configured` instead of being passed to `cmd.exe`. If REA's temporary
+`not_configured` instead of being passed to `cmd.exe`. If NEXORA ENGINE's temporary
 decode paths contain those characters, decoding through a batch launcher
 reports `capability_unavailable`.
 
@@ -125,7 +125,7 @@ still suppresses all string projection, including in this mode.
   Other table directories, including combined qualifiers such as
   `values-en-rUS-v21` and `values-mcc310-fr`, are named in limitations with
   their source spelling. They are not advertised as selectable locales;
-  REA does not infer Android's runtime resource matching. Non-regular
+  NEXORA ENGINE does not infer Android's runtime resource matching. Non-regular
   strings-table paths are disclosed with partial coverage. Discovery uses
   the same bounded traversal as the file count; filesystem failures remain
   failures rather than being interpreted as missing tables.

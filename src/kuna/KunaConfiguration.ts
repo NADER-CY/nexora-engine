@@ -92,7 +92,7 @@ const failure = (
         ? KUNA_UNSUPPORTED_HOST_REMEDIATION
         : setting === null || setting === "REA_KUNA_COMMAND"
           ? KUNA_COMMAND_REMEDIATION
-          : `Correct ${setting} to meet the reported constraint, or unset it to use its default. Restart REA after changing the environment.`,
+          : `Correct ${setting} to meet the reported constraint, or unset it to use its default. Restart NEXORA ENGINE after changing the environment.`,
   });
 
 const positiveInteger = (value: string): number | undefined =>

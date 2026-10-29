@@ -19,7 +19,7 @@ export const stdioResponseBudgetRecovery = (
   reservedStringCodeUnits: number,
   nodeStringCeilingCodeUnits: number,
 ): string =>
-  `The effective REA_MCP_MAX_RESPONSE_BYTES value is ${String(effectiveResponseBytes)} bytes (floor ${String(MINIMUM_RESPONSE_BYTES)} bytes, 10 MiB). A change requires restarting the REA process and a matching client receive buffer. It does not raise REA's reserved single-string limit of ${String(reservedStringCodeUnits)} UTF-16 code units or Node's single-string ceiling of ${String(nodeStringCeilingCodeUnits)} UTF-16 code units. This release has no runtime override for either limit.`;
+  `The effective REA_MCP_MAX_RESPONSE_BYTES value is ${String(effectiveResponseBytes)} bytes (floor ${String(MINIMUM_RESPONSE_BYTES)} bytes, 10 MiB). A change requires restarting the NEXORA ENGINE process and a matching client receive buffer. It does not raise NEXORA ENGINE's reserved single-string limit of ${String(reservedStringCodeUnits)} UTF-16 code units or Node's single-string ceiling of ${String(nodeStringCeilingCodeUnits)} UTF-16 code units. This release has no runtime override for either limit.`;
 
 /**
  * Facts for a result that exceeded REA's reserved string limit.
@@ -30,7 +30,7 @@ export const nodeStringCeilingRecovery = (
   reservedStringCodeUnits: number,
   nodeStringCeilingCodeUnits: number,
 ): string =>
-  `REA's reserved single-string limit is ${String(reservedStringCodeUnits)} UTF-16 code units, below Node's single-string ceiling of ${String(nodeStringCeilingCodeUnits)} UTF-16 code units. This release has no runtime override for either limit, and REA_MCP_MAX_RESPONSE_BYTES does not raise them.`;
+  `NEXORA ENGINE's reserved single-string limit is ${String(reservedStringCodeUnits)} UTF-16 code units, below Node's single-string ceiling of ${String(nodeStringCeilingCodeUnits)} UTF-16 code units. This release has no runtime override for either limit, and REA_MCP_MAX_RESPONSE_BYTES does not raise them.`;
 
 /** Optional stdio response budget, including room for the protocol envelope. */
 export const mcpResponseBudgetSchema = z

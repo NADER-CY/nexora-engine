@@ -50,7 +50,7 @@ values.
 - A scenario that saves nothing records the same Evidence parameters and
   `scenario_sha256` as before: an empty `save` is left out of the recorded
   step.
-- Earlier REA versions read captures that use saved values.
+- Earlier NEXORA ENGINE versions read captures that use saved values.
 - The compact MCP catalog stays under its measured one-megabyte frame.
 - The skill records writes the way the application's UI does and falls back to
   request steps when the UI cannot reach an operation or coverage withholds the

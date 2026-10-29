@@ -632,7 +632,7 @@ const rowEvaluationFailure = (
   if (sqlitePrimaryResultCode(cause) !== SQLITE_ERROR) return cause;
   const unavailable = new SqliteInspectionFailure(
     "row-evaluation",
-    `SQLite cannot prepare or evaluate rows of table ${JSON.stringify(table.name)} on REA's read-only connection: ${cause instanceof Error ? cause.message : String(cause)}`,
+    `SQLite cannot prepare or evaluate rows of table ${JSON.stringify(table.name)} on NEXORA ENGINE's read-only connection: ${cause instanceof Error ? cause.message : String(cause)}`,
   );
   const generated = new Set(
     table.columns
@@ -688,7 +688,7 @@ const rowEvaluationFailure = (
     }
   };
   return new SqliteColumnEvaluationFailure(
-    `SQLite cannot evaluate selected column(s) of table ${JSON.stringify(table.name)} on REA's read-only connection: ${[
+    `SQLite cannot evaluate selected column(s) of table ${JSON.stringify(table.name)} on NEXORA ENGINE's read-only connection: ${[
       ...failures,
     ]
       .map(

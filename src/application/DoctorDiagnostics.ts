@@ -154,7 +154,7 @@ const hostCheck = async (host: DoctorHost): Promise<DoctorCheck> => {
       ? `${host.platform} ${host.architecture}`
       : `${linuxDistribution.id} ${linuxDistribution.versionId ?? "unknown"}`);
   return check("host", supported, detail, {
-    remediation: `REA supports macOS 12+, Linux distributions with a recognized apt, dnf, or pacman package family, and the experimental Windows x64 Ghidra P0 boundary; automated Hopper setup on Linux additionally requires ${LINUX_HOPPER_SETUP_HOSTS}.`,
+    remediation: `NEXORA ENGINE supports macOS 12+, Linux distributions with a recognized apt, dnf, or pacman package family, and the experimental Windows x64 Ghidra P0 boundary; automated Hopper setup on Linux additionally requires ${LINUX_HOPPER_SETUP_HOSTS}.`,
     classification: "unsupported_host",
   });
 };
@@ -254,7 +254,7 @@ const runtimeConfigurationChecks = (
         .join("; "),
       {
         classification: "config_drift",
-        remediation: `Correct ${setting} in the environment that starts REA (your shell or the MCP client's registration), then rerun.`,
+        remediation: `Correct ${setting} in the environment that starts NEXORA ENGINE (your shell or the MCP client's registration), then rerun.`,
       },
     ),
     details: { setting },

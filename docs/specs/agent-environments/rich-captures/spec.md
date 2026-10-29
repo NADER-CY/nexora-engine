@@ -9,7 +9,7 @@ an environment manifest whose tool list stays within what model providers
 accept. Two changes:
 
 - `inspect_analysis_view` accepts a third source,
-  `{"kind": "evidence-file", "path": "<absolute path>"}`. REA reads one
+  `{"kind": "evidence-file", "path": "<absolute path>"}`. NEXORA ENGINE reads one
   completed Evidence JSON file, authenticates it, and projects it like retained
   Evidence, so its strings are bounded by the file reader instead of being
   charged as inline input.
@@ -30,7 +30,7 @@ accept. Two changes:
   resource scope, so a failed descriptor close stays owned for retry; a request
   cancelled before authentication, before projection or during projection
   returns typed cancellation and records nothing. Before authentication, which
-  copies and hashes the parsed Evidence, REA checks that live heap headroom holds
+  copies and hashes the parsed Evidence, NEXORA ENGINE checks that live heap headroom holds
   those copies and otherwise returns `resource_constraint`.
 - A file source projects exactly what the same Evidence projects inline or
   retained, with the same parent Evidence ID, view parameters and result.

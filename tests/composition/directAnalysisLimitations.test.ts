@@ -46,7 +46,7 @@ it("retains provider coverage caveats in a composed CLI result and closes the se
   ).then(projectCliAnalysisResult);
   expect(output).toMatchObject({
     limitations: [
-      "Derived by an REA composed workflow.",
+      "Derived by an NEXORA ENGINE composed workflow.",
       `Fixture (fixture 1) current_document, list_procedures, list_segments, list_strings: ${limitation}`,
     ],
     normalized_result: {

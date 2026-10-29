@@ -474,7 +474,7 @@ const skillIdentityRemediation = (
         return `${detail} (${path}). ${repair}`;
       })
       .join(" ");
-  return "Run rea setup to update the installed REA skill.";
+  return "Run rea setup to update the installed NEXORA ENGINE skill.";
 };
 
 const skillIdentityCheck = (
@@ -491,8 +491,8 @@ const skillIdentityCheck = (
       issues !== undefined && issues.length > 0
         ? `Selected skill identity is ${skillIdentityState(identity)}: ${issues.map(({ path }) => path).join(", ")}.`
         : identity === undefined
-          ? "Installed REA skill identity is missing."
-          : "Installed REA skill identity is stale.",
+          ? "Installed NEXORA ENGINE skill identity is missing."
+          : "Installed NEXORA ENGINE skill identity is stale.",
     remediation: skillIdentityRemediation(identity),
   };
 };

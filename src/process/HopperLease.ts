@@ -37,7 +37,7 @@ export const acquireHopperTargetLease = async (input: {
   } catch (cause: unknown) {
     throw new HopperStartError({
       cause,
-      userMessage: `REA could not resolve Hopper target ${JSON.stringify(input.targetPath)} to a canonical path before reserving the document. Confirm that the target exists and its path is accessible.`,
+      userMessage: `NEXORA ENGINE could not resolve Hopper target ${JSON.stringify(input.targetPath)} to a canonical path before reserving the document. Confirm that the target exists and its path is accessible.`,
     });
   }
   return acquireLease({
@@ -119,28 +119,28 @@ const hopperLeaseFailure = (
 const hopperLeaseMessage = (failure: LeaseFailure): string => {
   switch (failure.kind) {
     case "directory_create":
-      return "REA could not create its private Hopper lease directory.";
+      return "NEXORA ENGINE could not create its private Hopper lease directory.";
     case "directory_not_private":
-      return "REA's Hopper lease directory is not a private directory owned by this user.";
+      return "NEXORA ENGINE's Hopper lease directory is not a private directory owned by this user.";
     case "directory_permissions":
-      return "REA's Hopper lease directory permissions could not be secured.";
+      return "NEXORA ENGINE's Hopper lease directory permissions could not be secured.";
     case "directory_access_denied":
-      return `REA could not access its Hopper lease directory at ${JSON.stringify(failure.directory)}. Check its ownership and parent-directory access. For a directory you own, restore owner-only read, write, and search permissions (0700), then retry.`;
+      return `NEXORA ENGINE could not access its Hopper lease directory at ${JSON.stringify(failure.directory)}. Check its ownership and parent-directory access. For a directory you own, restore owner-only read, write, and search permissions (0700), then retry.`;
     case "socket_permissions":
-      return "REA could not secure its lease socket permissions.";
+      return "NEXORA ENGINE could not secure its lease socket permissions.";
     case "directory_close":
-      return "REA could not confirm closure of its Hopper lease directory handle.";
+      return "NEXORA ENGINE could not confirm closure of its Hopper lease directory handle.";
     case "directory_inspect":
-      return "REA could not inspect its private Hopper lease directory.";
+      return "NEXORA ENGINE could not inspect its private Hopper lease directory.";
     case "recovery_busy":
-      return `REA could not reserve Hopper lease recovery at ${JSON.stringify(failure.path)}; the existing socket was left unchanged. Retry after concurrent startup finishes. If recovery was interrupted, stop REA sessions and remove this recovery directory before retrying.`;
+      return `NEXORA ENGINE could not reserve Hopper lease recovery at ${JSON.stringify(failure.path)}; the existing socket was left unchanged. Retry after concurrent startup finishes. If recovery was interrupted, stop NEXORA ENGINE sessions and remove this recovery directory before retrying.`;
     case "recovery_create":
-      return `REA could not create its Hopper recovery directory at ${JSON.stringify(failure.path)}; the existing socket was left unchanged. Check the parent directory's write access before retrying.`;
+      return `NEXORA ENGINE could not create its Hopper recovery directory at ${JSON.stringify(failure.path)}; the existing socket was left unchanged. Check the parent directory's write access before retrying.`;
     case "recovery_remove":
-      return `REA could not remove its Hopper recovery directory at ${JSON.stringify(failure.path)}. Check this directory's write access before retrying.`;
+      return `NEXORA ENGINE could not remove its Hopper recovery directory at ${JSON.stringify(failure.path)}. Check this directory's write access before retrying.`;
     case "owner_unverified":
-      return `REA could not verify the existing Hopper lease (${failure.reason}); it was left unchanged. Retry when the owning REA session is responsive.`;
+      return `NEXORA ENGINE could not verify the existing Hopper lease (${failure.reason}); it was left unchanged. Retry when the owning NEXORA ENGINE session is responsive.`;
     case "unrecoverable":
-      return "REA could not reserve Hopper for this request. Close competing REA sessions and retry.";
+      return "NEXORA ENGINE could not reserve Hopper for this request. Close competing NEXORA ENGINE sessions and retry.";
   }
 };

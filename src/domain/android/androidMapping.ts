@@ -24,7 +24,7 @@ export const ANDROID_MAPPING_LIMITS = Object.freeze({
 /** Caller-selected mapping provenance, added to Evidence when a mapping is applied. */
 const ANDROID_MAPPING_LIMITATIONS = [
   "Mapped names come from the caller-selected mapping file, not from the APK.",
-  "REA does not verify that the mapping belongs to this APK build; pg_map_id is reported, not checked.",
+  "NEXORA ENGINE does not verify that the mapping belongs to this APK build; pg_map_id is reported, not checked.",
   "Mapping lookups use raw DEX names and types from the bridge, not JADX display aliases.",
   "unmapped means no valid mapping record matched the observed raw identity; it does not establish that the symbol was not obfuscated.",
   "No original source files or line numbers are recovered from the mapping.",

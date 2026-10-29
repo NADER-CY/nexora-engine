@@ -42,7 +42,7 @@ describe("resolveSwiftcCompileTimeoutMs", () => {
     expect(recovery).toContain("300000 ms");
     expect(recovery).toContain(`1..${String(MAX_PROVIDER_STARTUP_TIMEOUT_MS)}`);
     expect(recovery).toContain("120000 ms");
-    expect(recovery).toContain("restart REA");
+    expect(recovery).toContain("restart NEXORA ENGINE");
     expect(recovery).toContain("next ownership-helper compile");
   });
 });
