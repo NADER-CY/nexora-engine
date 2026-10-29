@@ -5,6 +5,11 @@ The title becomes the squash-merge commit subject and generated changelog entry.
 
 ## Summary
 
+<!-- NEXORA ENGINE: state the milestone, actual executed checks and unverified
+provider/platform integrations. Preserve upstream attribution and compatibility.
+Leave author readiness declarations for the human owner. Do not enable release
+or deployment automation as part of a development change. -->
+
 <!-- What user, agent, or maintainer problem does this solve? Link the issue
 with "Fixes #123" when applicable. Keep the prior behavior, expected contract,
 and new behavior understandable without private context. -->

@@ -1,3 +1,13 @@
+# NEXORA ENGINE changes
+
+## Unreleased — NEXORA ENGINE development milestones
+
+- Add platform installation and Codex/Claude/generic MCP guides with explicit verification limits.
+- Add reproducible source/project/cycle/Ghidra importer tutorials and offline command/link checks.
+- Preserve the upstream package version separately from the NEXORA release recorded in package.json.
+
+The upstream historical changelog follows unchanged. Its releases are not NEXORA ENGINE releases.
+
 # Changelog
 
 ## [6.8.0](https://github.com/morluto/rea/compare/rea-agents-6.7.0...rea-agents-6.8.0) (2026-10-25)
