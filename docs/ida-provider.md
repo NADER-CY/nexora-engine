@@ -193,9 +193,9 @@ Add the registration path to the **NEXORA ENGINE** MCP entry's environment, keep
 ```json
 {
   "mcpServers": {
-    "rea": {
-      "command": "npx",
-      "args": ["-y", "rea-agents@<version-with-ida>", "mcp"],
+    "nexora-engine": {
+      "command": "node",
+      "args": ["/absolute/path/to/nexora-engine/scripts/nexora-engine.mjs", "mcp"],
       "env": {
         "REA_ANALYSIS_PROVIDER": "ida",
         "REA_IDA_MCP_CONFIG": "/absolute/path/to/ida-mcp.json"

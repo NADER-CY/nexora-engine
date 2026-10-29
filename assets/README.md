@@ -1,10 +1,5 @@
-# Plugin icon
+# NEXORA ENGINE visual assets
 
-`rea-plugin.png` is a square adaptation of the left panel of REA's GitHub
-social preview, retrieved on 2026-10-28:
+The current original identity lives in [brand/](brand/README.md). Both plugin manifests use `assets/brand/mark.png`.
 
-https://repository-images.githubusercontent.com/1209966933/1a3fef9a-be4b-41f4-8830-a94c0e8288cc
-
-The image was adapted with imagegen, preserving the cyan REA lettering,
-pixel typography, orange rule, and taglines. Both plugin manifests reference
-this shared asset; only the PNG is included in the npm package.
+`rea-plugin.png` remains a compatibility filename and contains the same original NEXORA ENGINE mark. Likewise the older documentation showcase filenames contain the NEXORA ENGINE hero variants. These paths no longer display inherited promotional artwork. The archived upstream website's fixture assets remain separate historical source material, not the current public homepage.

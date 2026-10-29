@@ -26,7 +26,7 @@ their distinct classifications.
 The host must already provide util-linux `prlimit`, normally `/usr/bin/prlimit`;
 `REA_EVM_PRLIMIT_COMMAND` can select another absolute executable. NEXORA ENGINE installs
 no system tools and changes no user configuration. [Upstream provenance and
-license](https://github.com/morluto/rea/blob/main/third_party/evmole/README.md) are packaged.
+license](https://github.com/NADER-CY/nexora-engine/blob/main/third_party/evmole/README.md) are packaged.
 
 ## Evidence semantics
 

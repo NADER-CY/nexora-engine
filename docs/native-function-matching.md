@@ -151,7 +151,7 @@ raise the allowance. Repeated provenance remains
 part of the complete member contract; splitting inventories into separate matches
 would change global name/body uniqueness and is not an equivalent workaround.
 
-The self-owned source fixture is [nativeFunctionMatching.c](https://github.com/morluto/rea/blob/main/tests/fixtures/nativeFunctionMatching.c).
+The self-owned source fixture is [nativeFunctionMatching.c](https://github.com/NADER-CY/nexora-engine/blob/main/tests/fixtures/nativeFunctionMatching.c).
 On Linux x86-64, compile with `cc -O2 -g0 -fno-pie -no-pie -DVERSION=1` and
 `-DVERSION=2`; copy the second binary and run `strip --strip-all` on that copy.
 It includes unchanged/changed code, a byte-identical rename, a removed/added

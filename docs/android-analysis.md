@@ -2,7 +2,7 @@
 
 NEXORA ENGINE wraps an existing headless JADX engine through `src/android/`. Its source is
 kept as an unmodified, commit-pinned Git submodule; see
-[upstream provenance](https://github.com/morluto/rea/blob/main/third_party/README.md). CLI and MCP use the same
+[upstream provenance](https://github.com/NADER-CY/nexora-engine/blob/main/third_party/README.md). CLI and MCP use the same
 application workflow and return artifact-bound Evidence inline.
 
 This family is present on repository main and in npm 4.1.0. Check the
@@ -142,7 +142,7 @@ type tokens or establish runtime eligibility.
 Use a **full JDK 17 or newer** (including its compiler module) and
 [**jadx-headless-mcp 0.7.1**](https://github.com/1013503897/jadx-headless-mcp/releases/download/v0.7.1/jadx-headless-mcp-0.7.1-all.jar).
 Verify the downloaded JAR's SHA-256 against
-[NEXORA ENGINE's pinned release metadata](https://github.com/morluto/rea/blob/main/src/android/JadxRelease.ts)
+[NEXORA ENGINE's pinned release metadata](https://github.com/NADER-CY/nexora-engine/blob/main/src/android/JadxRelease.ts)
 before using it. The following download and verification commands work for npm
 package consumers as well as repository checkouts; the repository-only
 `npm run fixtures:android` helper is not included in the npm package.
@@ -167,7 +167,7 @@ On Windows, run the equivalent in PowerShell:
 $jar = Join-Path $HOME '.local\share\rea\android\jadx-headless-mcp-0.7.1-all.jar'
 New-Item -ItemType Directory -Force (Split-Path $jar) | Out-Null
 Invoke-WebRequest -Uri 'https://github.com/1013503897/jadx-headless-mcp/releases/download/v0.7.1/jadx-headless-mcp-0.7.1-all.jar' -OutFile $jar
-if ((Get-FileHash -Algorithm SHA256 $jar).Hash.ToLowerInvariant() -ne '6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75') { throw 'JADX JAR SHA-256 does not match REA pinned metadata' }
+if ((Get-FileHash -Algorithm SHA256 $jar).Hash.ToLowerInvariant() -ne '6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75') { throw 'JADX JAR SHA-256 does not match NEXORA ENGINE pinned metadata' }
 $env:REA_JADX_MCP_JAR = $jar
 ```
 

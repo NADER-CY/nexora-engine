@@ -220,11 +220,11 @@ stages that never ran.
   composition does not replace that semantic identity. Finalization reports
   remain attached to their owning envelope while cleanup is pending and after
   confirmed release. CLI adapters should reuse
-  [`finishAnalysisCommand`](https://github.com/morluto/rea/blob/main/src/cli/finishAnalysisCommand.ts) where its contract
+  [`finishAnalysisCommand`](https://github.com/NADER-CY/nexora-engine/blob/main/src/cli/finishAnalysisCommand.ts) where its contract
   applies rather than duplicate close/finally handling.
 - Give descriptor-backed reads an owner before opening the file. A rejected
   close must retain the exact handle and preserve any earlier failure.
-  Carry [`openRegularFile`](https://github.com/morluto/rea/blob/main/src/filesystem/RegularFile.ts)'s
+  Carry [`openRegularFile`](https://github.com/NADER-CY/nexora-engine/blob/main/src/filesystem/RegularFile.ts)'s
   admitted handle and initial metadata rather than restatting only to rebuild
   those facts. Keep fresh descriptor and selected-path identity checks after
   work, comparing against the original baseline instead of replacing it with
@@ -262,7 +262,7 @@ through the producing owner and affected CLI/MCP consumers.
 
 Put provider wire-protocol parsing in adapters and shared CLI/MCP workflows in
 the application layer. Reusable format declarations may live in pure domain
-owners: [`peOptionalHeader.ts`](https://github.com/morluto/rea/blob/main/src/domain/peOptionalHeader.ts)
+owners: [`peOptionalHeader.ts`](https://github.com/NADER-CY/nexora-engine/blob/main/src/domain/peOptionalHeader.ts)
 decodes PE structure, while consumers retain machine admission, directory-address
 interpretation, and file/mapping bounds. Share Evidence provenance, unknown
 projection, and session retention semantics; matching payloads alone do not
@@ -279,13 +279,13 @@ Evidence envelope.
 helpers and `createImmutableEvidenceSteps`. The cooperative constructor also
 requires an authenticated immutable result; preserve that ownership proof.
 For objects, proof comes from completed sealing by
-[`immutableJson.ts`](https://github.com/morluto/rea/blob/main/src/domain/immutableJson.ts);
+[`immutableJson.ts`](https://github.com/NADER-CY/nexora-engine/blob/main/src/domain/immutableJson.ts);
 `readonly` or `Object.freeze` alone does not establish it. JSON primitives are
 directly eligible. Seal owned data and complete cooperative sealing before
 reusing its result.
 
 When a failed or cancelled operation retains completed, valid partial Evidence,
-use the shared [`ToolResultDelivery`](https://github.com/morluto/rea/blob/main/src/server/ToolResultDelivery.ts)
+use the shared [`ToolResultDelivery`](https://github.com/NADER-CY/nexora-engine/blob/main/src/server/ToolResultDelivery.ts)
 path with the session's Evidence writer. Keep the original failure and the
 named contract's target-content marking; replace the inline partial with a
 retained reference only after recording succeeds. An absent writer or a writer

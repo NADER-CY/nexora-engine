@@ -9,7 +9,7 @@ acceptance is verified only where explicitly recorded.
 ## Launchers and PATH
 
 A client launched from a desktop app, IDE or service can inherit a different
-`PATH` from your terminal. An absolute path to `rea-agents` does not resolve its
+`PATH` from your terminal. An absolute path to the NEXORA ENGINE launcher does not resolve its
 interpreter: the npm launcher's `#!/usr/bin/env node` still searches `PATH` for
 Node. Running that command successfully in a terminal does not establish that
 the client can launch it.
@@ -643,7 +643,7 @@ FreeBuff or ZCode product applicability is established or unresolved, the same
 malformed shared file stops uninstall before removals. See
 [Diagnose, update, and remove](installation.md#diagnose-update-and-remove).
 
-FreeBuff setup support requires `rea-agents@6.8.0` or later. Older versions
+The inherited FreeBuff setup contract dates to upstream version 6.8.0. Older versions
 reject `rea setup --client freebuff` as an unsupported client. See the
 [installation guide](installation.md#supported-agents) for client availability.
 
@@ -683,7 +683,7 @@ that produces the entire NEXORA ENGINE config, or a group-targeted NEXORA ENGINE
 literal config and a root-level insertion as shown above.
 
 For a global npm installation, the launcher is under
-`$(npm root -g)/rea-agents/scripts/rea.mjs`. Restart Harness after setup; it
+`/absolute/path/to/nexora-engine/scripts/nexora-engine.mjs`. Restart Harness after setup; it
 exposes tools as `mcp__rea__<tool_name>`. Run `rea setup --skill --dry-run`,
 review the destination, then `rea setup --skill --yes` to install the workflow
 in `~/.agents/skills` (`$DSH_AGENTS_HOME/skills` when configured); Harness
