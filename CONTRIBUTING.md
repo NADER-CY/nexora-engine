@@ -1,3 +1,9 @@
+# Contributing to NEXORA ENGINE
+
+Start with [installation](docs/installation/from-source.md), [offline tutorials](docs/tutorials/README.md) and [the roadmap](docs/nexora-roadmap.md). Preserve MIT/upstream attribution and compatibility. Work on a dedicated branch, add focused regressions, state actual results and unavailable toolchains, and open a PR. Do not publish registries, binaries or sites as part of routine contributions. See [community standards](CODE_OF_CONDUCT.md) and [security reporting](SECURITY.md).
+
+The original upstream contribution guidance below is retained for architectural/testing context; references to upstream processes do not authorize changes to upstream repositories.
+
 # Contributing to REA
 
 REA welcomes focused bug fixes, documentation improvements, tests, and reverse-engineering workflows. For large contract or architecture changes, explain the intended scope and link the relevant issue or design discussion.

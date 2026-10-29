@@ -1,0 +1,224 @@
+{
+  "schema": "nexora-project-analysis/v1",
+  "architecture": {
+    "schema": "nexora-architecture/v1",
+    "nodes": [
+      {
+        "file": "a.js",
+        "incomingFiles": 1,
+        "outgoingFiles": 1
+      },
+      {
+        "file": "b.js",
+        "incomingFiles": 1,
+        "outgoingFiles": 1
+      }
+    ],
+    "edges": [
+      {
+        "from": "a.js",
+        "to": "b.js",
+        "specifier": "./b.js",
+        "evidence": {
+          "byteOffset": 7,
+          "byteLength": 8,
+          "kind": "observed",
+          "confidence": "high"
+        },
+        "resolution": "local-path-candidate"
+      },
+      {
+        "from": "b.js",
+        "to": "a.js",
+        "specifier": "./a.js",
+        "evidence": {
+          "byteOffset": 7,
+          "byteLength": 8,
+          "kind": "observed",
+          "confidence": "high"
+        },
+        "resolution": "local-path-candidate"
+      }
+    ],
+    "cycles": [
+      {
+        "members": [
+          "a.js",
+          "b.js"
+        ],
+        "kind": "strongly-connected-dependency-candidates"
+      }
+    ],
+    "coverage": {
+      "complete": true,
+      "sourceIncomplete": false,
+      "unresolved": {
+        "ambiguous": 0,
+        "unresolved": 0,
+        "externalOrLanguagePath": 0,
+        "unavailableTarget": 0
+      },
+      "dropped": {
+        "nodes": 0,
+        "edges": 0,
+        "cycles": 0
+      }
+    },
+    "limitations": [
+      "Static relative-path candidates only; cycles describe file dependencies, not runtime calls.",
+      "Missing, external, ambiguous, failed or dropped facts prevent complete architecture coverage. Degrees and cycles use retained edges only."
+    ]
+  },
+  "files": [
+    {
+      "path": "a.js",
+      "input": {
+        "sha256": "3d057b4aa7db5e514bc19260affc9a96a2d8058f66d62e1ab0856256c1fd299f",
+        "bytes": 51
+      },
+      "coverage": {
+        "tokens": 13,
+        "droppedTokens": 0,
+        "longHeaders": 0,
+        "unterminatedLexeme": false,
+        "unclosedFunctions": 0,
+        "dropped": {
+          "symbols": 0,
+          "calls": 0,
+          "dependencies": 0
+        }
+      }
+    },
+    {
+      "path": "b.js",
+      "input": {
+        "sha256": "2f74f568a536f541c358d546468dbfd8b2f252a763ce2dfeccf40d42a6c38d3b",
+        "bytes": 51
+      },
+      "coverage": {
+        "tokens": 13,
+        "droppedTokens": 0,
+        "longHeaders": 0,
+        "unterminatedLexeme": false,
+        "unclosedFunctions": 0,
+        "dropped": {
+          "symbols": 0,
+          "calls": 0,
+          "dependencies": 0
+        }
+      }
+    }
+  ],
+  "symbols": [
+    {
+      "id": "a.js#function@33",
+      "name": "a",
+      "kind": "function",
+      "parent": null,
+      "line": 2,
+      "evidence": {
+        "byteOffset": 33,
+        "byteLength": 1,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 37,
+        "byteLength": 13
+      },
+      "incomingCalls": [],
+      "outgoingCalls": [],
+      "file": "a.js"
+    },
+    {
+      "id": "b.js#function@33",
+      "name": "b",
+      "kind": "function",
+      "parent": null,
+      "line": 2,
+      "evidence": {
+        "byteOffset": 33,
+        "byteLength": 1,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 37,
+        "byteLength": 13
+      },
+      "incomingCalls": [],
+      "outgoingCalls": [],
+      "file": "b.js"
+    }
+  ],
+  "calls": [],
+  "dependencies": [
+    {
+      "name": "./b.js",
+      "evidence": {
+        "byteOffset": 7,
+        "byteLength": 8,
+        "kind": "observed",
+        "confidence": "high"
+      },
+      "relation": "literal-import",
+      "file": "a.js",
+      "target": "b.js",
+      "resolution": "local-path-candidate"
+    },
+    {
+      "name": "./a.js",
+      "evidence": {
+        "byteOffset": 7,
+        "byteLength": 8,
+        "kind": "observed",
+        "confidence": "high"
+      },
+      "relation": "literal-import",
+      "file": "b.js",
+      "target": "a.js",
+      "resolution": "local-path-candidate"
+    }
+  ],
+  "failures": [],
+  "coverage": {
+    "visitedEntries": 2,
+    "traversalTruncated": false,
+    "skippedDirectories": [
+      ".git",
+      "node_modules",
+      "target",
+      "dist",
+      ".cache"
+    ],
+    "symlinks": "not followed",
+    "dropped": {
+      "files": 0,
+      "symbols": 0,
+      "calls": 0,
+      "dependencies": 0,
+      "failures": 0
+    }
+  },
+  "profile": {
+    "analyzer": "nexora-phase3a/1",
+    "limits": {
+      "maxFileBytes": 2147483648,
+      "maxLineBytes": 1048576,
+      "maxRecords": 50000000,
+      "maxHeapBytes": 805306368,
+      "timeoutMs": 600000,
+      "concurrency": 2,
+      "maxQueue": 16,
+      "maxOutputBytes": 67108864,
+      "maxInventoryItems": 5000,
+      "chunkBytes": 1048576,
+      "maxLiteralBytes": 2048
+    }
+  },
+  "limitations": [
+    "Sequential bounded file analysis; lexical candidates only.",
+    "Relative dependency paths are candidates, without package-manager, compiler or tsconfig resolution.",
+    "Calls remain bound within each file; cross-file name-only binding is deliberately unresolved."
+  ]
+}

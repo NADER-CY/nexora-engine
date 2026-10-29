@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: Contribution scope and integration requirements
-    url: https://github.com/morluto/rea/blob/main/CONTRIBUTING.md#contribution-scope
+    url: https://github.com/NADER-CY/nexora-engine/blob/main/CONTRIBUTING.md
     about: Check supported capabilities, excluded workflows, and the fail-closed integration rule before proposing a feature.
-  - name: REA Documentation
-    url: https://github.com/morluto/rea#readme
+  - name: NEXORA ENGINE Documentation
+    url: https://github.com/NADER-CY/nexora-engine#readme
     about: Read the README and AGENTS.md for usage guides and configuration details.
   - name: Question or Discussion
-    url: https://github.com/morluto/rea/discussions
-    about: Please ask questions and start discussions here.
+    url: https://github.com/NADER-CY/nexora-engine/blob/main/docs/nexora-roadmap.md
+    about: Review the NEXORA ENGINE roadmap and supported scope before proposing work.

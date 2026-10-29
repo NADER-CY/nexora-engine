@@ -1,0 +1,246 @@
+{
+  "schema": "nexora-project-analysis/v1",
+  "architecture": {
+    "schema": "nexora-architecture/v1",
+    "nodes": [
+      {
+        "file": "main.js",
+        "incomingFiles": 0,
+        "outgoingFiles": 1
+      },
+      {
+        "file": "worker.js",
+        "incomingFiles": 1,
+        "outgoingFiles": 0
+      }
+    ],
+    "edges": [
+      {
+        "from": "main.js",
+        "to": "worker.js",
+        "specifier": "./worker.js",
+        "evidence": {
+          "byteOffset": 7,
+          "byteLength": 13,
+          "kind": "observed",
+          "confidence": "high"
+        },
+        "resolution": "local-path-candidate"
+      }
+    ],
+    "cycles": [],
+    "coverage": {
+      "complete": true,
+      "sourceIncomplete": false,
+      "unresolved": {
+        "ambiguous": 0,
+        "unresolved": 0,
+        "externalOrLanguagePath": 0,
+        "unavailableTarget": 0
+      },
+      "dropped": {
+        "nodes": 0,
+        "edges": 0,
+        "cycles": 0
+      }
+    },
+    "limitations": [
+      "Static relative-path candidates only; cycles describe file dependencies, not runtime calls.",
+      "Missing, external, ambiguous, failed or dropped facts prevent complete architecture coverage. Degrees and cycles use retained edges only."
+    ]
+  },
+  "files": [
+    {
+      "path": "main.js",
+      "input": {
+        "sha256": "5c8ea6f5ea5cf732f678fac8c76bbba14e095950d6e302ad027feb62937d230d",
+        "bytes": 124
+      },
+      "coverage": {
+        "tokens": 30,
+        "droppedTokens": 0,
+        "longHeaders": 0,
+        "unterminatedLexeme": false,
+        "unclosedFunctions": 0,
+        "dropped": {
+          "symbols": 0,
+          "calls": 0,
+          "dependencies": 0
+        }
+      }
+    },
+    {
+      "path": "worker.js",
+      "input": {
+        "sha256": "9068fe73607d2a793f0cd2ec674eaecac2b05ec1c7f6be9be474c735a926db1a",
+        "bytes": 37
+      },
+      "coverage": {
+        "tokens": 10,
+        "droppedTokens": 0,
+        "longHeaders": 0,
+        "unterminatedLexeme": false,
+        "unclosedFunctions": 0,
+        "dropped": {
+          "symbols": 0,
+          "calls": 0,
+          "dependencies": 0
+        }
+      }
+    }
+  ],
+  "symbols": [
+    {
+      "id": "main.js#function@38",
+      "name": "format",
+      "kind": "function",
+      "parent": null,
+      "line": 2,
+      "evidence": {
+        "byteOffset": 38,
+        "byteLength": 6,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 52,
+        "byteLength": 25
+      },
+      "incomingCalls": [
+        "main.js#call@111"
+      ],
+      "outgoingCalls": [
+        "main.js#call@61"
+      ],
+      "file": "main.js"
+    },
+    {
+      "id": "main.js#function@94",
+      "name": "start",
+      "kind": "function",
+      "parent": null,
+      "line": 3,
+      "evidence": {
+        "byteOffset": 94,
+        "byteLength": 5,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 102,
+        "byteLength": 21
+      },
+      "incomingCalls": [],
+      "outgoingCalls": [
+        "main.js#call@111"
+      ],
+      "file": "main.js"
+    },
+    {
+      "id": "worker.js#function@16",
+      "name": "work",
+      "kind": "function",
+      "parent": null,
+      "line": 1,
+      "evidence": {
+        "byteOffset": 16,
+        "byteLength": 4,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 23,
+        "byteLength": 13
+      },
+      "incomingCalls": [],
+      "outgoingCalls": [],
+      "file": "worker.js"
+    }
+  ],
+  "calls": [
+    {
+      "name": "String",
+      "caller": "main.js#function@38",
+      "resolution": "unresolved",
+      "evidence": {
+        "byteOffset": 61,
+        "byteLength": 6,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "callee": null,
+      "id": "main.js#call@61",
+      "file": "main.js"
+    },
+    {
+      "name": "format",
+      "caller": "main.js#function@94",
+      "resolution": "unique-name-candidate",
+      "evidence": {
+        "byteOffset": 111,
+        "byteLength": 6,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "callee": "main.js#function@38",
+      "id": "main.js#call@111",
+      "file": "main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "./worker.js",
+      "evidence": {
+        "byteOffset": 7,
+        "byteLength": 13,
+        "kind": "observed",
+        "confidence": "high"
+      },
+      "relation": "literal-import",
+      "file": "main.js",
+      "target": "worker.js",
+      "resolution": "local-path-candidate"
+    }
+  ],
+  "failures": [],
+  "coverage": {
+    "visitedEntries": 2,
+    "traversalTruncated": false,
+    "skippedDirectories": [
+      ".git",
+      "node_modules",
+      "target",
+      "dist",
+      ".cache"
+    ],
+    "symlinks": "not followed",
+    "dropped": {
+      "files": 0,
+      "symbols": 0,
+      "calls": 0,
+      "dependencies": 0,
+      "failures": 0
+    }
+  },
+  "profile": {
+    "analyzer": "nexora-phase3a/1",
+    "limits": {
+      "maxFileBytes": 2147483648,
+      "maxLineBytes": 1048576,
+      "maxRecords": 50000000,
+      "maxHeapBytes": 805306368,
+      "timeoutMs": 600000,
+      "concurrency": 2,
+      "maxQueue": 16,
+      "maxOutputBytes": 67108864,
+      "maxInventoryItems": 5000,
+      "chunkBytes": 1048576,
+      "maxLiteralBytes": 2048
+    }
+  },
+  "limitations": [
+    "Sequential bounded file analysis; lexical candidates only.",
+    "Relative dependency paths are candidates, without package-manager, compiler or tsconfig resolution.",
+    "Calls remain bound within each file; cross-file name-only binding is deliberately unresolved."
+  ]
+}

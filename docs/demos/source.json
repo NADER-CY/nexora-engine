@@ -1,0 +1,130 @@
+{
+  "schema": "nexora-source-analysis/v1",
+  "language": "javascript",
+  "symbols": [
+    {
+      "id": "function@38",
+      "name": "format",
+      "kind": "function",
+      "parent": null,
+      "line": 2,
+      "evidence": {
+        "byteOffset": 38,
+        "byteLength": 6,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 52,
+        "byteLength": 25
+      },
+      "incomingCalls": [
+        "call@111"
+      ],
+      "outgoingCalls": [
+        "call@61"
+      ]
+    },
+    {
+      "id": "function@94",
+      "name": "start",
+      "kind": "function",
+      "parent": null,
+      "line": 3,
+      "evidence": {
+        "byteOffset": 94,
+        "byteLength": 5,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "body": {
+        "byteOffset": 102,
+        "byteLength": 21
+      },
+      "incomingCalls": [],
+      "outgoingCalls": [
+        "call@111"
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "name": "String",
+      "caller": "function@38",
+      "resolution": "unresolved",
+      "evidence": {
+        "byteOffset": 61,
+        "byteLength": 6,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "callee": null,
+      "id": "call@61"
+    },
+    {
+      "name": "format",
+      "caller": "function@94",
+      "resolution": "unique-name-candidate",
+      "evidence": {
+        "byteOffset": 111,
+        "byteLength": 6,
+        "kind": "inferred",
+        "confidence": "medium"
+      },
+      "callee": "function@38",
+      "id": "call@111"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "./worker.js",
+      "evidence": {
+        "byteOffset": 7,
+        "byteLength": 13,
+        "kind": "observed",
+        "confidence": "high"
+      },
+      "relation": "literal-import"
+    }
+  ],
+  "coverage": {
+    "tokens": 30,
+    "droppedTokens": 0,
+    "longHeaders": 0,
+    "unterminatedLexeme": false,
+    "unclosedFunctions": 0,
+    "dropped": {
+      "symbols": 0,
+      "calls": 0,
+      "dependencies": 0
+    }
+  },
+  "limitations": [
+    "Lexical candidates, not compiler name binding or runtime calls.",
+    "Macros, templates, regex literals, interpolated/raw strings, closures, overloads, indirect calls and conditional compilation may be incomplete.",
+    "Imports are literal/module references; no dependency fetching or package execution."
+  ],
+  "input": {
+    "sha256": "5c8ea6f5ea5cf732f678fac8c76bbba14e095950d6e302ad027feb62937d230d",
+    "bytes": 124
+  },
+  "profile": {
+    "analyzer": "nexora-phase3a/1",
+    "limits": {
+      "maxFileBytes": 2147483648,
+      "maxLineBytes": 1048576,
+      "maxRecords": 50000000,
+      "maxHeapBytes": 805306368,
+      "timeoutMs": 600000,
+      "concurrency": 2,
+      "maxQueue": 16,
+      "maxOutputBytes": 67108864,
+      "maxInventoryItems": 5000,
+      "chunkBytes": 1048576,
+      "maxLiteralBytes": 2048
+    }
+  },
+  "io": {
+    "readBytes": 124
+  }
+}

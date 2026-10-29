@@ -1,0 +1,71 @@
+{
+  "branchBaseline": "95514eff805b014920a3058054e193e5de38dd8c",
+  "node": "v24.22.1",
+  "platform": "Windows x64",
+  "sourceRuns": [
+    {
+      "command": [
+        "node",
+        "nexora/bin/nexora.mjs",
+        "analyze-source",
+        "examples/tutorial/project/main.js"
+      ],
+      "exitCode": 0,
+      "output": "source.json",
+      "sha256": "de72f99926a93511aa078d14058befcfa25c6a765c532d93c708fdc47e4eac0a"
+    },
+    {
+      "command": [
+        "node",
+        "nexora/bin/nexora.mjs",
+        "analyze-project",
+        "examples/tutorial/cycle"
+      ],
+      "exitCode": 0,
+      "output": "cycle.json",
+      "sha256": "8cf57e8f1117f219506ff56ea06c325c98e83e6494c46dc441093dc62d44810c"
+    },
+    {
+      "command": [
+        "node",
+        "nexora/bin/nexora.mjs",
+        "analyze-project",
+        "examples/tutorial/project"
+      ],
+      "exitCode": 0,
+      "output": "project.json",
+      "sha256": "729ca01279a77387b2f0c48121e2b93e095b59f0220b7f591dcbf31edb0e5c66"
+    },
+    {
+      "command": [
+        "node",
+        "nexora/bin/nexora.mjs",
+        "ghidra-report",
+        "examples/tutorial/ghidra.synthetic.jsonl"
+      ],
+      "exitCode": 0,
+      "output": "ghidra-synthetic.json",
+      "sha256": "6412ae9e696b470bf009c719b9b260a3d40df42a0f5cfeae711a39678333e92d"
+    }
+  ],
+  "binaryExample": {
+    "compiler": "gcc.exe (Rev4, Built by MSYS2 project) 16.2.0",
+    "command": [
+      "gcc",
+      "-shared",
+      "examples/tutorial/sample.c",
+      "-o",
+      "nexora-example.dll"
+    ],
+    "analysisCommand": [
+      "node",
+      "nexora/bin/nexora.mjs",
+      "analyze-binary",
+      "nexora-example.dll"
+    ],
+    "summary": "binary-summary.json",
+    "targetExecuted": false,
+    "note": "Compiled locally from the included sample. Binary bytes are not committed; hash can vary by compiler/build."
+  },
+  "ghidra": "Synthetic importer fixture only; no real exporter or decompiler execution."
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "nexora-ghidra-report/v1",
+  "binarySha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "provider": {
+    "name": "Ghidra",
+    "version": "synthetic-example"
+  },
+  "functions": [
+    {
+      "address": "1000",
+      "name": "example",
+      "status": "ok",
+      "pseudocode": "int example(void) { return 1; }",
+      "message": null,
+      "evidence": {
+        "byteOffset": 172,
+        "byteLength": 123,
+        "kind": "provider-reported",
+        "confidence": "medium"
+      }
+    }
+  ],
+  "references": [],
+  "failures": [],
+  "coverage": {
+    "records": 3,
+    "oversizedRecords": 0,
+    "producerComplete": true,
+    "reportComplete": true,
+    "footerPresent": true,
+    "declaredFunctions": 1,
+    "dropped": {
+      "functions": 0,
+      "references": 0,
+      "failures": 0
+    }
+  },
+  "limitations": [
+    "Offline provider export; binary digest is producer-reported, not independently verified against binary bytes by this command.",
+    "Decompiler output is derived pseudocode, not original source. Missing footer or oversized/dropped records means incomplete coverage."
+  ],
+  "input": {
+    "sha256": "373ccd18079b2637e69654626991824c74a9425f38a0e2a2f7b137077822dde3",
+    "bytes": 349
+  },
+  "profile": {
+    "analyzer": "nexora-phase3a/1",
+    "limits": {
+      "maxFileBytes": 2147483648,
+      "maxLineBytes": 1048576,
+      "maxRecords": 50000000,
+      "maxHeapBytes": 805306368,
+      "timeoutMs": 600000,
+      "concurrency": 2,
+      "maxQueue": 16,
+      "maxOutputBytes": 67108864,
+      "maxInventoryItems": 5000,
+      "chunkBytes": 1048576,
+      "maxLiteralBytes": 2048
+    }
+  },
+  "io": {
+    "readBytes": 349
+  }
+}
