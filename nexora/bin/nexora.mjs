@@ -31,6 +31,8 @@ Usage:
   nexora check-archive <file.zip>     inspect a ZIP for unsafe entries (no extraction)
   nexora audit-lifecycle [projectDir] compare install-time scripts with the reviewed allowlist
   nexora analyze-source <file>       lexical functions, calls and imports
+  nexora analyze-source-ast <file>   bounded JS/TS AST scope candidates (needs Babel)
+  nexora analyze-project-ast <dir>   direct JS/TS ESM export/call candidates
   nexora analyze-project <directory> bounded source/dependency map
   nexora analyze-binary <file>       ELF, PE and thin Mach-O metadata
   nexora ghidra-report <export.jsonl> structured Ghidra export report
@@ -86,6 +88,8 @@ function need(argv, i, flag) {
 }
 
 const COMMANDS = {
+  "analyze-source-ast": async (input, ctx) => (await import("../lib/semantic-source.mjs")).analyzeSemanticSource(input, ctx),
+  "analyze-project-ast": async (input, ctx) => (await import("../lib/semantic-project.mjs")).analyzeSemanticProject(input, ctx),
   "analyze-source": async (input, ctx) => (await import("../lib/source-analysis.mjs")).analyzeSource(input, ctx),
   "analyze-project": async (input, ctx) => (await import("../lib/project-analysis.mjs")).analyzeProject(input, ctx),
   "analyze-binary": async (input, ctx) => (await import("../lib/binary-analysis.mjs")).analyzeBinary(input, ctx),
