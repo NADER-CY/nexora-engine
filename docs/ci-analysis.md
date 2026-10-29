@@ -3,14 +3,14 @@
 The [minimal workflow](https://github.com/morluto/rea/blob/main/examples/github-actions/rea-analysis.yml) builds a small
 JavaScript application, analyzes its files without executing them, and uploads
 machine-readable results. It uses the existing CLI, not a separate GitHub Action
-or an MCP client. It does not promise support for every REA provider.
+or an MCP client. It does not promise support for every NEXORA ENGINE provider.
 
 ## Run the example
 
 1. Copy the example to `.github/workflows/rea-analysis.yml` in your repository and
    commit it to the default branch. No existing application or package manifest is
    needed for the self-contained demonstration.
-2. Enable GitHub Actions if necessary. Select **REA static analysis example** in
+2. Enable GitHub Actions if necessary. Select **NEXORA ENGINE static analysis example** in
    the Actions tab and choose **Run workflow**.
 3. Download the `rea-analysis` artifact after the run. Its files are:
 
@@ -20,8 +20,8 @@ or an MCP client. It does not promise support for every REA provider.
    | `analysis.stderr` | Original diagnostics/progress; an empty file is normal when there are none.                        |
    | `exit-code.txt`   | Original analysis process exit code.                                                               |
 
-The example pins Node.js 24.22.1, REA 6.7.0, and action commit revisions. It installs
-REA into the runner's temporary directory rather than changing the application's
+The example pins Node.js 24.22.1, NEXORA ENGINE 6.7.0, and action commit revisions. It installs
+NEXORA ENGINE into the runner's temporary directory rather than changing the application's
 dependencies. This pins the tool version, not every transitive npm dependency;
 use a reviewed, committed package lock and `npm ci` if your integration requires
 that stronger dependency-reproducibility guarantee.
@@ -29,7 +29,7 @@ that stronger dependency-reproducibility guarantee.
 ## Prerequisites and trust
 
 The runner is GitHub-hosted Ubuntu 24.04 with Bash, npm, and `ps` from `procps`.
-Other Linux images must supply `procps`; REA's supervised process controls use it.
+Other Linux images must supply `procps`; NEXORA ENGINE's supervised process controls use it.
 This static JavaScript operation needs no Hopper, Ghidra, IDA, Java, browser,
 Docker, GPU, external API key, or user-supplied GitHub secret. The workflow only
 requests `contents: read`; artifact upload uses the runner's normal Actions
@@ -38,14 +38,14 @@ credentials.
 Replace **Build a known artifact** with your reviewed build, and set
 `ARTIFACT_PATH` to its application directory (relative to the checkout) or an ASAR.
 The demonstration creates its own tiny application; it deliberately throws if
-executed. REA reads it statically. Your replacement build itself can execute code:
+executed. NEXORA ENGINE reads it statically. Your replacement build itself can execute code:
 review it separately and do not add untrusted pull-request builds to a privileged
 `pull_request_target` workflow. The example is manually triggered, not an
 untrusted-PR execution policy.
 
 Reports can contain paths, URLs, source-derived facts, and caller-selected data.
 Only analyze artifacts and publish reports you are authorized to share. Do not
-rely on REA inferring secrets from their names. Review artifact access and
+rely on NEXORA ENGINE inferring secrets from their names. Review artifact access and
 retention for your repository; the example retains reports for seven days.
 
 ## Failure, partial results, and unsupported capabilities
@@ -84,7 +84,7 @@ The retained JSON error has category `unsupported_target`; the step exits nonzer
 Restore the correct path before using the example normally.
 
 To exercise partial analysis, append `export const broken = ;` to the demo's
-JavaScript. REA 6.7.0 retains `data.normalized_result.statistics.parse_failures`
+JavaScript. NEXORA ENGINE 6.7.0 retains `data.normalized_result.statistics.parse_failures`
 and an incomplete-coverage limitation while the operation can still exit zero.
 Inspect those facts instead of treating process success as full coverage. The
 report JSON and diagnostics remain unfiltered in all three cases.

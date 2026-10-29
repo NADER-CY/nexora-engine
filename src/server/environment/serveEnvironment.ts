@@ -574,7 +574,7 @@ export const serveEnvironment = async (
                 resources: owner.cleanupResources,
               },
               remediationAction:
-                "Keep this REA process available for cleanup. Confirm the reported resources are released before starting a replacement environment server.",
+                "Keep this NEXORA ENGINE process available for cleanup. Confirm the reported resources are released before starting a replacement environment server.",
             },
           ).bindCleanupResourceOwner(owner);
           shutdownFailures.add(failure);

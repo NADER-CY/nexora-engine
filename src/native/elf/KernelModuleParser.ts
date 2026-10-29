@@ -118,7 +118,7 @@ const unsupportedCompression = (
   compression,
   next_probe: {
     operation: "external_decompression",
-    rationale: `Decompress this ${compression.codec} container with an external ${compression.codec} utility into a separate file, then call inspect_kernel_module on the decompressed file. REA does not decode ${compression.codec} containers.`,
+    rationale: `Decompress this ${compression.codec} container with an external ${compression.codec} utility into a separate file, then call inspect_kernel_module on the decompressed file. NEXORA ENGINE does not decode ${compression.codec} containers.`,
   },
   modinfo: null,
   versions: null,

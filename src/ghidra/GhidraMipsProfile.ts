@@ -245,12 +245,12 @@ export const ghidraMips1Limitations = (
     "conformance to the MIPS-I subset is not established from the header alone.";
   if (providerPinned)
     return [
-      `The ELF header declares the MIPS-I ISA. REA pins the generic 32-bit MIPS language, which also decodes later MIPS32 instructions; ${consequence}`,
+      `The ELF header declares the MIPS-I ISA. NEXORA ENGINE pins the generic 32-bit MIPS language, which also decodes later MIPS32 instructions; ${consequence}`,
     ];
   return [
     importLanguage === undefined
       ? `The ELF header declares the MIPS-I ISA. No import language is committed to the profile, so the decoder's MIPS-I conformance is not established from the header alone.`
-      : `The ELF header declares the MIPS-I ISA. REA imports it with the caller-selected ${importLanguage.languageId} language, which may decode instructions outside the MIPS-I subset; ${consequence}`,
+      : `The ELF header declares the MIPS-I ISA. NEXORA ENGINE imports it with the caller-selected ${importLanguage.languageId} language, which may decode instructions outside the MIPS-I subset; ${consequence}`,
   ];
 };
 
@@ -289,7 +289,7 @@ export const ghidraMipsSoftFloatLimitations = (
 ): readonly string[] =>
   expected
     ? [
-        "Soft-float o32: Ghidra's MIPS32 compiler specifications model hard-float o32 only. After analysis REA installs a program-specific `__rea_soft_float` prototype, derived from the default o32 model without its floating-point registers and rules, and assigns it to every function, external function and function-pointer definition whose declared types use float or double, so those values keep their types and use integer registers and stack slots.",
+        "Soft-float o32: Ghidra's MIPS32 compiler specifications model hard-float o32 only. After analysis NEXORA ENGINE installs a program-specific `__rea_soft_float` prototype, derived from the default o32 model without its floating-point registers and rules, and assigns it to every function, external function and function-pointer definition whose declared types use float or double, so those values keep their types and use integer registers and stack slots.",
         ...(report === undefined
           ? []
           : [

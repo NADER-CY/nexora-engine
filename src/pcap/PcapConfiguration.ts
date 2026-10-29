@@ -47,7 +47,7 @@ export const assertWiresharkExecutableIdentity = (
 export const TSHARK_COMMAND_ENV = "REA_TSHARK_COMMAND";
 export const CAPINFOS_COMMAND_ENV = "REA_CAPINFOS_COMMAND";
 
-const TOOL_REMEDIATION = `Supply Wireshark 4.x tshark and capinfos on PATH or through absolute ${TSHARK_COMMAND_ENV} and ${CAPINFOS_COMMAND_ENV}; REA does not install them.`;
+const TOOL_REMEDIATION = `Supply Wireshark 4.x tshark and capinfos on PATH or through absolute ${TSHARK_COMMAND_ENV} and ${CAPINFOS_COMMAND_ENV}; NEXORA ENGINE does not install them.`;
 
 /**
  * Host-tool refusals concern the caller's Wireshark installation, not the

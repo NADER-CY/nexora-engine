@@ -122,7 +122,7 @@ await withVerifierCleanup(async () => {
       directory: lab,
       onRequest: async ({ body, tools, requestIndex }) => {
         if (tools.length === 0)
-          return [{ type: "text", text: "REA fixture title" }];
+          return [{ type: "text", text: "NEXORA ENGINE fixture title" }];
         assert(
           requestIndex <= 8,
           "Local model workflow exceeded its turn budget",
@@ -138,7 +138,7 @@ await withVerifierCleanup(async () => {
           const wait = tools.find((t) => t.name === "WaitForMcpServers");
           assert(
             wait,
-            "Claude must expose REA tools or its native pending-server wait",
+            "Claude must expose NEXORA ENGINE tools or its native pending-server wait",
           );
           pendingServerWaits++;
           return call(wait.name, { servers: ["rea"] });
@@ -155,7 +155,7 @@ await withVerifierCleanup(async () => {
         assert.deepEqual(
           sortVerifierNames(reaTools.map((t) => t.name)),
           expected,
-          "Claude must forward the complete REA catalog after connection",
+          "Claude must forward the complete NEXORA ENGINE catalog after connection",
         );
         if (schemasChecked === 0) {
           for (const tool of reaTools) {
@@ -227,7 +227,7 @@ await withVerifierCleanup(async () => {
             const session = tools.find(
               (tool) => tool.name === `${prefix}binary_session`,
             );
-            assert(session, "Claude must expose the REA binary_session tool");
+            assert(session, "Claude must expose the NEXORA ENGINE binary_session tool");
             sessionRequested = true;
             return call(session.name, {});
           }
@@ -263,7 +263,7 @@ await withVerifierCleanup(async () => {
         }
         assert(
           skillLoaded,
-          "Claude must load the complete installed personal REA skill",
+          "Claude must load the complete installed personal NEXORA ENGINE skill",
         );
         return call(analysis.name, { input_path: target, format: "directory" });
       },
@@ -376,7 +376,7 @@ await withVerifierCleanup(async () => {
             }),
             mode === "chat"
               ? "Say hello briefly."
-              : `Use the REA skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
+              : `Use the NEXORA ENGINE skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
           ],
           {
             env: {

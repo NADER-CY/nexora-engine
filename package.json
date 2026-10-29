@@ -1,7 +1,7 @@
 {
   "name": "nexora-engine",
   "version": "6.8.0",
-  "description": "NEXORA ENGINE: reverse-engineering and architecture-analysis CLI and MCP server (fork of REA by morluto, MIT).",
+  "description": "NEXORA ENGINE: evidence-driven reverse engineering and software architecture analysis with offline CLI and MCP workflows.",
   "license": "MIT",
   "keywords": [
     "reverse-engineering",
@@ -28,7 +28,7 @@
     "#web-bundle-analysis-worker": "./dist/composition/webBundleAnalysisWorkerProcess.js"
   },
   "bin": {
-    "nexora-engine": "scripts/rea.mjs",
+    "nexora-engine": "scripts/nexora-engine.mjs",
     "nexora": "nexora/bin/nexora.mjs",
     "rea": "scripts/rea.mjs"
   },
@@ -100,7 +100,9 @@
     "npm-shrinkwrap.json",
     "nexora/lib",
     "nexora/bin",
-    "NOTICE.md"
+    "NOTICE.md",
+    "scripts/nexora-engine.mjs",
+    "assets/brand/mark.png"
   ],
   "scripts": {
     "release:notes": "node scripts/release-notes.mjs",

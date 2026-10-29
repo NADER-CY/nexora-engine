@@ -1,6 +1,6 @@
-# Windows installation
+# Windows 10/11 installation
 
-Use PowerShell and a Node version accepted by [the source guide](from-source.md). Git and Node must be available on PATH.
+Use PowerShell, Git and a supported Node.js/npm toolchain from [source prerequisites](from-source.md). The offline CLI needs no compiler.
 
 ```powershell
 git clone https://github.com/NADER-CY/nexora-engine.git
@@ -9,25 +9,24 @@ node --version
 node .\nexora\bin\nexora.mjs analyze-source .\examples\tutorial\project\main.js
 ```
 
-For the full engine, from the repository root:
+## Full CLI and MCP on Windows x64
+
+Supply an existing MSYS2 UCRT64 or MINGW64 GCC toolchain. Run in this order:
 
 ```powershell
 npm ci --ignore-scripts
+$env:NEXORA_MINGW_BIN = 'C:\msys64\ucrt64\bin'
+npm run build:windows-native
+npm run verify:windows-native:artifact
 npm run build
-node .\scripts\rea.mjs mcp
+node .\scripts\nexora-engine.mjs --help
+node .\scripts\nexora-engine.mjs mcp
 ```
 
-The MCP process speaks JSON-RPC over stdio; waiting for input is normal. Use [client configuration](../mcp/README.md) to verify initialization/tools rather than typing arbitrary text into it. Use absolute paths to both Node and the launcher when configuring a client. JSON requires doubled backslashes; TOML literal strings can use single backslashes.
+Replace the compiler path with your actual installation. Windows x64 native controls require Windows 10+ and fixed local NTFS volumes; Windows ARM64 full-engine support is not claimed. The addon build checks compiler target, permitted DLL imports, manifest identity and hash. It may download integrity-checked official Node-API headers. [Native details](../../native/windows/README.md).
 
-The optional Windows native addon requires its documented compiler/header and artifact checks; it is not needed by the offline CLI. Ghidra and a compatible JDK must be provided separately. Do not run the inherited Bash installer to install NEXORA ENGINE.
+All dependency/native/full-build steps above passed on Windows x64 with Node 24.22.1/npm 11.16.0. Live desktop-client registration and Ghidra execution were not run. Ghidra and a full JDK are separate prerequisites.
 
-If tests fail creating temporary files in a restricted environment, choose a writable temporary directory for this terminal session:
+Use absolute local Node and launcher paths in [MCP configuration](../mcp/README.md). JSON needs doubled backslashes; TOML literal strings can preserve single backslashes. Waiting for MCP protocol input is normal.
 
-```powershell
-New-Item -ItemType Directory -Force .\local-test-temp | Out-Null
-$env:TEMP = (Resolve-Path .\local-test-temp).Path
-$env:TMP = $env:TEMP
-npm run test:nexora:phase3a
-```
-
-Keep temporary artifacts out of commits. Current offline tests ran on Windows; full-engine/provider build and live client connection remain unverified.
+If temporary files cannot be created, select a writable temporary directory for this terminal session and keep it outside commits. Do not remove resource checks or enable all install scripts to bypass an error. [Troubleshooting](../troubleshooting.md) · [Updates](updating.md).

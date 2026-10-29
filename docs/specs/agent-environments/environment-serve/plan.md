@@ -14,7 +14,7 @@
    with JSON-like parsing, UTF-8-safe truncation and the replay provenance
    block; export the slice-1 JSON-like predicate instead of restating it.
 4. Add `src/server/environment/serveEnvironment.ts` to build the `McpServer`
-   whose handlers attach REA's target-content `_meta`, the card and `/agentenv`
+   whose handlers attach NEXORA ENGINE's target-content `_meta`, the card and `/agentenv`
    routes (the latter reading its body through the SDK's bounded reader), and
    to serve them through the slice-2 `serveStreamableHttp` with its `routes`
    and `onerror` seams; add `src/config/environmentName.ts` for
@@ -32,5 +32,5 @@
 7. Document the command in `docs/cli.md`, add `docs/agent-environments.md` with
    its sidebar and index entries, and record the spec.
 
-No new dependency is introduced. REA's tool contracts, catalog digests and the
+No new dependency is introduced. NEXORA ENGINE's tool contracts, catalog digests and the
 stdio transport are unchanged; the CLI inventory gains one command.

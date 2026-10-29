@@ -160,7 +160,7 @@ await withVerifierCleanup(
       !skillMetadata.ok ||
       skillMetadata.value.version !== PRODUCT_IDENTITY.skillVersion
     )
-      throw new Error("Setup did not install the current packaged REA skill");
+      throw new Error("Setup did not install the current packaged NEXORA ENGINE skill");
     const requestedScenarioIds = new Set(
       (process.env.REA_AGENT_EVAL_SCENARIOS ?? "")
         .split(",")
@@ -202,7 +202,7 @@ await withVerifierCleanup(
           "trace_application_feature",
           "trace_javascript_semantics",
         ],
-        prompt: `Use REA on the shipped Electron application at ${targets.notesElectron} to investigate its notes export API, preload exposure and main handler. Do not read target files directly or launch Electron. Use the returned application Evidence to trace the exact notes:export IPC channel in both directions, then query semantic relations for the property invoke with forward influence, excluding ambiguous dynamic edges and without an expected sink. Report the selected static facts, source locations and coverage limits using the closed claim contract.`,
+        prompt: `Use NEXORA ENGINE on the shipped Electron application at ${targets.notesElectron} to investigate its notes export API, preload exposure and main handler. Do not read target files directly or launch Electron. Use the returned application Evidence to trace the exact notes:export IPC channel in both directions, then query semantic relations for the property invoke with forward influence, excluding ambiguous dynamic edges and without an expected sink. Report the selected static facts, source locations and coverage limits using the closed claim contract.`,
       },
       {
         id: "javascript-module-view",
@@ -218,7 +218,7 @@ await withVerifierCleanup(
           ["node", "identity"],
           ["observations", "recorded"],
         ],
-        prompt: `Inspect the recorded module identity, exports and observations for main.js in the shipped JavaScript tree ${targets.largeJavascript}. Use REA without directly reading target files or executing the target. Keep results focused on that module, cite Evidence, and state the limits of what its module view establishes.`,
+        prompt: `Inspect the recorded module identity, exports and observations for main.js in the shipped JavaScript tree ${targets.largeJavascript}. Use NEXORA ENGINE without directly reading target files or executing the target. Keep results focused on that module, cite Evidence, and state the limits of what its module view establishes.`,
       },
       MISSING_TARGET_SCENARIO,
       {
@@ -242,7 +242,7 @@ await withVerifierCleanup(
           ["static", "inferred"],
           ["runtime", "behavioral probes"],
         ],
-        prompt: `Without directly reading target files, compare the default export in parser.mjs between ${targets.javascriptShapeLeft} and ${targets.javascriptShapeRight}. Use REA to analyze each shipped artifact and then compare its exact static export return shapes. State the exact heading-shape change, cite produced Evidence, and distinguish static inference from runtime semantics.`,
+        prompt: `Without directly reading target files, compare the default export in parser.mjs between ${targets.javascriptShapeLeft} and ${targets.javascriptShapeRight}. Use NEXORA ENGINE to analyze each shipped artifact and then compare its exact static export return shapes. State the exact heading-shape change, cite produced Evidence, and distinguish static inference from runtime semantics.`,
       },
       {
         id: "managed",

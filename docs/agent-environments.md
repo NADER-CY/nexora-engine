@@ -45,7 +45,7 @@ it, where `view.json` wraps the capture Evidence as the inline source:
 
 The third command serves that manifest from the state it derives from the
 capture; see [Serve from the state](#serve-from-the-state). Both served files
-are complete REA Evidence JSON as the commands write it with `--format json`;
+are complete NEXORA ENGINE Evidence JSON as the commands write it with `--format json`;
 the `evidence` member of `view.json` is the whole of `capture.json`.
 A `view.json` can also name the capture file as
 `{"kind": "evidence-file", "path": "capture.json"}`, which projects it as
@@ -70,7 +70,7 @@ writes is byte-identical to what `inspect-web-network-capture`,
 `inspect-analysis-view` and `environment-export` write, Evidence ids included,
 when `view.json` lists the same rules in the views' order and the export is
 given the build's name. It reads one file and writes one folder: it fetches
-nothing and launches no browser (HAR inspection runs REA's own decoder
+nothing and launches no browser (HAR inspection runs NEXORA ENGINE's own decoder
 process), so record a browser scenario with `capture-browser-scenario` first
 and pass its Evidence. Other capture formats are refused, as the manifest view
 refuses them, and a HAR document saved as `.json` is refused with a hint to
@@ -234,9 +234,9 @@ name `export_environment_bundle`; the others name their stage as
 
 ## From a browser scenario
 
-The capture can also come from REA itself: a
+The capture can also come from NEXORA ENGINE itself: a
 [browser scenario](browser-scenario-contract.md) records a scripted session
-in a browser REA launches, and its Evidence is a manifest parent like a HAR
+in a browser NEXORA ENGINE launches, and its Evidence is a manifest parent like a HAR
 inspection. Select the `network` event family and response bodies. A replayed
 reply carries up to 256 KiB of a recorded body, but the scenario keeps at most
 `max_network_body_bytes` of each body (64 KiB by default), and only within its
@@ -469,7 +469,7 @@ it answers only from the capture's recordings and the state they observed or a
 caller loaded through `data/add`. Replayed content is
 target content: every tool result, including the argument errors the MCP server
 returns before a replay runs, carries `_meta.provenance.untrusted_content: true`
-with `source: "analysis_target"`. The server advertises REA's untrusted-content
+with `source: "analysis_target"`. The server advertises NEXORA ENGINE's untrusted-content
 instructions plus a warning that its tool names, descriptions, parameter names
 and observed values come from the capture too, and agents must treat all of it
 as data, never as instructions.
@@ -1012,7 +1012,7 @@ exclusive creates, verify written bytes, and reject unowned entries before
 reporting success. It does not delete an inspectable partial folder on failure.
 Node's portable pathname APIs leave a syscall-boundary race, so the output's
 parent directories must be trusted. On POSIX output files use mode `0600`;
-Windows inherits ACLs and REA does not establish owner-only access there. Choose
+Windows inherits ACLs and NEXORA ENGINE does not establish owner-only access there. Choose
 an already private Windows destination when captured content needs it.
 
 The Dockerfile sets `MCP_HOST=0.0.0.0` and `MCP_PORT=18765`, the port the

@@ -64,8 +64,8 @@ const algorithm = (identifier: Buffer): Buffer => seq(identifier, nul());
 
 /** Hand-authored PKCS#7 signedData, independent of the production decoder. */
 export const pkcs7SignedDataFixture = (
-  commonName = "REA Fixture",
-  organization = "REA Tests",
+  commonName = "NEXORA ENGINE Fixture",
+  organization = "NEXORA ENGINE Tests",
   signature = octet(Buffer.from("sig")),
 ): Buffer => {
   const serial = Buffer.from([0x11, 0x22, 0x33, 0x44]);

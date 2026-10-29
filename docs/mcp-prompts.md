@@ -1,6 +1,6 @@
 # Guided MCP prompts and completion
 
-REA exposes six provider-neutral investigation workflows through the MCP
+NEXORA ENGINE exposes six provider-neutral investigation workflows through the MCP
 `prompts` capability. They complement the generated tool catalog; they do not add, remove, or
 invoke tools by themselves.
 
@@ -36,7 +36,7 @@ found — so a rendered prompt never directs the agent to a disabled call. The
 server identity digest and `rea mcp doctor` prompt inventory follow the same
 scope.
 
-Every rendered prompt provides optional starting points using current REA tool
+Every rendered prompt provides optional starting points using current NEXORA ENGINE tool
 names. Agents can call tools directly, skip irrelevant suggestions, and inspect
 provider or target state only when it helps answer the request or a tool
 requires it. The prompts also ask agents to keep observations, inferences, and
@@ -90,7 +90,7 @@ Unexpected handler failures retain JSON-RPC `-32603`.
 ## Session-aware completion
 
 MCP `completion/complete` completes guided-prompt arguments; it does not define
-completion for arbitrary tool-call arguments. REA attaches completion to
+completion for arbitrary tool-call arguments. NEXORA ENGINE attaches completion to
 optional prompt arguments that accept a session value. Suggestions provide
 identifiers only; they do not retrieve or replace the inline Evidence result.
 
@@ -148,7 +148,7 @@ unreachable when more than 100 matches share its normalized prefix.
 
 ## Lifecycle and safety
 
-Completion has no cache in REA. Opening or switching a target changes document
+Completion has no cache in NEXORA ENGINE. Opening or switching a target changes document
 and procedure suggestions on the next request. Closing the binary clears its
 Evidence ledger and residual-unknown registry, so identifiers from the closed
 session are no longer suggested. Provider errors, unsupported operations, and

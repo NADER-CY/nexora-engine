@@ -7,5 +7,5 @@ contact_links:
     url: https://github.com/NADER-CY/nexora-engine#readme
     about: Read the README and AGENTS.md for usage guides and configuration details.
   - name: Question or Discussion
-    url: https://github.com/NADER-CY/nexora-engine/blob/main/docs/roadmap.md
+    url: https://github.com/NADER-CY/nexora-engine/blob/main/docs/nexora-roadmap.md
     about: Review the NEXORA ENGINE roadmap and supported scope before proposing work.

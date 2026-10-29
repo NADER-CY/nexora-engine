@@ -7,7 +7,7 @@ database evidence. No separate SQLite installation is required.
 
 This operation requires Node.js 24.x >=24.15 or 26+ with the native
 `DatabaseSync.limits` API. The worker verifies that capability before querying
-the copied database. Other REA features retain their published Node.js 22.x,
+the copied database. Other NEXORA ENGINE features retain their published Node.js 22.x,
 24.x or 26+ requirements.
 
 `rea capabilities` reports `inspect_sqlite_database` availability and the
@@ -58,14 +58,14 @@ The exact table name `sqlite_schema` is also a supported read-only row source.
 SQLite's [`table_list`](https://www.sqlite.org/pragma.html#pragma_table_list)
 and `table_xinfo` pragmas establish its row-source type and columns. The
 [schema catalog](https://www.sqlite.org/schematab.html) has no self-entry for
-`sqlite_schema`, so REA does not invent a declaration, SQL statement or root
+`sqlite_schema`, so NEXORA ENGINE does not invent a declaration, SQL statement or root
 page for it in `schema.tables`.
 
 Rows are optional. `table` selects one exact ordinary-table name. `columns`
 (CLI repeated `--column`) selects exact visible column names in the requested
 order; omission selects all visible columns, including generated columns.
 Unselected cells are not evaluated or projected. A selected virtual generated
-column whose expression needs a function REA's connection lacks (extensions and
+column whose expression needs a function NEXORA ENGINE's connection lacks (extensions and
 application functions are not loaded), or raises an SQL error for a sampled
 row, is refused as `capability_unavailable`. The error names the table and
 each failing selected column with SQLite's message, and recommends only columns
@@ -109,7 +109,7 @@ a claim that the database is healthy, complete or trusted.
 
 ## Source files and failures
 
-REA copies the selected database and existing sibling WAL to an owned private
+NEXORA ENGINE copies the selected database and existing sibling WAL to an owned private
 temporary directory before SQLite opens them. Source files are not opened by
 SQLite, so its locks or shared-memory sidecars cannot modify the original
 snapshot. Temporary copies and the owned worker are cleaned up on success,
@@ -164,11 +164,11 @@ If the combined database and WAL exceed the snapshot budget, the refusal is a
 observed combined size as a decimal string. The remediation directs callers to
 create a smaller consistent offline snapshot containing only relevant data
 through the application's supported export workflow. A generic backup or copy
-does not guarantee a smaller result; REA does not truncate or modify the
+does not guarantee a smaller result; NEXORA ENGINE does not truncate or modify the
 selected source.
 
 On hosts that cannot address the derived WAL or rollback-journal path for a
-long selected database name, REA reports that the SQLite capability is
+long selected database name, NEXORA ENGINE reports that the SQLite capability is
 unavailable. It does not assume an inaccessible sidecar is absent. Use the
 application's supported consistent offline export or copy workflow to place
 the complete known file set at a shorter path.

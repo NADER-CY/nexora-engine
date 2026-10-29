@@ -430,7 +430,7 @@ export const readFirmwareCommandReport = async (context: {
       cause instanceof AnalysisOutputError &&
       cause.diagnostics?.report_state === "oversized";
     const reportFacts =
-      "Review diagnostics.report_state, the exit status and captured stdout/stderr. REA did not retry or substitute an empty result. diagnostics.command and diagnostics.args record what ran; their workspace paths are REA-private and removed after the attempt, so they cannot be replayed as-is.";
+      "Review diagnostics.report_state, the exit status and captured stdout/stderr. NEXORA ENGINE did not retry or substitute an empty result. diagnostics.command and diagnostics.args record what ran; their workspace paths are NEXORA ENGINE-private and removed after the attempt, so they cannot be replayed as-is.";
     const reportAllowance = firmwareLimitRecovery(
       `The firmware report allowance is ${String(FIRMWARE_LIMITS.reportBytes)} bytes`,
     );
@@ -444,7 +444,7 @@ export const readFirmwareCommandReport = async (context: {
         userMessage: oversized ? `${observed} ${reportAllowance}` : observed,
         remediationAction: oversized
           ? `${reportFacts} ${reportAllowance} \`rea doctor\` checks configuration only and cannot recover this report.`
-          : `${reportFacts} Rerun the same REA request to check whether this is intermittent; each attempt uses a fresh workspace. If it recurs, copy the selected input bytes into a new directory and run diagnostics.command with the same flags, replacing every private path with your copy and a new report path, under the documented firmware resource limits; confirm that it writes the requested report. \`rea doctor\` checks configuration only and cannot recover this report.`,
+          : `${reportFacts} Rerun the same NEXORA ENGINE request to check whether this is intermittent; each attempt uses a fresh workspace. If it recurs, copy the selected input bytes into a new directory and run diagnostics.command with the same flags, replacing every private path with your copy and a new report path, under the documented firmware resource limits; confirm that it writes the requested report. \`rea doctor\` checks configuration only and cannot recover this report.`,
       },
     );
   }

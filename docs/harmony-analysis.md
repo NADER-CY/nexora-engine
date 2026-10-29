@@ -1,6 +1,6 @@
 # Static HarmonyOS package inventory
 
-REA inventories HarmonyOS application packages through the shared hardened
+NEXORA ENGINE inventories HarmonyOS application packages through the shared hardened
 ZIP artifact reader in `src/artifacts/`, then projects the authenticated
 inventory into an execution-free application graph. This is the first
 increment of the HarmonyOS roadmap (#1431): package identification and
@@ -59,7 +59,7 @@ Every claim is path-presence only. Manifest semantics (module identity,
 abilities, entry points, permissions, dependencies), Ark bytecode contents and
 versions, resource resolution, signing verification, and observed native
 boundaries are out of scope for this increment and stay in the projection's
-`limitations` array until a dedicated HarmonyOS provider exists. REA fails
+`limitations` array until a dedicated HarmonyOS provider exists. NEXORA ENGINE fails
 closed on packages whose inventory cannot be authenticated.
 
 ## Verification lane

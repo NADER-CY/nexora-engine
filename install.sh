@@ -9,6 +9,11 @@
 # after `main` would run the installer without the caller's flags.
 set -euo pipefail
 
+# This fork is distributed from source; the upstream installer below is retained
+# as history and must not acquire a different product.
+printf '%s\n' 'NEXORA ENGINE: clone https://github.com/NADER-CY/nexora-engine and follow docs/installation/from-source.md. This inherited installer is disabled.' >&2
+exit 1
+
 PACKAGE="rea-agents"
 REPOSITORY="morluto/rea"
 numeric_identifier='(0|[1-9][0-9]*)'

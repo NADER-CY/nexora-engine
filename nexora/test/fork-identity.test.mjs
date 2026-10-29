@@ -32,7 +32,7 @@ test("identity: NEXORA ENGINE branding with upstream attribution, no registry pa
   assert.equal(PRODUCT_IDENTITY.displayName, "NEXORA ENGINE");
   assert.equal(PRODUCT_IDENTITY.packageName, "nexora-engine");
   assert.equal(PRODUCT_IDENTITY.mcpServerKey, "nexora-engine");
-  assert.equal(PRODUCT_IDENTITY.cliBinary, "rea", "rea binary kept for backwards compatibility");
+  assert.equal(PRODUCT_IDENTITY.cliBinary, "nexora-engine", "primary CLI uses the product name; package retains the rea alias");
   assert.equal(PRODUCT_IDENTITY.registryPackage, null);
   assert.equal(PRODUCT_IDENTITY.upstream.repository, "https://github.com/morluto/rea");
   assert.equal(PRODUCT_IDENTITY.upstream.license, "MIT");

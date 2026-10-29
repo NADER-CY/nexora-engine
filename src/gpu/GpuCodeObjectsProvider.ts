@@ -53,7 +53,7 @@ import {
 
 export const GPU_CODE_OBJECTS_PROVIDER_IDENTITY = {
   id: "gpu-code-objects",
-  name: "REA static GPU code-object reader",
+  name: "NEXORA ENGINE static GPU code-object reader",
   version: "1",
 } as const;
 const OPERATION = "inspect_gpu_code_objects";

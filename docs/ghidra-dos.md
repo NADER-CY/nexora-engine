@@ -1,6 +1,6 @@
 # DOS MZ and COM analysis with Ghidra
 
-REA can analyze DOS MZ executables and explicitly selected COM images through the bring-your-own Ghidra adapter.
+NEXORA ENGINE can analyze DOS MZ executables and explicitly selected COM images through the bring-your-own Ghidra adapter.
 The Linux x64 and macOS arm64 verification lanes exercise actual 16-bit disassembly and
 decompilation through the CLI and stdio MCP. Provider admission accepts Ghidra
 12.x (>=12.1) and that installation's declared JDK range. The verification lane uses
@@ -93,7 +93,7 @@ selected bytes belong to its analysis module. The original file stays unchanged.
 
 Returned default-space addresses are linear byte coordinates. A Ghidra
 segment:offset address has linear value `segment * 16 + offset`; multiple
-segment aliases can identify the same byte. REA accepts the returned linear
+segment aliases can identify the same byte. NEXORA ENGINE accepts the returned linear
 address for subsequent lookups and leaves instruction decoding context with
 Ghidra. These coordinates are analysis load addresses, not file offsets or
 observations of a running DOS system.
@@ -169,9 +169,9 @@ diagnostics are retained for analyst review.
 For a packed executable, importing the original can analyze its unpacking
 stub. Analyze a separately prepared unpacked copy to inspect the original
 program's recovered code. Retain both artifact digests and the transformation
-evidence; REA never silently replaces the admitted target. Appended overlays
+evidence; NEXORA ENGINE never silently replaces the admitted target. Appended overlays
 are separate from the initialized MZ module. Headerless COM requires the
-[explicit COM interpretation](#headerless-com-images); REA does not guess it
+[explicit COM interpretation](#headerless-com-images); NEXORA ENGINE does not guess it
 from the filename or unrecognized bytes. DOS extenders without an admitted
 MZ real-mode entry remain outside this import boundary.
 

@@ -28,7 +28,7 @@ try {
     (cause) => {
       if (cause?.code !== "ENOENT") throw cause;
       throw new Error(
-        "runtime is missing; reinstall the plugin, or run npm ci && npm run build:cached in a source checkout",
+        "runtime is missing; reinstall the plugin, or run npm ci --ignore-scripts; follow docs/installation/from-source.md; npm run build in a source checkout",
         { cause },
       );
     },

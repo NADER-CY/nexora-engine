@@ -1,10 +1,10 @@
 # JEB instrumentation and analysis
 
-REA exposes JEB-backed project, unit, and decompilation inspection through the CLI and MCP, served by JEB's own MCP interface. JEB is a bring-your-own engine: REA never installs it, launches it, or opens its project databases itself.
+NEXORA ENGINE exposes JEB-backed project, unit, and decompilation inspection through the CLI and MCP, served by JEB's own MCP interface. JEB is a bring-your-own engine: NEXORA ENGINE never installs it, launches it, or opens its project databases itself.
 
 ## Bring-your-own engine
 
-Start a JEB client that serves MCP and point REA at it:
+Start a JEB client that serves MCP and point NEXORA ENGINE at it:
 
 - Default endpoint: `http://127.0.0.1:8425/mcp`. Override with `REA_JEB_MCP_URL` (absolute `http`/`https` URL with literal host `127.0.0.1` or `[::1]`; redirects, remote hosts, credentials, query strings, and fragments are rejected rather than silently dropped).
 - In the JEB GUI client, start the MCP server from the _File_ menu (or via the VIBRE assistant).
@@ -19,7 +19,7 @@ Start a JEB client that serves MCP and point REA at it:
 
 - JEB's documented programmatic route (`JebMcpServerInstance` from the JEB API) remains an alternative. The earlier licensed 5.48 headless verification used that route because its CLI did not accept `--mcp`. Check your installed build's `-c --help` and live tool catalog; the version number alone does not establish the launcher options or supported operations.
 
-For setup registration, set `REA_JEB_MCP_URL` in the REA process environment
+For setup registration, set `REA_JEB_MCP_URL` in the NEXORA ENGINE process environment
 before running `rea setup`. The approved setup plan preserves the exact selected
 URL after validating its syntax. That validation does not establish that the
 JEB service is reachable or that a project is open; use the existing
@@ -32,10 +32,10 @@ is one deadline across connection and pagination; a responsive server cannot kee
 discovery running indefinitely by returning more pages.
 
 Catalog discovery and each `tools/call` share `REA_JEB_MCP_TIMEOUT_MS`. Set it
-in REA's launch environment to an integer from 1 to 2147483647 milliseconds,
+in NEXORA ENGINE's launch environment to an integer from 1 to 2147483647 milliseconds,
 for example `REA_JEB_MCP_TIMEOUT_MS=300000` for a five-minute budget. Omitted
 means the pinned MCP client SDK default of 60000 ms (`@modelcontextprotocol/client`
-2.3.1). Restart REA and reconnect to apply a change. Raising the setting raises
+2.3.1). Restart NEXORA ENGINE and reconnect to apply a change. Raising the setting raises
 both phases. It does not make one end-to-end deadline across a whole CLI or MCP
 operation: discovery and each `tools/call` each get that budget. A request that
 reaches its budget returns a typed timeout naming the phase and the effective
@@ -55,17 +55,17 @@ Earlier verification used JEB 5.48.0 (Linux x64, licensed build) serving `jeb-mc
 
 All four preserve target-file bytes. `open_jeb_project` selects or creates an engine-side project; analysis queries can populate computed analysis within it. Evidence records the endpoint, caller-selected parameters, and available engine-reported digests. Mutation workflows the engine also offers (renames, comments, `save_project`, `close_project`) are intentionally not exposed yet.
 
-**Engine coverage note:** The earlier licensed 5.48.0 headless verification did not advertise `open_project`; it selected the target when the engine client started. For that build, use `--infile` on the programmatic launcher or open the file in the GUI. The audited CE headless catalog also omitted `open_project`; the verified CLI route above selects its input at startup. Use `binary_session` to inspect the current engine's advertised operations. REA preserves an unavailable tool's refusal; `open_jeb_project` requires an engine that advertises `open_project`. The CE audit does not establish GUI project-opening support.
+**Engine coverage note:** The earlier licensed 5.48.0 headless verification did not advertise `open_project`; it selected the target when the engine client started. For that build, use `--infile` on the programmatic launcher or open the file in the GUI. The audited CE headless catalog also omitted `open_project`; the verified CLI route above selects its input at startup. Use `binary_session` to inspect the current engine's advertised operations. NEXORA ENGINE preserves an unavailable tool's refusal; `open_jeb_project` requires an engine that advertises `open_project`. The CE audit does not establish GUI project-opening support.
 
 ## Semantics
 
-- Paths in `open_jeb_project` are resolved by the JEB process, not by REA; REA does not require the artifact to exist locally.
+- Paths in `open_jeb_project` are resolved by the JEB process, not by NEXORA ENGINE; NEXORA ENGINE does not require the artifact to exist locally.
 - The engine caps `list_units` pages at 100; a full page is reported as `coverage: "partial"` because more units may exist. An empty remainder is `complete` only when fewer units than requested were returned.
-- When `decompile_jeb_item` omits `unit_path`, the engine implicitly selects the project's first code unit; REA reports `unit_path: null` and a limitation instead of guessing the effective unit.
-- `item_address` is a JEB code-item reference, such as a value returned by the engine's `list_code_items`. Preserve that representation and select its code unit explicitly. For the audited CE SQLite unit, the exported method reference was `sqlite3_libversion_number`; using its raw ELF symbol address did not produce a successful decompilation. File offsets, ELF virtual addresses and engine item references have different semantics. REA currently exposes unit listing, while code-item discovery remains an upstream JEB operation.
-- Valid engine refusals (`success: false` envelopes) return `execution_failure` with the engine's message when available. Diagnostics preserve the original envelope, including any recovery advice, and the inputs of a refused primary request. If client metadata fails after a primary reply, that reply and the caller's inputs remain in partial Evidence. REA does not infer an unsupported target from a refusal, invoke a recovery tool, or retry the request.
+- When `decompile_jeb_item` omits `unit_path`, the engine implicitly selects the project's first code unit; NEXORA ENGINE reports `unit_path: null` and a limitation instead of guessing the effective unit.
+- `item_address` is a JEB code-item reference, such as a value returned by the engine's `list_code_items`. Preserve that representation and select its code unit explicitly. For the audited CE SQLite unit, the exported method reference was `sqlite3_libversion_number`; using its raw ELF symbol address did not produce a successful decompilation. File offsets, ELF virtual addresses and engine item references have different semantics. NEXORA ENGINE currently exposes unit listing, while code-item discovery remains an upstream JEB operation.
+- Valid engine refusals (`success: false` envelopes) return `execution_failure` with the engine's message when available. Diagnostics preserve the original envelope, including any recovery advice, and the inputs of a refused primary request. If client metadata fails after a primary reply, that reply and the caller's inputs remain in partial Evidence. NEXORA ENGINE does not infer an unsupported target from a refusal, invoke a recovery tool, or retry the request.
 - Successfully parsed client information is reused for the lifetime of the MCP connection, including when the engine omits its version. Explicit client inspection and availability probes refresh it.
-- An unreachable endpoint is a provider-availability failure with recovery guidance; REA does not retry or spawn the engine.
+- An unreachable endpoint is a provider-availability failure with recovery guidance; NEXORA ENGINE does not retry or spawn the engine.
 
 Real-engine verification lives in the JEB lane described in [testing.md](testing.md); mock transport tests do not establish real-engine compatibility.
 

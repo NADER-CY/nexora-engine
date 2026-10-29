@@ -26,7 +26,7 @@ const reconciliationEvidence = createEvidence(
   undefined,
   {
     id: "rea-javascript-runtime-reconciliation",
-    name: "REA JavaScript runtime reconciliation",
+    name: "NEXORA ENGINE JavaScript runtime reconciliation",
     version: "1",
   },
   {

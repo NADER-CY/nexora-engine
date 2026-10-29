@@ -605,7 +605,7 @@ describe("canonical skill transaction", () => {
       );
     }
     expect(installedSkill).toContain(
-      "use normal repository tools and do not run REA",
+      "use normal repository tools and do not run NEXORA ENGINE",
     );
     expect(installedSkill).toContain(
       `tool_count: ${String(TOOL_CONTRACTS.length)}`,

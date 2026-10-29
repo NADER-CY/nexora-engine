@@ -107,7 +107,7 @@ export const selectCdpDiscoveryTarget = <
   const matches = targets.filter((target) => target.id === targetId);
   if (matches.length > 1 || ambiguousTargetIds.includes(targetId))
     throw new BrowserObservationError(operation, "invalid_endpoint_response", {
-      detail: `Target ID ${targetId} is ambiguous in endpoint discovery; REA cannot select its identity or location.`,
+      detail: `Target ID ${targetId} is ambiguous in endpoint discovery; NEXORA ENGINE cannot select its identity or location.`,
       diagnostics: { target_id: targetId },
       remediationAction:
         "Refresh discovery after the endpoint reports a unique row for this target ID, or select a different target.",

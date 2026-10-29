@@ -11,13 +11,13 @@ describe("Ghidra headless JVM environment", () => {
   it("passes Windows paths with spaces to Java's environment parser", () => {
     expect(
       ghidraHeadlessJavaOptions(
-        "C:\\REA Runtime\\home",
-        "C:\\REA Runtime\\tmp",
+        "C:\\NEXORA ENGINE Runtime\\home",
+        "C:\\NEXORA ENGINE Runtime\\tmp",
         "win32",
       ),
     ).toEqual({
       JDK_JAVA_OPTIONS:
-        '"-Duser.home=C:\\REA Runtime\\home" "-Djava.io.tmpdir=C:\\REA Runtime\\tmp" "-XX:-UsePerfData"',
+        '"-Duser.home=C:\\NEXORA ENGINE Runtime\\home" "-Djava.io.tmpdir=C:\\NEXORA ENGINE Runtime\\tmp" "-XX:-UsePerfData"',
       GHIDRA_HEADLESS_JAVA_OPTIONS: "",
     });
   });

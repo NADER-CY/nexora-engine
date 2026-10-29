@@ -1,7 +1,7 @@
 /** Identity of REA's in-process APK signature reader (no external engine, no device). */
 export const APK_SIGNATURE_PROVIDER_IDENTITY = {
   id: "apk-signature",
-  name: "REA APK signature reader",
+  name: "NEXORA ENGINE APK signature reader",
   version: null,
 } as const;
 

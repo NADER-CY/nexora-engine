@@ -236,7 +236,7 @@ const activeRuntimeFixture = () => {
     result,
     {
       id: "rea-playwright-electron-active",
-      name: "REA Playwright active Electron observation provider",
+      name: "NEXORA ENGINE Playwright active Electron observation provider",
       version: "1",
     },
   );

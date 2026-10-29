@@ -569,6 +569,6 @@ const nodeMemoryLimitation = (heap: CaptureDecoderHeap): string => {
     heap.oldGenerationMiB,
   );
   return commitLimit === null
-    ? `HAR/SAZ/qlog run on Bun, which does not enforce REA's V8 heap flags. ${recovery}`
-    : `HAR/SAZ/qlog run on Bun, which does not enforce REA's V8 heap flags, under a ${String(commitLimit)}-byte Windows Job Object commit limit. ${recovery}`;
+    ? `HAR/SAZ/qlog run on Bun, which does not enforce NEXORA ENGINE's V8 heap flags. ${recovery}`
+    : `HAR/SAZ/qlog run on Bun, which does not enforce NEXORA ENGINE's V8 heap flags, under a ${String(commitLimit)}-byte Windows Job Object commit limit. ${recovery}`;
 };

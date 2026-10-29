@@ -395,6 +395,6 @@ async function requireNamespaceDemangler(env) {
     }
   }
   throw new Error(
-    `Ghidra namespace annotation verification requires the matching GNU demangler native component. Provide ${executable} for ${nativeDirectory} in GPL/DemanglerGnu/os or its build/os equivalent; REA does not build it. Checked: ${failures.join("; ")}`,
+    `Ghidra namespace annotation verification requires the matching GNU demangler native component. Provide ${executable} for ${nativeDirectory} in GPL/DemanglerGnu/os or its build/os equivalent; NEXORA ENGINE does not build it. Checked: ${failures.join("; ")}`,
   );
 }

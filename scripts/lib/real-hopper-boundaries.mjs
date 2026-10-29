@@ -112,7 +112,7 @@ export async function verifyHopperBoundaryContracts(
       );
       assert.equal(await call("current_document"), activeDocument);
     }
-    for (const label of [undefined, "", "REA boundary bookmark 测试"]) {
+    for (const label of [undefined, "", "NEXORA ENGINE boundary bookmark 测试"]) {
       assert.equal(
         await call("set_bookmark", {
           address,
@@ -138,7 +138,7 @@ export async function verifyHopperBoundaryContracts(
     assert.equal(
       await call("set_bookmark", {
         address,
-        name: "REA boundary bookmark before clear",
+        name: "NEXORA ENGINE boundary bookmark before clear",
       }),
       true,
     );
@@ -147,7 +147,7 @@ export async function verifyHopperBoundaryContracts(
     );
     assert.deepEqual(beforeClear, {
       address,
-      name: "REA boundary bookmark before clear",
+      name: "NEXORA ENGINE boundary bookmark before clear",
     });
     assert.equal(await call("set_bookmark", { address, name: "" }), true);
     const afterClear = (await call("list_bookmarks")).find(
@@ -155,7 +155,7 @@ export async function verifyHopperBoundaryContracts(
     );
     assert.deepEqual(afterClear, { address, name: null });
 
-    const replacementName = "REA boundary bookmark replacement";
+    const replacementName = "NEXORA ENGINE boundary bookmark replacement";
     assert.equal(
       await call("set_bookmark", { address, name: replacementName }),
       true,
@@ -182,13 +182,13 @@ export async function verifyHopperBoundaryContracts(
       ["set_comment", "comment"],
       ["set_inline_comment", "inline_comment"],
     ]) {
-      const comment = "REA boundary comment 测试";
+      const comment = "NEXORA ENGINE boundary comment 测试";
       assert.equal(await call(setter, { address, comment }), true);
       assert.equal(await call(getter, { address }), comment);
       assert.equal(await call(setter, { address, comment: "" }), true);
       assert.equal(await call(getter, { address }), null);
     }
-    const inline = "REA inline\nsecond line";
+    const inline = "NEXORA ENGINE inline\nsecond line";
     const exact = await call("set_inline_comment", {
       address,
       comment: inline,

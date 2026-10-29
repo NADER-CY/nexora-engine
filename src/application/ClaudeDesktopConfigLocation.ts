@@ -107,7 +107,7 @@ export const resolveWindowsClaudeDesktopLocation = (
     if (!isMissing(cause))
       return err({
         path: packagesDirectory,
-        message: `MSIX package storage ${packagesDirectory} could not be inspected, so REA cannot establish whether Claude Desktop reads ${appDataConfigPath} or a package-private copy: ${errorMessage(cause)}. Repair access to that directory, then rerun.`,
+        message: `MSIX package storage ${packagesDirectory} could not be inspected, so NEXORA ENGINE cannot establish whether Claude Desktop reads ${appDataConfigPath} or a package-private copy: ${errorMessage(cause)}. Repair access to that directory, then rerun.`,
       });
     families = [];
   }
@@ -118,7 +118,7 @@ export const resolveWindowsClaudeDesktopLocation = (
   if (foreign.length > 0)
     return err({
       path: join(packagesDirectory, foreign[0] ?? ""),
-      message: `MSIX package storage ${foreign.map((name) => join(packagesDirectory, name)).join(", ")} has an unrecognized Claude Desktop package identity or deployment (the supported identity is ${CLAUDE_DESKTOP_PACKAGE_FAMILY}). REA cannot establish which ${CONFIG_FILE} that package reads and does not fall back to ${appDataConfigPath}. Quit Claude Desktop fully and register REA in the configuration the installed app reads.`,
+      message: `MSIX package storage ${foreign.map((name) => join(packagesDirectory, name)).join(", ")} has an unrecognized Claude Desktop package identity or deployment (the supported identity is ${CLAUDE_DESKTOP_PACKAGE_FAMILY}). NEXORA ENGINE cannot establish which ${CONFIG_FILE} that package reads and does not fall back to ${appDataConfigPath}. Quit Claude Desktop fully and register NEXORA ENGINE in the configuration the installed app reads.`,
     });
   const family = families[0];
   if (family === undefined)
@@ -346,7 +346,7 @@ const present = (
     if (isMissing(cause)) return ok(false);
     return err({
       path,
-      message: `${path} could not be inspected, so REA cannot establish which ${CONFIG_FILE} Claude Desktop's MSIX package reads: ${errorMessage(cause)}. Repair access to that path, then rerun.`,
+      message: `${path} could not be inspected, so NEXORA ENGINE cannot establish which ${CONFIG_FILE} Claude Desktop's MSIX package reads: ${errorMessage(cause)}. Repair access to that path, then rerun.`,
     });
   }
 };

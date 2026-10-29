@@ -188,7 +188,7 @@ describe("reconstruction obligation ledger process provider admission", () => {
     ["current provider", PROCESS_PROVIDER, true],
     [
       "supported legacy name",
-      { ...PROCESS_PROVIDER, name: "REA deterministic process harness" },
+      { ...PROCESS_PROVIDER, name: "NEXORA ENGINE deterministic process harness" },
       true,
     ],
     ["foreign id", { ...PROCESS_PROVIDER, id: "foreign-process" }, false],

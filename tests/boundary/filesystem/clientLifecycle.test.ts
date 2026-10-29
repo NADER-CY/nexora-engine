@@ -34,7 +34,7 @@ import {
   type UninstallFileSystem,
 } from "../../../src/application/Uninstall.js";
 
-const ownedSkillManifest = `---\nname: ${PRODUCT_IDENTITY.skillName}\n---\n# REA\n`;
+const ownedSkillManifest = `---\nname: ${PRODUCT_IDENTITY.skillName}\n---\n# NEXORA ENGINE\n`;
 beforeEach(clearClientLocationEnvironment);
 afterEach(() => vi.unstubAllEnvs());
 
@@ -233,7 +233,7 @@ describe("client configuration filesystem lifecycle", () => {
 });
 
 describe("Grok Build server table edits", () => {
-  it("edits only the Grok Build REA tables and removes them on uninstall", async () => {
+  it("edits only the Grok Build NEXORA ENGINE tables and removes them on uninstall", async () => {
     const home = await createTestTempDirectory("rea-grok-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -456,7 +456,7 @@ describe("Grok Build disabled server list", () => {
 });
 
 describe("Grok Build text that resembles a server table", () => {
-  it("preserves Grok text that only looks like an REA table", async () => {
+  it("preserves Grok text that only looks like an NEXORA ENGINE table", async () => {
     const home = await createTestTempDirectory("rea-grok-preserve-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -537,7 +537,7 @@ describe("Grok Build text that resembles a server table", () => {
     expect(parseToml(removed)).not.toHaveProperty("mcp_servers.rea");
   });
 
-  it("replaces spaced and escaped Grok REA headers without duplicating them", async () => {
+  it("replaces spaced and escaped Grok NEXORA ENGINE headers without duplicating them", async () => {
     const home = await createTestTempDirectory("rea-grok-alias-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -638,7 +638,7 @@ describe("Grok Build multiline and escaped headers", () => {
     ).toEqual({ status: "unchanged" });
   });
 
-  it("replaces a hex-escaped Grok REA header and keeps a hex-escaped foreign name", async () => {
+  it("replaces a hex-escaped Grok NEXORA ENGINE header and keeps a hex-escaped foreign name", async () => {
     const home = await createTestTempDirectory("rea-grok-hex-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -690,7 +690,7 @@ describe("Grok Build multiline and escaped headers", () => {
 });
 
 describe("Grok Build inline and dotted assignments", () => {
-  it("updates and removes inline and dotted Grok REA assignments", async () => {
+  it("updates and removes inline and dotted Grok NEXORA ENGINE assignments", async () => {
     const home = await createTestTempDirectory("rea-grok-assign-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -819,7 +819,7 @@ describe("Grok Build inline and dotted assignments", () => {
 });
 
 describe("Grok Build closed inline tables", () => {
-  it("splices REA into a closed mcp_servers inline table", async () => {
+  it("splices NEXORA ENGINE into a closed mcp_servers inline table", async () => {
     const home = await createTestTempDirectory("rea-grok-inline-table-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -992,7 +992,7 @@ describe("Grok Build scalar and nested values", () => {
     });
   });
 
-  it("removes a nested array inside a Grok REA table", async () => {
+  it("removes a nested array inside a Grok NEXORA ENGINE table", async () => {
     const home = await createTestTempDirectory("rea-grok-nested-array-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -1172,7 +1172,7 @@ describe("Grok Build inline comments", () => {
     expect(parseToml(removed)).not.toHaveProperty("mcp_servers.rea");
   });
 
-  it("keeps an inline comment that sits before the Grok REA pair", async () => {
+  it("keeps an inline comment that sits before the Grok NEXORA ENGINE pair", async () => {
     const home = await createTestTempDirectory("rea-grok-inline-before-");
     const configPath = join(home, ".grok/config.toml");
     await mkdir(dirname(configPath), { recursive: true });
@@ -1571,7 +1571,7 @@ describe("client configuration filesystem removal", () => {
         name: "cache",
         status: "retained",
         detail:
-          "REA did not remove this item because its managed path is a symbolic link. Verify the link target before removing it manually.",
+          "NEXORA ENGINE did not remove this item because its managed path is a symbolic link. Verify the link target before removing it manually.",
       }),
     );
     expect((await runUninstall(true, systemUninstallHost(home))).status).toBe(
@@ -2239,7 +2239,7 @@ describe("skill root client identifier labels", () => {
     await mkdir(claudeRoot, { recursive: true });
     await writeFile(
       join(sharedRoot, "SKILL.md"),
-      "---\nname: another-skill\n---\n# Not REA-owned\n",
+      "---\nname: another-skill\n---\n# Not NEXORA ENGINE-owned\n",
     );
     await writeFile(join(claudeRoot, "SKILL.md"), ownedSkillManifest);
 

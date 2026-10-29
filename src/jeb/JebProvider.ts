@@ -423,7 +423,7 @@ export class JebProvider implements JebAnalysisPort {
       createAnalysisExecution(result, this.#identity(engine.version), {
         rawResult: payload,
         limitations: [
-          "JEB resolves and analyzes the artifact on the engine host; REA did not open the target itself.",
+          "JEB resolves and analyzes the artifact on the engine host; NEXORA ENGINE did not open the target itself.",
         ],
       }),
     );

@@ -90,7 +90,7 @@ const missingWindowsNativeFileReason = (file: string): string =>
 
 /** Recovery when Windows refuses to load the verified artifact, for example by code-integrity policy. */
 export const WINDOWS_NATIVE_LOAD_REFUSED_REMEDIATION =
-  "The file matched the package manifest, so restoring or reinstalling it will not help. If Windows reports that an Application Control policy blocked the file, Smart App Control or an App Control for Business policy refused it. Windows native controls, which Ghidra and JADX need on Windows, stay unavailable; rea setup can still register clients. Run REA on a host whose policy allows this file, or ask the REA maintainers about a signed build.";
+  "The file matched the package manifest, so restoring or reinstalling it will not help. If Windows reports that an Application Control policy blocked the file, Smart App Control or an App Control for Business policy refused it. Windows native controls, which Ghidra and JADX need on Windows, stay unavailable; rea setup can still register clients. Run NEXORA ENGINE on a host whose policy allows this file, or ask the NEXORA ENGINE maintainers about a signed build.";
 
 const readPackagedWindowsNativeFile = <T>(file: string, read: () => T): T => {
   try {
@@ -115,7 +115,7 @@ export const loadWindowsNativeAuthority = (
     return {
       available: false,
       failureStage: "host",
-      reason: "REA Windows native controls require a Windows x64 host.",
+      reason: "NEXORA ENGINE Windows native controls require a Windows x64 host.",
     };
   const nodeApiVersion = Number(host.nodeApiVersion);
   if (
@@ -125,7 +125,7 @@ export const loadWindowsNativeAuthority = (
     return {
       available: false,
       failureStage: "host",
-      reason: "REA Windows native controls require Node-API 8 or newer.",
+      reason: "NEXORA ENGINE Windows native controls require Node-API 8 or newer.",
     };
   try {
     const manifest = parseWindowsNativeManifest(
@@ -146,7 +146,7 @@ export const loadWindowsNativeAuthority = (
       return {
         available: false,
         failureStage: "load",
-        reason: `REA Windows native controls are unavailable: Windows refused to load the verified native/windows/build/rea-windows-x64.node: ${cause instanceof Error ? cause.message : String(cause)} ${WINDOWS_NATIVE_LOAD_REFUSED_REMEDIATION}`,
+        reason: `NEXORA ENGINE Windows native controls are unavailable: Windows refused to load the verified native/windows/build/rea-windows-x64.node: ${cause instanceof Error ? cause.message : String(cause)} ${WINDOWS_NATIVE_LOAD_REFUSED_REMEDIATION}`,
       };
     }
     const binding = bindingSchema.parse(loadedModule);
@@ -158,7 +158,7 @@ export const loadWindowsNativeAuthority = (
         available: false,
         failureStage: "self-test",
         retryable: true,
-        reason: `REA Windows native self-test failed: ${cause instanceof Error ? cause.message : String(cause)}`,
+        reason: `NEXORA ENGINE Windows native self-test failed: ${cause instanceof Error ? cause.message : String(cause)}`,
       };
     }
     const parsed = inspectionSchema.safeParse(observed);
@@ -166,7 +166,7 @@ export const loadWindowsNativeAuthority = (
       return {
         available: false,
         failureStage: "inspection",
-        reason: `REA Windows native inspection is invalid: ${parsed.error.message}`,
+        reason: `NEXORA ENGINE Windows native inspection is invalid: ${parsed.error.message}`,
       };
     const inspection = parsed.data;
     return { available: true, authority: { call: binding.call, inspection } };
@@ -174,7 +174,7 @@ export const loadWindowsNativeAuthority = (
     return {
       available: false,
       failureStage: "artifact",
-      reason: `REA Windows native controls are unavailable: ${cause instanceof Error ? cause.message : String(cause)}`,
+      reason: `NEXORA ENGINE Windows native controls are unavailable: ${cause instanceof Error ? cause.message : String(cause)}`,
     };
   }
 };

@@ -277,7 +277,7 @@ export const systemUpdateHost = (
         if (bunVersion === null || lt(bunVersion, "1.2.17"))
           return err({
             kind: "unsupported-package-manager",
-            detail: `REA updates for Bun global installations require Bun 1.2.17 or later; bun --version returned ${JSON.stringify(version.value)}. Upgrade Bun manually, then rerun rea update.`,
+            detail: `NEXORA ENGINE updates for Bun global installations require Bun 1.2.17 or later; bun --version returned ${JSON.stringify(version.value)}. Upgrade Bun manually, then rerun rea update.`,
           });
       }
       return npmReleaseLookup(

@@ -60,8 +60,8 @@ was redacted too in this run; the docs say it may not be, since the recorder rea
 
 ## Agent-built environments, main and this branch
 
-Claude Code (`claude-sonnet-5-5`) built an environment of each application from the same prompt, with REA main
-ff6d96bc (skill 49) and with this branch (skill 50), on freshly seeded instances. Each bundle was rebuilt by the REA it
+Claude Code (`claude-sonnet-5-5`) built an environment of each application from the same prompt, with NEXORA ENGINE main
+ff6d96bc (skill 49) and with this branch (skill 50), on freshly seeded instances. Each bundle was rebuilt by the NEXORA ENGINE it
 was recorded with, and its write tasks run with `fireworks_ai/gpt-oss-120b` and `fireworks_ai/glm-5p3-flash`. Each task
 checks its result from the environment's state, including that nothing else changed.
 
@@ -70,7 +70,7 @@ The branch was recorded three times as it changed:
 1. With the skill as first written, EspoCRM's agent wrote through request steps with Basic credentials instead of the
    UI, and EspoCRM's API answers in a shape the write model withholds (0/3). The skill's recording example created its
    object with a request step, which agents copy; it now creates through the UI with `save_response`.
-2. With that example, Grafana's agent created folders through the UI, where Grafana generates the uid. REA then learned
+2. With that example, Grafana's agent created folders through the UI, where Grafana generates the uid. NEXORA ENGINE then learned
    the folder's `url` as a template around the uid that kept the first folder's slug, and coverage did not check the
    template against the second folder, so served creates answered with wrong addresses (0/2). The write-model fixes
    in this PR compose the address from the uid and the title's slug, learn Grafana's `&` spelling, and check templates
@@ -121,8 +121,8 @@ without a bundle. Paperless and Grafana were recorded twice on main; totals use 
   member its recorded calls sent (`description`, `notes`, `unread`, `shared`, `tag_names`), so a task that sends a URL
   and a title is refused.
 - **Grafana:** the folder create is served with the right address and its task passes. The rename is withheld:
-  Grafana lists folders sorted by title, the recording renamed a folder to a title that sorts first, and REA keeps an
-  updated entity where it was in a list. Main's REA reads this recording the same way, and serves its create with the
+  Grafana lists folders sorted by title, the recording renamed a folder to a title that sorts first, and NEXORA ENGINE keeps an
+  updated entity where it was in a list. Main's NEXORA ENGINE reads this recording the same way, and serves its create with the
   template that keeps the first folder's slug, so the create task would fail too. Main's two recordings passed because
   their titles kept their order.
 - **EspoCRM:** the recording started with a contact an earlier attempt in the same session created and left, so the

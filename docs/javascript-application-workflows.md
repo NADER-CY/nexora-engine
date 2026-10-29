@@ -1,6 +1,6 @@
 # Cross-layer JavaScript application workflows
 
-REA derives a complete reachable feature trace from one authenticated JavaScript
+NEXORA ENGINE derives a complete reachable feature trace from one authenticated JavaScript
 Application Graph and compares two authenticated graph versions. The MCP tools
 are `inspect_analysis_view`, `trace_application_feature`,
 `trace_javascript_semantics`, `compare_application_versions`,
@@ -33,7 +33,7 @@ facts and do not create runtime import or export relationships. Type export name
 are reported separately from value export names. Inline `type` specifiers can
 leave an empty import or re-export with side effects under
 [`verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig/verbatimModuleSyntax.html);
-REA retains those dependency candidates and reports the unavailable compiler
+NEXORA ENGINE retains those dependency candidates and reports the unavailable compiler
 options rather than assuming the dependency is erased.
 
 The semantic graph wire format stores shared non-location provenance once in
@@ -184,7 +184,7 @@ literal, function fingerprint, property, endpoint, event, or boundary field.
 For a recovered parse, coercion, or validation boundary, its field value is the
 static operation's method name (for example, `Number`).
 The query declares backward provenance, forward influence, callers, or
-ownership and can restrict admitted relation kinds. REA returns every matching
+ownership and can restrict admitted relation kinds. NEXORA ENGINE returns every matching
 seed and the complete reachable subgraph; callers do not choose node, relation,
 depth, function, module, seed-match, or page budgets.
 
@@ -321,7 +321,7 @@ the resolved slot node or its relations.
 
 ## Version comparison
 
-REA pairs entities only when a tier produces one unique candidate on each side.
+NEXORA ENGINE pairs entities only when a tier produces one unique candidate on each side.
 The tiers are exact content digest, exact module-source digest, exact node
 identity, source-map identity, structural fingerprint, and a semantic key for
 non-module entities. Lower tiers never override a higher unique match.

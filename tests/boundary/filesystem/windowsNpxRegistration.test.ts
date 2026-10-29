@@ -32,7 +32,7 @@ it.each([
   },
   { previousCommand: ["cmd", "/c", "npx", "-y", "rea-agents@5.0.0", "mcp"] },
 ])(
-  "migrates Windows npx registration $previousCommand idempotently and uninstalls only REA",
+  "migrates Windows npx registration $previousCommand idempotently and uninstalls only NEXORA ENGINE",
   async ({ previousCommand }) => {
     const home = await createTestTempDirectory("rea-windows-registration-");
     const configPath = join(home, ".claude.json");

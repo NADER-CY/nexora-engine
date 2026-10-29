@@ -2320,7 +2320,7 @@ describe("DeepSeek Harness caller node metadata", () => {
 });
 
 describe("DeepSeek Harness uninstall of a shared operation", () => {
-  it("keeps a group patch's own fields and comment when its only row was REA's", async () => {
+  it("keeps a group patch's own fields and comment when its only row was NEXORA ENGINE's", async () => {
     const { home, client } = await harnessClient();
     const entry = canonicalEntry();
     await writeFile(
@@ -2354,7 +2354,7 @@ describe("DeepSeek Harness uninstall of a shared operation", () => {
     expect(text).toContain("# caller group patch");
   });
 
-  it("keeps an operation's own fields when setup removes a second REA row from it", async () => {
+  it("keeps an operation's own fields when setup removes a second NEXORA ENGINE row from it", async () => {
     // Setup refuses a REA row in a group patch, so the setup path meets the
     // keep rule only on an operation without a selector.
     const { home, client } = await harnessClient();
@@ -2386,7 +2386,7 @@ ${row("second-launcher")}`,
     expect(await dshStatus(home)).toMatchObject({ state: "aligned" });
   });
 
-  it("drops an emptied operation that targets REA's own row", async () => {
+  it("drops an emptied operation that targets NEXORA ENGINE's own row", async () => {
     const { home, client } = await harnessClient();
     await writeFile(
       client.configPath,
@@ -2432,7 +2432,7 @@ ${row("second-launcher")}`,
     },
   );
 
-  it("still drops an insert-only operation that REA's row emptied", async () => {
+  it("still drops an insert-only operation that NEXORA ENGINE's row emptied", async () => {
     const { home, client } = await harnessClient();
     await writeFile(
       client.configPath,

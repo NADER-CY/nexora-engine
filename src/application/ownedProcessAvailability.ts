@@ -3,7 +3,7 @@ import { LinuxOwnedProcessPrerequisiteError } from "../process/ProcessOwnershipO
 import type { ProviderAvailability } from "./AnalysisProvider.js";
 
 const REMEDIATION =
-  "Install your distribution's procps or procps-ng package, or put a procps-compatible ps on REA's PATH, then retry.";
+  "Install your distribution's procps or procps-ng package, or put a procps-compatible ps on NEXORA ENGINE's PATH, then retry.";
 
 // Provider adapters re-attribute capability errors and keep the original as cause.
 const prerequisiteRefusal = (

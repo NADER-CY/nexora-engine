@@ -6,7 +6,7 @@ Issue: https://github.com/morluto/rea/issues/4933
 
 The `environment-manifest` view, `environment-serve` and `environment-export`
 accept `capture_browser_scenario` Evidence as the manifest's parent, in
-addition to `inspect_web_network_capture` HAR Evidence. A session REA records
+addition to `inspect_web_network_capture` HAR Evidence. A session NEXORA ENGINE records
 itself, in a browser it launches, with credential headers and declared secrets
 redacted, becomes an agent environment without an external capture script or
 HAR scrubbing step. The replay, the tool surface and the bundle layout do not

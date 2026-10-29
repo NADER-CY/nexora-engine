@@ -40,7 +40,7 @@ it("retains provider coverage caveats in a composed MCP overview without repeate
   const evidence = parseEvidence(response.structuredContent);
   expect(evidence.limitations).toEqual([
     "Artifact identity is unavailable for this observation.",
-    "Derived by an REA composed workflow.",
+    "Derived by an NEXORA ENGINE composed workflow.",
     `Fixture (fixture 1) current_document, list_procedures, list_segments, list_strings: ${limitation}`,
   ]);
   expect(evidence.normalized_result).toMatchObject({

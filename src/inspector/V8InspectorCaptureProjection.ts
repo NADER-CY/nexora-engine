@@ -29,7 +29,7 @@ export const createInspectorExclusionCounts = (): Record<
 export const describeInspectorTargetLimitations = (
   attachmentStateUnknown = false,
 ): string[] => [
-  "REA attaches to an already-running exact target. It does not launch the target, evaluate JavaScript, install breakpoints, or send pause/resume commands.",
+  "NEXORA ENGINE attaches to an already-running exact target. It does not launch the target, evaluate JavaScript, install breakpoints, or send pause/resume commands.",
   "Enabling Debugger can make target-authored debugger statements pause execution; observation does not suppress or resume these pauses.",
   "Only Runtime.enable and Debugger.enable are sent; source text, object values, EventEmitter activity, and Electron IPC are not inspected.",
   "The selected endpoint and target ID authorize observation; discovery file locations can remain unresolved and do not prove filesystem identity.",

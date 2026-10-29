@@ -499,7 +499,7 @@ export const checkRecoveryDeadline = (
   checkRecoveryCancellation(signal);
   if (performance.now() >= deadline)
     throw new AnalysisTimeoutError(OPERATION, RECOVERY_LIMITS.timeoutMs, {
-      userMessage: `JavaScript source recovery reached its ${String(RECOVERY_LIMITS.timeoutMs)} ms Wakaru adapter deadline. This is REA's fixed per-operation deadline, not the MCP client deadline.`,
+      userMessage: `JavaScript source recovery reached its ${String(RECOVERY_LIMITS.timeoutMs)} ms Wakaru adapter deadline. This is NEXORA ENGINE's fixed per-operation deadline, not the MCP client deadline.`,
       remediationAction: `This release has no runtime override for the ${String(RECOVERY_LIMITS.timeoutMs)} ms Wakaru recovery deadline. Raising analysis_timeout_ms or max_heap_mb does not raise it. A smaller complete input may finish inside this deadline. An unchanged retry may hit this deadline again. Allow execution, cleanup and delivery headroom in the outer MCP client deadline. Confirm outstanding work and cleanup before retrying.`,
     });
 };

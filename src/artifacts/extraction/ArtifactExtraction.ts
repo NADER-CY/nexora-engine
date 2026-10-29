@@ -235,7 +235,7 @@ export const materializeArtifactInventoryInScope = async (
       throw new AnalysisUnsupportedTargetError(
         "extract_artifact",
         input.selectedPath ?? input.inputPath,
-        `Archive entry ${occurrence.logical_path} is encrypted; REA does not decrypt archive entries, so the archive cannot be extracted completely`,
+        `Archive entry ${occurrence.logical_path} is encrypted; NEXORA ENGINE does not decrypt archive entries, so the archive cannot be extracted completely`,
       );
     // Inventory retains unavailable source occurrences, but extraction cannot
     // materialize bytes it never observed.

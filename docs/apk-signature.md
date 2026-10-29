@@ -1,6 +1,6 @@
 # APK signature schemes
 
-REA reads the signing of a selected local Android APK (or ZIP/AAB) statically,
+NEXORA ENGINE reads the signing of a selected local Android APK (or ZIP/AAB) statically,
 so an analyst can answer **who signed this, under which schemes, and whether the
 declared content digests match these bytes** before trusting or triaging it. The reader
 is in-process and needs no external engine: it parses the ZIP tail and the APK
@@ -88,14 +88,14 @@ share the application workflow, projection, retention and publication owners.
   (case-sensitive). v1 is `present` only when a signature block has its
   matching `.SF` file (`META-INF/x/CERT.RSA` pairs with `META-INF/x/CERT.SF`);
   `signature_files` and `block_files` list every candidate either way.
-- **Per v1 signer** (each block paired with its `.SF`): REA inflates the block
+- **Per v1 signer** (each block paired with its `.SF`): NEXORA ENGINE inflates the block
   and reads its PKCS#7 `SignedData`. `certificate` is the certificate the
   block's one `SignerInfo` names by `issuerAndSerialNumber` or
   `subjectKeyIdentifier` (not by position), with the same facts and raw-DER
   SHA-256 as a v2/v3 signer, so a v1-only APK can be fingerprinted and
   clustered with v2/v3-signed ones. apksig resolves only
   `issuerAndSerialNumber`, so its v1 verification fails for a block whose
-  `SignerInfo` uses `subjectKeyIdentifier`: REA still reports the declared
+  `SignerInfo` uses `subjectKeyIdentifier`: NEXORA ENGINE still reports the declared
   certificate (`identified_by: subject-key-identifier`), adds a limitation,
   and treats that signer as unknown in `v1_signers_match_block_signers`. `certificates` lists every certificate the
   block carries (SHA-256 and subject) and `signer_infos` gives each
@@ -118,7 +118,7 @@ share the application workflow, projection, retention and publication owners.
   the PKCS#7 decoding decides (bytes that really are encrypted fail to
   decode), and a limitation names the block.
   apksig rejects the v1 signature of an archive whose central directory
-  holds any name more than once ("Duplicate entry"). REA checks every entry:
+  holds any name more than once ("Duplicate entry"). NEXORA ENGINE checks every entry:
   a limitation names the first few duplicates (JSON-quoted; a name over 256
   bytes is cut there and its stored length given) and counts the rest, and a
   signer whose block, `.SF` or `META-INF/MANIFEST.MF` name is duplicated
@@ -127,7 +127,7 @@ share the application workflow, projection, retention and publication owners.
   A duplicate outside those names leaves the signers as declared.
   Names are compared as apksig compares them, as Java strings decoded from
   UTF-8: malformed bytes become U+FFFD, so `dup\xff` and `dup\xfe` are one
-  name (apksigner: `Duplicate entry: dup�`). REA reproduces Java's
+  name (apksigner: `Duplicate entry: dup�`). NEXORA ENGINE reproduces Java's
   replacement rather than WHATWG `TextDecoder`'s; the two differ for encoded
   surrogates (`ED A0..BF`), which Java replaces as one unit. This was checked
   against OpenJDK 25's `new String(bytes, UTF_8)` on about 300,000 malformed
@@ -140,7 +140,7 @@ share the application workflow, projection, retention and publication owners.
   so it reads only the first 65,535 records of a larger directory: the
   limitation then says so, counts as duplicates for apksig only names whose
   second copy lies within those records, and names separately those
-  duplicated only past them. REA still reads v1 signing entries, and flags
+  duplicated only past them. NEXORA ENGINE still reads v1 signing entries, and flags
   duplicated signing names, from every record, so past record 65,535 it
   reports signers apksig would not see.
   Bytes after the block's `ContentInfo` are ignored, as apksig's BER parser
@@ -164,12 +164,12 @@ share the application workflow, projection, retention and publication owners.
   does). `certificate` is `null` when no stamp is present, or when the block
   could not be decoded and `decode_error` says why. Stamp signatures are not
   verified.
-- **Declared digest consistency:** for SHA-256/SHA-512 digests, REA recomputes
+- **Declared digest consistency:** for SHA-256/SHA-512 digests, NEXORA ENGINE recomputes
   the v2/v3 content digest and reports `matches_apk` per digest and
   `posture.self_consistent`. This only shows that the **declared** digest
   equals the digest of the current bytes. It is **not a signature
   verification**: anyone who changes the bytes can recompute the digest and
-  write it into the signed data, and REA still reports `true` while
+  write it into the signed data, and NEXORA ENGINE still reports `true` while
   `apksigner verify` rejects the APK. A changed byte with an unchanged
   declared digest reads `false`.
 - **Posture** (derived from the facts above):
@@ -279,12 +279,12 @@ Verified by the `verify:apk-signature` real lane. It builds a real minimal APK
 with `aapt2`, signs it with the SDK's `apksigner` (default v2+v3, v1-only with
 RSA and EC keys, v1+v2+v3 on a legacy target, a rotated key lineage with and
 without v1, rotation carried by v3.1, a source stamp, and a copy
-with one changed byte), and cross-checks REA against
+with one changed byte), and cross-checks NEXORA ENGINE against
 `apksigner verify --print-certs`, `apksigner lineage --print-certs` and
 `keytool -printcert -jarfile` through the CLI and MCP.
 
 The real-toolchain CI lane uses pinned, checksum-verified Build Tools 36.1.0
 and platform 36 oracle files in its job workspace. It requires the existing
 host JDK and runs `npm run verify:apk-signature -- --require-tools`; absent
-oracles fail rather than silently establishing provider coverage. REA itself
+oracles fail rather than silently establishing provider coverage. NEXORA ENGINE itself
 requires none of these external tools.

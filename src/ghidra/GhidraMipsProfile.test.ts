@@ -359,7 +359,7 @@ describe("caller-selected MIPS-I language", () => {
     const limitations = health.value.limitations.join("\n");
     expect(limitations).toContain("caller-selected MIPS:LE:32:16e");
     expect(limitations).not.toContain(
-      "REA pins the generic 32-bit MIPS language",
+      "NEXORA ENGINE pins the generic 32-bit MIPS language",
     );
   });
 });
@@ -386,7 +386,7 @@ const session = async (
         counts.starts++;
         return Promise.resolve(
           ok({
-            name: "REA Ghidra bridge" as const,
+            name: "NEXORA ENGINE Ghidra bridge" as const,
             run_id: "11111111-1111-4111-8111-111111111111",
             profile_digest: "a".repeat(64),
             provider: { id: "ghidra" as const, version: "12.1.4" },

@@ -167,7 +167,7 @@ export const projectWebBundleView = (
     ),
     unknowns: boundedViewMessages(
       [
-        "Static bundle findings are observations or bounded inferences; REA does not execute captured JavaScript.",
+        "Static bundle findings are observations or bounded inferences; NEXORA ENGINE does not execute captured JavaScript.",
         "String-built routes and endpoints, encrypted configuration, and server-side behavior may remain unknown.",
         ...report.unknowns.map((u) => `${u.dimension}: ${u.reason}`),
       ],

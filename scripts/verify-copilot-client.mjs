@@ -140,11 +140,11 @@ await withVerifierCleanup(async () => {
         wireModels.push(body.model);
         // Auxiliary requests without tools cannot execute the analyst's workflow.
         if (tools.length === 0)
-          return { role: "assistant", content: "REA fixture title" };
+          return { role: "assistant", content: "NEXORA ENGINE fixture title" };
         const analysis = tools.find((t) =>
           t.name.endsWith("analyze_javascript_application"),
         );
-        assert(analysis, "Copilot CLI must expose the REA analysis tool");
+        assert(analysis, "Copilot CLI must expose the NEXORA ENGINE analysis tool");
         const prefix = analysis.name.slice(
           0,
           -"analyze_javascript_application".length,
@@ -155,7 +155,7 @@ await withVerifierCleanup(async () => {
         assert.deepEqual(
           reaTools.map((t) => t.name).sort(),
           expected,
-          "Copilot CLI must forward the complete REA catalog",
+          "Copilot CLI must forward the complete NEXORA ENGINE catalog",
         );
         if (schemasChecked === 0) {
           for (const tool of reaTools) {
@@ -225,7 +225,7 @@ await withVerifierCleanup(async () => {
         }
         assert(
           skillLoaded,
-          "Copilot CLI must load the installed personal REA skill",
+          "Copilot CLI must load the installed personal NEXORA ENGINE skill",
         );
         const spilled = replies.find(
           (message) =>
@@ -389,7 +389,7 @@ await withVerifierCleanup(async () => {
             "--prompt",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use the REA skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
+              : `Use the NEXORA ENGINE skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
           ],
           {
             env: { ...environment, COPILOT_PROVIDER_BASE_URL: fixture.baseUrl },

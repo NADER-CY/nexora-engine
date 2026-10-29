@@ -312,7 +312,7 @@ const pngWorkingMemoryError = (
   new AnalysisResourceConstraintError(
     "compare_web_screenshots",
     "memory",
-    "Screenshot comparison exceeds REA's 256 MiB estimated working-memory budget.",
+    "Screenshot comparison exceeds NEXORA ENGINE's 256 MiB estimated working-memory budget.",
     {
       boundary: "png-screenshot-comparison",
       estimated_working_memory_bytes: estimateBytes.toString(),

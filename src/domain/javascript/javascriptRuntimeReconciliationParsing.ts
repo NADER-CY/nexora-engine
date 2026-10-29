@@ -56,7 +56,7 @@ const parseStaticLayer = (
       operation: "analyze_javascript_application",
       predicate: "rea.javascript-application-analysis",
       providerId: "rea-javascript-application",
-      providerName: "REA JavaScript application analyzer",
+      providerName: "NEXORA ENGINE JavaScript application analyzer",
       providerVersion: "1",
       authority: "shipped-artifact",
       confidence: "derived",

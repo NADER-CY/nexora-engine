@@ -147,13 +147,13 @@ it.each([
     const root = await createTestTempDirectory("rea-kuna-verifier-cleanup-");
     const kuna = await writeFakeKuna(root, {
       stringRows: [
-        { address: 12288, text: "REA fixture prompt" },
+        { address: 12288, text: "NEXORA ENGINE fixture prompt" },
         {
           address: 12320,
-          text: "＿φ( °-°)/ REA unicode marker",
+          text: "＿φ( °-°)/ NEXORA ENGINE unicode marker",
           encoding: "utf8",
         },
-        { address: 12400, text: "REA wide marker", encoding: "utf16" },
+        { address: 12400, text: "NEXORA ENGINE wide marker", encoding: "utf16" },
       ],
       functions: [
         { name: "main", addr: "0x1000" },

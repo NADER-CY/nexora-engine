@@ -58,7 +58,7 @@ it("runs static .app decoding without registering native analysis engines", asyn
   );
 });
 
-it("inspects an artifact through the direct CLI workflow without an REA grant", async () => {
+it("inspects an artifact through the direct CLI workflow without an NEXORA ENGINE grant", async () => {
   const root = await createTestTempDirectory("rea-artifact-direct-");
   const source = join(root, "source");
   const archive = join(root, "fixture.asar");

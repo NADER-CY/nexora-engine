@@ -394,7 +394,7 @@ it.each(["historical", "selected-paths"] as const)(
       capture,
       {
         id: "rea-playwright-electron-active",
-        name: "REA Playwright active Electron observation provider",
+        name: "NEXORA ENGINE Playwright active Electron observation provider",
         version: "1",
       },
       resolvedInput,
@@ -445,7 +445,7 @@ it("commits complete Electron actions independently from selected arguments", as
   });
   const provider = {
     id: "rea-playwright-electron-active",
-    name: "REA Playwright active Electron observation provider",
+    name: "NEXORA ENGINE Playwright active Electron observation provider",
     version: "1",
   };
   const first = createElectronActiveEvidence(

@@ -308,7 +308,7 @@ try {
     "-keysize",
     "2048",
     "-dname",
-    "CN=REA Lane One",
+    "CN=NEXORA ENGINE Lane One",
   ]);
   await key("k2", [
     "-keyalg",
@@ -316,7 +316,7 @@ try {
     "-groupname",
     "secp256r1",
     "-dname",
-    "CN=REA Lane Two",
+    "CN=NEXORA ENGINE Lane Two",
   ]);
   const ks = (name) => [
     "--ks",
@@ -400,7 +400,7 @@ try {
     assert.deepEqual(
       signer.certificates.map((c) => c.sha256_fingerprint),
       await oracleJarSigners(apk),
-      "REA v1 certificates must equal keytool -printcert -jarfile",
+      "NEXORA ENGINE v1 certificates must equal keytool -printcert -jarfile",
     );
     assert.equal(signer.signer_infos[0]?.certificate_sha256, expected);
     assert.ok(signer.certificate?.subject, "v1 signer subject");
@@ -469,7 +469,7 @@ try {
   assert.deepEqual(
     reaLineage,
     lineageOracle,
-    "REA lineage must equal apksigner lineage (order + digests)",
+    "NEXORA ENGINE lineage must equal apksigner lineage (order + digests)",
   );
   // Observed: v2 (old key) and v3 (new key) differ. Declared: the lineage
   // covers both. The two facts stay separate.
@@ -606,7 +606,7 @@ try {
   assert.equal(
     stampedReport.source_stamp.certificate?.sha256_fingerprint,
     fullOracle.signerSha256,
-    "REA must read the declared stamp certificate (k1)",
+    "NEXORA ENGINE must read the declared stamp certificate (k1)",
   );
 
   // 4) One changed entry byte with the declared digest left alone: apksigner
@@ -628,7 +628,7 @@ try {
   assert.equal(
     tamperedReport.posture.self_consistent,
     false,
-    "REA must report the tampered APK as not self-consistent",
+    "NEXORA ENGINE must report the tampered APK as not self-consistent",
   );
 
   // 4b) The same byte change with the declared digests recomputed and written

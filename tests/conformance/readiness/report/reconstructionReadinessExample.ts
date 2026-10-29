@@ -17,7 +17,7 @@ const sourceEvidence = (variant: string) =>
     undefined,
     {
       id: "rea-readiness-fixture",
-      name: "REA readiness fixture",
+      name: "NEXORA ENGINE readiness fixture",
       version: "1",
     },
     {

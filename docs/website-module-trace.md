@@ -9,7 +9,7 @@ matching capture candidate inline. It does not refetch website assets.
 ## Select the source and context
 
 Provide a caller-supplied Chromium executable supporting `import.meta.resolve`.
-REA does not install or upgrade a browser. Real verification covers Linux x64;
+NEXORA ENGINE does not install or upgrade a browser. Real verification covers Linux x64;
 other hosts have not received this feature's real workflow verification.
 
 ```bash
@@ -75,9 +75,9 @@ the supplied input field.
 
 ## Engine and lifecycle
 
-An owned temporary browser context runs REA's trusted resolver stub. The selected
+An owned temporary browser context runs NEXORA ENGINE's trusted resolver stub. The selected
 application is parsed as data and is never executed by this trace. Page requests
-are fulfilled with REA's synthetic document/stub or blocked; no website asset is
+are fulfilled with NEXORA ENGINE's synthetic document/stub or blocked; no website asset is
 downloaded. This does not establish an OS sandbox or browser-wide network
 containment. The engine version and native report are retained in Evidence.
 
@@ -87,7 +87,7 @@ one 20-second deadline; cleanup may extend that deadline. One renderer is
 requested, and there is no aggregate host memory-limit claim. Cancellation
 closes only the owned browser; cleanup failure cannot return a successful trace.
 `REA_BROWSER_NO_SANDBOX=true` passes Chromium's corresponding launch option when
-the host requires it; it does not enable an REA security boundary.
+the host requires it; it does not enable an NEXORA ENGINE security boundary.
 
 See [testing](testing.md) for the native loading oracle and CLI/MCP real lane.
 

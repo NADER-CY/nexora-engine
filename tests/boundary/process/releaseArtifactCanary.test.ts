@@ -72,7 +72,7 @@ if (process.argv[2] === "mcp") {
   process.argv[2] = fileURLToPath(new URL("./reply.json", import.meta.url));
   await import("./replay.mjs");
 } else if (["--help", "--llms"].includes(process.argv[2])) {
-  console.log("REA fixture CLI");
+  console.log("NEXORA ENGINE fixture CLI");
 } else { process.exitCode = 1; }
 `,
     );

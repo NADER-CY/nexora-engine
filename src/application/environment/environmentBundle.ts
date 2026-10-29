@@ -323,7 +323,7 @@ export const bundleReadme = (
       : `calls \`${plan.check.tool}\` without arguments and checks the call succeeds with \`status\` ${String(plan.check.status)}, the status of record ${String(plan.check.recordOrdinal)} its answer carries`;
   return `# ${plan.name}
 
-An agent environment exported by REA from one retained ${source.captureKind === "browser-scenario" ? "browser scenario capture" : "web network capture"}.
+An agent environment exported by NEXORA ENGINE from one retained ${source.captureKind === "browser-scenario" ? "browser scenario capture" : "web network capture"}.
 Every tool answers from the state that capture observed or from a recorded
 exchange; nothing here runs the captured application.
 

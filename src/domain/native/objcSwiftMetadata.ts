@@ -499,7 +499,7 @@ export const nativeDispatchMetadataInputSchema = z.strictObject({
     .max(MAXIMUM_DISPATCH_METADATA_INPUT_BYTES)
     .optional()
     .describe(
-      "Largest target file REA reads into memory for binary metadata, in bytes. Omitted: 67108864 (64 MiB). The whole file counts, including every slice of a universal Mach-O. At most 1073741824 (1 GiB).",
+      "Largest target file NEXORA ENGINE reads into memory for binary metadata, in bytes. Omitted: 67108864 (64 MiB). The whole file counts, including every slice of a universal Mach-O. At most 1073741824 (1 GiB).",
     ),
 });
 

@@ -1,18 +1,18 @@
 # CLI and Evidence
 
 Use the CLI for a direct inspection or a script. It uses the same application
-workflows and evidence contracts as REA's MCP server. Each CLI invocation is a
+workflows and evidence contracts as NEXORA ENGINE's MCP server. Each CLI invocation is a
 separate process; save results when you want to use them in a later command.
 For a pinned, noninteractive workflow with retained reports, see
 [static analysis in GitHub Actions](ci-analysis.md).
 
 ## Run a command
 
-After [installing REA](installation.md), use `rea`. You can also run a command
+After [installing NEXORA ENGINE](installation.md), use `rea`. You can also run a command
 without a global installation:
 
 ```bash
-npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json
+node /absolute/path/to/nexora-engine/scripts/nexora-engine.mjs analyze-javascript-application /absolute/path/to/app --json
 ```
 
 Use an extracted application directory or an ASAR as the target. Static
@@ -35,7 +35,7 @@ rea inspect-analysis-view app-view.json
 The request can also name the saved file instead of embedding it:
 `{"source": {"kind": "evidence-file", "path": "app-evidence.json"}, "view": {"kind": "summary"}}`.
 The CLI resolves a relative path against the working directory; MCP clients
-pass an absolute path. REA reads and authenticates the file, then projects it
+pass an absolute path. NEXORA ENGINE reads and authenticates the file, then projects it
 like retained Evidence, so a large file is bounded by the file reader rather
 than charged as inline input.
 
@@ -57,7 +57,7 @@ stdout as a parseable result and writes
 `{"rea_timings":{"version":1,"command_ms":42}}` to stderr. `command_ms`
 measures CLI command dispatch and result delivery; it is not provider-only or
 analysis-only time. The flag is off by default, and the record omits stages
-that REA did not measure. Root version reporting does not dispatch a command
+that NEXORA ENGINE did not measure. Root version reporting does not dispatch a command
 and has no command timing record.
 
 ## JSON Lines record output
@@ -452,7 +452,7 @@ These commands describe binary-session providers and auxiliary capabilities.
 For the complete MCP surface, use the connected server's tool list and the
 session's advertised availability; individual guides describe prerequisites.
 
-With automatic selection, REA uses the single available provider that supports
+With automatic selection, NEXORA ENGINE uses the single available provider that supports
 the target. When several providers support it, select one explicitly:
 
 ```bash
@@ -501,7 +501,7 @@ output and partial observations remain in the original details.
 
 ## Save and reuse analysis snapshots
 
-A snapshot retains successful analysis results for later queries. REA reuses
+A snapshot retains successful analysis results for later queries. NEXORA ENGINE reuses
 an exact result when the target bytes, operation, parameters, provider and
 settings match. Mutations and cursor-dependent calls are excluded from the
 cache. Snapshot files are local and use owner-only permissions.
@@ -586,13 +586,13 @@ has been removed. The MCP tool remains `compare_bundles`.
 
 `--record_pairs` supplies an explicit JSON array of observation pairs, matching
 MCP `compare_bundles.record_pairs`. Pair IDs must exist on their named sides and
-be one-to-one. Without pairs, one-sided membership remains unknown; REA does
+be one-to-one. Without pairs, one-sided membership remains unknown; NEXORA ENGINE does
 not infer correspondence from position or display names.
 
 Exports preserve an existing destination unless `--overwrite` is explicit.
 
 Atomic Evidence output stages on the selected destination's filesystem. If the
-OS pathname ceiling prevents its internal staging name, REA retries in a shorter
+OS pathname ceiling prevents its internal staging name, NEXORA ENGINE retries in a shorter
 ancestor on that same filesystem and removes the unused stage. Existing output
 protection still applies. A genuine pathname refusal uses `resource_constraint`
 with `details.reason: path-limit` and `boundary: filesystem-path`.
@@ -704,14 +704,14 @@ the graph keeps its observed children and records the root failure as a
 top-level limitation. That partial inventory does not establish absence among
 unexamined children. POSIX directory-entry bytes that are not valid UTF-8 cannot
 be represented as graph paths; the containing directory (or root) is marked
-unsupported, and REA does not access the entry through a replacement-character
+unsupported, and NEXORA ENGINE does not access the entry through a replacement-character
 name. Symlink targets are read as bytes too: a target that is not valid UTF-8
 is retained as an unreadable symlink with its bytes reported in the limitation,
 and is never resolved through a replacement-character path. Readable siblings
 remain inventoried.
 
 JavaScript and TypeScript import parsing requires valid UTF-8. Malformed source
-bytes retain their original hashes and sizes with a decoding diagnostic; REA
+bytes retain their original hashes and sizes with a decoding diagnostic; NEXORA ENGINE
 does not infer module targets from replacement characters. Exact dynamic-import
 strings, expression-free templates and runtime-transparent TypeScript wrappers
 retain their targets; computed imports remain unknown. TypeScript import-equals
@@ -721,7 +721,7 @@ and `typeof import("./dep")`) and declarations inside ambient module bodies;
 these source relationships do not assert runtime loading. Language labels retain
 the conventional case-sensitive `.C` (C++) and `.M` (Objective-C++) suffixes.
 
-REA derives historical CommonJS paths only when the selected loader and its
+NEXORA ENGINE derives historical CommonJS paths only when the selected loader and its
 base are proven: this includes the exact
 `createRequire(new URL("./file.cjs", import.meta.url))` form and
 `require.resolve` with `{ paths: [__dirname] }`. Exact optional-call forms such
@@ -752,7 +752,7 @@ when they name the same file. CommonJS requests retain literal filename semantic
 for percent signs, query marks and fragments.
 
 Historical-source import requires safe no-follow file opens on Linux or
-macOS. Native Windows returns `unsupported_host`; use Linux REA inside WSL
+macOS. Native Windows returns `unsupported_host`; use Linux NEXORA ENGINE inside WSL
 or another supported host. See
 [source-to-bundle comparison](javascript-application-workflows.md#historical-source-to-bundle-comparison)
 for mapping identities, inferences and unknowns.
@@ -1011,7 +1011,7 @@ rea inspect-analysis-view request.json --format csv \
   --filter-output normalized_result.rows --columns name,address
 ```
 
-The first line is a REA metadata record,
+The first line is a NEXORA ENGINE metadata record,
 `# rea-delimited-v1 <JSON>`. It carries the selected path, view request, limitations and unknowns,
 coverage, source coverage and completeness, command, and duration. A metadata
 value of `null` means that the selected row collection did not provide that
@@ -1142,7 +1142,7 @@ cancellation.
 unavailable optional providers remain informational for unrelated tasks.
 
 Enable `pipefail` in a supporting shell so a downstream formatter preserves
-REA's failure status:
+NEXORA ENGINE's failure status:
 
 ```bash
 set -o pipefail

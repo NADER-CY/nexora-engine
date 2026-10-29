@@ -27,7 +27,7 @@ processTest(
     const profileDigest = "a".repeat(64);
     const targetSha256 = "b".repeat(64);
     const session = {
-      name: "REA Ghidra bridge",
+      name: "NEXORA ENGINE Ghidra bridge",
       run_id: "d6fcbb66-e829-4ff6-a535-0035aec63139",
       profile_digest: profileDigest,
       provider: { id: "ghidra", version: SUPPORTED_GHIDRA_VERSION },

@@ -1,4 +1,4 @@
-# Testing REA
+# Testing NEXORA ENGINE
 
 Use this guide when choosing coverage, pruning tests, or running a verification
 lane. Start with the commands below; use [real-toolchain lanes](#real-toolchain-verification-lanes)
@@ -268,7 +268,7 @@ coverage. Ordinary CI also exhausted the former 384 MiB budget after earlier
 files loaded the shared source/contract graph, while later command registration
 and schema/help rendering still needed transient allocation space. This is a
 measured capacity control, not a suite-wide speedup claim. The worker count
-remains bounded at two, and spawned REA processes retain their own heap settings.
+remains bounded at two, and spawned NEXORA ENGINE processes retain their own heap settings.
 Coverage enablement still controls instrumentation, test deadlines and coverage
 thresholds; explicitly disabling it or selecting only a provider does not enable
 instrumentation.
@@ -435,7 +435,7 @@ For format compatibility, identify the producer revision that establishes each
 rule. Include an accepted boundary case beside the rejected case so a stricter
 parser cannot pass by refusing both. Keep source-derived behavior, synthetic
 fixtures, and executed producer or runtime oracles distinct in validation
-reports. A fixture accepted by REA proves its reader behavior; it does not prove
+reports. A fixture accepted by NEXORA ENGINE proves its reader behavior; it does not prove
 that a real loader accepts the artifact. If multiple producer revisions share a
 format identifier but differ in behavior, record that ambiguity rather than
 using one installed version as an oracle for all of them.
@@ -502,7 +502,7 @@ Artifact verification uses `artifactMcpCall` for both lifecycle and analysis
 calls. A fresh SDK client has no held tool listing, so a bare `callTool` can
 skip output-schema validation. The helper discovers actual advertised
 definitions, rejects missing or ambiguous schemas, and validates the requested
-tool without compiling unrelated catalog schemas. REA registers process-static
+tool without compiling unrelated catalog schemas. NEXORA ENGINE registers process-static
 tool contracts; bindings share one discovery per negotiated connection and are
 discarded on reconnect or failed discovery. Keep raw artifact calls on this
 shared path and retain explicit request options such as timeouts.
@@ -1026,7 +1026,7 @@ The host lane also verifies namespaced C++ ABI symbols and annotation identity.
 That facet requires Ghidra's matching `demangler_gnu_v2_41` native component in
 `GPL/DemanglerGnu/os/<platform>/` or `build/os/<platform>/`, in addition to the
 native decompiler. The namespace verifier reports missing or non-executable
-components before testing the fixture. REA does not build or install them.
+components before testing the fixture. NEXORA ENGINE does not build or install them.
 
 Windows native conformance runs with `npm run verify:windows-native` and does
 not require Ghidra or Java. It includes Job Object commit-limit controls (a
@@ -1041,7 +1041,7 @@ rename, later-query handle-based recovery, successful-admission caching, and
 environment-teardown cleanup. It neither
 establishes the cause of the intermittent #1701 host failure nor replaces
 verification with the shipped production artifact.
-`npm run verify:ghidra:windows:package` additionally packs and installs REA into
+`npm run verify:ghidra:windows:package` additionally packs and installs NEXORA ENGINE into
 an isolated prefix and runs ordinary-user CLI/MCP operations against their
 canonical schemas. Run the controlled fixture generator before that lane, or
 supply an installed package root and an explicit fixture as arguments.
@@ -1141,7 +1141,7 @@ requires unresolved table bounds or case mappings to remain visible as
 residual unknowns.
 
 `npm run verify:inspector` requires the supported Node.js runtime and installed
-REA dependencies. CI runs it on Linux and macOS x64/arm64 and Windows x64. It starts owned loopback
+NEXORA ENGINE dependencies. CI runs it on Linux and macOS x64/arm64 and Windows x64. It starts owned loopback
 Node Inspector fixtures and verifies discovery and passive observation through
 the CLI and stdio MCP, including special filenames, unresolved discovery
 locations, and independently resolved loaded scripts. Double-quote filenames
@@ -1185,7 +1185,7 @@ already open, and exercises shared application/provider client inspection, unit 
 and method decompilation. The script records the engine's exact response to
 `open_jeb_project`; the earlier licensed 5.48.0 headless verification did not
 advertise that tool.
-REA does not install or launch JEB; see [JEB analysis](jeb-analysis.md) for
+NEXORA ENGINE does not install or launch JEB; see [JEB analysis](jeb-analysis.md) for
 the bring-your-own boundary. The earlier licensed build was verified against JEB 5.48.0 serving
 `jeb-mcp-server` 1.3.0 at four scales: a compiled Java class fixture, a
 locally built signed probe APK with a launcher activity (manifest, v1/v2/v3
@@ -1338,7 +1338,7 @@ with `REA_NATIVEAOT_PROOF_FIXTURE_ROOT`, and optional evidence capture directory
 with `REA_NATIVEAOT_PROOF_CAPTURE_DIR` (absolute paths).
 
 Keep builds/imports sequential on small hosts; scope `GHIDRA_HEADLESS_MAXMEM`
-(e.g. `768M`) to this command and use CPU affinity if needed. REA does not install
+(e.g. `768M`) to this command and use CPU affinity if needed. NEXORA ENGINE does not install
 or upgrade Java, Ghidra, .NET or native toolchains. See
 [the supported layout and provenance](ghidra-nativeaot.md).
 
@@ -1355,7 +1355,7 @@ provides an optional small native fixture source with exported
 use `--second-procedure rea_fixture_subtract --second-marker='- 13'`.
 
 The lane invokes the production CLI dispatcher and connects the pinned MCP
-client SDK to the production REA server. It verifies function Evidence and
+client SDK to the production NEXORA ENGINE server. It verifies function Evidence and
 CLI/MCP parity, inventory/search, pseudocode, instructions, xrefs, malformed
 input, original-input preservation, and lifecycle cleanup. The headless
 profile also checks containing procedures, the admitted program as the
@@ -1363,7 +1363,7 @@ document, address context, and feature tracing. For headless
 analysis it confirms that the owned database IDs disappear from upstream
 discovery and private workspaces are removed. For attached analysis it confirms
 the existing GUI target remains reachable with the same input identity.
-`--package-root` selects an installed/extracted REA artifact. `--report` writes
+`--package-root` selects an installed/extracted NEXORA ENGINE artifact. `--report` writes
 private local observations with mode `0600`; the console summary contains no
 target paths or upstream output.
 
@@ -1933,7 +1933,7 @@ runs `observe-native-calls` through the CLI and stdio MCP. It checks:
 
 ### Firmware adapters
 
-Linux-owned provider launches require a procps-compatible `ps` on REA's `PATH`
+Linux-owned provider launches require a procps-compatible `ps` on NEXORA ENGINE's `PATH`
 so ownership can be inspected before launching a child. A missing or incompatible
 command fails with an actionable capability error before the launch.
 
@@ -1997,7 +1997,7 @@ fixture compiler; static/unit checks do not acquire a browser. See
 the running Node engine's single-string limit. Shared input leaves keep the
 fixture's graph small; the verifier writes one temporary output file, checks its
 complete byte count and an independent digest, then removes it. It requires only
-Node and the built REA runtime, with space for the output plus a 1 GiB reserve.
+Node and the built NEXORA ENGINE runtime, with space for the output plus a 1 GiB reserve.
 Run `npm run verify:javascript:output -- jsonl` for compact JSONL coverage. Its
 row collection must match independent row and final-metadata byte/digest goldens;
 its token count is checked against the actual file one line at a time, even when
@@ -2070,7 +2070,7 @@ missing/unsupported plugin errors. A historical-PID collision fixture references
 an owned live sentinel; inspection syscall traces reject process attach/memory
 access, provider lookups of that PID's `/proc` files and attempted Internet sockets. Traces admit
 the observed upstream startup helpers (`iconv -l`, the selected checkout's Git
-version lookup) and REA ownership inspection separately from target execution.
+version lookup) and NEXORA ENGINE ownership inspection separately from target execution.
 This is fixture evidence, not a sandbox claim. Inputs remain unchanged and the
 sentinel must stay alive; owned cleanup and empty verifier descendants are required. Pass an
 installed package entrypoint as the script's first argument for package coverage.
@@ -2149,9 +2149,9 @@ uncertainty and a negative control rejecting claims of complete coverage.
 
 ## Frida instrumentation
 
-`npm run verify:frida` builds REA, spawns a short-lived local Node.js fixture,
+`npm run verify:frida` builds NEXORA ENGINE, spawns a short-lived local Node.js fixture,
 loads a harmless marker script before resuming it, captures the message, and
-detaches. This lane requires Linux on the REA host and the optional Frida
+detaches. This lane requires Linux on the NEXORA ENGINE host and the optional Frida
 binding; it does not need a Frida server or a caller-selected process. To run
 the separate remote attach lane, pass `-- --address HOST:PORT --pid PID` for an
 explicitly selected process. Optional remote flags are `--token`,
@@ -2181,7 +2181,7 @@ MCP connection after repeated runtime-removal denial. These are controlled
 faults, not naturally occurring permission failures; no WASM target is executed.
 Pass an installed package's
 `scripts/rea.mjs` as the first argument to run the same lane against the package.
-`npm run verify:wasm:package` packs and installs REA into an isolated temporary
+`npm run verify:wasm:package` packs and installs NEXORA ENGINE into an isolated temporary
 prefix with lifecycle scripts disabled and runs the same required real-tool lane.
 It requires WABT configuration and makes no host tool installation.
 

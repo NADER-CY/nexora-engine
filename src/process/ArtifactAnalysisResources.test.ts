@@ -585,7 +585,7 @@ it("names the fixed producer command deadline and says it has no override", asyn
   }
 });
 
-it("says REA retains the tighter inherited limit when a producer signal fires", async () => {
+it("says NEXORA ENGINE retains the tighter inherited limit when a producer signal fires", async () => {
   const resources = new ArtifactAnalysisResources(
     "fixture",
     "inspect_packet_fields",
@@ -612,7 +612,7 @@ it("says REA retains the tighter inherited limit when a producer signal fires", 
     );
     const projected = projectAnalysisError(error);
     expect(projected.remediation.action).toContain(
-      "REA retains the tighter inherited limit",
+      "NEXORA ENGINE retains the tighter inherited limit",
     );
     expect(projected.remediation.action).toContain("1073741824 bytes");
     expect(projected.remediation.action).toContain("67108864 bytes");

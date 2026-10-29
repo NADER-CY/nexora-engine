@@ -140,7 +140,7 @@ if (result.status === "failed") process.exitCode = 1;
     result.command.at(-1) !== `rea-agents@${updateVersion}`
   )
     throw new Error(
-      `Published REA updater did not update ${previousVersion} to stable ${updateVersion}: ${stdout}`,
+      `Published NEXORA ENGINE updater did not update ${previousVersion} to stable ${updateVersion}: ${stdout}`,
     );
 
   const installed = JSON.parse(
@@ -148,7 +148,7 @@ if (result.status === "failed") process.exitCode = 1;
   );
   if (installed.version !== updateVersion)
     throw new Error(
-      `REA update installed ${installed.version}, expected stable ${updateVersion}`,
+      `NEXORA ENGINE update installed ${installed.version}, expected stable ${updateVersion}`,
     );
 
   const help = (

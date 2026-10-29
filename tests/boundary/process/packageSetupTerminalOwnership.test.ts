@@ -217,7 +217,7 @@ process.stdin.on("data", (data) => {
   process.stdout.write("\\u001b[?25hNo changes were made.\\n", () => process.exit(0));
 });
 process.stdin.resume();
-process.stdout.write("Which agents should use REA?");
+process.stdout.write("Which agents should use NEXORA ENGINE?");
 `;
 
 const redirectedStandinSource = `

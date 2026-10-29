@@ -19,7 +19,7 @@ try {
     `/dts-v1/;
 /memreserve/ 0x80000000 0x1000;
 / {
-  compatible = "rea,verification"; model = "REA DTB verification";
+  compatible = "rea,verification"; model = "NEXORA ENGINE DTB verification";
   #address-cells = <1>; #size-cells = <1>;
   chosen { bootargs = "console=ttyS0"; stdout-path = "serial0"; };
   aliases { serial0 = &serial; };

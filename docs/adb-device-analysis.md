@@ -1,8 +1,8 @@
 # ADB device inspection and acquisition
 
-REA inspects connected Android devices, reads device state, and transfers
+NEXORA ENGINE inspects connected Android devices, reads device state, and transfers
 files and packages through the caller's `adb` binary. Emulators, USB
-devices, and network devices participate alike: REA neither starts nor
+devices, and network devices participate alike: NEXORA ENGINE neither starts nor
 manages them and never installs platform tools. Every operation composes a
 fixed adb argument vector — caller values occupy positional arguments only
 and are quoted when adb forwards them to the device shell.
@@ -21,7 +21,7 @@ through the environment:
 export REA_ADB_PATH=/absolute/path/to/adb
 ```
 
-REA never installs the Android SDK, an emulator, or a system image.
+NEXORA ENGINE never installs the Android SDK, an emulator, or a system image.
 Readiness is `rea inspect-adb-client`: it runs `adb version` and reports the
 resolved binary, its version, and where it was selected from. A missing
 binary reports `capability_unavailable` with the `REA_ADB_PATH` remediation
@@ -119,12 +119,12 @@ preserves its focus declarations and display headers in source order.
 field. The singular `focused_window` and `focused_app` summarize that context;
 they do not establish device-wide focus. Multiple contexts or repeated fields
 produce `ambiguous` with null singular fields and all declarations retained.
-When no focus field was declared, the status is `unavailable`. REA reads the
+When no focus field was declared, the status is `unavailable`. NEXORA ENGINE reads the
 displays section only when the windows section declares neither focus field.
 
 For `install_adb_package`, `replace_requested` records whether `-r` was sent.
 The `replaced` result is `null`: the successful install response does not say
-whether the package was installed fresh or replaced, and REA does not query the
+whether the package was installed fresh or replaced, and NEXORA ENGINE does not query the
 device first. The install verdict and host APK digest remain available.
 
 Push and install consume a private snapshot of the selected local input. The
@@ -171,7 +171,7 @@ and during shutdown.
 - **Device paths are not host paths.** `base_apk_device_path` values live on
   the device filesystem. Only pulls and captures produce host-local paths,
   each paired with byte size and SHA-256 digest. A pulled file's host name is
-  the device path's final POSIX segment. REA preserves the original device
+  the device path's final POSIX segment. NEXORA ENGINE preserves the original device
   path and filename; a missing final segment or `.`/`..` is refused before
   output creation. Windows hosts follow [Windows filename rules](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file),
   while POSIX hosts retain valid POSIX filenames such as names with spaces or

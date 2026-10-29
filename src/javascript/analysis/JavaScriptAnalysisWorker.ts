@@ -1088,7 +1088,7 @@ export class JavaScriptAnalysisWorker {
         capturedOutput: this.#captured(),
         userMessage: `Owned JavaScript worker storage failed for ${path} during ${phase}. Retained observations and cleanup status are reported separately.`,
         remediationAction:
-          "Check the availability and permissions of REA's private temporary storage, correct the reported I/O failure, and retry. Changing the selected source is not required by this storage failure.",
+          "Check the availability and permissions of NEXORA ENGINE's private temporary storage, correct the reported I/O failure, and retry. Changing the selected source is not required by this storage failure.",
         diagnostics: {
           source_path: path,
           phase,

@@ -49,8 +49,8 @@ export const mcpResponseOverflowProjection = (input: {
   const summary =
     input.constraint === "string-length"
       ? input.completed
-        ? "The operation completed, but its complete MCP response exceeds REA's reserved single-string limit."
-        : "The tool failed, but its complete error response exceeds REA's reserved single-string limit."
+        ? "The operation completed, but its complete MCP response exceeds NEXORA ENGINE's reserved single-string limit."
+        : "The tool failed, but its complete error response exceeds NEXORA ENGINE's reserved single-string limit."
       : input.completed
         ? "The operation completed, but its complete MCP response exceeds the stdio response budget. The analysis result was not truncated."
         : "The tool failed, but its complete error response exceeds the MCP response budget.";

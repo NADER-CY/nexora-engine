@@ -47,7 +47,7 @@ export const parseNativeMatchingAllowance = (
     ? ok({ maximumBytes: parsed.data, source: "setting" })
     : err(
         new ConfigurationError(nativeMatchingRepresentationBytesConstraint, {
-          remediationAction: `On a running MCP session, call update_analysis_settings with ${JSON.stringify({ changes: [{ setting: "native.matching_representation_bytes", action: "set", value: DEFAULT_NATIVE_MATCHING_REPRESENTATION_BYTES }] })}, then retry matching. This repairs the current session for the next operation. For CLI or future REA processes, correct ${NATIVE_MATCHING_ALLOWANCE_SETTING} in the launch environment.`,
+          remediationAction: `On a running MCP session, call update_analysis_settings with ${JSON.stringify({ changes: [{ setting: "native.matching_representation_bytes", action: "set", value: DEFAULT_NATIVE_MATCHING_REPRESENTATION_BYTES }] })}, then retry matching. This repairs the current session for the next operation. For CLI or future NEXORA ENGINE processes, correct ${NATIVE_MATCHING_ALLOWANCE_SETTING} in the launch environment.`,
           settings: [
             {
               setting: NATIVE_MATCHING_ALLOWANCE_SETTING,
@@ -72,8 +72,8 @@ export const nativeMatchingAllowanceRecovery = (
 ): string =>
   [
     `Native function matching is limited to ${nativeMatchingByteAllowance(allowance.maximumBytes)} of representation${allowance.source === "setting" ? ` by ${NATIVE_MATCHING_ALLOWANCE_SETTING}` : ""}.`,
-    `On MCP, call update_analysis_settings with setting native.matching_representation_bytes, action set, and a value in bytes up to ${nativeMatchingByteAllowance(MAXIMUM_NATIVE_MATCHING_REPRESENTATION_BYTES)} (default ${nativeMatchingByteAllowance(DEFAULT_NATIVE_MATCHING_REPRESENTATION_BYTES)}), then retry the original request. It applies to the next operation without restarting REA. For CLI or future REA processes, set ${NATIVE_MATCHING_ALLOWANCE_SETTING} in the launch environment.`,
-    "This budget is not a bound on total process RSS; raising it lets matching retain more representation in the REA process.",
+    `On MCP, call update_analysis_settings with setting native.matching_representation_bytes, action set, and a value in bytes up to ${nativeMatchingByteAllowance(MAXIMUM_NATIVE_MATCHING_REPRESENTATION_BYTES)} (default ${nativeMatchingByteAllowance(DEFAULT_NATIVE_MATCHING_REPRESENTATION_BYTES)}), then retry the original request. It applies to the next operation without restarting NEXORA ENGINE. For CLI or future NEXORA ENGINE processes, set ${NATIVE_MATCHING_ALLOWANCE_SETTING} in the launch environment.`,
+    "This budget is not a bound on total process RSS; raising it lets matching retain more representation in the NEXORA ENGINE process.",
     "Splitting inventories into separate matches changes global name and body uniqueness, so it is not an equivalent workaround.",
     "Repeating the unchanged request fails the same way.",
   ].join(" ");

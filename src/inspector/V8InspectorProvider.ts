@@ -536,7 +536,7 @@ const authorizedTarget = async (
       "observe_javascript_runtime",
       "target_not_allowed",
       {
-        detail: `Inspector target ${target.id} reports attached: true; REA will not displace its debugger.`,
+        detail: `Inspector target ${target.id} reports attached: true; NEXORA ENGINE will not displace its debugger.`,
         diagnostics: { target_id: target.id, attached: true },
         remediationAction:
           "Disconnect the other debugger or select an unattached target, refresh list_javascript_runtime_targets, and retry with its exact target ID.",

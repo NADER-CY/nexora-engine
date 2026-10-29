@@ -167,7 +167,7 @@ await withVerifierCleanup(async () => {
         if (!tools.some((tool) => tool.name === "search_tool"))
           return {
             role: "assistant",
-            content: "REA fixture auxiliary response",
+            content: "NEXORA ENGINE fixture auxiliary response",
           };
         turn++;
         assert(
@@ -225,7 +225,7 @@ await withVerifierCleanup(async () => {
             return call("run_terminal_command", {
               command: `${diagnostic} > ${shellQuote(diagnosticFile)} && ${projection}`,
               description:
-                "Diagnose REA registration while native MCP discovery is pending",
+                "Diagnose NEXORA ENGINE registration while native MCP discovery is pending",
             });
           }
           if (lastTool === "run_terminal_command") {
@@ -234,7 +234,7 @@ await withVerifierCleanup(async () => {
               .find((item) => item.startsWith('{"rea_client_diagnostic":'));
             assert(
               line,
-              "Native REA diagnostics failed or did not return the selected status",
+              "Native NEXORA ENGINE diagnostics failed or did not return the selected status",
             );
             const diagnostic = JSON.parse(line).rea_client_diagnostic;
             assert.equal(diagnostic.healthy, true);
@@ -257,7 +257,7 @@ await withVerifierCleanup(async () => {
           assert.deepEqual(
             inventory.map((tool) => tool.tool_name).sort(),
             expectedNames,
-            "Native search_tool must discover the complete REA catalog",
+            "Native search_tool must discover the complete NEXORA ENGINE catalog",
           );
           for (const tool of inventory) {
             assert(
@@ -311,7 +311,7 @@ await withVerifierCleanup(async () => {
               .map(shellQuote)
               .join(" "),
             description:
-              "Query full saved REA Evidence while preserving artifact identity",
+              "Query full saved NEXORA ENGINE Evidence while preserving artifact identity",
           });
         }
         const line = last
@@ -438,7 +438,7 @@ enabled = false
             "-p",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use the REA skill to analyze ${target}.`,
+              : `Use the NEXORA ENGINE skill to analyze ${target}.`,
             "-m",
             "rea-client-fixture",
             "--output-format",
@@ -520,7 +520,7 @@ enabled = false
       discovery:
         "native GROK_HOME, isolated additional skill directory, disabled foreign compatibility sources; default OS-home skill discovery and Windows unverified",
       interface:
-        "default native search_tool/use_tool with a complete explicit inventory query; asynchronous partial discovery may trigger native REA diagnosis; large MCP outputs are queried via native terminal",
+        "default native search_tool/use_tool with a complete explicit inventory query; asynchronous partial discovery may trigger native NEXORA ENGINE diagnosis; large MCP outputs are queried via native terminal",
       catalogChecked,
       catalogSize,
       schemasChecked,

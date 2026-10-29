@@ -84,7 +84,7 @@ export const inspectNativeAnalysisConfiguration = (
     configuredHopperStartupTimeout: timeout.success
       ? ok(timeout.data)
       : err(
-          new ConfigurationError("Invalid REA environment configuration", {
+          new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
             cause: timeout.error,
             settings: timeout.error.issues.map(({ message }) => ({
               setting: "REA_HOPPER_STARTUP_TIMEOUT_MS",

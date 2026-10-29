@@ -1,6 +1,6 @@
 # Python packaged applications
 
-REA statically inventories PyInstaller executables with an appended CArchive.
+NEXORA ENGINE statically inventories PyInstaller executables with an appended CArchive.
 `inspect_artifact` and `extract_artifact` share the same reader through CLI and
 MCP. They read archive bytes without launching the application. Bytecode
 source decompilation, encrypted PYZ recovery, zipapp and PEX analysis are outside
@@ -29,7 +29,7 @@ always retains its stored spelling in occurrence `source_path` and
 `format_metadata.source_name`. For PYZ rows, that source is the exact module or
 data key in the PYZ table, not a reconstructed filesystem name;
 `format_metadata.container_name` identifies the containing PYZ image. If the
-carrier dialect is unconfirmed, REA preserves backslashes verbatim instead of
+carrier dialect is unconfirmed, NEXORA ENGINE preserves backslashes verbatim instead of
 inferring POSIX semantics.
 `relative_offset` is relative to the CArchive start for CArchive rows, or to
 the decoded PYZ image for PYZ rows. A CArchive directory record starts at
@@ -65,7 +65,7 @@ Type `d` entries are multipackage dependencies. They are also metadata, under
 The reader preserves the raw reference and splits its first colon into
 `dependency_archive` and `dependency_member`. `dependency_status` remains
 `unresolved`, or `invalid-reference` with unknown parts for malformed references.
-`external_dependency_count` summarizes these declarations. REA does not open
+`external_dependency_count` summarizes these declarations. NEXORA ENGINE does not open
 another executable or claim its contents are available. A real file with the
 same logical path as metadata remains independently extractable.
 Both declaration types require empty payloads and no compression. Their query

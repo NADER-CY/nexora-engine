@@ -550,7 +550,7 @@ export class LldbCallTracer implements NativeCallTracer {
       {
         unavailableMessage: LLDB_REQUIREMENT,
         timeoutRecovery: {
-          userMessage: `LLDB discovery reached REA's ${String(DEFAULT_NATIVE_COMMAND_TIMEOUT_MS)}ms xcrun deadline. This is not the client deadline.`,
+          userMessage: `LLDB discovery reached NEXORA ENGINE's ${String(DEFAULT_NATIVE_COMMAND_TIMEOUT_MS)}ms xcrun deadline. This is not the client deadline.`,
           remediationAction:
             "Inspect the retained discovery output and cleanup state, then resolve the xcrun/toolchain condition before retrying. This LLDB discovery deadline has no runtime override; duration_ms controls the later target observation window.",
         },

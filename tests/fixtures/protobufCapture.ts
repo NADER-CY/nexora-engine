@@ -50,7 +50,7 @@ export const protobufHar = (
   JSON.stringify({
     log: {
       version: "1.2",
-      creator: { name: "REA original fixture", version: "1" },
+      creator: { name: "NEXORA ENGINE original fixture", version: "1" },
       entries: [body, ...additionalBodies].map((body) => ({
         startedDateTime: "2026-10-20T00:00:00Z",
         time: 1,

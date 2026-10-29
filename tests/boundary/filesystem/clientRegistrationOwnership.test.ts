@@ -111,7 +111,7 @@ it.each([
   },
 );
 
-it("retains an OpenCode remote registration with a REA-like command", async () => {
+it("retains an OpenCode remote registration with a NEXORA ENGINE-like command", async () => {
   const home = await createTestTempDirectory("rea-registration-remote-owner-");
   const configPath = join(home, ".config/opencode/opencode.json");
   const environment = { XDG_CONFIG_HOME: join(home, ".config") };

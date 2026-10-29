@@ -37,8 +37,8 @@ const comparison = (
     {
       id: process ? "rea-process" : "rea-artifact-comparison",
       name: process
-        ? "REA deterministic process harness"
-        : "REA artifact comparison",
+        ? "NEXORA ENGINE deterministic process harness"
+        : "NEXORA ENGINE artifact comparison",
       version: operation === "compare_process_captures" ? "3" : "1",
     },
     {

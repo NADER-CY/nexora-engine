@@ -224,7 +224,7 @@ it.each(
   },
 );
 
-it.each([PROCESS_PROVIDER.name, "REA deterministic process harness"])(
+it.each([PROCESS_PROVIDER.name, "NEXORA ENGINE deterministic process harness"])(
   "preserves authenticated CLI/MCP comparison Evidence for provider name %s",
   async (name) => {
     const provider = { ...PROCESS_PROVIDER, name };

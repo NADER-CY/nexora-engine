@@ -24,7 +24,7 @@ with the selected path and format reason. Selected-path resolution errors
 issues. Permission, resource, cancellation, provider, and cleanup failures retain
 their distinct classifications.
 The host must already provide util-linux `prlimit`, normally `/usr/bin/prlimit`;
-`REA_EVM_PRLIMIT_COMMAND` can select another absolute executable. REA installs
+`REA_EVM_PRLIMIT_COMMAND` can select another absolute executable. NEXORA ENGINE installs
 no system tools and changes no user configuration. [Upstream provenance and
 license](https://github.com/morluto/rea/blob/main/third_party/evmole/README.md) are packaged.
 

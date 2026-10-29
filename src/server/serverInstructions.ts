@@ -3,7 +3,7 @@ import { UNTRUSTED_CONTENT_INSTRUCTIONS } from "./toolResultEncoding.js";
 import { recoveryInstructions } from "./recoveryInstructions.js";
 
 const TARGET_FREE_INSTRUCTIONS =
-  "REA provides reverse-engineering tools for local artifacts, native binaries, managed code, browser pages, and runtimes. Use the tool that directly answers the question; discover targets or inspect inventory only when needed. Tool results include inline Evidence and report their coverage and limitations.";
+  "NEXORA ENGINE provides reverse-engineering tools for local artifacts, native binaries, managed code, browser pages, and runtimes. Use the tool that directly answers the question; discover targets or inspect inventory only when needed. Tool results include inline Evidence and report their coverage and limitations.";
 
 // Only advertise the lifecycle when `session` is in scope: otherwise
 // `open_binary` and `close_binary` are disabled and the guidance would direct
@@ -12,7 +12,7 @@ const SESSION_LIFECYCLE_INSTRUCTIONS =
   "An opened target persists across turns. When finished, export needed Evidence and call close_binary; its snapshot_path can retain analysis.";
 
 const ACTIVE_TARGET_INSTRUCTIONS =
-  "REA analyzes the active reverse-engineering target. Use the analysis tool that answers the question directly. Search or list symbols when discovery is needed.";
+  "NEXORA ENGINE analyzes the active reverse-engineering target. Use the analysis tool that answers the question directly. Search or list symbols when discovery is needed.";
 
 // Only name the enhanced-family dossier tool when that family is in scope:
 // otherwise `analyze_function` is disabled and the recommendation always fails.

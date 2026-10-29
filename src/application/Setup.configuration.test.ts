@@ -264,7 +264,7 @@ describe("configured Linux Hopper selection", () => {
     expect(discovery.installHopper).toBe(false);
   });
 
-  it("still offers repair for an unconfigured REA managed install", async () => {
+  it("still offers repair for an unconfigured NEXORA ENGINE managed install", async () => {
     const host = new FakeSetupHost("linux");
     host.distribution = {
       id: "ubuntu",
@@ -523,10 +523,10 @@ describe("MSIX Claude Desktop setup", () => {
     // The package reads its private copy, so a manual setup edit belongs there.
     const client = msixClaudeDesktop("unknown");
     expect(registrationWriteBlocker(client, "setup")).toContain(
-      `Add REA's entry to ${PRIVATE_CONFIG} by hand`,
+      `Add NEXORA ENGINE's entry to ${PRIVATE_CONFIG} by hand`,
     );
     expect(registrationWriteBlocker(client, "uninstall")).toContain(
-      `Remove REA's entry by hand from each of ${PRIVATE_CONFIG} and ${APPDATA_CONFIG} that has one`,
+      `Remove NEXORA ENGINE's entry by hand from each of ${PRIVATE_CONFIG} and ${APPDATA_CONFIG} that has one`,
     );
   });
 
@@ -566,7 +566,7 @@ describe("MSIX Claude Desktop setup", () => {
   it("refuses registrations whose launcher only one MSIX package can see", async () => {
     const host = new FakeSetupHost("win32");
     host.hopper = join(PROFILE, "Hopper");
-    host.registrationCommandBlocker = "Install REA outside the package.";
+    host.registrationCommandBlocker = "Install NEXORA ENGINE outside the package.";
     host.clients = [
       { name: "codex", displayName: "Codex", configPath: "/codex.toml" },
     ];
@@ -576,7 +576,7 @@ describe("MSIX Claude Desktop setup", () => {
       host,
     );
     expect(blocked.status).toBe("needs_human");
-    expect(blocked.remediation).toBe("Install REA outside the package.");
+    expect(blocked.remediation).toBe("Install NEXORA ENGINE outside the package.");
     expect(host.configurations).toBe(0);
     expect(host.skillInstalls).toBe(0);
 

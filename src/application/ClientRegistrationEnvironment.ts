@@ -109,7 +109,7 @@ export const clientRegistrationEnvironmentDetails = (
   const existing = environmentSchema.safeParse(raw === undefined ? {} : raw);
   if (!existing.success)
     return err(
-      new ConfigurationError("Invalid REA server environment", {
+      new ConfigurationError("Invalid NEXORA ENGINE server environment", {
         settings: existing.error.issues.map((issue) => ({
           setting: [key, ...issue.path].join("."),
           constraint:

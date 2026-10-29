@@ -315,7 +315,7 @@ describe("executable dispatcher", () => {
         expect(result).toMatchObject({
           exitCode: 1,
           stderr: expect.stringContaining(
-            "REA's compiled runtime is missing. Run `npm ci && npm run build:cached` in",
+            "NEXORA ENGINE's compiled runtime is missing. Run `npm ci && npm run build:cached` in",
           ),
         });
         expect(result.stderr).toContain(

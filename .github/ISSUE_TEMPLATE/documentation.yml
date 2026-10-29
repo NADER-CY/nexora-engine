@@ -1,5 +1,5 @@
 name: Documentation
-description: Report unclear, missing, or incorrect REA documentation
+description: Report unclear, missing, or incorrect NEXORA ENGINE documentation
 title: "[Docs] "
 labels:
   - documentation
@@ -27,7 +27,7 @@ body:
     attributes:
       label: Documentation location
       description: Link the page, section, command, API, skill, or inline comment.
-      placeholder: README.md#quick-start or docs/mcp-contracts.md
+      placeholder: README.md#first-run or docs/mcp-contracts.md
     validations:
       required: true
 
@@ -60,3 +60,15 @@ body:
     attributes:
       label: Additional context
       description: Include screenshots, affected translations, or related issues.
+
+  - type: input
+    id: revision
+    attributes:
+      label: Branch or commit
+      description: State main or the PR branch and commit when available.
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node version and optional tool versions.

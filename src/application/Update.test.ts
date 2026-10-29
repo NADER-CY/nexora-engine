@@ -82,7 +82,7 @@ class FakeUpdateHost implements UpdateHost {
     Promise.resolve(this.cleanupFailure);
 }
 
-describe("REA update", () => {
+describe("NEXORA ENGINE update", () => {
   it("identifies an already-current installation without mutation", async () => {
     const host = new FakeUpdateHost();
     expect(await runUpdate("3.3.0", host, "human", UPSTREAM_TEST_PACKAGE)).toEqual({
@@ -204,7 +204,7 @@ describe("REA update", () => {
           kind: "configure_client",
           label: "Codex",
           target: "/home/.codex/config.toml",
-          detail: "Refresh REA",
+          detail: "Refresh NEXORA ENGINE",
           external: false,
           operation: "update",
         },

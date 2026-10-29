@@ -1,0 +1,21 @@
+{
+  "schema": "nexora-binary-analysis/v1",
+  "format": "PE",
+  "bits": 64,
+  "machine": 34404,
+  "input": {
+    "sha256": "8f293a00986a1dd75103a6b130618103e10be071c8dfbabbb4f431037b3cdbf2",
+    "bytes": 24799
+  },
+  "exportedSymbols": [
+    "nexora_example"
+  ],
+  "dependencies": [
+    "KERNEL32.dll",
+    "api-ms-win-crt-private-l1-1-0.dll",
+    "api-ms-win-crt-runtime-l1-1-0.dll",
+    "api-ms-win-crt-stdio-l1-1-0.dll"
+  ],
+  "sectionCount": 9,
+  "warnings": []
+}

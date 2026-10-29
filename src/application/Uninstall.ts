@@ -176,14 +176,14 @@ export const runUninstall = async (
             item(
               "uninstall",
               "skipped",
-              "No REA registration, skill, or data was removed. Repair each failed configuration, then rerun uninstall.",
+              "No NEXORA ENGINE registration, skill, or data was removed. Repair each failed configuration, then rerun uninstall.",
             ),
           ]
         : await removeAll(clients, purgeData, host);
     items.push({
       name: "analysis_engine",
       status: "retained",
-      detail: "Hopper is not owned by REA uninstall.",
+      detail: "Hopper is not owned by NEXORA ENGINE uninstall.",
     });
     const reported = collapseUninstallItems(
       projectSharedRegistrations(items, clients),
@@ -711,7 +711,7 @@ const readClientConfiguration = async (
         client.name,
         applicabilityUnverified ? "retained" : "failed",
         applicabilityUnverified
-          ? `Product applicability could not be established. Shared configuration was retained without blocking other REA removals. ${detail}`
+          ? `Product applicability could not be established. Shared configuration was retained without blocking other NEXORA ENGINE removals. ${detail}`
           : detail,
       ),
     );
@@ -822,9 +822,9 @@ const clientRegistrationRemoval = (
   return ok(ownership);
 };
 
-const SHADOWED_UNOWNED_MEMBER_DETAIL = `Configuration repeats the "${PRODUCT_IDENTITY.mcpServerKey}" member, and an earlier duplicate is not REA-owned; removing the registration the client reads would activate an earlier duplicate, so no change was made. Remove the duplicate members manually, then rerun uninstall.`;
+const SHADOWED_UNOWNED_MEMBER_DETAIL = `Configuration repeats the "${PRODUCT_IDENTITY.mcpServerKey}" member, and an earlier duplicate is not NEXORA ENGINE-owned; removing the registration the client reads would activate an earlier duplicate, so no change was made. Remove the duplicate members manually, then rerun uninstall.`;
 
-const UNOWNED_LEGACY_FALLBACK_DETAIL = `OpenCode falls back to the V1 "mcp.${PRODUCT_IDENTITY.mcpServerKey}" entry, which is not REA-owned; removing REA's native registration would activate it, so no change was made. Remove or replace that V1 entry manually, then rerun uninstall.`;
+const UNOWNED_LEGACY_FALLBACK_DETAIL = `OpenCode falls back to the V1 "mcp.${PRODUCT_IDENTITY.mcpServerKey}" entry, which is not NEXORA ENGINE-owned; removing NEXORA ENGINE's native registration would activate it, so no change was made. Remove or replace that V1 entry manually, then rerun uninstall.`;
 
 /** Preserve the bytes uninstall is about to edit and return the backup holding them. */
 const backupClientConfiguration = async (
@@ -884,7 +884,7 @@ const removeClient = async (
       "A Cordis expression may produce registration rows, so the patch was retained without changes.",
     );
   if (!registrationPresent(parsed))
-    return item(client.name, "skipped", "REA registration is absent.");
+    return item(client.name, "skipped", "NEXORA ENGINE registration is absent.");
   const removal = clientRegistrationRemoval(parsed, original, client);
   if (!removal.ok) return item(client.name, "failed", removal.error.detail);
   const { removeNative, legacyPath } = removal.value;
@@ -893,7 +893,7 @@ const removeClient = async (
     return item(
       client.name,
       "retained",
-      "The rea-named registration is not REA-owned.",
+      "The rea-named registration is not NEXORA ENGINE-owned.",
     );
   const blocker = writeBlocker?.();
   if (blocker !== undefined) return item(client.name, "failed", blocker);
@@ -1089,7 +1089,7 @@ const purgeManagedData = async (
         item(
           name,
           "retained",
-          `REA did not remove this item because its managed data root ${root} is ${linked ? "a symbolic link" : "not a directory"}. Verify the root before removing its data manually.`,
+          `NEXORA ENGINE did not remove this item because its managed data root ${root} is ${linked ? "a symbolic link" : "not a directory"}. Verify the root before removing its data manually.`,
         ),
       );
   } catch (cause: unknown) {
@@ -1126,7 +1126,7 @@ const removeManagedPath = async (
       return item(
         name,
         "retained",
-        "REA did not remove this item because its managed path is a symbolic link. Verify the link target before removing it manually.",
+        "NEXORA ENGINE did not remove this item because its managed path is a symbolic link. Verify the link target before removing it manually.",
       );
     await fileSystem.remove(path);
     return item(name, "removed", `Removed ${path}.`);
@@ -1236,7 +1236,7 @@ const inspectManagedSkill = async (
       : item(name, "failed", "Skill manifest could not be read.");
   }
   if (!isManagedSkillManifest(content))
-    return item(name, "retained", "Skill manifest is not REA-owned.");
+    return item(name, "retained", "Skill manifest is not NEXORA ENGINE-owned.");
 
   return undefined;
 };
@@ -1268,7 +1268,7 @@ const removeManagedSkill = async (
       item(
         name,
         "retained",
-        "REA ownership manifest was retained because a managed file could not be safely removed.",
+        "NEXORA ENGINE ownership manifest was retained because a managed file could not be safely removed.",
       ),
     );
   else {
@@ -1298,7 +1298,7 @@ const removeManagedSkill = async (
   return item(
     name,
     removed ? "removed" : "skipped",
-    "REA-managed skill files were removed; other files were preserved.",
+    "NEXORA ENGINE-managed skill files were removed; other files were preserved.",
   );
 };
 

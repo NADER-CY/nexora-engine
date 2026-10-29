@@ -18,7 +18,7 @@ const dependencies = (
       proof: "not-proven",
       code: "runtime_missing",
       failureStage: "artifact",
-      remediation: "Install the matching Windows x64 REA package.",
+      remediation: "Install the matching Windows x64 NEXORA ENGINE package.",
     },
     private_runtime_dacl: {
       available: false,
@@ -26,7 +26,7 @@ const dependencies = (
       proof: "not-proven",
       code: "runtime_missing",
       failureStage: "artifact",
-      remediation: "Install the matching Windows x64 REA package.",
+      remediation: "Install the matching Windows x64 NEXORA ENGINE package.",
     },
     reparse_safe_path_admission: {
       available: false,
@@ -34,7 +34,7 @@ const dependencies = (
       proof: "not-proven",
       code: "runtime_missing",
       failureStage: "artifact",
-      remediation: "Install the matching Windows x64 REA package.",
+      remediation: "Install the matching Windows x64 NEXORA ENGINE package.",
     },
   }),
   probeSymlinkCreation: () =>
@@ -45,7 +45,7 @@ const dependencies = (
   }),
   probePrivateAcl: () => ({
     available: false,
-    reason: "Windows ACL enforcement is not implemented by this REA build",
+    reason: "Windows ACL enforcement is not implemented by this NEXORA ENGINE build",
   }),
   probeUnixDomainSocket: () => ({
     available: false,
@@ -86,7 +86,7 @@ describe("Windows host capability report", () => {
         private_acl: {
           available: false,
           reason:
-            "Windows ACL enforcement is not implemented by this REA build",
+            "Windows ACL enforcement is not implemented by this NEXORA ENGINE build",
         },
         unix_domain_socket: {
           available: false,
@@ -101,7 +101,7 @@ describe("Windows host capability report", () => {
           proof: "not-proven",
           code: "runtime_missing",
           failureStage: "artifact",
-          remediation: "Install the matching Windows x64 REA package.",
+          remediation: "Install the matching Windows x64 NEXORA ENGINE package.",
         },
         private_runtime_dacl: {
           available: false,
@@ -109,7 +109,7 @@ describe("Windows host capability report", () => {
           proof: "not-proven",
           code: "runtime_missing",
           failureStage: "artifact",
-          remediation: "Install the matching Windows x64 REA package.",
+          remediation: "Install the matching Windows x64 NEXORA ENGINE package.",
         },
         reparse_safe_path_admission: {
           available: false,
@@ -117,7 +117,7 @@ describe("Windows host capability report", () => {
           proof: "not-proven",
           code: "runtime_missing",
           failureStage: "artifact",
-          remediation: "Install the matching Windows x64 REA package.",
+          remediation: "Install the matching Windows x64 NEXORA ENGINE package.",
         },
       },
     });

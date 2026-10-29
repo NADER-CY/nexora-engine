@@ -265,7 +265,7 @@ describe("HopperClient startup failures", () => {
     expect(restarted).toEqual({
       ok: true,
       value: {
-        name: "REA Hopper bridge",
+        name: "NEXORA ENGINE Hopper bridge",
         version: "1.0.0",
         processId: retriedProcess?.pid,
         maxRequestBytes: 16 * 1024 * 1024,
@@ -298,7 +298,7 @@ describe("HopperClient startup failures", () => {
     expect(started).toEqual({
       ok: true,
       value: {
-        name: "REA Hopper bridge",
+        name: "NEXORA ENGINE Hopper bridge",
         version: "1.0.0",
         processId: launcher.processes[0]?.pid,
         maxRequestBytes: 16 * 1024 * 1024,

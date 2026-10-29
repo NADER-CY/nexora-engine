@@ -23,7 +23,7 @@ scenario capture learns the clock a HAR does.
   time from that start to the end of the response (`timing().responseEnd >= 0`),
   when the browser reports them.
 - The fields are optional in the schema, so Evidence captured before them still
-  parses and is read exactly as before. REA versions before them refuse
+  parses and is read exactly as before. NEXORA ENGINE versions before them refuse
   Evidence that carries them.
 - Scenario records take `startedDateTime` from the transaction's single
   finished or failed event's `started_at`, else from `observed_at`, and `time`

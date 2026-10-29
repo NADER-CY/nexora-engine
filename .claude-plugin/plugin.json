@@ -1,9 +1,9 @@
 {
   "name": "nexora-engine",
   "version": "6.8.0",
-  "description": "NEXORA ENGINE: reverse-engineering and architecture analysis for agents. Fork of REA (github.com/morluto/rea, MIT).",
+  "description": "NEXORA ENGINE: evidence-driven reverse engineering and software architecture analysis.",
   "author": {
-    "name": "NEXORA ENGINE contributors (fork of REA by morluto)"
+    "name": "NEXORA ENGINE contributors"
   },
   "license": "MIT",
   "keywords": [
@@ -22,5 +22,5 @@
       ]
     }
   },
-  "icon": "./assets/rea-plugin.png"
+  "icon": "./assets/brand/mark.png"
 }

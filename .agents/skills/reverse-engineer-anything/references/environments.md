@@ -14,11 +14,11 @@ again if a hint names a gap, then writes the bundle with
 
 - Record only against an instance the user says is disposable or seeded for
   this purpose: every write step creates, edits or deletes its data. If the
-  user has not said so, ask before any scenario that writes. REA does not
+  user has not said so, ask before any scenario that writes. NEXORA ENGINE does not
   start, seed or reset applications.
 - Credentials come from environment variables the user names. Declare each as a
   scenario secret, `{secret_id, environment_variable}`; the variable must be set
-  in the environment REA's MCP server started with. Never ask for a password in
+  in the environment NEXORA ENGINE's MCP server started with. Never ask for a password in
   chat. Declared secrets are redacted as the capture records.
 - Map the application first with `inspect_web_page` (and `capture_web_screenshot`
   when layout matters): the login form's locators, and the API calls behind the
@@ -264,8 +264,8 @@ evidence_id}` (or `{kind: "evidence-file", path}`), an absolute
 `output_directory` that does not exist yet and whose parent does, and a `name`
 (required when the application runs on `localhost` or an IP address). It returns
 the coverage again, `tool_count`, the written files and warnings; `dry_run:
-true` reports without writing. The bundle installs `rea-agents` of this REA's
-version from the registry; when the user runs an unreleased REA build, pass the
+true` reports without writing. The bundle installs `rea-agents` of this NEXORA ENGINE's
+version from the registry; when the user runs an unreleased NEXORA ENGINE build, pass the
 `package_tarball` they give you (a packed `rea-agents` tarball) instead.
 
 Tell the user how many tools answer from the state, which writes are served and
@@ -276,6 +276,6 @@ list any `credential-named-members` warning pointers for review. Never publish
 or share the bundle yourself.
 
 See
-[agent environments](https://github.com/morluto/rea/blob/main/docs/agent-environments.md)
+[agent environments](https://github.com/NADER-CY/nexora-engine/blob/main/docs/agent-environments.md)
 for what the state, replay and the bundle establish, and
 [evidence workflows](evidence-workflows.md) for the manifest and state views.

@@ -22,7 +22,7 @@ export const registerCutterCommands = (
 
   cli.command(CLI_COMMANDS.listCutterSessions, {
     description:
-      "List live Cutter instances connected through the REA Python plugin bridge",
+      "List live Cutter instances connected through the NEXORA ENGINE Python plugin bridge",
     args: z.object({}),
     run: () =>
       withCommandCancellation((signal) =>

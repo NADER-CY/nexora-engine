@@ -2,7 +2,7 @@
 
 This lane imports 32-bit big-endian PowerPC GameCube/Wii DOL images through
 Ghidra. It does not execute the image. DOL is a headerless format with no magic
-number, so REA never detects it: the caller must select it explicitly.
+number, so NEXORA ENGINE never detects it: the caller must select it explicitly.
 
 Only the cached MEM1 window `0x80000000..0x81800000` is admitted. Wii MEM2
 and uncached aliases are outside this lane.
@@ -37,7 +37,7 @@ Omitting `format` never imports a file as a DOL. Detection does not run for DOL.
 
 ## What the import does
 
-REA reads the 256-byte DOL header at admission. It checks every section's file
+NEXORA ENGINE reads the 256-byte DOL header at admission. It checks every section's file
 range and load address. It records BSS/data overlaps and computes the exact
 uninitialized BSS gaps once. Malformed headers are refused before Ghidra starts.
 
@@ -46,7 +46,7 @@ Ghidra then runs in two steps:
 1. The standard `BinaryLoader` maps the whole file at base `0x0`, with
    `-processor` and `-cspec` taken from the language selection below.
 2. The pre-script `bridge/ghidra/ReaGhidraPrepareDol.java` reads a section file
-   that REA wrote from the parsed header, with versioned collection counts. It creates one initialized block per
+   that NEXORA ENGINE wrote from the parsed header, with versioned collection counts. It creates one initialized block per
    used text and data section at its load address, with file bytes from the
    section's file offset. The whole-file block is removed before the section
    blocks are created. Text is read-execute and data is read-write. It sets the
@@ -104,7 +104,7 @@ GHIDRA_INSTALL_DIR=/absolute/path/to/ghidra npm run verify:ghidra:dol
 The lane needs the same toolchain as the PowerPC ELF lane: `REA_PPC_CLANG`,
 `REA_PPC_READELF` and LLD. An independent DOL header reader and GNU readelf
 (run on the source ELF) check the section table, file bytes, entry and BSS gap
-before Ghidra starts. The checks never use REA's parser.
+before Ghidra starts. The checks never use NEXORA ENGINE's parser.
 
 After import, the lane checks the load-image attestation (`verified`), the
 bound language, the `__start` entry procedure, a direct call to the leaf
@@ -112,7 +112,7 @@ function, decompilation, and bytes at the data, tail, marker and BSS-gap
 addresses. It also checks CLI identity.
 
 The Gekko pass runs only when `PowerPC:BE:32:Gekko_Broadway` is in the Ghidra
-installation's language catalog, the same catalog REA uses to admit
+installation's language catalog, the same catalog NEXORA ENGINE uses to admit
 `REA_GHIDRA_LANGUAGE_ID`. A language that exists only in a user extension under
 `~/Library/ghidra` is not admitted, so the lane prints
 `skipped: PowerPC:BE:32:Gekko_Broadway (not in the Ghidra installation catalog that REA admits); stock lane still verified`

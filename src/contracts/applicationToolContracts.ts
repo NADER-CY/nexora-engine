@@ -77,7 +77,7 @@ export const APPLICATION_TOOL_CONTRACTS = [
     name: "guided_workflows",
     ...toolContractMetadata("guided_workflows"),
     description:
-      "List or render REA's existing guided workflows. Rendering returns guidance only; it does not inspect targets, start analysis, or change session state.",
+      "List or render NEXORA ENGINE's existing guided workflows. Rendering returns guidance only; it does not inspect targets, start analysis, or change session state.",
     kind: "application",
     inputSchema: guidedWorkflowsInputSchema,
     outputSchema: guidedWorkflowsOutputSchema,

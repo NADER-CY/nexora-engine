@@ -263,7 +263,7 @@ describe("client registration launcher identity", () => {
     expect(await readFile(config, "utf8")).toBe(original);
   });
 
-  it("does not use the REA process cwd to resolve a client's relative launcher path", async () => {
+  it("does not use the NEXORA ENGINE process cwd to resolve a client's relative launcher path", async () => {
     const home = await createTestTempDirectory("rea-registration-relative-");
     await mkdir(join(home, ".cursor"));
     const currentEntry = resolve("./rea.mjs");
@@ -344,14 +344,14 @@ describe("client registration package version identity", () => {
       });
       if (reportsDrift) {
         expect(status?.remediation).toContain(
-          `current REA CLI package is ${PRODUCT_IDENTITY.packageVersion}`,
+          `current NEXORA ENGINE CLI package is ${PRODUCT_IDENTITY.packageVersion}`,
         );
         expect(status?.remediation).toContain(
           "does not resolve package-runner",
         );
         expect(status?.remediation).toContain("rea setup --client codex");
       } else {
-        expect(status?.remediation).not.toContain("current REA CLI package");
+        expect(status?.remediation).not.toContain("current NEXORA ENGINE CLI package");
         expect(status?.remediation).not.toContain(
           "does not resolve package-runner",
         );

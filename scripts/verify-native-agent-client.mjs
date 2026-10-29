@@ -279,7 +279,7 @@ await withVerifierCleanup(async () => {
           );
           assert(
             JSON.stringify(messages).includes(skillPath),
-            "Pi must advertise the installed REA skill.",
+            "Pi must advertise the installed NEXORA ENGINE skill.",
           );
           callRequested = true;
           return call(tool.name, {
@@ -369,13 +369,13 @@ await withVerifierCleanup(async () => {
             "-p",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use REA to analyze ${target}.`,
+              : `Use NEXORA ENGINE to analyze ${target}.`,
           ]
         : [
             "--oneshot",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use REA to analyze ${target}.`,
+              : `Use NEXORA ENGINE to analyze ${target}.`,
             "--provider",
             "custom",
             "--model",
@@ -414,7 +414,7 @@ await withVerifierCleanup(async () => {
       assert.deepEqual(
         catalog?.sort(),
         TOOL_CONTRACTS.map((t) => t.name).sort(),
-        "The complete REA catalog must survive native client discovery.",
+        "The complete NEXORA ENGINE catalog must survive native client discovery.",
       );
     }
   }, [

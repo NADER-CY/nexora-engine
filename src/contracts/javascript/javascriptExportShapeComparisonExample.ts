@@ -252,7 +252,7 @@ const exampleEvidence = (property: "count" | "total") => {
     },
     {
       id: "rea-javascript-application",
-      name: "REA JavaScript application analyzer",
+      name: "NEXORA ENGINE JavaScript application analyzer",
       version: "1",
     },
     {

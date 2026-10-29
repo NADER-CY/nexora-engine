@@ -587,7 +587,7 @@ describe("unresolved Claude Desktop package identity", () => {
   });
 });
 
-describe("package-private REA launchers", () => {
+describe("package-private NEXORA ENGINE launchers", () => {
   const launcher = join(
     env.APPDATA,
     "npm",

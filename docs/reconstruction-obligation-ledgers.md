@@ -350,7 +350,7 @@ Keep three checks separate:
 Proof producers supply observed Evidence with predicate type
 `rea.reconstruction-proof`, operation `verify_reconstruction_obligations`, and
 the following `normalized_result` shape, defined by
-`reconstructionObligationProofSchema`. REA evaluates retained results; this
+`reconstructionObligationProofSchema`. NEXORA ENGINE evaluates retained results; this
 operation label does not expose a proof executor or run the manifest command.
 
 ```json
@@ -381,7 +381,7 @@ operation label does not expose a proof executor or run the manifest command.
 
 `owner_sha256` is the same lowercase 64-hex SHA-256 commitment supplied by the
 implementation owner in the manifest. The proof producer computes it from the
-same documented inputs and canonicalization described above; REA compares the
+same documented inputs and canonicalization described above; NEXORA ENGINE compares the
 commitments and does not recompute them. The proof's `obligation_version` must
 exactly equal the evaluated obligation version, including for generated
 obligations. Increase that version when revising a reviewed requirement.

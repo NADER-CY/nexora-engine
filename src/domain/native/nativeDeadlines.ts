@@ -92,7 +92,7 @@ export const nativeDeadlineRecovery = (input: {
     ? `${input.setting} (${input.cliFlag} on the CLI) is already at the maximum ${String(MAX_NATIVE_TIMER_MS)} ms; do not increase it.`
     : `Increase ${input.setting} above ${String(input.timeoutMs)} (integer milliseconds from 1 to ${String(MAX_NATIVE_TIMER_MS)}; omitted means ${String(input.defaultMs)}), or pass ${input.cliFlag} on the CLI. A change applies on the next call.`;
   return {
-    userMessage: `This request reached REA's ${input.phase} of ${String(input.timeoutMs)} ms (${input.setting}). This is a server/provider deadline, not the MCP client deadline.${input.detail ?? ""}`,
+    userMessage: `This request reached NEXORA ENGINE's ${input.phase} of ${String(input.timeoutMs)} ms (${input.setting}). This is a server/provider deadline, not the MCP client deadline.${input.detail ?? ""}`,
     remediationAction: `${adjustment} ${input.unchanged} Allow execution, cleanup, and delivery headroom in the outer MCP client deadline. Confirm outstanding work and cleanup before retrying.`,
   };
 };

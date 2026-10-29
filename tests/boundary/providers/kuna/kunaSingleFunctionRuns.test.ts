@@ -303,7 +303,7 @@ it("names the setting that owns a single-function deadline", async () => {
         "kuna decompile did not finish within REA_KUNA_TIMEOUT_MS (300 ms).",
       remediation: {
         action: expect.stringMatching(
-          /^Raise REA_KUNA_TIMEOUT_MS .* restart REA.*project export/u,
+          /^Raise REA_KUNA_TIMEOUT_MS .* restart NEXORA ENGINE.*project export/u,
         ),
       },
       details: { timeout_ms: 300 },

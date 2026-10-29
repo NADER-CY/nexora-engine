@@ -222,10 +222,10 @@ const exportUnavailable = (
   const reason = failure.userMessage ?? failure.message;
   const exported = projectAnalysisError(failure);
   const restart =
-    "REA reads Kuna settings when it starts, so restart REA, then reopen the target.";
+    "NEXORA ENGINE reads Kuna settings when it starts, so restart NEXORA ENGINE, then reopen the target.";
   const next =
     failure instanceof AnalysisTimeoutError
-      ? `To retry, set REA_KUNA_PROJECT_TIMEOUT_MS above ${String(failure.timeoutMs)} ms or raise REA_KUNA_JOBS in the environment that starts REA. ${restart}`
+      ? `To retry, set REA_KUNA_PROJECT_TIMEOUT_MS above ${String(failure.timeoutMs)} ms or raise REA_KUNA_JOBS in the environment that starts NEXORA ENGINE. ${restart}`
       : failure instanceof AnalysisResourceConstraintError &&
           failure.remediationAction !== undefined
         ? // A fixed buffer (`memory`) is no setting, so a restart cannot help.

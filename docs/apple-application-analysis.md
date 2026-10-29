@@ -1,6 +1,6 @@
 # Apple Application Inventory Projection
 
-REA can project one or more authenticated `inventory_artifact` Evidence records
+NEXORA ENGINE can project one or more authenticated `inventory_artifact` Evidence records
 for the same IPA, macOS `.app` directory, ZIP, or DMG into an Apple application
 inventory. The projection is execution-free: it reports exact paths, content
 hashes, detected formats, bundle anatomy, runtime-family hints, and path-based
@@ -263,7 +263,7 @@ Absolute install names that name a path beneath the analyzed root are checked
 within that root, with symlinks and `..` resolved by the same bounded tree
 resolver. Absolute paths outside the root, such as
 `/usr/lib/libSystem.B.dylib`, are `outside-target`; on macOS 11 and later most
-system libraries live in the dyld shared cache rather than on disk, so REA does
+system libraries live in the dyld shared cache rather than on disk, so NEXORA ENGINE does
 not check them against the host. Mach-O path strings are not converted from
 `file:` URLs or looked up through unrelated host paths.
 
@@ -287,7 +287,7 @@ not check them against the host. Mach-O path strings are not converted from
 
 Empty dyld settings have different consumers. Modern dyld appends a slash and
 image name to ordinary and fallback directory entries, so an empty entry can
-search `/child.dylib` or `/Foo.framework/Foo`. REA retains uncertainty for those
+search `/child.dylib` or `/Foo.framework/Foo`. NEXORA ENGINE retains uncertainty for those
 unchecked paths; an empty fallback does not preempt an ordinary-search hit.
 Empty versioned-directory lists do not scan a directory, and empty suffixes
 only repeat the original candidate, so they do not add search uncertainty.

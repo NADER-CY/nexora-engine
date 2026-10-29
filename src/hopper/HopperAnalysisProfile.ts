@@ -230,8 +230,8 @@ export const hopperDeclinedArchitectureReason = (
   architecture: HopperDeclinedArchitecture,
 ): string =>
   architecture === "arm64_32"
-    ? "REA's Hopper adapter has no verified arm64_32 lane."
-    : `REA's Hopper adapter does not admit ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} targets. Select a verified Ghidra ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} profile instead.`;
+    ? "NEXORA ENGINE's Hopper adapter has no verified arm64_32 lane."
+    : `NEXORA ENGINE's Hopper adapter does not admit ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} targets. Select a verified Ghidra ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} profile instead.`;
 
 /** Derive Hopper's complete non-interactive CLI loader selection. */
 export const hopperLoaderArgsForTarget = (

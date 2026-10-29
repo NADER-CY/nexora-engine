@@ -5,7 +5,7 @@ Issue: https://github.com/morluto/rea/issues/4933
 ## Outcome
 
 An environment is only as useful as it is faithful: an agent trained or graded on it should meet the behaviour of the
-application it was captured from. REA checks an environment only against its own capture, so nothing says how far it
+application it was captured from. NEXORA ENGINE checks an environment only against its own capture, so nothing says how far it
 drifts from the application on calls the capture did not make, after writes, or on errors.
 
 `rea environment-compare` measures that. It takes an environment (a manifest and its capture Evidence) and one or more
@@ -90,6 +90,6 @@ credentials and resets it between sequences.
 
 ## Non-goals
 
-- No network access, no credentials, no reset of the application: probes are recorded outside REA.
+- No network access, no credentials, no reset of the application: probes are recorded outside NEXORA ENGINE.
 - No generation of call sequences; a later change generates them where the environment disagrees.
 - No change to how environments serve.

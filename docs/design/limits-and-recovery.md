@@ -11,10 +11,10 @@ checks and their limitations are in the
 
 A valid workload can exceed a conservative default. An oversized ASAR header
 may prevent analysis of the entire archive; a slow Ghidra function may exceed
-its decompile deadline. Requiring a new REA process to change either budget
+its decompile deadline. Requiring a new NEXORA ENGINE process to change either budget
 interrupts the investigation and can discard reusable provider state.
 
-REA exposes a curated set of analysis defaults through MCP so callers can
+NEXORA ENGINE exposes a curated set of analysis defaults through MCP so callers can
 adjust a reported limit and retry the same workload in the running runtime.
 Each setting has a typed value, resource bounds, an enforcement owner, and a
 defined application point. The design applies across archive admission,
@@ -115,13 +115,13 @@ For example, `regex.matching_deadline_ms` and its launch seed
 `REA_REGEX_MATCHING_DEADLINE_MS` share a 5000 ms default, 1 ms floor and
 2147483647 ms maximum. Node schedules a longer `setTimeout` delay as 1 ms.
 Changing the runtime setting affects the next accepted search; changing the
-launch environment affects the next REA process.
+launch environment affects the next NEXORA ENGINE process.
 
 [`REA_MCP_MAX_RESPONSE_BYTES`](https://github.com/morluto/rea/blob/main/src/config/mcpResponseBudget.ts)
 is the byte-budget shape: a decimal safe integer with a 10 MiB floor
 (`MINIMUM_RESPONSE_BYTES`), the same shared schema, and no silent fallback. A
-change needs a REA restart and a matching client receive buffer. It does not
-raise REA's reserved string limit or Node's string ceiling. The setup
+change needs a NEXORA ENGINE restart and a matching client receive buffer. It does not
+raise NEXORA ENGINE's reserved string limit or Node's string ceiling. The setup
 allowlist does not copy this setting. A new headroom setting should, following
 the regex deadline.
 
@@ -129,13 +129,13 @@ A per-call budget can have a runtime default without having an environment
 setting. JavaScript `max_heap_mb`
 (CLI `--max-heap-mb`) is an integer from 128 to 16384 MiB, default 1024. It
 applies on the next analysis, which starts a new worker, and does not restart
-REA. It does not raise the parent result budget, transfer ceilings, or fixed
+NEXORA ENGINE. It does not raise the parent result budget, transfer ceilings, or fixed
 parser limits.
 
-Host memory and `NODE_OPTIONS` do not raise a REA admission unless that
+Host memory and `NODE_OPTIONS` do not raise a NEXORA ENGINE admission unless that
 admission's recovery says so. The JavaScript parent result budget is one that
 does: its recovery says to set `NODE_OPTIONS` (for example
-`--max-old-space-size=<MiB>`) on the process that starts REA, then restart
+`--max-old-space-size=<MiB>`) on the process that starts NEXORA ENGINE, then restart
 that process. `max_heap_mb` does not raise it.
 
 ## Runtime settings through MCP
@@ -189,8 +189,8 @@ for an unknown or omitted value elsewhere.
 A write does not extend active work, relaunch a provider, clear retained
 cleanup, or invalidate successful Evidence.
 
-Overrides belong to one REA runtime, survive target close/open, and disappear
-when REA exits. Connections sharing that runtime share its overrides. No files,
+Overrides belong to one NEXORA ENGINE runtime, survive target close/open, and disappear
+when NEXORA ENGINE exits. Connections sharing that runtime share its overrides. No files,
 ambient environment, registrations or upstream software are edited. Overrides
 are runtime-wide, not scoped to a target or an individual connection.
 
@@ -232,9 +232,9 @@ cleanup or changing the identity of the provider session.
 ### Invalid launch configuration
 
 Launch validation has two relevant boundaries. Settings validated by global
-configuration parsing can prevent REA from starting; an MCP setter cannot
+configuration parsing can prevent NEXORA ENGINE from starting; an MCP setter cannot
 repair a server that is not running. Correct the launch environment or
-registration, use `rea doctor` for its configuration checks, and start REA again.
+registration, use `rea doctor` for its configuration checks, and start NEXORA ENGINE again.
 
 Provider-local validation can leave MCP available. For example, an invalid
 `REA_JADX_OPERATION_TIMEOUT_MS` is inspectable with `source: "invalid"`, a
@@ -251,7 +251,7 @@ same effective setting so readiness changes along with repair and reset.
 
 Inspection's separate
 [constraints](https://github.com/morluto/rea/blob/main/src/server/analysisSettingsConstraints.ts)
-describe operator-owned, external, and fixed controls. REA can report its
+describe operator-owned, external, and fixed controls. NEXORA ENGINE can report its
 configured response budget and parent heap limit; client deadlines and receive
 buffers remain explicitly unknown. These are not entries accepted by the
 runtime setter. Raising a worker heap request cannot raise the parent heap,
@@ -274,7 +274,7 @@ The string the caller sees includes:
 - the effective value and unit
 - the source when known (`default`, `setting`, `runtime`, or `request`)
 - the default, the maximum, and the floor when the setting has one
-- the next action, including where to set it ("in the environment that starts REA")
+- the next action, including where to set it ("in the environment that starts NEXORA ENGINE")
 - whether a restart is required
 - what the change does not raise
 
@@ -296,9 +296,9 @@ request to change it.
   it fails again, tell the user and ask them to restart the MCP client. Do not
   start with `rea doctor`
   ([#6353](https://github.com/morluto/rea/pull/6353)).
-- REA could not start its connection: retry once. If it fails again, tell the
+- NEXORA ENGINE could not start its connection: retry once. If it fails again, tell the
   user and ask them to restart the MCP client, then run `rea doctor`. Do not
-  retry a startup that returns the same unchanged result: tell the user REA
+  retry a startup that returns the same unchanged result: tell the user NEXORA ENGINE
   could not start, ask them to restart the MCP client, then run `rea doctor`.
 - Unexpected process-command failure: do not repeat the command. Tell the user
   to check the input files, then run `rea doctor`.
@@ -308,11 +308,11 @@ request to change it.
   ([#6357](https://github.com/morluto/rea/pull/6357)).
 - `resource_constraint` for capacity, when `retryable` is true: wait for the
   active admission to finish, then retry within the reported limits. Do not
-  restart REA to free the slot.
+  restart NEXORA ENGINE to free the slot.
 - `configuration_invalid`: when MCP remains available and the failure belongs
   to a curated provider-local setting, inspect and set a valid runtime override.
-  Otherwise correct the named setting in the environment that starts REA, then
-  start REA again. Run `rea doctor` for the
+  Otherwise correct the named setting in the environment that starts NEXORA ENGINE, then
+  start NEXORA ENGINE again. Run `rea doctor` for the
   `runtime-configuration:` check. Re-run `rea setup` for that client when the
   setting is on the registration allowlist, then reconnect so the new process
   sees it.
@@ -320,14 +320,14 @@ request to change it.
   CLI help. Do not repeat the unchanged call.
 
 A restart is required to adopt a changed launch environment or registration.
-The curated runtime settings above require no REA restart. It is not the first step for a transient
+The curated runtime settings above require no NEXORA ENGINE restart. It is not the first step for a transient
 MCP drop, a capacity wait, or retained cleanup.
 
 ## Adding a runtime setting
 
 1. Identify the enforcing owner and the real resource constraint. Decide whether
    callers need a per-call argument, a runtime default, a launch-only control,
-   or a fixed limit. A registry entry must not advertise authority REA lacks.
+   or a fixed limit. A registry entry must not advertise authority NEXORA ENGINE lacks.
 2. Define the value type and named numeric bounds with the domain owner. Add the
    ID and metadata to `analysisSettings.ts` and `analysisSettingDefinitions.ts`.
    Reuse those bounds in runtime validation, launch parsing, and error metadata.

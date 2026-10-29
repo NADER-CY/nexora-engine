@@ -1,6 +1,6 @@
 # JavaScript static/runtime reconciliation
 
-REA can combine an existing static JavaScript Application Graph with one or
+NEXORA ENGINE can combine an existing static JavaScript Application Graph with one or
 more browser, Electron, or Node/Electron V8 Inspector observations while
 preserving their different authorities. The `reconcile_javascript_runtime` MCP tool and
 `rea reconcile-javascript-runtime` CLI command accept Evidence records and
@@ -91,7 +91,7 @@ coverage. It does not print captured source text.
 ## Matching rules
 
 Runtime targets, frames, scripts, and workers become capture-scoped graph
-nodes. REA evaluates compatible static candidates conservatively:
+nodes. NEXORA ENGINE evaluates compatible static candidates conservatively:
 
 1. A captured-source SHA-256 plus one matching mapped location yields
    a content-and-location match.

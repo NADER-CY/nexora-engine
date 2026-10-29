@@ -1,505 +1,259 @@
-# NEXORA ENGINE
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/brand/hero-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="assets/brand/hero-mobile-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/hero-dark.svg">
+  <img src="assets/brand/hero-light.svg" alt="NEXORA ENGINE — Follow the evidence. Original identity with an illustrative evidence graph." width="1280">
+</picture>
 
-**Advanced Reverse Engineering & Software Analysis Platform**
+<h1 align="center">NEXORA ENGINE</h1>
 
-**NEXORA ENGINE** is an open-source reverse engineering and software analysis platform designed to help developers, security researchers, and software engineers explore complex applications, inspect executable binaries, analyze source code, and reconstruct software architecture through traceable evidence.
+<p align="center"><strong>Understand source, inspect binaries, and map architecture—with evidence you can trace.</strong></p>
 
-Combining binary inspection, JavaScript and TypeScript analysis, dependency mapping, architecture visualization, Ghidra integration components, and CLI/MCP workflows, NEXORA ENGINE provides a unified foundation for investigating software systems.
+<p align="center">
+  <a href="#introduction"><img src="assets/brand/badge-status.svg" alt="Status: development source" height="26"></a>
+  <a href="LICENSE"><img src="assets/brand/badge-license.svg" alt="License: MIT" height="26"></a>
+  <a href="#first-run"><img src="assets/brand/badge-install.svg" alt="Installation: from source" height="26"></a>
+</p>
 
-Its analysis capabilities emphasize reproducibility, structured results, resource-aware processing, and clear distinctions between verified findings and inferred relationships.
+<p align="center">
+  <a href="#first-run">First run</a> ·
+  <a href="#capabilities">Capabilities</a> ·
+  <a href="docs/start-here.md">Documentation</a> ·
+  <a href="#mcp-and-the-full-engine">MCP</a> ·
+  <a href="docs/nexora-roadmap.md">Roadmap</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+</p>
 
-**Project Status:** Active Development · Open Source · MIT Licensed
+## Introduction
 
-NEXORA ENGINE currently provides tested offline analysis tools and experimental integrations. Some advanced capabilities, including full Ghidra execution and certain provider-backed workflows, require additional dependencies and verification.
+NEXORA ENGINE helps developers inspect source code and executable artifacts, connect analysis evidence, and investigate software architecture. Choose the small offline CLI for local reports or build the provider-backed CLI/MCP engine for deeper workflows.
 
-Installation instructions, usage examples, supported capabilities, and known limitations are documented below.
+**Development source.** No official npm package, prebuilt release or hosted service is offered. Findings distinguish observations, static candidates and unknowns; a graph is not proof of runtime behavior.
 
----
+## First run
+
+First analysis in three commands, with Git and Node.js `24.22.1` available:
+
+```sh
+git clone https://github.com/NADER-CY/nexora-engine.git
+cd nexora-engine
+node nexora/bin/nexora.mjs analyze-project examples/tutorial/cycle
+```
+
+This dependency-free command needs no installation or build. The included two-file sample returns JSON with this actual selected result:
+
+```json
+{"architecture":{"schema":"nexora-architecture/v1","cycles":[{"members":["a.js","b.js"]}]}}
+```
+
+The full report also includes hashes, import evidence, coverage and limitations. [Understand the output](docs/tutorials/README.md) · [Captured demonstrations](docs/demos/README.md).
 
 ## Capabilities
 
-| Area | Current scope |
-|---|---|
-| **Source Analysis** | Streaming lexical function, call, and dependency candidates for JavaScript, TypeScript, Go, Rust, C, and C++. Additional semantic JavaScript/TypeScript analysis is available through the full engine. |
-| **Binary Inspection** | Bounded ELF32/64, PE32/PE32+, and thin Mach-O32/64 inspection, including metadata, sections, symbols, imports, exports, and dependencies, with explicit format limitations. |
-| **Architecture Analysis** | Per-file dependency edges with source evidence, incoming/outgoing degree counts, and strongly connected dependency cycles, including self-imports. |
-| **Evidence & Provenance** | Input SHA-256, byte ranges, confidence levels, analyzer profiles, omission counters, and incomplete-coverage indicators. |
-| **Ghidra Integration** | Structured JSONL importer for functions, pseudocode, and references, with a Ghidra exporter script. Real exporter compilation and execution remain unverified. |
-| **Large-File Analysis** | Chunked reads, bounded inventories, cooperative deadlines, cancellation, and failure isolation. These are not hard operating-system resource limits. |
-| **Supporting Tools** | Bundle scanning, supplied-session summaries, dependency mapping, archive safety checks, and install-script auditing. |
-| **Full Analysis Engine** | Provider adapters, CLI/MCP workflows, and optional runtime analysis capabilities. Availability and verification vary by operating system and installed tools. |
+| Workflow | Available scope | Important limit |
+|:--|:--|:--|
+| Source | Lexical function, call and dependency candidates for JS, TS, Go, Rust, C and C++ | Lexical results are not compiler semantics |
+| Optional JS/TS AST | Scopes, binding evidence and direct relative ESM function-call candidates | Requires locked dependencies; not type checking, execution or general package resolution |
+| Binary inspection | PE32/32+, ELF32/64 and thin Mach-O32/64 metadata, sections, symbols and references | No offline instruction disassembly or native CFG; format coverage varies |
+| Binary evidence | PE relocations/CodeView/COFF names; bounded ELF REL/RELA entries | Relocation types remain raw; no loader emulation |
+| Architecture | Dependency cycles and unified evidence graphs in JSON/Mermaid | Routes/events/config references are conservative static candidates |
+| Ghidra interchange | JSONL function/pseudocode/reference import with optional input SHA-256 matching | Real exporter execution remains unverified here |
+| Full engine | Shared CLI/MCP workflows and external provider adapters | Separate build, platform and provider prerequisites |
 
----
+Inventories and output use bounded resources and report omissions. Cooperative limits do not isolate hostile files. [Current limitations](#security-and-limitations) · [Roadmap](docs/nexora-roadmap.md).
 
-## Architecture
+## Installation
 
-NEXORA ENGINE combines offline analysis capabilities with a broader provider-backed analysis engine.
+| Path | Requirements | Guide |
+|:--|:--|:--|
+| Offline CLI | Git; supported Node.js | [First analysis](docs/tutorials/README.md) |
+| Full CLI/MCP | Node.js, npm, locked dependencies and build; Windows x64 also needs its native addon | [Build from source](docs/installation/from-source.md) |
+| Windows 10/11 | PowerShell; offline CLI needs no compiler | [Windows](docs/installation/windows.md) |
+| Linux | Shell and supported Node.js; provider tools separately | [Linux](docs/installation/linux.md) |
+| macOS | Shell and supported Node.js; provider tools separately | [macOS](docs/installation/macos.md) |
 
-```text
-NEXORA ENGINE
-│
-├── Offline Analysis CLI
-│   ├── Source Code Analysis
-│   ├── Binary Inspection
-│   ├── Project Dependency Analysis
-│   ├── Architecture Reconstruction
-│   ├── Ghidra Report Analysis
-│   └── Evidence & Resource Management
-│
-└── Full Analysis Engine
-    ├── CLI Interface
-    ├── MCP Server
-    ├── Shared Analysis Workflows
-    ├── Provider Integrations
-    └── Domain Contracts & Evidence
-```
+The repository pins **Node.js 24.22.1** and **npm 11.16.0**. Accepted Node ranges are `^22.23.4 || ^24.22.1 || >=26.12.1`; [package.json](package.json) is authoritative. Check `node --version` and `npm --version` before continuing. These guides do not install or upgrade system software.
 
-### Offline Analysis
+<details>
+<summary><strong>Full-engine build commands</strong></summary>
 
-The offline CLI is located at:
+From the repository root, install the lockfile without lifecycle scripts:
 
-`nexora/bin/nexora.mjs`
-
-It uses Node.js built-in functionality and does not require dependency installation or a build step for its supported offline commands.
-
-### Full Engine
-
-The full engine launcher is located at:
-
-`scripts/rea.mjs`
-
-It connects the compiled engine to CLI and MCP interfaces, shared workflows, provider adapters, and analysis contracts.
-
-The full engine retains the layered architecture described in [Architecture Documentation](docs/architecture.mermaid).
-
-The offline analysis additions are separate capabilities and are not automatically registered as new MCP operations.
-
----
-
-## Requirements and Installation
-
-### System Requirements
-
-- **Node.js:** `^22.23.4`, `^24.22.1`, or `>=26.12.1`
-- **Recommended repository-pinned Node.js:** `24.22.1`
-- **npm:** `11.16.0` for the full dependency-backed engine
-- **Git:** Required for cloning the repository
-- **Operating Systems:** Windows, Linux, and macOS, subject to the platform-specific limitations described below
-
-Optional providers such as Ghidra, Java, Hopper, IDA, and platform-specific native tools must be installed separately.
-
-Their individual licenses and system requirements apply.
-
-### Step 1 — Clone NEXORA ENGINE
-
-```bash
-git clone https://github.com/NADER-CY/nexora-engine.git
-cd nexora-engine
-```
-
-### Step 2 — Run the Offline CLI
-
-The offline CLI requires no dependency installation or build.
-
-```bash
-node nexora/bin/nexora.mjs --help
-```
-
-This command displays the available offline analysis commands.
-
-### Step 3 — Install the Full Engine
-
-For the full engine, install dependencies and build the project.
-
-```bash
+```sh
 npm ci --ignore-scripts
+```
+
+**On Windows x64**, first supply an existing MSYS2 UCRT64 or MINGW64 GCC toolchain. In PowerShell, replace the compiler directory if necessary:
+
+```powershell
+$env:NEXORA_MINGW_BIN = 'C:\msys64\ucrt64\bin'
+npm run build:windows-native
+npm run verify:windows-native:artifact
+```
+
+Then build and check the CLI (also the source-derived Linux/macOS build path):
+
+```sh
 npm run build
+node scripts/nexora-engine.mjs --help
 ```
 
-**Important:** Review dependency lifecycle scripts before enabling them.
+Windows dependency installation, native build/verification and full build passed on Node 24.22.1/npm 11.16.0. Linux/macOS installation and live desktop-client connections were not executed. Skipping lifecycle scripts may leave other optional native dependencies unavailable; review the affected provider rather than enabling all scripts. [Full verification scope](docs/github-experience-verification.md).
 
-The optional Frida dependency normally downloads a native binding through its lifecycle script. Skipping installation scripts can leave optional providers unavailable.
+</details>
 
-The repository's inherited `install.sh` targets an upstream distribution and is not the recommended NEXORA ENGINE installation method.
+[Download source ZIP](https://github.com/NADER-CY/nexora-engine/archive/refs/heads/main.zip) if Git is unavailable; extract and enter the repository directory. [Updating an installation](docs/installation/updating.md).
 
-The npm package remains marked `private: true` and is not published as a public npm package.
+## CLI workflows
 
-### Installation Guides
+Run from the repository root. Commands print JSON unless an explicit output format is selected.
 
-Detailed platform-specific instructions are available in the repository documentation:
-
-- [Windows Installation](docs/installation/windows.md)
-- [Linux Installation](docs/installation/linux.md)
-- [macOS Installation](docs/installation/macos.md)
-- [Installation from Source](docs/installation/from-source.md)
-
-Some of these detailed guides are part of the current development documentation and may not yet be present on the default branch.
-
----
-
-## CLI Usage
-
-NEXORA ENGINE provides commands for analyzing source code, software projects, binaries, reports, and archives.
-
-### Analyze Source Code
-
-```bash
-node nexora/bin/nexora.mjs analyze-source ./example.ts --out source.json
+```sh
+node nexora/bin/nexora.mjs --help
+node nexora/bin/nexora.mjs analyze-source examples/tutorial/project/main.js
+node nexora/bin/nexora.mjs analyze-project examples/tutorial/project
+node nexora/bin/nexora.mjs analyze-project examples/tutorial/cycle
 ```
 
-Extract lexical functions, calls, imports, and dependency candidates from supported source files.
+With full dependencies installed, opt into JS/TS scope analysis:
 
-### Analyze an Entire Project
-
-```bash
-node nexora/bin/nexora.mjs analyze-project ./authorized-source --out project.json
+```sh
+node nexora/bin/nexora.mjs analyze-source-ast examples/tutorial/typescript/main.ts
+node nexora/bin/nexora.mjs analyze-project-ast examples/tutorial/project
 ```
 
-Generate a bounded source and dependency map.
+The lexical commands remain dependency-free. AST results retain unresolved dynamic, member, ambiguous and type-only relationships rather than inventing callees.
 
-The report can include dependency relationships, incoming and outgoing connections, and cycles.
+### Binary inspection and decompilation
 
-### Analyze Executable Binaries
+Compile the included C sample using an already installed compiler; never execute it for these examples:
 
-```bash
-node nexora/bin/nexora.mjs analyze-binary ./authorized-binary --out binary.json
+```sh
+cc -g examples/tutorial/sample.c -o /tmp/nexora-example
+node nexora/bin/nexora.mjs analyze-binary /tmp/nexora-example
 ```
 
-Inspect supported PE, ELF, and Mach-O executable formats.
+Linux usually emits ELF and macOS Mach-O. Windows MinGW emits PE; the [Windows tutorial](docs/tutorials/README.md#pe-elf-and-mach-o) has PowerShell commands. The real MinGW PE example was inspected and compared with objdump. Other format variants are covered by synthetic fixtures, not a claim of real host compilation.
 
-Results depend on the input format and available analysis capabilities.
+**Decompilation requires the full engine and a configured provider.** Inspect provider availability and diagnostics before analyzing a caller-selected binary:
 
-### Import Ghidra Reports
-
-```bash
-node nexora/bin/nexora.mjs ghidra-report ./export.jsonl --out ghidra.json
+```sh
+node scripts/nexora-engine.mjs providers --json
+node scripts/nexora-engine.mjs doctor --provider ghidra --json
 ```
 
-Process structured JSONL records exported by the Ghidra integration.
+After a compatible Ghidra/JDK is configured, the conditional workflow is `analyze <binary> --provider ghidra --json`, followed by `decompile <binary> <function-address> --provider ghidra --json`, using a function address from that analysis. These provider commands are source-verified; real Ghidra execution was not available in this check. [Provider requirements](docs/ghidra-provider.md).
 
-### Scan JavaScript Bundles
+### JSON and Mermaid architecture reports
 
-```bash
-node nexora/bin/nexora.mjs scan-bundle ./app.bundle.js --out bundle.json
+```sh
+node nexora/bin/nexora.mjs architecture-report examples/tutorial/cycle --out .nexora-reports/architecture.json
+node nexora/bin/nexora.mjs architecture-report examples/tutorial/cycle --format mermaid --out .nexora-reports/architecture.mmd
 ```
 
-### Summarize Supplied Sessions
+These commands create the output directory. JSON retains evidence, confidence, hashes and coverage; Mermaid is a visual projection. The included dependency-cycle example can be explained as:
 
-```bash
-node nexora/bin/nexora.mjs summary ./supplied-session.jsonl --out summary.json
+```mermaid
+flowchart TD
+    INPUT["Authorized local artifacts"] --> OFFLINE["Dependency-free offline CLI"]
+    OFFLINE --> SOURCE["Source candidates"]
+    OFFLINE --> BINARY["Binary metadata"]
+    OFFLINE --> PROJECT["Project dependencies + cycles"]
+    SOURCE --> EVIDENCE["Hashes · ranges · confidence · coverage"]
+    BINARY --> EVIDENCE
+    PROJECT --> EVIDENCE
+    EVIDENCE --> REPORT["Local JSON reports"]
+    FULL["Optional full-engine CLI / MCP"] -.-> PROVIDERS["Separately supplied analysis providers"]
+    classDef evidence fill:#0e1a2e,stroke:#3b8dff,color:#f3f7ff,stroke-width:2px
+    classDef optional fill:#182232,stroke:#71829d,color:#e0e8f5,stroke-dasharray:5 5
+    class INPUT,OFFLINE,SOURCE,BINARY,PROJECT,EVIDENCE,REPORT evidence
+    class FULL,PROVIDERS optional
+    linkStyle default stroke:#3b8dff,stroke-width:2px
 ```
 
-### Inspect ZIP Archives
+[Architecture contracts and advanced AST reports](docs/architecture/README.md). Route/event/configuration candidates do not establish live services, database boundaries or network schemas.
 
-```bash
-node nexora/bin/nexora.mjs check-archive ./incoming.zip
+## Architecture overview
+
+```mermaid
+flowchart LR
+    A["a.js"] -->|"literal import"| B["b.js"]
+    B -->|"literal import"| A
+    classDef evidence fill:#0e1a2e,stroke:#3b8dff,color:#f3f7ff,stroke-width:2px
+    class A,B evidence
+    linkStyle default stroke:#3b8dff,stroke-width:2px
 ```
 
-Inspect archive entries for unsafe paths without extracting the archive.
+The offline layer is separate from the compiled provider-backed engine. Shared application workflows sit between CLI/MCP adapters and provider/domain contracts. Offline additions are not automatically MCP tools. [Detailed architecture](docs/architecture.mermaid).
 
-### Audit Dependency Lifecycle Scripts
+## MCP and the full engine
 
-```bash
-node nexora/bin/nexora.mjs audit-lifecycle .
+After the full build, launch the stdio server:
+
+```sh
+node scripts/nexora-engine.mjs mcp
 ```
 
-### Inspect Analysis Limits
+Waiting for protocol input is normal. Do not type shell commands into its stdin. Register an **absolute local Node path and launcher path**, avoiding unpublished package runners:
 
-```bash
-node nexora/bin/nexora.mjs limits
+```sh
+codex mcp add nexora-engine -- node /absolute/path/to/nexora-engine/scripts/nexora-engine.mjs mcp
+claude mcp add --transport stdio nexora-engine -- node /absolute/path/to/nexora-engine/scripts/nexora-engine.mjs mcp
 ```
 
-### Understanding Results
+Replace the illustrative paths. These registration examples follow client documentation; they are not claims of a live Codex/Claude connection. [Codex](docs/mcp/codex.md) · [Claude Code/Desktop](docs/mcp/claude.md) · [Generic clients](docs/mcp/generic-client.md) · [MCP verification stages](docs/mcp/README.md).
 
-Analysis reports may include:
+## Ghidra interchange
 
-- Input file identity
-- SHA-256 checksums
-- Source or binary locations
-- Function and symbol references
-- Dependency candidates
-- Evidence ranges
-- Confidence classifications
-- Warnings
-- Truncation and omission counters
-- Coverage limitations
+Bring your own compatible Ghidra distribution and full JDK. Set `GHIDRA_INSTALL_DIR` and `JAVA_HOME` to your local installations for provider workflows. The provider's checked release contract and Java requirements are described in [Ghidra setup](docs/tutorials/ghidra.md); nothing installs Ghidra or Java automatically.
 
-Always review evidence and coverage indicators before interpreting the results as complete.
-
-For technical schemas, resource limits, and additional examples, see [PHASE3A.md](PHASE3A.md).
-
----
-
-## MCP Integration
-
-NEXORA ENGINE includes a provider-backed MCP server interface for compatible MCP clients.
-
-MCP stands for **Model Context Protocol**.
-
-### Start the MCP Server
-
-After successfully building the full engine:
-
-```bash
-node scripts/rea.mjs mcp
+```sh
+node nexora/bin/nexora.mjs ghidra-report examples/tutorial/ghidra.synthetic.jsonl
 ```
 
-The server communicates over standard input and output.
+That sample is **synthetic**, not decompiler proof. For your own real export, use `ghidra-report /absolute/export.jsonl --binary /absolute/original-binary` to check its reported SHA-256 against the local binary. A mismatch is rejected; interrupted/missing-footer exports remain incomplete. [Headless export walkthrough](docs/tutorials/ghidra.md).
 
-### Generic MCP Client Configuration
+## Documentation
 
-Use an absolute path to your local NEXORA ENGINE installation:
+| Goal | Start here |
+|:--|:--|
+| Install and update | [Overview](docs/installation/from-source.md), [Windows](docs/installation/windows.md), [Linux](docs/installation/linux.md), [macOS](docs/installation/macos.md), [updates](docs/installation/updating.md) |
+| First analysis | [Tutorials](docs/tutorials/README.md), [samples](examples/tutorial/README.md), [actual outputs](docs/demos/README.md) |
+| Connect an agent | [MCP overview](docs/mcp/README.md), [Codex](docs/mcp/codex.md), [Claude](docs/mcp/claude.md) |
+| Understand evidence | [Architecture](docs/architecture/README.md), [Ghidra](docs/tutorials/ghidra.md), [limitations](#security-and-limitations) |
+| Resolve a problem | [Troubleshooting and FAQ](docs/troubleshooting.md), [verification record](docs/github-experience-verification.md) |
+| Contribute | [Contributor guide](CONTRIBUTING.md), [roadmap](docs/nexora-roadmap.md), [changelog](CHANGELOG.md) |
 
-```json
-{
-  "mcpServers": {
-    "nexora-engine": {
-      "command": "node",
-      "args": [
-        "/absolute/path/to/nexora-engine/scripts/rea.mjs",
-        "mcp"
-      ]
-    }
-  }
-}
-```
+<details>
+<summary><strong>Troubleshooting and frequently asked questions</strong></summary>
 
-Replace the example path with the actual location of your installation.
+- **Do I need dependencies for first run?** No. Lexical source, binary and dependency reports use Node built-ins. AST commands and the full engine require dependencies.
+- **Missing compiled runtime?** Follow the full source-build guide; on Windows build and verify the native addon first.
+- **Unsupported Node version?** Resolve the intended executable on PATH and use a version accepted by package.json.
+- **Missing optional parser?** Install locked dependencies with `npm ci --ignore-scripts`; use lexical analysis if the AST parser is unavailable.
+- **Is a static edge a runtime call?** No. Read the evidence method, confidence, unresolved fields and coverage.
+- **Why is MCP waiting?** Stdio waits for a client's JSON-RPC initialization. Validate process startup, initialization, tool discovery, invocation and shutdown separately.
+- **Where is the installer/npm package?** This is a source distribution; no official registry installation is offered.
+- **Can reports be shared?** They may contain proprietary source, paths and pseudocode. Review and sanitize them first.
 
-On Windows, ensure that absolute paths are correctly escaped when using JSON.
+</details>
 
-### Automatic Local Setup
+## Security and limitations
 
-The following command can register the local launcher with supported detected clients:
+Analyze only artifacts you are authorized to inspect. Reports can disclose source, symbols, paths, configuration references and decompiled material. Keep them private unless intentionally sanitized. Isolate hostile inputs; cooperative parser budgets are not hard OS containment. Providers may launch external tools or access caller-selected resources, depending on the requested workflow.
 
-```bash
-node scripts/rea.mjs setup
-```
+Real Ghidra execution, Linux/macOS installation, live Codex/Claude connections, native instruction-level CFGs and deep Go/Rust/C/C++ compiler semantics remain unverified or unfinished. AST analysis is conservative static evidence, not runtime proof or a type checker. There are no performance or production-readiness claims.
 
-Review any proposed configuration changes before accepting them.
+[Security policy](SECURITY.md) · [Disclaimer](DISCLAIMER.md) · [Public-source review](PUBLICATION_REVIEW.md). npm remains private; automatic publishing/deployment workflows remain disabled.
 
-### Important MCP Notes
+## Roadmap and contributing
 
-- The full engine must be built before starting the server.
-- Optional provider functionality depends on installed dependencies.
-- Not every offline analysis command is currently exposed as an MCP operation.
-- Full MCP client discovery and provider-backed integration have not been comprehensively revalidated.
-- Do not use an unpublished `npx` package name as an installation method.
+The next development focus is deeper reverse-engineering capability: verified Ghidra exports, native disassembly/CFG evidence, stronger compiler semantics and resource/lifecycle regressions. [Roadmap](docs/nexora-roadmap.md).
 
----
+Contribute minimal reproductions, parser regressions, provider verification and clearer uncertainty reporting. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md); report actual results and missing tools honestly. [Open an issue](https://github.com/NADER-CY/nexora-engine/issues/new/choose).
 
-## Supported Platforms
+## Origin & License
 
-| Platform | Current support |
-|---|---|
-| **Windows** | Offline analysis workflows have focused test coverage. Optional native integrations require additional toolchains. |
-| **Linux** | Portable offline workflows are designed for Linux, but additional platform-specific verification is required. |
-| **macOS** | Portable offline workflows are designed for macOS, but native and provider integrations require separate verification. |
+NEXORA ENGINE is an independently maintained, MIT-licensed open-source reverse-engineering platform, developed and expanded from the **REA** codebase by **morluto**, with its own features, improvements, branding and roadmap. Inherited code is not claimed as independently authored. This project is not affiliated with or endorsed by its upstream authors.
 
-The current publication checks were performed on Windows x64.
-
-Real PE inspection was checked against the host Node.js executable. ELF and Mach-O coverage at publication used deterministic fixtures.
-
-Optional Windows native functionality requires the relevant compiler and native artifact verification process.
-
-See [Windows Native Integration](native/windows/README.md).
-
----
-
-## Security and Privacy
-
-NEXORA ENGINE is intended for authorized software inspection and analysis.
-
-Only analyze software, files, applications, and systems that you own or are permitted to investigate.
-
-### Offline Analysis
-
-The offline analysis commands read caller-supplied local files without executing target code.
-
-### Provider-Backed Workflows
-
-Other full-engine workflows may:
-
-- Launch external analysis providers
-- Interact with local applications
-- Inspect authorized runtime environments
-- Fetch caller-selected resources
-
-Review the permissions and behavior of each provider before enabling it.
-
-### Sensitive Information
-
-Analysis reports can contain:
-
-- Source code
-- Function names and symbols
-- Filesystem paths
-- Decompiled material
-- Application structure
-- Runtime or session evidence
-
-Do not publish reports containing confidential information without reviewing and sanitizing them.
-
-### Resource Safety
-
-The analysis engine includes bounded inventories, input-size checks, cancellation, and cooperative deadline controls.
-
-These controls do not replace operating-system isolation for untrusted or hostile inputs.
-
-No general telemetry guarantees are made for optional third-party tools.
-
-For more details:
-
-- [Security Policy](SECURITY.md)
-- [Publication Security Review](PUBLICATION_REVIEW.md)
-
-Automatic npm, Cloudflare, GitHub Pages, and MCP registry publication workflows remain disabled.
-
----
-
-## Tests and Verification
-
-### Focused Analysis Tests
-
-```bash
-npm run test:nexora:phase3a
-```
-
-### Existing Compatibility Tests
-
-```bash
-node --test nexora/test/core.test.mjs nexora/test/analysis.test.mjs nexora/test/esm-paths.test.mjs nexora/test/windows-native-build.test.mjs
-```
-
-The complete test suite may require additional dependencies, platform-specific tools, and a supported Node.js runtime.
-
-```bash
-npm run test:nexora
-```
-
-Full upstream TypeScript tests, build validation, lint checks, and optional provider integrations must be evaluated separately.
-
-Passing focused tests does not establish production readiness for every provider.
-
-Benchmark generators are available under:
-
-`nexora/bench/`
-
-Generated benchmark inputs and machine-specific verification artifacts are intentionally excluded from the public source distribution.
-
----
-
-## Current Limitations
-
-NEXORA ENGINE is actively being developed.
-
-The following limitations apply to the published baseline:
-
-- Lexical analysis is not equivalent to full compiler-level scope and type resolution.
-- Macros, templates, interpolated strings, indirect calls, and dynamic language constructs can produce incomplete results.
-- Cross-file semantic call resolution is limited in the published baseline.
-- The offline binary reader does not reconstruct instruction-level call graphs.
-- Universal Mach-O and several optional executable metadata formats remain unsupported.
-- Ghidra importer fixture tests do not prove real exporter or decompiler compatibility.
-- Decompiled pseudocode is derived analysis output, not the original source code.
-- Missing, ambiguous, external, or dropped dependency facts can prevent complete architecture reconstruction.
-- Incomplete dependency graphs cannot establish the absence of cycles.
-- Full engine build, lint, MCP integration, and optional provider workflows are not represented as fully verified by the focused offline test results.
-- Optional third-party source trees may be absent from the supplied source distribution.
-
-See [Third-Party Components](third_party/README.md).
-
-Newer capabilities under development may address some of these limitations, but should not be treated as released until merged and verified.
-
----
-
-## Development Roadmap
-
-NEXORA ENGINE is being expanded toward deeper evidence-driven software analysis.
-
-### 1. Advanced Binary Analysis
-
-- Expand PE, ELF, and Mach-O metadata support.
-- Improve relocation and symbol analysis.
-- Add instruction-level analysis where supported.
-- Improve function relationships and control-flow reconstruction.
-
-### 2. Ghidra Integration
-
-- Verify real exporter compilation and execution.
-- Expand function and reference extraction.
-- Improve pseudocode report handling.
-- Validate provider compatibility using real test binaries.
-
-### 3. Semantic Source Analysis
-
-- Improve compiler-aware analysis.
-- Expand symbol and scope resolution.
-- Strengthen cross-file function relationships.
-- Improve module and dependency resolution.
-
-### 4. Architecture Reconstruction
-
-- Expand evidence-based architecture graphs.
-- Improve component and service relationship analysis.
-- Support richer structured analysis reports.
-- Improve visualization and traceability.
-
-### 5. Reliability and Compatibility
-
-- Extend Windows, Linux, and macOS verification.
-- Improve resource and provider testing.
-- Review optional third-party components.
-- Strengthen reproducibility and security checks.
-
-These items describe development priorities, not guarantees that every feature is already available.
-
----
-
-## Open Source and Contributing
-
-NEXORA ENGINE is an open-source project distributed under the MIT License.
-
-Developers and researchers are welcome to review the source, report reproducible issues, suggest improvements, and contribute changes.
-
-For the latest development status, source code, and available documentation, visit:
-
-[**NEXORA ENGINE on GitHub**](https://github.com/NADER-CY/nexora-engine)
-
-Please review the repository's contribution and security policies before submitting changes.
-
----
-
-## Origin and License
-
-NEXORA ENGINE is derived from the MIT-licensed **REA — Reverse Engineer Anything** project, originally developed by **morluto**.
-
-Upstream source: https://github.com/morluto/rea
-
-Original upstream package: `rea-agents` 6.8.0
-
-Original upstream reference commit:
-
-`3b242491a430b3807853436bfeb9568d606169ac`
-
-The original project provides a substantial portion of the underlying engine, providers, bridges, and supporting architecture.
-
-NEXORA ENGINE extends that foundation with additional offline analysis, architecture reconstruction, resource-management improvements, and related development work.
-
-NEXORA ENGINE is an independent derivative project and is not affiliated with or endorsed by the original authors.
-
-The original MIT License and **Copyright (c) 2026 morluto** are preserved.
-
-Additional attribution and license information:
-
-- [LICENSE](LICENSE)
-- [NOTICE.md](NOTICE.md)
-- [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
-- [Original Project Documentation](UPSTREAM_README.md)
-- `licenses/`
-
-Historical upstream documentation may describe distribution mechanisms or integrations that are not enabled in NEXORA ENGINE.
-
----
-
-**NEXORA ENGINE — Follow the evidence. Understand the system.**
+The MIT License and **Copyright (c) 2026 morluto** are preserved. [LICENSE](LICENSE) · [NOTICE](NOTICE.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).

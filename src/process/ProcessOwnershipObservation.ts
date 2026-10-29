@@ -1252,7 +1252,7 @@ export const createSystemProcessOwnershipHost = (
         try {
           const processes = await listProcesses(signal);
           if (!processes.some(({ pid }) => pid === process.pid))
-            throw new Error("ps did not report REA's current process");
+            throw new Error("ps did not report NEXORA ENGINE's current process");
         } catch (cause: unknown) {
           if (isExpectedAbort(cause, signal)) throw cause;
           throw new LinuxOwnedProcessPrerequisiteError(cause);
@@ -1438,7 +1438,7 @@ export const signalProcessWithStartIdentity = async (
 /** Refusal before an owned launch when Linux `ps` is missing or incompatible. */
 export class LinuxOwnedProcessPrerequisiteError extends AnalysisCapabilityUnavailableError {
   constructor(cause: unknown) {
-    const reason = `Linux process ownership inspection requires a procps-compatible ps on REA's PATH before launching a child: ${errorMessage(cause)}`;
+    const reason = `Linux process ownership inspection requires a procps-compatible ps on NEXORA ENGINE's PATH before launching a child: ${errorMessage(cause)}`;
     super("process-ownership", "prepare_owned_process", reason, {
       cause,
       userMessage: reason,

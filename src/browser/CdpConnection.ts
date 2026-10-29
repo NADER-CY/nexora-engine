@@ -334,7 +334,7 @@ export class CdpConnection {
             finish(
               gracefulFailure ??
                 new BrowserObservationError(this.operation, "cleanup_failed", {
-                  detail: "REA could not confirm release of its CDP WebSocket.",
+                  detail: "NEXORA ENGINE could not confirm release of its CDP WebSocket.",
                 }),
             );
           }, 1_000);

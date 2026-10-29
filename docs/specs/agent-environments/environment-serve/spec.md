@@ -17,7 +17,7 @@ later increment.
 
 ## Requirements
 
-- Read both files as bounded JSON input, authenticate each as REA Evidence and
+- Read both files as bounded JSON input, authenticate each as NEXORA ENGINE Evidence and
   require `inspect_analysis_view` Evidence of kind `environment-manifest` and
   complete `inspect_web_network_capture` Evidence; refuse any other pair with an
   `invalid_request` whose issue path names the offending file.
@@ -36,7 +36,7 @@ later increment.
   becomes `request_body` when a query parameter is named `body`), closed with
   `additionalProperties: false` so unknown arguments are refused; the
   description reads `METHOD template; replays retained records [ordinals];
-  evidence ev_…`. The served catalog stays separate from REA's own tool
+  evidence ev_…`. The served catalog stays separate from NEXORA ENGINE's own tool
   contracts and digests.
 - Prefix tool descriptions with the shared captured-catalog warning so
   standalone card readers receive the trust notice before MCP initialization.
@@ -62,7 +62,7 @@ later increment.
   UTF-8, so they are returned exactly rather than decoded lossily) and
   `truncated` (a large retained base64 body is decoded only up to that limit),
   as both
-  structured content and text, with REA's existing target-content provenance
+  structured content and text, with NEXORA ENGINE's existing target-content provenance
   marker in `_meta`.
 - Serve the card with exactly the echo example's keys and nesting: `name`
   (`ENVIRONMENT_NAME` from the environment snapshot, else the manifest name; a

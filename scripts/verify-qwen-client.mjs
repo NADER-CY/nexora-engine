@@ -315,7 +315,7 @@ await withVerifierCleanup(async () => {
           message = call(shell.name, {
             command: `${nodeCommand} -e "eval(Buffer.from('${encodedScript}','base64').toString('utf8'))"`,
             description:
-              "Read the complete saved REA Evidence and verify the fixture facts.",
+              "Read the complete saved NEXORA ENGINE Evidence and verify the fixture facts.",
           });
         } else if (selected) {
           message = call(selected.name, {
@@ -336,7 +336,7 @@ await withVerifierCleanup(async () => {
           searchCallId = message.tool_calls[0].id;
         } else
           throw new Error(
-            `REA analysis tool not exposed; tools: ${tools.map((t) => t.name).join(", ")}`,
+            `NEXORA ENGINE analysis tool not exposed; tools: ${tools.map((t) => t.name).join(", ")}`,
           );
         return message;
       },
@@ -345,7 +345,7 @@ await withVerifierCleanup(async () => {
     const prompt =
       mode === "chat"
         ? "Say hello briefly."
-        : `Use REA to analyze the JavaScript directory ${target}. Report the result.`;
+        : `Use NEXORA ENGINE to analyze the JavaScript directory ${target}. Report the result.`;
     const env = {
       ...baseEnvironment,
       PATH: clientPath,
@@ -397,7 +397,7 @@ await withVerifierCleanup(async () => {
     assert.deepEqual(
       observed,
       TOOL_CONTRACTS.map((c) => `mcp__rea__${c.name}`).sort(),
-      "Qwen must discover the complete REA catalog",
+      "Qwen must discover the complete NEXORA ENGINE catalog",
     );
     assert.equal(fixture.failure, undefined);
     assert(finalSeen);

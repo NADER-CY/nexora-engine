@@ -29,7 +29,7 @@ sources and their reasons. Capture again with the corresponding content option.
 
 The destination must not exist. Use a new directory for each capture; an
 existing directory or symlink is rejected without overwriting its contents.
-REA creates private output, verifies every written file by digest and durable
+NEXORA ENGINE creates private output, verifies every written file by digest and durable
 readback, and removes its own partial output on failure or cancellation.
 A failed rollback reports residual paths.
 
@@ -95,6 +95,6 @@ identities and authorities remain separate.
 `npm run verify:browser:scripts` exercises active capture, exact source export,
 manifest readback, query variants, and relative-module analysis through a real
 browser, CLI, and stdio MCP. Set `REA_BROWSER_EXECUTABLE` to an installed
-Chrome-family browser. The verifier accepts an optional installed REA entrypoint
+Chrome-family browser. The verifier accepts an optional installed NEXORA ENGINE entrypoint
 argument for package verification. `npm run verify:browser` additionally covers
 passive `inspect_web_page` export through both public adapters.

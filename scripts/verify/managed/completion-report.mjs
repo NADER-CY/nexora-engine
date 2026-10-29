@@ -2,7 +2,7 @@ import { createEvidence } from "../../../dist/domain/evidence.js";
 
 const COMPLETION_PROVIDER = {
   id: "rea-managed-conformance",
-  name: "REA managed conformance verifier",
+  name: "NEXORA ENGINE managed conformance verifier",
   version: "1",
 };
 

@@ -5,30 +5,30 @@ blocker. Keep the user's target and question in view. Explain what prevented the
 operation and the next useful step; after repair, continue the investigation.
 
 Commands below use an installed `rea`. If none is available, use the package
-invocation in `SKILL.md` when acquiring REA is authorized. Follow the connected
+invocation in `SKILL.md` when acquiring NEXORA ENGINE is authorized. Follow the connected
 server's schemas and the installed CLI's help rather than assuming repository
 main and an older release expose the same arguments. Tool-name prefixes belong
-to the client: find the canonical REA operation in its actual tool listing and
+to the client: find the canonical NEXORA ENGINE operation in its actual tool listing and
 server association before concluding that it is absent. A shared prefix alone
 does not establish which server an approval wildcard covers. See
-[client tool names and discovery](https://github.com/morluto/rea/blob/main/docs/client-configuration.md#client-tool-names-and-discovery).
+[client tool names and discovery](https://github.com/NADER-CY/nexora-engine/blob/main/docs/client-configuration.md#client-tool-names-and-discovery).
 
 ## Choose the remedy from the observed failure
 
 | Observation                                                     | Meaning and next step                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| No REA tools in the active session                              | If REA was installed as a client plugin, follow the plugin section below. Otherwise inspect registration with `rea doctor --client codex --json`. A skill installation alone does not register MCP.                                                                                                                                                                                                                                                                                                                                                                                     |
+| No NEXORA ENGINE tools in the active session                              | If NEXORA ENGINE was installed as a client plugin, follow the plugin section below. Otherwise inspect registration with `rea doctor --client codex --json`. A skill installation alone does not register MCP.                                                                                                                                                                                                                                                                                                                                                                                     |
 | Missing, malformed or stale registration                        | Prepare a scoped setup plan; apply only authorized changes with backups.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Aligned registration, but no connected tools                    | Restart/reconnect the client. Doctor checks registration; it cannot establish the current agent's connection. Inspect the client's launch error if reconnection fails.                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| MCP connection dropped or REA could not start                   | If the connection drops, retry that call once only when it is safe to repeat or known not to have started. If it may already have changed the target, or the same failure returns, tell the user REA's connection failed and ask them to restart the MCP client. If REA could not start its connection, retry once, then tell the user and ask them to restart the MCP client. Do not retry a startup failure that returns the same unchanged result. Run `rea doctor` when REA could not start or tools stay missing after restart. Doctor cannot restore a live connection by itself. |
-| `MCP tool call requires approval, but approval policy is never` | Codex rejected the call before REA executed it. Do not install an engine or repeat setup to solve this client-policy decision. See the approval section below.                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| REA returns `provider_unavailable` or an unavailable tool entry | Read that operation's provider diagnostics or `binary_session.result.tool_availability`. Expand each group's tool names and inherit the shared client requirements unless overridden. Use the operation's availability, reason, and remediation; a complete tool catalog does not imply every operation is available. Request `{"detail": "complete"}` only for provider diagnostics.                                                                                                                                                                                                   |
+| MCP connection dropped or NEXORA ENGINE could not start                   | If the connection drops, retry that call once only when it is safe to repeat or known not to have started. If it may already have changed the target, or the same failure returns, tell the user NEXORA ENGINE's connection failed and ask them to restart the MCP client. If NEXORA ENGINE could not start its connection, retry once, then tell the user and ask them to restart the MCP client. Do not retry a startup failure that returns the same unchanged result. Run `rea doctor` when NEXORA ENGINE could not start or tools stay missing after restart. Doctor cannot restore a live connection by itself. |
+| `MCP tool call requires approval, but approval policy is never` | Codex rejected the call before NEXORA ENGINE executed it. Do not install an engine or repeat setup to solve this client-policy decision. See the approval section below.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| NEXORA ENGINE returns `provider_unavailable` or an unavailable tool entry | Read that operation's provider diagnostics or `binary_session.result.tool_availability`. Expand each group's tool names and inherit the shared client requirements unless overridden. Use the operation's availability, reason, and remediation; a complete tool catalog does not imply every operation is available. Request `{"detail": "complete"}` only for provider diagnostics.                                                                                                                                                                                                   |
 | `rea` is missing in a child shell, or Node is incompatible      | Inspect the actual shell PATH and launcher/runtime. A prefix installation may be absent from a login shell's PATH; this does not establish a broken MCP registration.                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 If the client cannot launch its shell/sandbox helper or read the installed skill,
 inspect its launch diagnostic. For example, Codex can refuse helper aliases when
 CODEX_HOME is under `/tmp`; use an authorized profile outside the OS temporary
-directory. REA setup cannot repair the client's executor. Preserve the sandbox
+directory. NEXORA ENGINE setup cannot repair the client's executor. Preserve the sandbox
 instead of silently disabling it to make an analysis command work.
 
 Static JavaScript and ordinary ZIP inventory need neither Hopper nor Ghidra.
@@ -37,13 +37,13 @@ decompilation, Android analysis and firmware extraction have their own
 bring-your-own prerequisites. Use supported inventory/static evidence when it
 answers part of the question, and name the unavailable evidence separately.
 Do not substitute another target. Label observations from ordinary shell tools
-as such; only actual REA output supplies REA Evidence.
+as such; only actual NEXORA ENGINE output supplies NEXORA ENGINE Evidence.
 
 ## Distinguish client and server deadlines
 
-A host message such as `timed out awaiting tools/call` with no REA result means
+A host message such as `timed out awaiting tools/call` with no NEXORA ENGINE result means
 the client's deadline expired before a result arrived. It does not establish
-that REA finished, canceled successfully, or released all resources. Do not
+that NEXORA ENGINE finished, canceled successfully, or released all resources. Do not
 repeat the unchanged analysis. Inspect available session/provider state and
 retained Evidence only when useful; an idle `binary_session` is not proof that
 every target-free operation stopped. Never invent a missing Evidence reference.
@@ -59,11 +59,11 @@ unrelated entries and backups; reconnect/restart as required by the host.
 When configuration is not editable, report the setting needed or use an
 authorized CLI fallback. Do not silently broaden permissions or switch targets.
 
-A returned REA `provider_timeout` instead means the **server/provider** reached
+A returned NEXORA ENGINE `provider_timeout` instead means the **server/provider** reached
 its deadline. Follow its `remediation.action`, reuse accessible partial Evidence,
 and resolve reported incomplete cleanup before retrying. Change a request
 field or a `REA_*` setting only when the returned remediation explicitly
-recommends that change. Restart REA when that text says the value is read at
+recommends that change. Restart NEXORA ENGINE when that text says the value is read at
 startup. A mention that a control does not raise the deadline is not a
 recommendation to change it. Do not invent a setting the remediation does not
 name. Raising only the client deadline does not change
@@ -88,17 +88,17 @@ all reported fields before retrying.
 ## Recovery ladder
 
 Follow the returned remediation. Change a request field or a `REA_*` setting
-only when that text explicitly recommends the change. Restart REA when it says
+only when that text explicitly recommends the change. Restart NEXORA ENGINE when it says
 the value is read at startup. A mention that a control does not raise a limit
 is not a recommendation to change it. Do not invent a setting. Host memory and
-`NODE_OPTIONS` do not raise a REA admission unless that remediation says so.
+`NODE_OPTIONS` do not raise a NEXORA ENGINE admission unless that remediation says so.
 
 - MCP connection dropped: retry that call once only when it is safe to repeat
   or known not to have started. If it may already have changed the target, or
-  it fails again, tell the user REA's connection failed and ask them to restart
+  it fails again, tell the user NEXORA ENGINE's connection failed and ask them to restart
   the MCP client. Do not run `rea doctor` for the drop itself.
-- REA could not start its connection: retry once, then tell the user and ask
-  them to restart the MCP client. Run `rea doctor` when REA could not start or
+- NEXORA ENGINE could not start its connection: retry once, then tell the user and ask
+  them to restart the MCP client. Run `rea doctor` when NEXORA ENGINE could not start or
   tools stay missing after that restart. Do not retry a startup failure that
   returns the same unchanged result.
 - `cleanup_incomplete`, or retained cleanup owners in the error details: retry
@@ -107,16 +107,16 @@ is not a recommendation to change it. Do not invent a setting. Host memory and
   retry.
 - Capacity, when the result is `resource_constraint` and `retryable` is true:
   wait for the active admission to finish, then retry within the reported
-  limits. Do not restart REA to free the slot.
+  limits. Do not restart NEXORA ENGINE to free the slot.
 - `configuration_invalid`: correct the named setting in the environment that
-  starts REA (the shell or the MCP registration), then restart REA. Run
+  starts NEXORA ENGINE (the shell or the MCP registration), then restart NEXORA ENGINE. Run
   `rea doctor` to see the `runtime-configuration:` check. Re-run `rea setup`
   for that client when the registration must carry the new setting, then
   reconnect.
 - `invalid_request`: correct the reported fields from the current schema. Do
   not repeat the unchanged call.
 
-## REA installed as a client plugin
+## NEXORA ENGINE installed as a client plugin
 
 A Claude Code or Codex plugin owns its `rea` server and this skill. Doctor's
 `--client` and `--skill` checks and `rea setup` read and write only
@@ -166,9 +166,9 @@ install or upgrade unrelated prerequisites. Restart/reconnect, verify tools
 actually appear, and resume the original task. If they remain absent, inspect
 the launch failure rather than looping through setup.
 
-## Codex tool approval is separate from REA readiness
+## Codex tool approval is separate from NEXORA ENGINE readiness
 
-REA tools have no permission-grant handshake. Codex can still require approval
+NEXORA ENGINE tools have no permission-grant handshake. Codex can still require approval
 because an operation creates owned resources, launches a helper or has cleanup
 effects. An advertised tool or successful doctor result does not override that
 client policy. `workspace-write` alone does not resolve an MCP approval
@@ -199,9 +199,9 @@ Show the proposed config edit and preserve unrelated entries and backups before
 writing. Managed policy can constrain client settings. Consult the
 [Codex configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
 for the installed client's supported settings. This is an optional recovery
-choice, not a prerequisite for every REA task.
+choice, not a prerequisite for every NEXORA ENGINE task.
 
-## Repair an editable REA limit
+## Repair an editable NEXORA ENGINE limit
 
 If `details.limit` names an editable setting and its bounds, call
 `update_analysis_settings` directly with a `changes` entry containing `setting`,
@@ -209,7 +209,7 @@ If `details.limit` names an editable setting and its bounds, call
 facts are already present. Retry the same input after work and cleanup settle.
 Runtime defaults affect new work only; explicit per-call arguments take
 precedence and must be corrected directly when selected. Reset restores launch
-values. Updates survive target close/open but disappear on REA restart. They do
+values. Updates survive target close/open but disappear on NEXORA ENGINE restart. They do
 not edit host deadlines, response buffers, registrations or fixed limits.
 
 ## Continue through an installed CLI

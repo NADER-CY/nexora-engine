@@ -52,7 +52,7 @@ const MCP_DOCTOR_ALIAS = { help: "h" } as const;
 const MCP_DOCTOR_COMMAND = "rea mcp doctor";
 const MCP_DOCTOR_DESCRIPTION = "Validate MCP adapter startup and tool listing";
 const MCP_DOCTOR_SCOPE =
-  "Checks this REA adapter using the current runtime; does not verify a client's registered command or launch environment.";
+  "Checks this NEXORA ENGINE adapter using the current runtime; does not verify a client's registered command or launch environment.";
 
 /** Help flags derived from `MCP_DOCTOR_OPTIONS` plus its alias. */
 const HELP_FLAGS: ReadonlySet<string> = new Set(["--help", "-h"]);

@@ -92,7 +92,7 @@ it.each([["latest"], ["6.8.0&echo wrong"], ["6.8.0", "extra"], []])(
     expect(await closed).toEqual({
       code: 1,
       stdout: "",
-      stderr: "REA plugin requires one exact rea-agents@VERSION pin.\n",
+      stderr: "NEXORA ENGINE plugin requires one exact rea-agents@VERSION pin.\n",
     });
   },
 );
@@ -107,7 +107,7 @@ it("rejects a mismatched runtime instead of downloading another package", async 
     code: 1,
     stdout: "",
     stderr:
-      "REA plugin version pin does not match its installed rea-agents package; reinstall the plugin.\n",
+      "NEXORA ENGINE plugin version pin does not match its installed rea-agents package; reinstall the plugin.\n",
   });
 });
 
@@ -122,7 +122,7 @@ it("reports how to repair an incomplete artifact or unbuilt source checkout", as
     code: 1,
     stdout: "",
     stderr:
-      "REA plugin runtime is missing; reinstall the plugin, or run npm ci && npm run build:cached in a source checkout.\n",
+      "NEXORA ENGINE plugin runtime is missing; reinstall the plugin, or run npm ci && npm run build:cached in a source checkout.\n",
   });
 });
 
@@ -139,7 +139,7 @@ it("preserves runtime startup failures", async () => {
 });
 
 it.skipIf(process.platform === "win32")(
-  "leaves signal cleanup with the running REA runtime",
+  "leaves signal cleanup with the running NEXORA ENGINE runtime",
   async () => {
     const { root, entry } = await pluginFixture(`
     process.on("SIGTERM", () => { process.stderr.write("cleaned"); process.exit(0); });

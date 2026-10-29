@@ -135,7 +135,7 @@ await withVerifierCleanup(async () => {
       onRequest: async ({ body, tools, requestIndex }) => {
         // Harness generates a session title in a separate, tool-free model request.
         if (tools.length === 0)
-          return { role: "assistant", content: "REA validation" };
+          return { role: "assistant", content: "NEXORA ENGINE validation" };
         assert(
           ++mainRequests <= 4,
           "Harness did not complete the bounded fixture workflow.",
@@ -311,7 +311,7 @@ await withVerifierCleanup(async () => {
             "--json",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use REA to analyze ${target}.`,
+              : `Use NEXORA ENGINE to analyze ${target}.`,
           ],
           {
             env: environment,

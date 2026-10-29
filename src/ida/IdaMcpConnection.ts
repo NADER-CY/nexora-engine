@@ -389,7 +389,7 @@ export const createIdaMcpConnection = (
     const controller = new AbortController();
     const cancellation = new SdkError(
       SdkErrorCode.RequestTimeout,
-      "REA caller cancelled this IDA MCP request",
+      "NEXORA ENGINE caller cancelled this IDA MCP request",
     );
     const abort = () => controller.abort(cancellation);
     if (signal.aborted) abort();

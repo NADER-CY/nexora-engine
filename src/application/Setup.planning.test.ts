@@ -231,7 +231,7 @@ describe("setup workflow", () => {
     const host = new FakeSetupHost("win32");
     host.registrationCommand = [];
     host.registrationCommandBlocker =
-      "REA could not determine the current executable entrypoint.";
+      "NEXORA ENGINE could not determine the current executable entrypoint.";
     host.clients = [{ name: "codex", configPath: "C:\\config\\codex.toml" }];
 
     const result = await runSetup(
@@ -581,12 +581,12 @@ describe("setup workflow lifecycle and provider planning", () => {
       },
       {
         actionId: "install_skill",
-        label: "REA reverse-engineering skill",
+        label: "NEXORA ENGINE reverse-engineering skill",
         state: "started",
       },
       {
         actionId: "install_skill",
-        label: "REA reverse-engineering skill",
+        label: "NEXORA ENGINE reverse-engineering skill",
         state: "completed",
       },
     ]);

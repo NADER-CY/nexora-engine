@@ -1,32 +1,51 @@
 # Install NEXORA ENGINE from source
 
-Clone this repository, rather than using an unpublished npm package or the inherited upstream `install.sh`:
+## Prerequisites
+
+Use Git, Node.js 24.22.1 (the repository pin) and npm 11.16.0. The accepted Node ranges in package.json are `^22.23.4 || ^24.22.1 || >=26.12.1`. Check `node --version` and `npm --version`; an arbitrary LTS version may be too old. These instructions do not install system software.
 
 ```sh
 git clone https://github.com/NADER-CY/nexora-engine.git
 cd nexora-engine
-node --version
-node nexora/bin/nexora.mjs --help
+node nexora/bin/nexora.mjs analyze-project examples/tutorial/cycle
 ```
 
-The dependency-free offline CLI needs no install/build step. It analyzes local supplied artifacts; it does not start the full MCP engine.
+Alternatively download the [main source ZIP](https://github.com/NADER-CY/nexora-engine/archive/refs/heads/main.zip), extract it and enter its root. The offline CLI needs no dependencies or build. Expect schema `nexora-project-analysis/v1` and the two-file dependency cycle. Never use an unpublished registry package or the inherited installer to acquire this source distribution.
 
 ## Full engine
 
-`package.json` requires Node `^22.23.4 || ^24.22.1 || >=26.12.1`; `.nvmrc` pins `24.22.1` and `packageManager` specifies `npm@11.16.0`. Check these files before installing a toolchain; this guide does not install or upgrade system software. Use a supported Node version, not merely an arbitrary current LTS.
+Install the locked dependencies without running dependency lifecycle scripts:
 
 ```sh
 npm ci --ignore-scripts
-npm run build
-node scripts/rea.mjs mcp
 ```
 
-Do not remove `--ignore-scripts` to work around a failure. Optional native dependencies can remain unavailable when their lifecycle scripts are skipped. Review the exact failing toolchain/provider before explicitly enabling a necessary build step. The offline CLI remains usable when the full build cannot complete.
+**Windows x64 requires the native addon before the full build.** Supply an existing MSYS2 UCRT64 or MINGW64 GCC toolchain; neither a compiler nor Java is installed automatically:
 
-The package remains private for npm. No registry package, prebuilt NEXORA ENGINE release or installer is promised. Full build/MCP client connections were not validated in the current environment; see [verification](../milestones.md).
+```powershell
+$env:NEXORA_MINGW_BIN = 'C:\msys64\ucrt64\bin'
+npm run build:windows-native
+npm run verify:windows-native:artifact
+```
 
-## Optional tools
+The explicit directory must contain the matching x64 GCC/dlltool tools. The build can download pinned official Node-API headers, checks their SHA-256 and rejects unsupported compiler targets. See [native controls](../../native/windows/README.md).
 
-Ghidra needs a compatible local Ghidra distribution and its required JDK. No Ghidra/Java auto-install occurs. Use [the Ghidra tutorial](../tutorials/ghidra.md). Optional native/provider dependencies have separate platform and license requirements; [the Windows addon guide](../../native/windows/README.md) describes its build and verification. Do not fetch unreviewed optional submodules as part of the basic installation.
+Then build and check the runtime:
 
-See [Windows](windows.md), [Linux](linux.md), [macOS](macos.md), [MCP setup](../mcp/README.md), and [first analysis](../tutorials/README.md).
+```sh
+npm run build
+node scripts/nexora-engine.mjs --help
+node scripts/nexora-engine.mjs mcp
+```
+
+The final command speaks MCP over stdio and waits for protocol input. See [client setup](../mcp/README.md). For Linux/macOS the same dependency/build commands are source-derived but were not executed on those systems; native/provider requirements differ.
+
+Windows x64 installation, native build/verification and full compilation passed on the pinned toolchain. The initial full build failed because the native addon had not yet been built; the corrected order above passed. Live Codex/Claude connections and real Ghidra execution remain unverified. [Verification record](../github-experience-verification.md).
+
+Do not enable every lifecycle script to work around an optional dependency failure. Review the exact provider requirement. The offline CLI remains available when full-engine dependencies are unavailable. The package remains private for npm; no prebuilt installer or registry distribution is promised.
+
+## Optional providers
+
+Ghidra needs a compatible caller-supplied distribution and full JDK. Follow [Ghidra setup](../tutorials/ghidra.md); optional providers have their own platform and licensing constraints. Do not fetch unreviewed submodules as part of basic installation.
+
+[Windows](windows.md) · [Linux](linux.md) · [macOS](macos.md) · [Update safely](updating.md) · [Troubleshooting](../troubleshooting.md).

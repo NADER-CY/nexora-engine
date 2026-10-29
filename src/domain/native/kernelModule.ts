@@ -245,7 +245,7 @@ export const kernelModuleSchema = z.strictObject({
       operation: z
         .literal("external_decompression")
         .describe(
-          "External decompression with a codec utility, not a REA tool",
+          "External decompression with a codec utility, not a NEXORA ENGINE tool",
         ),
       rationale: z.string().min(1),
     })

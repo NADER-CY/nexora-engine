@@ -5,7 +5,7 @@ capture-built environments (each app's latest capture). The served smoke rebuild
 test and applies every served write tool. The serving check answers every recorded read made before the capture's
 first write through state serving and compares it with the recording; it reads no calls from the five
 browser-scenario captures. The session replay answers every recorded call in order, writes included, through state
-serving, reading records with REA's own capture parser, and compares the reads; it covers all 50 captures.
+serving, reading records with NEXORA ENGINE's own capture parser, and compares the reads; it covers all 50 captures.
 
 ## Gates
 

@@ -136,13 +136,13 @@ a bound on total process RSS.
 The allowance defaults to 96 MiB and is the runtime setting
 `native.matching_representation_bytes`, from 1 byte to 1 GiB. On MCP, call
 `update_analysis_settings` with that setting and retry; it applies to the next
-operation without restarting REA. For CLI or future REA processes, set
+operation without restarting NEXORA ENGINE. For CLI or future NEXORA ENGINE processes, set
 `REA_NATIVE_MATCHING_REPRESENTATION_BYTES` in the launch environment; `rea
 setup` copies it into client registrations. An invalid launch value is refused
 by matching only, and a runtime value repairs it. A refusal carries
 `details.limit` with the effective value, its source and bounds. Raising the
-allowance lets matching retain more in the REA process. The 1 GiB maximum is
-an REA policy, not a host-capacity claim, and peak heap during a request can
+allowance lets matching retain more in the NEXORA ENGINE process. The 1 GiB maximum is
+an NEXORA ENGINE policy, not a host-capacity claim, and peak heap during a request can
 exceed the allowance.
 
 Summary delivery happens after complete matching Evidence is constructed and

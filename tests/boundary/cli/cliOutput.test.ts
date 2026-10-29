@@ -77,7 +77,7 @@ describe("CLI output argument boundary", () => {
     ).toMatchObject({ ok: false, code: "UNSUPPORTED_OUTPUT_COMBINATION" });
   });
 
-  it("adapts REA-owned delimited options only at the Incur boundary", () => {
+  it("adapts NEXORA ENGINE-owned delimited options only at the Incur boundary", () => {
     expect(
       adaptCliOutputArgumentsForIncur([
         "inspect-analysis-view",
@@ -648,7 +648,7 @@ describe("compiled CLI output boundary", () => {
         json: {
           code: "VALIDATION_ERROR",
           message:
-            "REA could not read the command arguments. Check the named argument and its expected type, then try again.",
+            "NEXORA ENGINE could not read the command arguments. Check the named argument and its expected type, then try again.",
           fieldErrors: [
             {
               path: "path",

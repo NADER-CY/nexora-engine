@@ -845,7 +845,7 @@ describe("evidence bundle process-capture payloads", () => {
       label: "historical provider name",
       provider: {
         ...PROCESS_PROVIDER,
-        name: "REA deterministic process harness",
+        name: "NEXORA ENGINE deterministic process harness",
       },
       operation: "capture_process_scenario",
       predicateType: "rea.process-capture",

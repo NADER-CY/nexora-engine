@@ -22,7 +22,7 @@ Preserve slot/relocation provenance and source coverage: matched means observed
 candidate presence; partial scans do not establish uniqueness or absence.
 This reads DEX/ELF bytes without loading the APK into the decompiler or executing
 target code. Runtime registration and loading remain unknown. See the
-[JNI guide](https://github.com/morluto/rea/blob/main/docs/android-analysis.md#link-native-declarations-to-jni-candidates).
+[JNI guide](https://github.com/NADER-CY/nexora-engine/blob/main/docs/android-analysis.md#link-native-declarations-to-jni-candidates).
 
 For an R8/ProGuard release build with its `mapping.txt`, pass the absolute
 `mapping_path` to `inspect_android_class` or `inspect_android_method`. Prefer
@@ -32,13 +32,13 @@ parent ID and can be exported; CLI summary delivery requires `--evidence_output`
 Omitted or complete detail preserves the full inline response. Keep
 selecting by observed names; the separate `mapping` block reports each symbol
 as `mapped`, `ambiguous` or `unmapped` after checking DEX types and prototypes.
-REA does not verify that the mapping belongs to the APK build.
+NEXORA ENGINE does not verify that the mapping belongs to the APK build.
 
 The provider requires a separately supplied headless JADX MCP JAR 0.7.1 and
 Java 17 or newer. `REA_JADX_MCP_JAR` selects the absolute JAR path; `JAVA_HOME`
 can select Java. Use `rea doctor --provider jadx --json` to check the JADX
 configuration and obtain remediation for missing prerequisites. Java and the
-headless JADX MCP JAR remain caller-supplied; REA setup does not install or
+headless JADX MCP JAR remain caller-supplied; NEXORA ENGINE setup does not install or
 configure them. Configuration readiness does not establish successful analysis
 of a particular APK.
 

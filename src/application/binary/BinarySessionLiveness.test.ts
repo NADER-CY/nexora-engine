@@ -140,7 +140,7 @@ it("keeps unbound observations out of persisted target snapshots", async () => {
     if (replay.ok) {
       expect(replay.value.evidenceId).toBe(bound.value.evidenceId);
       expect(replay.value.limitations).toContain(
-        "Loaded from a local REA analysis snapshot; this call did not re-run the provider.",
+        "Loaded from a local NEXORA ENGINE analysis snapshot; this call did not re-run the provider.",
       );
     }
   } finally {

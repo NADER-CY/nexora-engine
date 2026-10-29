@@ -580,7 +580,7 @@ describe("analysis error projection: browser provider failures", () => {
       "inspect_web_page",
       "cleanup_failed",
       {
-        detail: "Target page-1 closed while REA released its session.",
+        detail: "Target page-1 closed while NEXORA ENGINE released its session.",
         remediationAction: "Release session page-1, then retry.",
         cleanup: { reason: "socket close failed", resources: ["page-1"] },
         diagnostics: { endpoint: "loopback" },
@@ -606,7 +606,7 @@ describe("analysis error projection: browser provider failures", () => {
     expect(projected).toEqual(originalProjected);
     expect(projected).toMatchObject({
       code: "cleanup_incomplete",
-      message: "Target page-1 closed while REA released its session.",
+      message: "Target page-1 closed while NEXORA ENGINE released its session.",
       remediation: { action: "Release session page-1, then retry." },
     });
     expect(details).toEqual({
@@ -676,18 +676,18 @@ describe("analysis error projection: Hopper provider failures", () => {
     );
   });
 
-  it("identifies the REA session that already owns a Hopper target", () => {
+  it("identifies the NEXORA ENGINE session that already owns a Hopper target", () => {
     const error = new HopperStartError({
       ownerRunId: "session-owner",
       userMessage:
-        "This Hopper target is already open in REA session session-owner. Use that REA session or close it before opening this target again.",
+        "This Hopper target is already open in NEXORA ENGINE session session-owner. Use that NEXORA ENGINE session or close it before opening this target again.",
     });
     expect(projectAnalysisError(error)).toMatchObject({
       category: "unavailable",
       message: expect.stringContaining("session-owner"),
       remediation: {
         action: expect.stringContaining(
-          "Use the active REA session session-owner",
+          "Use the active NEXORA ENGINE session session-owner",
         ),
       },
     });
@@ -1186,7 +1186,7 @@ it("preserves ordinary configuration recovery and projects a producer-owned sess
     }),
   );
   expect(original.remediation.action).toBe(
-    "Correct REA_EXAMPLE in the environment that starts REA (your shell or the MCP client's registration), then rerun.",
+    "Correct REA_EXAMPLE in the environment that starts NEXORA ENGINE (your shell or the MCP client's registration), then rerun.",
   );
   expect(repairing).toEqual({
     ...original,

@@ -27,7 +27,7 @@ export const parseLogLevel = (
     processStartConfigurationSchema.shape.REA_LOG_LEVEL.safeParse(value);
   if (parsed.success) return ok(parsed.data);
   return err(
-    new ConfigurationError("Invalid REA environment configuration", {
+    new ConfigurationError("Invalid NEXORA ENGINE environment configuration", {
       cause: parsed.error,
       settings: parsed.error.issues.map(({ message }) => ({
         setting: "REA_LOG_LEVEL",

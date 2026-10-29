@@ -27,7 +27,7 @@ assert(
 );
 assert.equal(
   await readFile(join(account, ".rea-client-verification"), "utf8"),
-  "Disposable REA client verification account\n",
+  "Disposable NEXORA ENGINE client verification account\n",
 );
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const runtimeRoot = process.env.REA_VERIFY_RUNTIME_ROOT ?? repo;
@@ -125,7 +125,7 @@ await withVerifierCleanup(async () => {
       assert.deepEqual(
         entries.map((entry) => entry[1]).sort(),
         expectedNames,
-        "Native exact-name search must return every REA input schema",
+        "Native exact-name search must return every NEXORA ENGINE input schema",
       );
       for (const entry of entries) {
         const schema = JSON.parse(entry[2]);
@@ -156,7 +156,7 @@ await withVerifierCleanup(async () => {
           assert.deepEqual(
             names,
             expectedNames,
-            "Default native deferred-tool prompt must advertise the complete REA inventory",
+            "Default native deferred-tool prompt must advertise the complete NEXORA ENGINE inventory",
           );
           assert.equal(
             tools.filter((tool) => tool.name.startsWith("mcp__rea__")).length,
@@ -353,7 +353,7 @@ await withVerifierCleanup(async () => {
             "-p",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use the REA skill to analyze ${target}.`,
+              : `Use the NEXORA ENGINE skill to analyze ${target}.`,
             "-m",
             "rea-local/rea-client-fixture",
             "--local-only",

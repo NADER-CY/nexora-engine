@@ -396,7 +396,7 @@ const runSetupWorkflow = async (
   if (prewarmEligible && host.prewarmRegistrationRunner !== undefined) {
     emitProgress(options, {
       actionId: "prewarm_registration_runner",
-      label: "REA package-runner cache",
+      label: "NEXORA ENGINE package-runner cache",
       state: "started",
       detail: "Preparing the pinned package entry",
     });
@@ -414,14 +414,14 @@ const runSetupWorkflow = async (
     if (prewarm.status === "failed")
       emitProgress(options, {
         actionId: "prewarm_registration_runner",
-        label: "REA package-runner cache",
+        label: "NEXORA ENGINE package-runner cache",
         state: "warning",
         detail: prewarm.reason,
       });
     else if (prewarm.status === "warmed")
       emitProgress(options, {
         actionId: "prewarm_registration_runner",
-        label: "REA package-runner cache",
+        label: "NEXORA ENGINE package-runner cache",
         state: "completed",
       });
   }
@@ -510,7 +510,7 @@ const installSkillAction = async (
   appliedActions: string[],
   skillClientIds: readonly string[],
 ): Promise<SetupSkillInstallError | undefined> => {
-  const label = "REA reverse-engineering skill";
+  const label = "NEXORA ENGINE reverse-engineering skill";
   emitProgress(options, {
     actionId: "install_skill",
     label,

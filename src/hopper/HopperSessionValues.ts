@@ -24,7 +24,7 @@ export const parseHopperServerInfo = (
     typeof value === "object" &&
     value !== null &&
     !Array.isArray(value) &&
-    value.name === "REA Hopper bridge" &&
+    value.name === "NEXORA ENGINE Hopper bridge" &&
     typeof value.version === "string" &&
     typeof value.process_id === "number" &&
     Number.isSafeInteger(value.process_id) &&

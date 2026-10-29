@@ -72,7 +72,7 @@ for (const format of ["toml", "grok"] as const)
       },
     );
 
-it("retains comments from dotted REA assignments and nested inline values", () => {
+it("retains comments from dotted NEXORA ENGINE assignments and nested inline values", () => {
   for (const source of [
     'mcp_servers.rea.command = "old # string token" # dotted note\n',
     'mcp_servers = { rea = { args = ["old # string token", # inline value note\n] }, other = { command = "other" } }\n',

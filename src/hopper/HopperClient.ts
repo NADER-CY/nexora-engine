@@ -1029,7 +1029,7 @@ export class HopperClient {
       this.#resources.shutdownConfirmed = true;
       return new HopperStartError({
         userMessage:
-          "macOS denied permission to send Apple Events to Hopper. Allow the application that starts REA under System Settings > Privacy & Security > Automation, then retry opening the target.",
+          "macOS denied permission to send Apple Events to Hopper. Allow the application that starts NEXORA ENGINE under System Settings > Privacy & Security > Automation, then retry opening the target.",
         launcherFailure,
       });
     }

@@ -57,7 +57,7 @@ function runReportGate(results: readonly object[]) {
 }
 
 describe("scoped factual report", () => {
-  it("requires a validated target clarification and zero REA calls for the negative route", () => {
+  it("requires a validated target clarification and zero NEXORA ENGINE calls for the negative route", () => {
     const clarification = {
       ...routingSuccess,
       expectedFirstTool: null,

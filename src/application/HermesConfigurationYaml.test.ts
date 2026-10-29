@@ -257,7 +257,7 @@ describe("Hermes anchored-entry consumers", () => {
 
 for (const version of ["1.1", "1.2"] as const)
   it.each(["refresh", "remove"] as const)(
-    `preserves YAML ${version} consumers of a replaced REA anchor during %s`,
+    `preserves YAML ${version} consumers of a replaced NEXORA ENGINE anchor during %s`,
     (operation) => {
       const original =
         `${version === "1.2" ? "%YAML 1.2\n---\n" : ""}` +

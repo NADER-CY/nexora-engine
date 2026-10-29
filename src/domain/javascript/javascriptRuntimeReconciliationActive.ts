@@ -28,7 +28,7 @@ export const parseActiveElectronCapture = (
       operation: "capture_electron_scenario",
       predicate: "rea.electron-active-scenario",
       providerId: "rea-playwright-electron-active",
-      providerName: "REA Playwright active Electron observation provider",
+      providerName: "NEXORA ENGINE Playwright active Electron observation provider",
       providerVersion: "1",
       authority: "controlled-replay",
       confidence: "observed",

@@ -7,7 +7,7 @@ Executed on macOS with Node v24.22.1 on this branch merged with #7274 at `458324
 
 The 418 eval runs stored on the comparison VMs, with their agent trajectories:
 
-- 63 runs had a call refused before REA saw it because a query value came as a JSON number or boolean (`maxSize`,
+- 63 runs had a call refused before NEXORA ENGINE saw it because a query value came as a JSON number or boolean (`maxSize`,
   `pageSize`, `withItems`, `isLocation`, PhotoPrism's `count`, `offset`, `merged`, `public`), and in 18 the agent never
   got that tool to answer.
 - EspoCRM's contact update fails in every run: the served update accepts only the members recorded updates stored
@@ -83,6 +83,6 @@ No recording passes fewer tasks with this branch.
 ## Not verified
 
 - A fresh recording with skill 52, which reads each listed object by id.
-- Path parameters given as numbers stay refused: they are required properties, which REA keeps free of combinators.
+- Path parameters given as numbers stay refused: they are required properties, which NEXORA ENGINE keeps free of combinators.
 - A counter one create alone shows, and linked creates into a collection whose path has parameters, which still take
   only their recorded path values.

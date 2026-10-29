@@ -2,7 +2,7 @@
 
 `inspect_wasm_artifact` / `inspect-wasm-artifact` inspects explicitly selected
 local WASM bytes using caller-supplied WABT 1.0.42. No active binary target is
-required. REA does not install tools or fetch artifacts and does not execute WASM.
+required. NEXORA ENGINE does not install tools or fetch artifacts and does not execute WASM.
 
 `open_binary` is not the WASM inspection route. A recognized WASM v1 header
 returns `target_unavailable` with category `unsupported_target` and constraint
@@ -35,7 +35,7 @@ or repeating an unchanged call. All three tools must report 1.0.42 on stdout wit
 empty stderr. For CLI calls, set the environment before the next invocation. For
 MCP, change the server's launch environment and restart/reconnect that server;
 exporting a variable in a different shell does not update a running server.
-REA never installs tools or relaxes version admission to recover.
+NEXORA ENGINE never installs tools or relaxes version admission to recover.
 
 ```bash
 REA_WABT_BIN_DIRECTORY=/absolute/wabt/bin rea inspect-wasm-artifact \

@@ -315,9 +315,9 @@ export const registrationWriteBlocker = (
   // Setup would write the configuration the app reads; uninstall cleans both files.
   const manualEdit =
     operation === "setup"
-      ? `Add REA's entry to ${client.configPath} by hand`
-      : `Remove REA's entry by hand from each of ${msix.privateConfigPath} and ${msix.appDataConfigPath} that has one`;
-  return `REA cannot tell whether ${name}'s MSIX package ${msix.packageFamilyName} started this process, because no private file under ${dirname(dirname(msix.privateConfigPath))} could be compared with ${dirname(dirname(msix.appDataConfigPath))}, and a ${name} that started it would overwrite the change from memory. ${manualEdit} while ${name} is fully quit, or rerun ${operation} from a terminal that ${name} did not start once REA can compare a private file there.`;
+      ? `Add NEXORA ENGINE's entry to ${client.configPath} by hand`
+      : `Remove NEXORA ENGINE's entry by hand from each of ${msix.privateConfigPath} and ${msix.appDataConfigPath} that has one`;
+  return `NEXORA ENGINE cannot tell whether ${name}'s MSIX package ${msix.packageFamilyName} started this process, because no private file under ${dirname(dirname(msix.privateConfigPath))} could be compared with ${dirname(dirname(msix.appDataConfigPath))}, and a ${name} that started it would overwrite the change from memory. ${manualEdit} while ${name} is fully quit, or rerun ${operation} from a terminal that ${name} did not start once NEXORA ENGINE can compare a private file there.`;
 };
 
 /** The MSIX package view, if any, that redirects this process's AppData writes. */

@@ -220,14 +220,14 @@ const selectedSkillCheck = (
           ? "unknown"
           : "config_drift",
     ...(state === "aligned"
-      ? { detail: "Installed REA skill identity is aligned." }
+      ? { detail: "Installed NEXORA ENGINE skill identity is aligned." }
       : {
           remediation:
             state === "unmanaged"
               ? "Use regular skill directories, or run rea setup with --skill=false to configure the client without installing the skill."
               : state === "unknown"
                 ? "Verify access to the reported skill files before retrying."
-                : "Run rea setup to update the installed REA skill.",
+                : "Run rea setup to update the installed NEXORA ENGINE skill.",
         }),
   };
 

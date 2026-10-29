@@ -109,7 +109,7 @@ const reconcileThroughCli = async (
     inspection,
     {
       id: "rea-cdp-browser",
-      name: "REA Chrome DevTools Protocol observation provider",
+      name: "NEXORA ENGINE Chrome DevTools Protocol observation provider",
       version: "2",
     },
   );

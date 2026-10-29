@@ -32,7 +32,7 @@ Five self-hosted applications were brought up fresh and seeded on four disposabl
 claude_code` (the MCP server and the skill), and one prompt per application: build an agent environment of the app at
 this URL, cover these entities, the instance is disposable but leave the seeded data as found, sign in as this user, the
 password is in `APP_PASSWORD`, Chromium is here, write the bundle there. The prompt did not mention the skill. The agent
-could use the REA tools, the skill and file tools; Bash and web tools were disabled.
+could use the NEXORA ENGINE tools, the skill and file tools; Bash and web tools were disabled.
 
 Each bundle was then rebuilt with `environment-build` from its own `evidence.json` and this branch's tarball (the
 registry's `rea-agents@6.7.0` has no `environment-serve`); `manifest.json` and `evidence.json` were byte-identical to

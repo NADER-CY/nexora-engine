@@ -150,7 +150,7 @@ it("reruns ambiguous imported observations without changing their historical Evi
   if (!replayed.ok) throw replayed.error;
   expect(replayed.value.result).toEqual(observed.value.result);
   expect(replayed.value.limitations).toContain(
-    "Loaded from a local REA analysis snapshot; this call did not re-run the provider.",
+    "Loaded from a local NEXORA ENGINE analysis snapshot; this call did not re-run the provider.",
   );
   const controlClosed = await session.close();
   if (!controlClosed.ok) throw controlClosed.error;
@@ -179,7 +179,7 @@ it("reruns ambiguous imported observations without changing their historical Evi
   if (!fresh.ok) throw fresh.error;
   expect(fresh.value.result).toEqual(observed.value.result);
   expect(fresh.value.limitations).not.toContain(
-    "Loaded from a local REA analysis snapshot; this call did not re-run the provider.",
+    "Loaded from a local NEXORA ENGINE analysis snapshot; this call did not re-run the provider.",
   );
   expect(session.evidenceById(original.evidence_id)).toEqual(original);
   expect(session.evidenceById(alternative.evidence_id)).toEqual(alternative);

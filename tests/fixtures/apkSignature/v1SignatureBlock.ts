@@ -18,7 +18,7 @@ export const LEAF_CERTIFICATE = fromBase64(
 );
 export const LEAF_SHA256 =
   "9224e30fd7981ebeb903d2593075845316d5c4f546c2f3e4675c03ef3302ef88";
-export const LEAF_SUBJECT = "CN=REA Test Signer\nO=REA\nC=PT";
+export const LEAF_SUBJECT = "CN=NEXORA ENGINE Test Signer\nO=NEXORA ENGINE\nC=PT";
 
 /** CN=REA Test Root,O=REA; self-signed, serial 1. */
 export const ROOT_CERTIFICATE = fromBase64(

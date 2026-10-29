@@ -3,7 +3,7 @@
 ## Outcome and scope
 
 Answer, statically, **who signed a selected local APK, under which schemes, and
-whether the declared content digests match the current bytes**. This closes a gap REA's own
+whether the declared content digests match the current bytes**. This closes a gap NEXORA ENGINE's own
 Android inventory documents: "ZIP inventory cannot see the APK Signing Block, so
 an empty signing array does not mean the APK is unsigned"
 (`src/domain/android/androidApplication.ts`).
@@ -102,7 +102,7 @@ a follow-up).
 
 `npm run verify:apk-signature` (Android SDK `apksigner` + `aapt2`, JDK
 `keytool`): builds a real minimal APK, signs default v2+v3, v1-only (RSA and
-EC), v1+v2+v3 on a legacy target, a rotated lineage with and without v1, rotation carried by v3.1, a source stamp and a copy with one changed byte, and cross-checks REA against `apksigner verify`,
+EC), v1+v2+v3 on a legacy target, a rotated lineage with and without v1, rotation carried by v3.1, a source stamp and a copy with one changed byte, and cross-checks NEXORA ENGINE against `apksigner verify`,
 `apksigner lineage` and `keytool -printcert -jarfile` through CLI and MCP in Evidence parity, with the advertised
 schema validated. SDK-free unit and adapter tests cover framing (including Zip64
 and damaged archives), signer and lineage decoding with caps, the digest

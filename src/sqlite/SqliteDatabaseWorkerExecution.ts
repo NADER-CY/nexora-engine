@@ -117,7 +117,7 @@ const rejectedReply = (
       {
         capturedOutput,
         userMessage: reply.message,
-        remediationAction: `The database is readable; only the listed column values failed. REA's SQLite connection loads no extensions or application functions and disables schema trust. ${
+        remediationAction: `The database is readable; only the listed column values failed. NEXORA ENGINE's SQLite connection loads no extensions or application functions and disables schema trust. ${
           readable.length === 0
             ? "No other readable column was found"
             : `Select columns whose values were read: columns: ${JSON.stringify(readable)} (CLI: one --column per name)`
@@ -135,7 +135,7 @@ const rejectedReply = (
         userMessage: reply.message,
         diagnostics: { selected_path: selectedPath },
         remediationAction:
-          "SQLite read the selected schema but could not prepare or evaluate the requested rows. REA's private connection loads no extensions, application functions or application collations. The SQLite reason may identify a missing dependency; an unidentified query failure does not establish database corruption. Omit table and use schema_scope: database to inspect stored declarations. Obtaining the requested values may require the application's supported consistent export. Do not repeat the unchanged row request.",
+          "SQLite read the selected schema but could not prepare or evaluate the requested rows. NEXORA ENGINE's private connection loads no extensions, application functions or application collations. The SQLite reason may identify a missing dependency; an unidentified query failure does not establish database corruption. Omit table and use schema_scope: database to inspect stored declarations. Obtaining the requested values may require the application's supported consistent export. Do not repeat the unchanged row request.",
       },
     );
   if (reply.reason === "memory")

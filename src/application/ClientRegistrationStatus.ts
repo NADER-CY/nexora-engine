@@ -405,7 +405,7 @@ const sharedEnableFlagBinds = (
 /** A disable that setup preserves is a manual conflict: its remediation
  * must not point at an ineffective setup run. */
 const sharedDisabledActivationRemediation = (): string =>
-  "This shared registration row carries enable: false, which binds every reader of the shared storage, including ZCode's fallback view. REA preserves that flag, so rea setup will not change this row. Re-enable it with the product that disabled it, or remove enable: false manually, then rerun rea doctor.";
+  "This shared registration row carries enable: false, which binds every reader of the shared storage, including ZCode's fallback view. NEXORA ENGINE preserves that flag, so rea setup will not change this row. Re-enable it with the product that disabled it, or remove enable: false manually, then rerun rea doctor.";
 // Codex and Kimi Code load a server marked `disabled: true` and honor only
 // `enabled`; Devin loads one marked `enabled: false` and honors only `disabled`.
 const ignoresDisabledKey = new Set(["codex", "kimi"]);
@@ -496,7 +496,7 @@ const remediation = (client: SetupClient): string => {
 };
 
 const unknownEntryPointRemediation = (): string =>
-  "The existing registration was retained because its executable identity cannot be verified. Check the registered launcher path, symlink targets and access permissions. Run the installed REA CLI or a supported package runner, then rerun rea doctor; no registration was changed.";
+  "The existing registration was retained because its executable identity cannot be verified. Check the registered launcher path, symlink targets and access permissions. Run the installed NEXORA ENGINE CLI or a supported package runner, then rerun rea doctor; no registration was changed.";
 
 const configuredStatus = (
   client: SetupClient,
@@ -562,7 +562,7 @@ const timeoutAdvisory = (
   const headroom = isKimi
     ? `${String(MCP_STARTUP_POLICY.toolOperationHeadroomMs)} ms`
     : `${String(MCP_STARTUP_POLICY.toolOperationHeadroomMs / 1000)} seconds`;
-  const recommendation = `The configured ${setting} (${currentValue}) is shorter than REA's known provider allowance (${String(providerAllowance)} ms), so provider startup or an upstream request may exceed this client deadline. REA recommends ${setting} = ${recommendedValue} to cover that allowance plus ${headroom} of operation headroom; this additional headroom is a recommendation, not a guarantee for every analysis.`;
+  const recommendation = `The configured ${setting} (${currentValue}) is shorter than NEXORA ENGINE's known provider allowance (${String(providerAllowance)} ms), so provider startup or an upstream request may exceed this client deadline. NEXORA ENGINE recommends ${setting} = ${recommendedValue} to cover that allowance plus ${headroom} of operation headroom; this additional headroom is a recommendation, not a guarantee for every analysis.`;
   return batchScope === undefined
     ? recommendation
     : `${recommendation} ${batchScope}`;
@@ -572,7 +572,7 @@ const packageVersionRemediation = (
   packageReference: string,
   client: SetupClient,
 ): string =>
-  `This registration requests ${packageReference}, while the current REA CLI package is ${PRODUCT_IDENTITY.packageVersion}. REA does not resolve package-runner requests during doctor; update the registration with rea setup --client ${client.name}, then restart the client.`;
+  `This registration requests ${packageReference}, while the current NEXORA ENGINE CLI package is ${PRODUCT_IDENTITY.packageVersion}. NEXORA ENGINE does not resolve package-runner requests during doctor; update the registration with rea setup --client ${client.name}, then restart the client.`;
 
 const unavailableStatus = (
   client: SetupClient,

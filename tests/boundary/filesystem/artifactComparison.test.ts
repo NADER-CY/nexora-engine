@@ -20,7 +20,7 @@ import { jsonValueSchema } from "../../../src/domain/jsonValue.js";
 
 const PROVIDER = {
   id: "rea-artifact-graph",
-  name: "REA artifact graph",
+  name: "NEXORA ENGINE artifact graph",
   version: "1",
 } as const;
 

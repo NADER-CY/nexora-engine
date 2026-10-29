@@ -18,7 +18,7 @@ const session = (
   language = expected.expectedLanguageId,
   compiler = "default",
 ) => ({
-  name: "REA Ghidra bridge",
+  name: "NEXORA ENGINE Ghidra bridge",
   run_id: expected.runId,
   profile_digest: expected.profileDigest,
   provider: { id: "ghidra", version: expected.providerVersion },
@@ -161,7 +161,7 @@ describe("Ghidra disabled analyzer report", () => {
       "an unknown analyzer reported as accepted",
       {
         ...valid,
-        analyzers: [{ name: "REA Unknown Analyzer", status: "unknown" }],
+        analyzers: [{ name: "NEXORA ENGINE Unknown Analyzer", status: "unknown" }],
       },
     ],
     ["an empty outcome list", { ...valid, analyzers: [] }],

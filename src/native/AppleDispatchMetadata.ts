@@ -307,7 +307,7 @@ const inputBudgetExceeded = (
     observedBytes === null
       ? "The file grew while it was read. Retry once the file is stable."
       : observedBytes <= MAXIMUM_DISPATCH_METADATA_INPUT_BYTES
-        ? `Retry with max_input_bytes (CLI --max-input-bytes) of at least ${String(observedBytes)}, at most ${bytesWithUnits(MAXIMUM_DISPATCH_METADATA_INPUT_BYTES)}; REA holds that many bytes in memory for the read.`
+        ? `Retry with max_input_bytes (CLI --max-input-bytes) of at least ${String(observedBytes)}, at most ${bytesWithUnits(MAXIMUM_DISPATCH_METADATA_INPUT_BYTES)}; NEXORA ENGINE holds that many bytes in memory for the read.`
         : `The file exceeds the largest selectable budget of ${bytesWithUnits(MAXIMUM_DISPATCH_METADATA_INPUT_BYTES)}; use a deep analysis provider for its Objective-C and Swift metadata.`;
   return new AnalysisResourceConstraintError(
     OPERATION,

@@ -123,11 +123,11 @@ await withVerifierCleanup(async () => {
       onRequest: async ({ body, tools, requestIndex }) => {
         // Native session-title requests do not execute the analyst's workflow.
         if (tools.length === 0)
-          return { role: "assistant", content: "REA fixture title" };
+          return { role: "assistant", content: "NEXORA ENGINE fixture title" };
         const analysis = tools.find((t) =>
           t.name.endsWith("analyze_javascript_application"),
         );
-        assert(analysis, "OpenCode must expose the REA analysis tool");
+        assert(analysis, "OpenCode must expose the NEXORA ENGINE analysis tool");
         const prefix = analysis.name.slice(
           0,
           -"analyze_javascript_application".length,
@@ -138,7 +138,7 @@ await withVerifierCleanup(async () => {
         assert.deepEqual(
           reaTools.map((t) => t.name).sort(),
           expected,
-          "OpenCode must forward the complete REA catalog",
+          "OpenCode must forward the complete NEXORA ENGINE catalog",
         );
         if (schemasChecked === 0) {
           for (const tool of reaTools) {
@@ -199,7 +199,7 @@ await withVerifierCleanup(async () => {
         }
         assert(
           skillLoaded,
-          "OpenCode must load the installed personal REA skill",
+          "OpenCode must load the installed personal NEXORA ENGINE skill",
         );
         return call(analysis.name, { input_path: target, format: "directory" });
       },
@@ -214,14 +214,14 @@ await withVerifierCleanup(async () => {
           provider: {
             "rea-fixture": {
               npm: "@ai-sdk/openai-compatible",
-              name: "REA local model fixture",
+              name: "NEXORA ENGINE local model fixture",
               options: {
                 baseURL: fixture.baseUrl,
                 apiKey: "local-fixture-key",
               },
               models: {
                 "rea-client-fixture": {
-                  name: "REA fixture",
+                  name: "NEXORA ENGINE fixture",
                   tool_call: true,
                   limit: { context: 1_000_000, output: 4096 },
                 },
@@ -325,7 +325,7 @@ await withVerifierCleanup(async () => {
             "rea-fixture/rea-client-fixture",
             mode === "chat"
               ? "Say hello briefly."
-              : `Use REA to analyze the JavaScript directory ${target}. Report the result.`,
+              : `Use NEXORA ENGINE to analyze the JavaScript directory ${target}. Report the result.`,
           ],
           {
             env: environment,

@@ -939,23 +939,23 @@ const exportLeaseMessage = (failure: LeaseFailure): string => {
     case "owner_unverified":
       return `Another process holds this output directory's lease but did not identify itself (${failure.reason}). Retry after it finishes.`;
     case "recovery_busy":
-      return `Another run is recovering this output directory's lease at ${JSON.stringify(failure.path)}. Retry shortly. If no REA process is running, remove that directory.`;
+      return `Another run is recovering this output directory's lease at ${JSON.stringify(failure.path)}. Retry shortly. If no NEXORA ENGINE process is running, remove that directory.`;
     case "recovery_remove":
-      return `REA could not remove its lease recovery directory at ${JSON.stringify(failure.path)}. Check its write access before retrying.`;
+      return `NEXORA ENGINE could not remove its lease recovery directory at ${JSON.stringify(failure.path)}. Check its write access before retrying.`;
     case "unrecoverable":
-      return "REA could not take this output directory's lease. Retry after other decompile_all runs finish.";
+      return "NEXORA ENGINE could not take this output directory's lease. Retry after other decompile_all runs finish.";
     case "socket_permissions":
-      return "REA could not secure its lease socket permissions.";
+      return "NEXORA ENGINE could not secure its lease socket permissions.";
     case "directory_close":
-      return "REA could not confirm closure of its output lease directory handle.";
+      return "NEXORA ENGINE could not confirm closure of its output lease directory handle.";
     case "directory_access_denied":
-      return `REA could not access its lease directory at ${JSON.stringify(failure.directory)}. Restore owner-only permissions (0700) on a directory you own, then retry.`;
+      return `NEXORA ENGINE could not access its lease directory at ${JSON.stringify(failure.directory)}. Restore owner-only permissions (0700) on a directory you own, then retry.`;
     case "directory_create":
     case "directory_not_private":
     case "directory_permissions":
     case "directory_inspect":
     case "recovery_create":
-      return `REA could not use its private lease directory ${JSON.stringify(DECOMPILE_EXPORT_LEASE_DIRECTORY)}. Check that it is a directory owned by this user with permissions 0700.`;
+      return `NEXORA ENGINE could not use its private lease directory ${JSON.stringify(DECOMPILE_EXPORT_LEASE_DIRECTORY)}. Check that it is a directory owned by this user with permissions 0700.`;
   }
 };
 

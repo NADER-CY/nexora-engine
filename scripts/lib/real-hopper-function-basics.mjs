@@ -159,7 +159,7 @@ async function verifyHopperTerminalComment(call, address, terminal) {
   try {
     await call("set_comment", {
       address: terminal,
-      comment: "REA terminal instruction comment",
+      comment: "NEXORA ENGINE terminal instruction comment",
     });
     const annotated = await call("analyze_function", {
       procedure: address,
@@ -170,7 +170,7 @@ async function verifyHopperTerminalComment(call, address, terminal) {
         (item) =>
           item.address === terminal &&
           item.kind === "comment" &&
-          item.text === "REA terminal instruction comment",
+          item.text === "NEXORA ENGINE terminal instruction comment",
       )
     )
       throw new Error(

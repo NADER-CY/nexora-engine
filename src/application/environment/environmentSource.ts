@@ -151,7 +151,7 @@ export const parseEvidenceFile = (
         schemaInputError(
           operation,
           { prefix: [role], cause: parsed.error, value },
-          `The ${role} file is not authenticated REA Evidence JSON.`,
+          `The ${role} file is not authenticated NEXORA ENGINE Evidence JSON.`,
         ),
       );
 };
