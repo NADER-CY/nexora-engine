@@ -25,7 +25,7 @@ const spelling=n=>n?.name??(typeof n?.value==='string'?n.value:null);
 export async function analyzeSemanticSource(file,opts={}) {
   if(!AST_EXTENSIONS.has(extname(file).toLowerCase()))throw invalid('AST analysis currently supports JavaScript and TypeScript only');
   let parser;
-  try {parser=await import('@babel/parser');}
+  try {parser=await import(new URL(import.meta.resolve('@babel/parser')).href);}
   catch(e){if(e.code==='ERR_MODULE_NOT_FOUND')throw new NexoraError('not_found','AST analysis needs the locked Babel dependencies; use npm ci --ignore-scripts with a supported Node version');throw e;}
   const effective=resolveLimits(opts.limits);
   return withInput(file,{...opts,limits:{...effective,maxFileBytes:Math.min(effective.maxFileBytes,2*1024*1024)}},async io=>{
